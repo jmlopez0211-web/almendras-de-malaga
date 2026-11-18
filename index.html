@@ -571,7 +571,7 @@ function allergenInfo(p){
   [/pecana/,'Nuez pecana (fruto de cáscara)'],
   [/nuez|nueces/,'Nuez (fruto de cáscara)']
  ];
- const found=rules.filter(([re])=>re.test(n)).map(([,label])=>label);
+ const found=rules.filter(([re])=>re.test(n)).map(([,label])=>label).filter(label=>label!=='Nuez (fruto de cáscara)'||(!/pecana|nuez de brasil/.test(n)));
  return {found:[...new Set(found)]};
 }
 function allergenCardText(p){
