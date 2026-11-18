@@ -10,7 +10,7 @@
 | Nombre exacto | Descripción breve | Fotografía específica que debe buscarse | Estado actual |
 |---|---|---|---|
 | Almendra cruda con piel | Almendra sin tostar, presentada con su piel. | Producto entero crudo con piel/cáscara visible; primer plano de las piezas reales, mostrando claramente la cáscara. | Foto asignada: verificar correspondencia exacta |
-| Almendra cruda pelada | Almendra cruda sin piel. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Fotografía real pendiente |
+| Almendra cruda pelada | Almendra cruda sin piel. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Foto asignada: almendra repelada (dominio público) |
 | Almendra frita con piel | Almendra frita que conserva la piel. | Piezas fritas reales, dorado ligero y superficie propia de fritura; mostrar piel si el nombre la indica y no añadir sal visual si no la lleva. | Fotografía real pendiente |
 | Almendra frita con aceite de oliva | Almendra frita; el catálogo indica aceite de oliva. | Piezas fritas reales, dorado ligero y superficie propia de fritura; mostrar piel si el nombre la indica y no añadir sal visual si no la lleva. | Fotografía real pendiente |
 | Almendra frita con aceite de girasol | Almendra frita; el catálogo indica aceite de girasol. | Piezas fritas reales, dorado ligero y superficie propia de fritura; mostrar piel si el nombre la indica y no añadir sal visual si no la lleva. | Fotografía real pendiente |
@@ -83,9 +83,9 @@
 | Coco dado deshidratado | Coco en dados deshidratado. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Fotografía real pendiente |
 | Pomelo deshidratado | Pomelo en formato deshidratado. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Fotografía real pendiente |
 | Flor de hibiscos deshidratada | Flor de hibisco deshidratada. | Pétalos/cálices de hibisco deshidratados, color rojo intenso; no usar imagen de fruta. | Fotografía real pendiente |
-| Kiwi deshidratado | Kiwi en formato deshidratado. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Fotografía real pendiente |
+| Kiwi deshidratado | Kiwi en formato deshidratado. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Foto asignada: kiwi deshidratado (CC0) |
 | Fresa deshidratada | Fresa en formato deshidratado. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Fotografía real pendiente |
-| Arándano deshidratado | Arándano en formato deshidratado. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Fotografía real pendiente |
+| Arándano deshidratado | Arándano en formato deshidratado. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Foto asignada: arándanos deshidratados (CC BY 2.0) |
 | Dátil gigante Medjoul | Dátil gigante Medjoul en formato deshidratado. | Dátiles reales enteros; si es Medjoul, mostrar tamaño grande y piel arrugada; si es sin hueso, mostrar alguno abierto sin hueso. | Foto asignada: verificar correspondencia exacta |
 | Dátil sin hueso | Dátil sin hueso en formato deshidratado. | Dátiles reales enteros; si es Medjoul, mostrar tamaño grande y piel arrugada; si es sin hueso, mostrar alguno abierto sin hueso. | Fotografía real pendiente |
 | Higo turco | Higo turco seco. | Higos secos enteros, con alguno abierto para mostrar el interior; distinguir variedad turca o de Málaga solo si se confirma. | Foto asignada: verificar correspondencia exacta |
@@ -94,7 +94,7 @@
 | Ciruela sin hueso | Ciruela deshidratada sin hueso. | Ciruelas pasas oscuras y sin hueso; mostrar textura arrugada y alguna abierta. | Fotografía real pendiente |
 | Pipa garrapiñada | Pipa de girasol garrapiñada. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Fotografía real pendiente |
 | Pasa Thompson | Pasa Thompson en formato deshidratado. | Uvas pasas reales, en primer plano; respetar el color/tamaño de Thompson, Golden, Corinto, Sultana o Moscatel según el nombre. | Fotografía real pendiente |
-| Pasa rubia Golden | Pasa rubia Golden en formato deshidratado. | Uvas pasas reales, en primer plano; respetar el color/tamaño de Thompson, Golden, Corinto, Sultana o Moscatel según el nombre. | Fotografía real pendiente |
+| Pasa rubia Golden | Pasa rubia Golden en formato deshidratado. | Uvas pasas reales, en primer plano; respetar el color/tamaño de Thompson, Golden, Corinto, Sultana o Moscatel según el nombre. | Foto asignada: pasas rubias (CC0) |
 | Pasa Corinto y Sultana | Pasa Corinto y Sultana en formato deshidratado. | Uvas pasas reales, en primer plano; respetar el color/tamaño de Thompson, Golden, Corinto, Sultana o Moscatel según el nombre. | Fotografía real pendiente |
 | Pasa de Málaga Moscatel | Pasa de Málaga Moscatel en formato deshidratado. | Uvas pasas reales, en primer plano; respetar el color/tamaño de Thompson, Golden, Corinto, Sultana o Moscatel según el nombre. | Fotografía real pendiente |
 
@@ -169,11 +169,11 @@
 | Pipa de calabaza pelada cruda | Semillas de calabaza en la presentación indicada. | Semillas de girasol o calabaza según nombre; mostrar peladas o con cáscara y crudas/fritas/tostadas según corresponda. | Foto asignada: verificar correspondencia exacta |
 | Pipa de calabaza pelada tostada | Semillas de calabaza en la presentación indicada. | Semillas de girasol o calabaza según nombre; mostrar peladas o con cáscara y crudas/fritas/tostadas según corresponda. | Fotografía real pendiente |
 | Pipa de calabaza con cáscara tostada | Semillas de calabaza en la presentación indicada. | Semillas de girasol o calabaza según nombre; mostrar peladas o con cáscara y crudas/fritas/tostadas según corresponda. | Fotografía real pendiente |
-| Garbanzo frito | Aperitivo de garbanzo en la preparación indicada. | Garbanzos tostados o fritos reales, con textura crujiente visible; no usar legumbre cocida. | Foto asignada: verificar correspondencia exacta |
-| Garbanzo tostado | Aperitivo de garbanzo en la preparación indicada. | Garbanzos tostados o fritos reales, con textura crujiente visible; no usar legumbre cocida. | Fotografía real pendiente |
+| Garbanzo frito | Aperitivo de garbanzo en la preparación indicada. | Garbanzos tostados o fritos reales, con textura crujiente visible; no usar legumbre cocida. | Foto asignada: garbanzo frito (CC0) |
+| Garbanzo tostado | Aperitivo de garbanzo en la preparación indicada. | Garbanzos tostados o fritos reales, con textura crujiente visible; no usar legumbre cocida. | Foto asignada: garbanzo tostado (CC0) |
 | Kikos pequeños supercrujientes | Granos de maíz fritos de tamaño pequeño y textura crujiente. | Granos de maíz tostado/frito; tamaño pequeño supercrujiente o grande tierno según ficha. | Fotografía real pendiente |
 | Kikos gigantes tiernos | Granos de maíz fritos de tamaño grande y textura más tierna. | Granos de maíz tostado/frito; tamaño pequeño supercrujiente o grande tierno según ficha. | Fotografía real pendiente |
-| Habas fritas | Habas preparadas en la versión indicada. | Habas fritas reales; para la versión picante, mostrar solo si el acabado y el condimento coinciden. | Fotografía real pendiente |
+| Habas fritas | Habas preparadas en la versión indicada. | Habas fritas reales; para la versión picante, mostrar solo si el acabado y el condimento coinciden. | Foto asignada: habas fritas (CC BY-SA 3.0) |
 | Habas picantes | Habas preparadas en la versión indicada. | Habas fritas reales; para la versión picante, mostrar solo si el acabado y el condimento coinciden. | Fotografía real pendiente |
 | Chufa | Chufa: presentación indicada en el nombre del producto. | Chufas enteras secas, pequeñas y arrugadas, en primer plano; no usar frutos secos. | Fotografía real pendiente |
 
@@ -188,13 +188,13 @@
 ## Resultado de la auditoría visual del código (18 de noviembre de 2026)
 
 - Fichas inspeccionadas: **152**.
-- Fichas con URL de imagen asignada: **13**.
-- Fichas que muestran **Fotografía real pendiente**: **139**.
+- Fichas con URL de imagen asignada: **19**.
+- Fichas sin URL de imagen propia: **133**.
 - Las imágenes asignadas no se consideran aprobadas automáticamente: deben coincidir con el corte, piel/cáscara, preparación, cobertura y presentación comercial exactos.
 - Se han retirado 12 asignaciones duplicadas que confundían variantes: avellana tostada; nuez con cáscara, nuez chilena mariposa, nuez de California 85 %, nuez pecana pelada y tostada; dátil sin hueso; higo de Málaga; pipa de calabaza tostada pelada y con cáscara; piñón chino; garbanzo tostado.
-- En las familias solicitadas primero (almendras, cacahuetes y chocolates/golosinas), el código mantiene imagen únicamente para **Almendra cruda con piel** y **Filete de almendra**. Las demás fichas de esas familias quedan sin imagen, con el rótulo de fotografía pendiente. El archivo no contiene actualmente imágenes asignadas a fichas de cacahuete ni a productos bañados en chocolate.
+- En las familias de almendras, cacahuetes y chocolates/golosinas se mantienen pendientes las variantes para las que no se localizó una imagen libre que identificara con precisión la preparación o cobertura. Se añadió una foto de almendra repelada; no se ha reutilizado para fritas o tostadas ni se ha usado una foto de almendra bañada sin identificar el tipo de chocolate.
 
-## Criterios profesionales contrastados
+## Nuevas imágenes integradas (18 de noviembre de 2026)\n\n- Almendra cruda pelada: Nadiatalent, dominio público — https://commons.wikimedia.org/wiki/File:Blanched_almonds.jpg\n- Arándano deshidratado: François Nguyen, CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Dried_cranberries_(20240115).jpg\n- Kiwi deshidratado: Fumikas Sagisavas, CC0 1.0 — https://commons.wikimedia.org/wiki/File:Dried_kiwi_fruit_slices.jpg\n- Pasa rubia Golden: Fumikas Sagisavas, CC0 1.0 — https://commons.wikimedia.org/wiki/File:Raisins_(20240207).jpg\n- Garbanzo frito: Fumikas Sagisavas, CC0 1.0 — https://commons.wikimedia.org/wiki/File:Fried_chickpeas.jpg\n- Garbanzo tostado: Fumikas Sagisavas, CC0 1.0 — https://commons.wikimedia.org/wiki/File:Roasted_chickpeas.jpg\n- Habas fritas: Alex Ex, CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Fried_broad_beans_(china).jpg\n\nLas atribuciones y licencias se guardan junto a cada URL en `imageCredits` y se muestran en la ficha del producto. Las fotos de arándanos y pasas se asignan a sus productos individuales; no se usan para mezclas.\n\n## Criterios profesionales contrastados
 
 Los catálogos profesionales separan explícitamente almendra cruda con piel, repelada, frita, tostada, laminada, granillo, harina y bastones; no las presentan como una sola imagen genérica. También diferencian cacahuete crudo con piel, crudo repelado, frito repelado y tostado con cáscara. Para las almendras procesadas, bastón es una tira alargada, lámina es una rebanada fina, granillo son fragmentos pequeños y harina es material molido de textura fina o gruesa. Referencias consultadas: Aperitivos Zali (Málaga), catálogo ITAC Professional, Ferrer Segarra, Covalco, Montsec, Secofrut y Jasa Alimentación.
 
