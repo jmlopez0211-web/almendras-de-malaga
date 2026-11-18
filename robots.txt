@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jmlopez0211-web.github.io/almendras-de-malaga/sitemap.xml
