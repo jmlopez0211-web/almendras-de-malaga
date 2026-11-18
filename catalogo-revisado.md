@@ -9,8 +9,8 @@
 
 | Nombre exacto | Descripción breve | Fotografía específica que debe buscarse | Estado actual |
 |---|---|---|---|
-| Almendra cruda con piel | Almendra sin tostar, presentada con su piel. | Producto entero crudo con piel/cáscara visible; primer plano de las piezas reales, mostrando claramente la cáscara. | Revisar que la foto actual coincida exactamente |
-| Almendra cruda pelada | Almendra cruda sin piel. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Revisar que la foto actual coincida exactamente |
+| Almendra cruda con piel | Almendra sin tostar, presentada con su piel. | Producto entero crudo con piel/cáscara visible; primer plano de las piezas reales, mostrando claramente la cáscara. | Foto asignada: verificar correspondencia exacta |
+| Almendra cruda pelada | Almendra cruda sin piel. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Fotografía real pendiente |
 | Almendra frita con piel | Almendra frita que conserva la piel. | Piezas fritas reales, dorado ligero y superficie propia de fritura; mostrar piel si el nombre la indica y no añadir sal visual si no la lleva. | Fotografía real pendiente |
 | Almendra frita con aceite de oliva | Almendra frita; el catálogo indica aceite de oliva. | Piezas fritas reales, dorado ligero y superficie propia de fritura; mostrar piel si el nombre la indica y no añadir sal visual si no la lleva. | Fotografía real pendiente |
 | Almendra frita con aceite de girasol | Almendra frita; el catálogo indica aceite de girasol. | Piezas fritas reales, dorado ligero y superficie propia de fritura; mostrar piel si el nombre la indica y no añadir sal visual si no la lleva. | Fotografía real pendiente |
@@ -18,15 +18,15 @@
 | Almendra tostada con piel | Almendra tostada que conserva la piel. | Piezas tostadas reales, tono tostado natural; mostrar piel/cáscara solo si el nombre lo especifica. | Fotografía real pendiente |
 | Almendra tostada repelada con sal | Almendra tostada, sin piel y con sal. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Fotografía real pendiente |
 | Almendra tostada repelada sin sal | Almendra tostada, sin piel y sin sal. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Fotografía real pendiente |
-| Almendra Marcona | Almendra de la variedad Marcona. | Fotografía de la variedad exacta y de su estado (crudo, tostado o preparado); no sustituir por otro fruto seco. | Revisar que la foto actual coincida exactamente |
-| Bastón de almendra | Almendra cortada en bastones. | Almendra cortada en bastones alargados, vista macro sobre fondo neutro. | Revisar que la foto actual coincida exactamente |
-| Harina de almendra | Almendra molida hasta obtener una textura de harina. | Harina fina de almendra en pequeño cuenco y una cucharada mostrando la textura molida. | Revisar que la foto actual coincida exactamente |
-| Filete de almendra | Almendra cortada en láminas finas. | Láminas finas de almendra sueltas, claramente visibles en primer plano. | Revisar que la foto actual coincida exactamente |
-| Granillo de almendra | Almendra troceada en pequeños fragmentos. | Almendra picada en granos pequeños, macro de la textura troceada. | Revisar que la foto actual coincida exactamente |
+| Almendra Marcona | Almendra de la variedad Marcona. | Fotografía de la variedad exacta y de su estado (crudo, tostado o preparado); no sustituir por otro fruto seco. | Fotografía real pendiente |
+| Bastón de almendra | Almendra cortada en bastones. | Almendra cortada en bastones alargados, vista macro sobre fondo neutro. | Fotografía real pendiente |
+| Harina de almendra | Almendra molida hasta obtener una textura de harina. | Harina fina de almendra en pequeño cuenco y una cucharada mostrando la textura molida. | Fotografía real pendiente |
+| Filete de almendra | Almendra cortada en láminas finas. | Láminas finas de almendra sueltas, claramente visibles en primer plano. | Foto asignada: verificar correspondencia exacta |
+| Granillo de almendra | Almendra troceada en pequeños fragmentos. | Almendra picada en granos pequeños, macro de la textura troceada. | Fotografía real pendiente |
 | Cacahuete crudo con piel | Cacahuete crudo con piel: presentación indicada en el nombre del producto. | Fotografía de la variedad exacta y de su estado (crudo, tostado o preparado); no sustituir por otro fruto seco. | Fotografía real pendiente |
 | Cacahuete crudo repelado | Cacahuete crudo sin piel. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Fotografía real pendiente |
-| Cacahuete con cáscara con sal | Cacahuete en cáscara con sal. | Producto entero crudo con piel/cáscara visible; primer plano de las piezas reales, mostrando claramente la cáscara. | Revisar que la foto actual coincida exactamente |
-| Cacahuete con cáscara sin sal | Cacahuete en cáscara sin sal. | Producto entero crudo con piel/cáscara visible; primer plano de las piezas reales, mostrando claramente la cáscara. | Revisar que la foto actual coincida exactamente |
+| Cacahuete con cáscara con sal | Cacahuete en cáscara con sal. | Producto entero crudo con piel/cáscara visible; primer plano de las piezas reales, mostrando claramente la cáscara. | Fotografía real pendiente |
+| Cacahuete con cáscara sin sal | Cacahuete en cáscara sin sal. | Producto entero crudo con piel/cáscara visible; primer plano de las piezas reales, mostrando claramente la cáscara. | Fotografía real pendiente |
 | Cacahuete frito con piel con sal | Cacahuete frito con piel y sal. | Piezas en su preparación exacta con pequeños cristales de sal visibles, sin confundir con crudo o tostado. | Fotografía real pendiente |
 | Cacahuete frito con piel sin sal | Cacahuete frito con piel y sin sal. | Fotografía de la variedad exacta y de su estado (crudo, tostado o preparado); no sustituir por otro fruto seco. | Fotografía real pendiente |
 | Cacahuete frito repelado con sal | Cacahuete frito sin piel y con sal. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Fotografía real pendiente |
@@ -35,30 +35,30 @@
 | Cacahuete tostado con piel sin sal | Cacahuete tostado con piel y sin sal. | Piezas tostadas reales, tono tostado natural; mostrar piel/cáscara solo si el nombre lo especifica. | Fotografía real pendiente |
 | Cacahuete tostado repelado con sal | Cacahuete tostado sin piel y con sal. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Fotografía real pendiente |
 | Cacahuete tostado repelado sin sal | Cacahuete tostado sin piel y sin sal. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Fotografía real pendiente |
-| Anacardo crudo suprema | Anacardo crudo variedad suprema. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Revisar que la foto actual coincida exactamente |
+| Anacardo crudo suprema | Anacardo crudo variedad suprema. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Foto asignada: verificar correspondencia exacta |
 | Anacardo frito con sal | Anacardo frito con sal: presentación indicada en el nombre del producto. | Piezas en su preparación exacta con pequeños cristales de sal visibles, sin confundir con crudo o tostado. | Fotografía real pendiente |
 | Anacardo frito sin sal | Anacardo frito sin sal: presentación indicada en el nombre del producto. | Anacardos curvos en forma de riñón; crudos claros o fritos/tostados dorados según la ficha. | Fotografía real pendiente |
 | Anacardo tostado con sal | Anacardo tostado con sal: presentación indicada en el nombre del producto. | Piezas tostadas reales, tono tostado natural; mostrar piel/cáscara solo si el nombre lo especifica. | Fotografía real pendiente |
 | Anacardo tostado sin sal | Anacardo tostado sin sal: presentación indicada en el nombre del producto. | Piezas tostadas reales, tono tostado natural; mostrar piel/cáscara solo si el nombre lo especifica. | Fotografía real pendiente |
-| Macadamia cruda | Nuez de macadamia cruda. | Nueces de macadamia redondeadas; crudas claras o fritas/tostadas doradas según la ficha. | Revisar que la foto actual coincida exactamente |
+| Macadamia cruda | Nuez de macadamia cruda. | Nueces de macadamia redondeadas; crudas claras o fritas/tostadas doradas según la ficha. | Foto asignada: verificar correspondencia exacta |
 | Macadamia frita con sal | Macadamia frita con sal: presentación indicada en el nombre del producto. | Piezas fritas reales, dorado ligero y superficie propia de fritura; mostrar piel si el nombre la indica y no añadir sal visual si no la lleva. | Fotografía real pendiente |
 | Macadamia frita sin sal | Macadamia frita sin sal: presentación indicada en el nombre del producto. | Piezas fritas reales, dorado ligero y superficie propia de fritura; mostrar piel si el nombre la indica y no añadir sal visual si no la lleva. | Fotografía real pendiente |
 | Macadamia tostada con sal | Macadamia tostada con sal: presentación indicada en el nombre del producto. | Piezas tostadas reales, tono tostado natural; mostrar piel/cáscara solo si el nombre lo especifica. | Fotografía real pendiente |
 | Macadamia tostada sin sal | Macadamia tostada sin sal: presentación indicada en el nombre del producto. | Piezas tostadas reales, tono tostado natural; mostrar piel/cáscara solo si el nombre lo especifica. | Fotografía real pendiente |
-| Avellana americana cruda | Avellana americana cruda: presentación indicada en el nombre del producto. | Avellanas redondas enteras; crudas con piel marrón o tostadas según la ficha. | Revisar que la foto actual coincida exactamente |
-| Avellana americana tostada | Avellana americana tostada: presentación indicada en el nombre del producto. | Piezas tostadas reales, tono tostado natural; mostrar piel/cáscara solo si el nombre lo especifica. | Revisar que la foto actual coincida exactamente |
-| Nuez con cáscara | Nuez presentada con cáscara. | Producto entero crudo con piel/cáscara visible; primer plano de las piezas reales, mostrando claramente la cáscara. | Revisar que la foto actual coincida exactamente |
-| Nuez chilena mariposa | Nuez chilena en mitades tipo mariposa. | Mitades de nuez con forma de mariposa, separadas y nítidas. | Revisar que la foto actual coincida exactamente |
-| Nuez de California 85 % | Nuez de origen californiano; el porcentaje indicado debe confirmarse con el proveedor. | Fotografía de la variedad exacta y de su estado (crudo, tostado o preparado); no sustituir por otro fruto seco. | Revisar que la foto actual coincida exactamente |
-| Nuez pecana pelada | Nuez pecana pelada: presentación indicada en el nombre del producto. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Revisar que la foto actual coincida exactamente |
-| Nuez pecana tostada | Nuez pecana tostada: presentación indicada en el nombre del producto. | Piezas tostadas reales, tono tostado natural; mostrar piel/cáscara solo si el nombre lo especifica. | Revisar que la foto actual coincida exactamente |
-| Pistacho pelado / mondado crudo | Pistacho pelado crudo. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Revisar que la foto actual coincida exactamente |
+| Avellana americana cruda | Avellana americana cruda: presentación indicada en el nombre del producto. | Avellanas redondas enteras; crudas con piel marrón o tostadas según la ficha. | Foto asignada: verificar correspondencia exacta |
+| Avellana americana tostada | Avellana americana tostada: presentación indicada en el nombre del producto. | Piezas tostadas reales, tono tostado natural; mostrar piel/cáscara solo si el nombre lo especifica. | Fotografía real pendiente |
+| Nuez con cáscara | Nuez presentada con cáscara. | Producto entero crudo con piel/cáscara visible; primer plano de las piezas reales, mostrando claramente la cáscara. | Fotografía real pendiente |
+| Nuez chilena mariposa | Nuez chilena en mitades tipo mariposa. | Mitades de nuez con forma de mariposa, separadas y nítidas. | Fotografía real pendiente |
+| Nuez de California 85 % | Nuez de origen californiano; el porcentaje indicado debe confirmarse con el proveedor. | Fotografía de la variedad exacta y de su estado (crudo, tostado o preparado); no sustituir por otro fruto seco. | Fotografía real pendiente |
+| Nuez pecana pelada | Nuez pecana pelada: presentación indicada en el nombre del producto. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Fotografía real pendiente |
+| Nuez pecana tostada | Nuez pecana tostada: presentación indicada en el nombre del producto. | Piezas tostadas reales, tono tostado natural; mostrar piel/cáscara solo si el nombre lo especifica. | Fotografía real pendiente |
+| Pistacho pelado / mondado crudo | Pistacho pelado crudo. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Foto asignada: verificar correspondencia exacta |
 | Pistacho mondado tostado | Pistacho mondado tostado: presentación indicada en el nombre del producto. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Fotografía real pendiente |
 | Pistacho turco tostado | Pistacho turco tostado: presentación indicada en el nombre del producto. | Piezas tostadas reales, tono tostado natural; mostrar piel/cáscara solo si el nombre lo especifica. | Fotografía real pendiente |
 | Pistacho cáscara tostado nacional | Pistacho nacional tostado con cáscara. | Piezas tostadas reales, tono tostado natural; mostrar piel/cáscara solo si el nombre lo especifica. | Fotografía real pendiente |
 | Pistacho repelado crudo | Pistacho crudo repelado. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Fotografía real pendiente |
-| Piñón nacional | Piñón nacional: presentación indicada en el nombre del producto. | Piñones alargados, marfil y sin cáscara, fotografiados en macro. | Revisar que la foto actual coincida exactamente |
-| Piñón chino | Piñón chino: presentación indicada en el nombre del producto. | Piñones alargados, marfil y sin cáscara, fotografiados en macro. | Revisar que la foto actual coincida exactamente |
+| Piñón nacional | Piñón nacional: presentación indicada en el nombre del producto. | Piñones alargados, marfil y sin cáscara, fotografiados en macro. | Foto asignada: verificar correspondencia exacta |
+| Piñón chino | Piñón chino: presentación indicada en el nombre del producto. | Piñones alargados, marfil y sin cáscara, fotografiados en macro. | Fotografía real pendiente |
 | Castaña pilonga | Castaña pilonga: presentación indicada en el nombre del producto. | Fotografía de la variedad exacta y de su estado (crudo, tostado o preparado); no sustituir por otro fruto seco. | Fotografía real pendiente |
 | Coquito de Brasil | Coquito de Brasil: presentación indicada en el nombre del producto. | Fotografía de la variedad exacta y de su estado (crudo, tostado o preparado); no sustituir por otro fruto seco. | Fotografía real pendiente |
 
@@ -78,7 +78,7 @@
 | Papaya deshidratada | Papaya en formato deshidratado. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Fotografía real pendiente |
 | Plátano deshidratado | Plátano en formato deshidratado. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Fotografía real pendiente |
 | Aloe vera deshidratada | Aloe vera presentada en formato deshidratado. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Fotografía real pendiente |
-| Mango deshidratado | Mango en formato deshidratado. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Revisar que la foto actual coincida exactamente |
+| Mango deshidratado | Mango en formato deshidratado. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Foto asignada: verificar correspondencia exacta |
 | Piña deshidratada | Piña en formato deshidratado. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Fotografía real pendiente |
 | Coco dado deshidratado | Coco en dados deshidratado. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Fotografía real pendiente |
 | Pomelo deshidratado | Pomelo en formato deshidratado. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Fotografía real pendiente |
@@ -86,11 +86,11 @@
 | Kiwi deshidratado | Kiwi en formato deshidratado. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Fotografía real pendiente |
 | Fresa deshidratada | Fresa en formato deshidratado. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Fotografía real pendiente |
 | Arándano deshidratado | Arándano en formato deshidratado. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Fotografía real pendiente |
-| Dátil gigante Medjoul | Dátil gigante Medjoul en formato deshidratado. | Dátiles reales enteros; si es Medjoul, mostrar tamaño grande y piel arrugada; si es sin hueso, mostrar alguno abierto sin hueso. | Revisar que la foto actual coincida exactamente |
-| Dátil sin hueso | Dátil sin hueso en formato deshidratado. | Dátiles reales enteros; si es Medjoul, mostrar tamaño grande y piel arrugada; si es sin hueso, mostrar alguno abierto sin hueso. | Revisar que la foto actual coincida exactamente |
-| Higo turco | Higo turco seco. | Higos secos enteros, con alguno abierto para mostrar el interior; distinguir variedad turca o de Málaga solo si se confirma. | Revisar que la foto actual coincida exactamente |
-| Higo de Málaga | Higo de Málaga en formato deshidratado. | Higos secos enteros, con alguno abierto para mostrar el interior; distinguir variedad turca o de Málaga solo si se confirma. | Revisar que la foto actual coincida exactamente |
-| Orejón de albaricoque | Albaricoque deshidratado. | Orejónes de albaricoque secos, anaranjados, planos y arrugados. | Revisar que la foto actual coincida exactamente |
+| Dátil gigante Medjoul | Dátil gigante Medjoul en formato deshidratado. | Dátiles reales enteros; si es Medjoul, mostrar tamaño grande y piel arrugada; si es sin hueso, mostrar alguno abierto sin hueso. | Foto asignada: verificar correspondencia exacta |
+| Dátil sin hueso | Dátil sin hueso en formato deshidratado. | Dátiles reales enteros; si es Medjoul, mostrar tamaño grande y piel arrugada; si es sin hueso, mostrar alguno abierto sin hueso. | Fotografía real pendiente |
+| Higo turco | Higo turco seco. | Higos secos enteros, con alguno abierto para mostrar el interior; distinguir variedad turca o de Málaga solo si se confirma. | Foto asignada: verificar correspondencia exacta |
+| Higo de Málaga | Higo de Málaga en formato deshidratado. | Higos secos enteros, con alguno abierto para mostrar el interior; distinguir variedad turca o de Málaga solo si se confirma. | Fotografía real pendiente |
+| Orejón de albaricoque | Albaricoque deshidratado. | Orejónes de albaricoque secos, anaranjados, planos y arrugados. | Foto asignada: verificar correspondencia exacta |
 | Ciruela sin hueso | Ciruela deshidratada sin hueso. | Ciruelas pasas oscuras y sin hueso; mostrar textura arrugada y alguna abierta. | Fotografía real pendiente |
 | Pipa garrapiñada | Pipa de girasol garrapiñada. | Piezas de la fruta indicada, deshidratadas y con su color, corte y tamaño reales; primer plano sobre fondo neutro, sin fruta fresca como sustituto. | Fotografía real pendiente |
 | Pasa Thompson | Pasa Thompson en formato deshidratado. | Uvas pasas reales, en primer plano; respetar el color/tamaño de Thompson, Golden, Corinto, Sultana o Moscatel según el nombre. | Fotografía real pendiente |
@@ -166,11 +166,11 @@
 | Revuelto Delicias Virginia | Variedad Delicias Virginia. | Fotografía cenital de la mezcla real extendida; listar/mostrar solo ingredientes confirmados por Fabián. | Fotografía real pendiente |
 | Pipa pelada cruda | Pipa de girasol pelada cruda. | Semillas de girasol o calabaza según nombre; mostrar peladas o con cáscara y crudas/fritas/tostadas según corresponda. | Fotografía real pendiente |
 | Pipa pelada frita con sal | Pipa de girasol pelada frita con sal. | Semillas de girasol o calabaza según nombre; mostrar peladas o con cáscara y crudas/fritas/tostadas según corresponda. | Fotografía real pendiente |
-| Pipa de calabaza pelada cruda | Semillas de calabaza en la presentación indicada. | Semillas de girasol o calabaza según nombre; mostrar peladas o con cáscara y crudas/fritas/tostadas según corresponda. | Revisar que la foto actual coincida exactamente |
-| Pipa de calabaza pelada tostada | Semillas de calabaza en la presentación indicada. | Semillas de girasol o calabaza según nombre; mostrar peladas o con cáscara y crudas/fritas/tostadas según corresponda. | Revisar que la foto actual coincida exactamente |
-| Pipa de calabaza con cáscara tostada | Semillas de calabaza en la presentación indicada. | Semillas de girasol o calabaza según nombre; mostrar peladas o con cáscara y crudas/fritas/tostadas según corresponda. | Revisar que la foto actual coincida exactamente |
-| Garbanzo frito | Aperitivo de garbanzo en la preparación indicada. | Garbanzos tostados o fritos reales, con textura crujiente visible; no usar legumbre cocida. | Revisar que la foto actual coincida exactamente |
-| Garbanzo tostado | Aperitivo de garbanzo en la preparación indicada. | Garbanzos tostados o fritos reales, con textura crujiente visible; no usar legumbre cocida. | Revisar que la foto actual coincida exactamente |
+| Pipa de calabaza pelada cruda | Semillas de calabaza en la presentación indicada. | Semillas de girasol o calabaza según nombre; mostrar peladas o con cáscara y crudas/fritas/tostadas según corresponda. | Foto asignada: verificar correspondencia exacta |
+| Pipa de calabaza pelada tostada | Semillas de calabaza en la presentación indicada. | Semillas de girasol o calabaza según nombre; mostrar peladas o con cáscara y crudas/fritas/tostadas según corresponda. | Fotografía real pendiente |
+| Pipa de calabaza con cáscara tostada | Semillas de calabaza en la presentación indicada. | Semillas de girasol o calabaza según nombre; mostrar peladas o con cáscara y crudas/fritas/tostadas según corresponda. | Fotografía real pendiente |
+| Garbanzo frito | Aperitivo de garbanzo en la preparación indicada. | Garbanzos tostados o fritos reales, con textura crujiente visible; no usar legumbre cocida. | Foto asignada: verificar correspondencia exacta |
+| Garbanzo tostado | Aperitivo de garbanzo en la preparación indicada. | Garbanzos tostados o fritos reales, con textura crujiente visible; no usar legumbre cocida. | Fotografía real pendiente |
 | Kikos pequeños supercrujientes | Granos de maíz fritos de tamaño pequeño y textura crujiente. | Granos de maíz tostado/frito; tamaño pequeño supercrujiente o grande tierno según ficha. | Fotografía real pendiente |
 | Kikos gigantes tiernos | Granos de maíz fritos de tamaño grande y textura más tierna. | Granos de maíz tostado/frito; tamaño pequeño supercrujiente o grande tierno según ficha. | Fotografía real pendiente |
 | Habas fritas | Habas preparadas en la versión indicada. | Habas fritas reales; para la versión picante, mostrar solo si el acabado y el condimento coinciden. | Fotografía real pendiente |
@@ -184,3 +184,18 @@
 - Confirmar ingredientes, cobertura, relleno, alérgenos y posibles trazas de todos los productos de confitería y preparados. No inferirlos de la marca o del nombre comercial.
 - Verificar que «nacional», «turco», «chilena», «de Málaga» y otros orígenes/variedades estén respaldados por el proveedor.
 - Revisar todas las fotos marcadas «Revisar»: el hecho de que ya exista una URL no demuestra que la imagen represente la presentación exacta.
+
+## Resultado de la auditoría visual del código (18 de noviembre de 2026)
+
+- Fichas inspeccionadas: **152**.
+- Fichas con URL de imagen asignada: **13**.
+- Fichas que muestran **Fotografía real pendiente**: **139**.
+- Las imágenes asignadas no se consideran aprobadas automáticamente: deben coincidir con el corte, piel/cáscara, preparación, cobertura y presentación comercial exactos.
+- Se han retirado 12 asignaciones duplicadas que confundían variantes: avellana tostada; nuez con cáscara, nuez chilena mariposa, nuez de California 85 %, nuez pecana pelada y tostada; dátil sin hueso; higo de Málaga; pipa de calabaza tostada pelada y con cáscara; piñón chino; garbanzo tostado.
+- En las familias solicitadas primero (almendras, cacahuetes y chocolates/golosinas), el código mantiene imagen únicamente para **Almendra cruda con piel** y **Filete de almendra**. Las demás fichas de esas familias quedan sin imagen, con el rótulo de fotografía pendiente. El archivo no contiene actualmente imágenes asignadas a fichas de cacahuete ni a productos bañados en chocolate.
+
+## Criterios profesionales contrastados
+
+Los catálogos profesionales separan explícitamente almendra cruda con piel, repelada, frita, tostada, laminada, granillo, harina y bastones; no las presentan como una sola imagen genérica. También diferencian cacahuete crudo con piel, crudo repelado, frito repelado y tostado con cáscara. Para las almendras procesadas, bastón es una tira alargada, lámina es una rebanada fina, granillo son fragmentos pequeños y harina es material molido de textura fina o gruesa. Referencias consultadas: Aperitivos Zali (Málaga), catálogo ITAC Professional, Ferrer Segarra, Covalco, Montsec, Secofrut y Jasa Alimentación.
+
+**Nota de licencia:** las fotografías de otras tiendas se han usado solo como referencia de clasificación y aspecto. No se copian a esta web. Para publicar imágenes de terceros se necesita permiso/licencia compatible o fotografía propia del producto.
