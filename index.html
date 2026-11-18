@@ -351,6 +351,7 @@ cacahueteChocolateBlanco:{name:"Cacahuete chocolate blanco",desc:"Cacahuete cubi
 mixChocolatesPipa:{name:"Mix chocolates de pipa",desc:"Mezcla de pipas con chocolate.",tag:"Chocolates",category:"chocolates",price:24.8,image:"https://p3.hippopx.com/preview/324/290/dried-fruits-close-up-colorful-assorted-figs-apricots-raisins-texture-healthy-snacks-dried-fruit-mix.jpg"}
 };
 const categoryNames={"frutos":"Frutos secos","variantes":"Almendra y derivados","cacahuetes":"Cacahuetes","dulces":"Garrapiñados y dulces","revueltos":"Revueltos","fruta":"Fruta deshidratada","semillas":"Pipas y semillas","aperitivos":"Aperitivos","chocolates":"Chocolates"};
+const euro=n=>n.toLocaleString('es-ES',{style:'currency',currency:'EUR'});
 function renderProducts(){
  const grid=document.getElementById('products');if(!grid)return;
  const active=document.querySelector('.filter.active')?.dataset.filter||'todos';
@@ -362,10 +363,9 @@ function renderProducts(){
 document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x===btn));renderProducts()}));
 document.getElementById('productSearch')?.addEventListener('input',renderProducts);
 renderProducts();
-const euro=n=>n.toLocaleString('es-ES',{style:'currency',currency:'EUR'});
 let selected=null;
 function updatePackPrice(){if(!selected)return;const grams=Number(document.getElementById('weightSelect').value);document.getElementById('packPrice').textContent=euro(selected.price*grams/1000);document.getElementById('modalNote').textContent='Precio de referencia: '+euro(selected.price)+' por kg. El importe del formato se calcula proporcionalmente; confirma disponibilidad y precio final con Fabián antes de comprar.'}
-function showProduct(id){selected=products[id];document.getElementById('modalTitle').textContent=selected.name;document.getElementById('modalTag').textContent=selected.tag;document.getElementById('modalDesc').textContent=selected.desc;document.getElementById('modalPhoto').style.backgroundImage="url('"+selected.image+"')";document.getElementById('modalPhoto').style.backgroundSize='cover';document.getElementById('modalPhoto').style.backgroundPosition='center';document.getElementById('weightSelect').value='1000';updatePackPrice();document.getElementById('modalNote').textContent='';document.getElementById('productModal').classList.add('open')}
+function showProduct(id){selected=products[id];document.getElementById('modalTitle').textContent=selected.name;document.getElementById('modalTag').textContent=selected.tag;document.getElementById('modalDesc').textContent=selected.desc;document.getElementById('modalPhoto').style.backgroundImage="url('"+selected.image+"')";document.getElementById('modalPhoto').style.backgroundSize='cover';document.getElementById('modalPhoto').style.backgroundPosition='center';document.getElementById('weightSelect').value='1000';updatePackPrice();document.getElementById('productModal').classList.add('open')}
 document.querySelectorAll('[data-product]').forEach(b=>b.addEventListener('click',()=>showProduct(b.dataset.product)));document.getElementById('weightSelect').addEventListener('change',updatePackPrice);
 document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>document.getElementById(b.dataset.close).classList.remove('open')));
 document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open')}));
