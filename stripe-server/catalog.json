@@ -1,0 +1,914 @@
+[
+  {
+    "id": "almendraCrudaPiel",
+    "name": "Almendra cruda con piel",
+    "category": "frutos",
+    "pricePerKg": 13.2
+  },
+  {
+    "id": "almendraCrudaPelada",
+    "name": "Almendra cruda pelada",
+    "category": "frutos",
+    "pricePerKg": 15.4
+  },
+  {
+    "id": "almendraFritaPiel",
+    "name": "Almendra frita con piel",
+    "category": "frutos",
+    "pricePerKg": 19.8
+  },
+  {
+    "id": "almendraFritaOliva",
+    "name": "Almendra frita con aceite de oliva",
+    "category": "frutos",
+    "pricePerKg": 24
+  },
+  {
+    "id": "almendraFritaGirasol",
+    "name": "Almendra frita con aceite de girasol",
+    "category": "frutos",
+    "pricePerKg": 19.8
+  },
+  {
+    "id": "almendraFritaSinSal",
+    "name": "Almendra frita sin sal",
+    "category": "frutos",
+    "pricePerKg": 19.8
+  },
+  {
+    "id": "almendraTostadaPiel",
+    "name": "Almendra tostada con piel",
+    "category": "frutos",
+    "pricePerKg": 23.8
+  },
+  {
+    "id": "almendraTostadaRepeladaSal",
+    "name": "Almendra tostada repelada con sal",
+    "category": "frutos",
+    "pricePerKg": 24.8
+  },
+  {
+    "id": "almendraTostadaRepeladaSinSal",
+    "name": "Almendra tostada repelada sin sal",
+    "category": "frutos",
+    "pricePerKg": 24.8
+  },
+  {
+    "id": "almendraGarrapinada",
+    "name": "Almendra garrapiñada",
+    "category": "dulces",
+    "pricePerKg": 20
+  },
+  {
+    "id": "almendraMarcona",
+    "name": "Almendra Marcona",
+    "category": "frutos",
+    "pricePerKg": 20.8
+  },
+  {
+    "id": "bastonAlmendra",
+    "name": "Bastón de almendra",
+    "category": "variantes",
+    "pricePerKg": 18.8
+  },
+  {
+    "id": "harinaAlmendra",
+    "name": "Harina de almendra",
+    "category": "variantes",
+    "pricePerKg": 18.8
+  },
+  {
+    "id": "fileteAlmendra",
+    "name": "Filete de almendra",
+    "category": "variantes",
+    "pricePerKg": 18.8
+  },
+  {
+    "id": "granilloAlmendra",
+    "name": "Granillo de almendra",
+    "category": "variantes",
+    "pricePerKg": 18.8
+  },
+  {
+    "id": "cacahueteCrudoPiel",
+    "name": "Cacahuete crudo con piel",
+    "category": "cacahuetes",
+    "pricePerKg": 6.8
+  },
+  {
+    "id": "cacahueteCrudoRepelado",
+    "name": "Cacahuete crudo repelado",
+    "category": "cacahuetes",
+    "pricePerKg": 6.8
+  },
+  {
+    "id": "cacahueteCascaraSal",
+    "name": "Cacahuete con cáscara con sal",
+    "category": "cacahuetes",
+    "pricePerKg": 6.8
+  },
+  {
+    "id": "cacahueteCascaraSinSal",
+    "name": "Cacahuete con cáscara sin sal",
+    "category": "cacahuetes",
+    "pricePerKg": 6.8
+  },
+  {
+    "id": "cacahueteFritoPielSal",
+    "name": "Cacahuete frito con piel con sal",
+    "category": "cacahuetes",
+    "pricePerKg": 9
+  },
+  {
+    "id": "cacahueteFritoPielSinSal",
+    "name": "Cacahuete frito con piel sin sal",
+    "category": "cacahuetes",
+    "pricePerKg": 9
+  },
+  {
+    "id": "cacahueteFritoRepeladoSal",
+    "name": "Cacahuete frito repelado con sal",
+    "category": "cacahuetes",
+    "pricePerKg": 9
+  },
+  {
+    "id": "cacahueteFritoRepeladoSinSal",
+    "name": "Cacahuete frito repelado sin sal",
+    "category": "cacahuetes",
+    "pricePerKg": 9
+  },
+  {
+    "id": "cacahueteTostadoPielSal",
+    "name": "Cacahuete tostado con piel con sal",
+    "category": "cacahuetes",
+    "pricePerKg": 9
+  },
+  {
+    "id": "cacahueteTostadoPielSinSal",
+    "name": "Cacahuete tostado con piel sin sal",
+    "category": "cacahuetes",
+    "pricePerKg": 9
+  },
+  {
+    "id": "cacahueteTostadoRepeladoSal",
+    "name": "Cacahuete tostado repelado con sal",
+    "category": "cacahuetes",
+    "pricePerKg": 9
+  },
+  {
+    "id": "cacahueteTostadoRepeladoSinSal",
+    "name": "Cacahuete tostado repelado sin sal",
+    "category": "cacahuetes",
+    "pricePerKg": 9
+  },
+  {
+    "id": "cacahueteGarrapinada",
+    "name": "Cacahuete garrapiñado",
+    "category": "dulces",
+    "pricePerKg": 12
+  },
+  {
+    "id": "cacahueteMiel",
+    "name": "Cacahuete con miel",
+    "category": "dulces",
+    "pricePerKg": 16.8
+  },
+  {
+    "id": "anacardoCrudo",
+    "name": "Anacardo crudo suprema",
+    "category": "frutos",
+    "pricePerKg": 20.8
+  },
+  {
+    "id": "anacardoFritoSal",
+    "name": "Anacardo frito con sal",
+    "category": "frutos",
+    "pricePerKg": 26
+  },
+  {
+    "id": "anacardoFritoSinSal",
+    "name": "Anacardo frito sin sal",
+    "category": "frutos",
+    "pricePerKg": 26
+  },
+  {
+    "id": "anacardoTostadoSal",
+    "name": "Anacardo tostado con sal",
+    "category": "frutos",
+    "pricePerKg": 26
+  },
+  {
+    "id": "anacardoTostadoSinSal",
+    "name": "Anacardo tostado sin sal",
+    "category": "frutos",
+    "pricePerKg": 26
+  },
+  {
+    "id": "macadamiaCruda",
+    "name": "Macadamia cruda",
+    "category": "frutos",
+    "pricePerKg": 39.8
+  },
+  {
+    "id": "macadamiaFritaSal",
+    "name": "Macadamia frita con sal",
+    "category": "frutos",
+    "pricePerKg": 42
+  },
+  {
+    "id": "macadamiaFritaSinSal",
+    "name": "Macadamia frita sin sal",
+    "category": "frutos",
+    "pricePerKg": 42
+  },
+  {
+    "id": "macadamiaTostadaSal",
+    "name": "Macadamia tostada con sal",
+    "category": "frutos",
+    "pricePerKg": 44
+  },
+  {
+    "id": "macadamiaTostadaSinSal",
+    "name": "Macadamia tostada sin sal",
+    "category": "frutos",
+    "pricePerKg": 44
+  },
+  {
+    "id": "macadamiaGarrapinada",
+    "name": "Macadamia garrapiñada",
+    "category": "dulces",
+    "pricePerKg": 38
+  },
+  {
+    "id": "avellanaAmericanaCruda",
+    "name": "Avellana americana cruda",
+    "category": "frutos",
+    "pricePerKg": 24
+  },
+  {
+    "id": "avellanaAmericanaTostada",
+    "name": "Avellana americana tostada",
+    "category": "frutos",
+    "pricePerKg": 28.8
+  },
+  {
+    "id": "nuezCascara",
+    "name": "Nuez con cáscara",
+    "category": "frutos",
+    "pricePerKg": 8
+  },
+  {
+    "id": "nuezChilena",
+    "name": "Nuez chilena mariposa",
+    "category": "frutos",
+    "pricePerKg": 26.8
+  },
+  {
+    "id": "nuezCalifornia",
+    "name": "Nuez California 85%",
+    "category": "frutos",
+    "pricePerKg": 19.8
+  },
+  {
+    "id": "nuezPecanPelada",
+    "name": "Nuez pecana pelada",
+    "category": "frutos",
+    "pricePerKg": 27.8
+  },
+  {
+    "id": "nuezPecanTostada",
+    "name": "Nuez pecana tostada",
+    "category": "frutos",
+    "pricePerKg": 33
+  },
+  {
+    "id": "nuezCaramelizada",
+    "name": "Nuez caramelizada",
+    "category": "dulces",
+    "pricePerKg": 32
+  },
+  {
+    "id": "pistachoPeladoCrudo",
+    "name": "Pistacho pelado / mondado crudo",
+    "category": "frutos",
+    "pricePerKg": 33
+  },
+  {
+    "id": "pistachoMondadoTostado",
+    "name": "Pistacho mondado tostado",
+    "category": "frutos",
+    "pricePerKg": 39
+  },
+  {
+    "id": "pistachoTurcoTostado",
+    "name": "Pistacho turco tostado",
+    "category": "frutos",
+    "pricePerKg": 29.8
+  },
+  {
+    "id": "pistachoCascaraNacional",
+    "name": "Pistacho cáscara tostado nacional",
+    "category": "frutos",
+    "pricePerKg": 23.8
+  },
+  {
+    "id": "pistachoRepeladoCrudo",
+    "name": "Pistacho repelado crudo",
+    "category": "frutos",
+    "pricePerKg": 49.8
+  },
+  {
+    "id": "revueloNatural",
+    "name": "Revuelto natural",
+    "category": "revueltos",
+    "pricePerKg": 22
+  },
+  {
+    "id": "revueloGominolas",
+    "name": "Revuelto de gominolas",
+    "category": "revueltos",
+    "pricePerKg": 18
+  },
+  {
+    "id": "revueloTostadoSinSal",
+    "name": "Revuelto tostado sin sal",
+    "category": "revueltos",
+    "pricePerKg": 34
+  },
+  {
+    "id": "revueloEspecial",
+    "name": "Revuelto especial",
+    "category": "revueltos",
+    "pricePerKg": 28
+  },
+  {
+    "id": "revueloTresPasas",
+    "name": "Revuelto 3 pasas",
+    "category": "revueltos",
+    "pricePerKg": 19
+  },
+  {
+    "id": "revueloPacoJose",
+    "name": "Revuelto Paco José",
+    "category": "revueltos",
+    "pricePerKg": 34
+  },
+  {
+    "id": "revueloDeshidratados",
+    "name": "Revuelto de deshidratados",
+    "category": "revueltos",
+    "pricePerKg": 29
+  },
+  {
+    "id": "revueloDulceMCarmen",
+    "name": "Revuelto dulce Mª Carmen",
+    "category": "revueltos",
+    "pricePerKg": 39.8
+  },
+  {
+    "id": "revueloDeliciasVirginia",
+    "name": "Revuelto Delicias Virginia",
+    "category": "revueltos",
+    "pricePerKg": 28.8
+  },
+  {
+    "id": "cerezaDeshidratada",
+    "name": "Cereza deshidratada",
+    "category": "fruta",
+    "pricePerKg": 19.8
+  },
+  {
+    "id": "melonDeshidratado",
+    "name": "Melón deshidratado",
+    "category": "fruta",
+    "pricePerKg": 19.8
+  },
+  {
+    "id": "manzanaDeshidratada",
+    "name": "Manzana deshidratada",
+    "category": "fruta",
+    "pricePerKg": 19.8
+  },
+  {
+    "id": "jengibreAzucar",
+    "name": "Jengibre deshidratado con azúcar",
+    "category": "fruta",
+    "pricePerKg": 19.8
+  },
+  {
+    "id": "papayaDeshidratada",
+    "name": "Papaya deshidratada",
+    "category": "fruta",
+    "pricePerKg": 19.8
+  },
+  {
+    "id": "platanoDeshidratado",
+    "name": "Plátano deshidratado",
+    "category": "fruta",
+    "pricePerKg": 19.8
+  },
+  {
+    "id": "aloeDeshidratada",
+    "name": "Aloe vera deshidratada",
+    "category": "fruta",
+    "pricePerKg": 19.8
+  },
+  {
+    "id": "mangoDeshidratado",
+    "name": "Mango deshidratado",
+    "category": "fruta",
+    "pricePerKg": 19.8
+  },
+  {
+    "id": "pinaDeshidratada",
+    "name": "Piña deshidratada",
+    "category": "fruta",
+    "pricePerKg": 19.8
+  },
+  {
+    "id": "cocoDado",
+    "name": "Coco dado deshidratado",
+    "category": "fruta",
+    "pricePerKg": 19.8
+  },
+  {
+    "id": "pomeloDeshidratado",
+    "name": "Pomelo deshidratado",
+    "category": "fruta",
+    "pricePerKg": 19.8
+  },
+  {
+    "id": "hibiscoDeshidratado",
+    "name": "Flor de hibiscos deshidratada",
+    "category": "fruta",
+    "pricePerKg": 23
+  },
+  {
+    "id": "kiwiDeshidratado",
+    "name": "Kiwi deshidratado",
+    "category": "fruta",
+    "pricePerKg": 19.8
+  },
+  {
+    "id": "fresaDeshidratada",
+    "name": "Fresa deshidratada",
+    "category": "fruta",
+    "pricePerKg": 28
+  },
+  {
+    "id": "arandanoDeshidratado",
+    "name": "Arándano deshidratado",
+    "category": "fruta",
+    "pricePerKg": 19.8
+  },
+  {
+    "id": "datilMedjoul",
+    "name": "Dátil gigante Medjoul",
+    "category": "fruta",
+    "pricePerKg": 19.8
+  },
+  {
+    "id": "datilSinHueso",
+    "name": "Dátil sin hueso",
+    "category": "fruta",
+    "pricePerKg": 8.8
+  },
+  {
+    "id": "higoTurco",
+    "name": "Higo turco",
+    "category": "fruta",
+    "pricePerKg": 13.8
+  },
+  {
+    "id": "higoMalaga",
+    "name": "Higo de Málaga",
+    "category": "fruta",
+    "pricePerKg": 12
+  },
+  {
+    "id": "orejonAlbaricoque",
+    "name": "Orejón de albaricoque",
+    "category": "fruta",
+    "pricePerKg": 18.8
+  },
+  {
+    "id": "ciruelaSinHueso",
+    "name": "Ciruela sin hueso",
+    "category": "fruta",
+    "pricePerKg": 16
+  },
+  {
+    "id": "pipaPeladaCruda",
+    "name": "Pipa pelada cruda",
+    "category": "semillas",
+    "pricePerKg": 7
+  },
+  {
+    "id": "pipaPeladaFritaSal",
+    "name": "Pipa pelada frita con sal",
+    "category": "semillas",
+    "pricePerKg": 8.8
+  },
+  {
+    "id": "pipaGarrapinada",
+    "name": "Pipa garrapiñada",
+    "category": "dulces",
+    "pricePerKg": 14
+  },
+  {
+    "id": "calabazaPeladaCruda",
+    "name": "Pipa de calabaza pelada cruda",
+    "category": "semillas",
+    "pricePerKg": 11.8
+  },
+  {
+    "id": "calabazaPeladaTostada",
+    "name": "Pipa de calabaza pelada tostada",
+    "category": "semillas",
+    "pricePerKg": 15.8
+  },
+  {
+    "id": "calabazaCascaraTostada",
+    "name": "Pipa de calabaza con cáscara tostada",
+    "category": "semillas",
+    "pricePerKg": 10
+  },
+  {
+    "id": "pinonNacional",
+    "name": "Piñón nacional",
+    "category": "frutos",
+    "pricePerKg": 99.8
+  },
+  {
+    "id": "pinonChino",
+    "name": "Piñón chino",
+    "category": "frutos",
+    "pricePerKg": 60
+  },
+  {
+    "id": "garbanzoFrito",
+    "name": "Garbanzo frito",
+    "category": "aperitivos",
+    "pricePerKg": 8.8
+  },
+  {
+    "id": "garbanzoTostado",
+    "name": "Garbanzo tostado",
+    "category": "aperitivos",
+    "pricePerKg": 8.8
+  },
+  {
+    "id": "kikoPequeno",
+    "name": "Kiko pequeño supercrujiente",
+    "category": "aperitivos",
+    "pricePerKg": 10
+  },
+  {
+    "id": "kikoGigante",
+    "name": "Kiko gigante tierno",
+    "category": "aperitivos",
+    "pricePerKg": 10
+  },
+  {
+    "id": "pasaThompson",
+    "name": "Pasa Thompson",
+    "category": "fruta",
+    "pricePerKg": 7.8
+  },
+  {
+    "id": "pasaGolden",
+    "name": "Pasa rubia Golden",
+    "category": "fruta",
+    "pricePerKg": 12.8
+  },
+  {
+    "id": "pasaCorintoSultana",
+    "name": "Pasa Corinto y Sultana",
+    "category": "fruta",
+    "pricePerKg": 8
+  },
+  {
+    "id": "pasaMoscatel",
+    "name": "Pasa de Málaga Moscatel",
+    "category": "fruta",
+    "pricePerKg": 18
+  },
+  {
+    "id": "habaFrita",
+    "name": "Habas fritas",
+    "category": "aperitivos",
+    "pricePerKg": 8.8
+  },
+  {
+    "id": "habaPicante",
+    "name": "Habas picantes",
+    "category": "aperitivos",
+    "pricePerKg": 9.8
+  },
+  {
+    "id": "castanaPilonga",
+    "name": "Castaña pilonga",
+    "category": "frutos",
+    "pricePerKg": 17.8
+  },
+  {
+    "id": "coquitoBrasil",
+    "name": "Coquito de Brasil",
+    "category": "frutos",
+    "pricePerKg": 32
+  },
+  {
+    "id": "chufa",
+    "name": "Chufa",
+    "category": "frutos",
+    "pricePerKg": 8
+  },
+  {
+    "id": "chocolateNuezLeche",
+    "name": "Nuez chocolate leche",
+    "category": "chocolates",
+    "pricePerKg": 39.8
+  },
+  {
+    "id": "chocolatePistachoLeche",
+    "name": "Pistacho chocolate leche",
+    "category": "chocolates",
+    "pricePerKg": 39.8
+  },
+  {
+    "id": "chocolateAnacardoNegro",
+    "name": "Anacardo chocolate negro",
+    "category": "chocolates",
+    "pricePerKg": 33.8
+  },
+  {
+    "id": "chocolateAvellanaNegro",
+    "name": "Avellana chocolate negro",
+    "category": "chocolates",
+    "pricePerKg": 33.8
+  },
+  {
+    "id": "avellanaTrufadaCanela",
+    "name": "Avellana trufada canela",
+    "category": "chocolates",
+    "pricePerKg": 33.8
+  },
+  {
+    "id": "arandanoChocolateNegro",
+    "name": "Arándanos chocolate negro",
+    "category": "chocolates",
+    "pricePerKg": 33.8
+  },
+  {
+    "id": "pasaChocolateNegro",
+    "name": "Pasa chocolate negro",
+    "category": "chocolates",
+    "pricePerKg": 29.8
+  },
+  {
+    "id": "pasaChocolateLeche",
+    "name": "Pasa chocolate leche",
+    "category": "chocolates",
+    "pricePerKg": 29.8
+  },
+  {
+    "id": "almendraChocolateNegro",
+    "name": "Almendra chocolate negro",
+    "category": "chocolates",
+    "pricePerKg": 29.8
+  },
+  {
+    "id": "almendraChocolateLeche",
+    "name": "Almendra chocolate leche",
+    "category": "chocolates",
+    "pricePerKg": 29.8
+  },
+  {
+    "id": "almendraChocolateBlanco",
+    "name": "Almendra chocolate blanco",
+    "category": "chocolates",
+    "pricePerKg": 29.8
+  },
+  {
+    "id": "mixChocolatesAlmendra",
+    "name": "Mix chocolates de almendra",
+    "category": "chocolates",
+    "pricePerKg": 29.8
+  },
+  {
+    "id": "chocobolaBlanca",
+    "name": "Chocobola blanca",
+    "category": "chocolates",
+    "pricePerKg": 29.8
+  },
+  {
+    "id": "chocobolaLeche",
+    "name": "Chocobola leche",
+    "category": "chocolates",
+    "pricePerKg": 29.8
+  },
+  {
+    "id": "mangoChocolateNegro",
+    "name": "Mango chocolate negro",
+    "category": "chocolates",
+    "pricePerKg": 29.8
+  },
+  {
+    "id": "platanoChocolateLeche",
+    "name": "Plátano chocolate leche",
+    "category": "chocolates",
+    "pricePerKg": 29.8
+  },
+  {
+    "id": "revueltoChocolates",
+    "name": "Revuelto de chocolates",
+    "category": "chocolates",
+    "pricePerKg": 28.8
+  },
+  {
+    "id": "cacahueteChocolateNegro",
+    "name": "Cacahuete chocolate negro",
+    "category": "chocolates",
+    "pricePerKg": 24.8
+  },
+  {
+    "id": "cacahueteChocolateLeche",
+    "name": "Cacahuete chocolate leche",
+    "category": "chocolates",
+    "pricePerKg": 24.8
+  },
+  {
+    "id": "cacahueteChocolateBlanco",
+    "name": "Cacahuete chocolate blanco",
+    "category": "chocolates",
+    "pricePerKg": 24.8
+  },
+  {
+    "id": "mixChocolatesPipa",
+    "name": "Mix chocolates de pipa",
+    "category": "chocolates",
+    "pricePerKg": 24.8
+  },
+  {
+    "id": "lacAsitos",
+    "name": "Lacasitos",
+    "category": "caramelos",
+    "pricePerKg": 25
+  },
+  {
+    "id": "dulceLeche",
+    "name": "Dulce de leche",
+    "category": "caramelos",
+    "pricePerKg": 19
+  },
+  {
+    "id": "ligeroPinones",
+    "name": "Ligero piñones",
+    "category": "caramelos",
+    "pricePerKg": 19
+  },
+  {
+    "id": "pinonesCaserio",
+    "name": "Piñones caserío",
+    "category": "caramelos",
+    "pricePerKg": 19
+  },
+  {
+    "id": "sugus",
+    "name": "Sugus",
+    "category": "caramelos",
+    "pricePerKg": 17
+  },
+  {
+    "id": "carachoco",
+    "name": "Carachoco",
+    "category": "caramelos",
+    "pricePerKg": 15
+  },
+  {
+    "id": "toffinoChocolate",
+    "name": "Toffino de chocolate",
+    "category": "caramelos",
+    "pricePerKg": 12.8
+  },
+  {
+    "id": "toffeeNata",
+    "name": "Toffee nata",
+    "category": "caramelos",
+    "pricePerKg": 12.4
+  },
+  {
+    "id": "picotasFresa",
+    "name": "Picotas de fresa",
+    "category": "caramelos",
+    "pricePerKg": 12.4
+  },
+  {
+    "id": "rellenoMiel",
+    "name": "Relleno miel de abeja",
+    "category": "caramelos",
+    "pricePerKg": 11
+  },
+  {
+    "id": "gummys",
+    "name": "Gummys",
+    "category": "caramelos",
+    "pricePerKg": 10.8
+  },
+  {
+    "id": "gajosSantos",
+    "name": "Gajos Santos",
+    "category": "caramelos",
+    "pricePerKg": 10.8
+  },
+  {
+    "id": "rellenoFruta",
+    "name": "Relleno de fruta",
+    "category": "caramelos",
+    "pricePerKg": 10.4
+  },
+  {
+    "id": "tacoMiel",
+    "name": "Taco de miel",
+    "category": "caramelos",
+    "pricePerKg": 8.8
+  },
+  {
+    "id": "cafeDrySA",
+    "name": "Café Dry sin azúcar",
+    "category": "caramelos",
+    "pricePerKg": 14.2
+  },
+  {
+    "id": "cafeDryCA",
+    "name": "Café Dry con azúcar",
+    "category": "caramelos",
+    "pricePerKg": 12
+  },
+  {
+    "id": "werthersSA",
+    "name": "Werther’s sin azúcar",
+    "category": "caramelos",
+    "pricePerKg": 17.8
+  },
+  {
+    "id": "werthersCA",
+    "name": "Werther’s con azúcar",
+    "category": "caramelos",
+    "pricePerKg": 17.8
+  },
+  {
+    "id": "pictolinEucaliptoSA",
+    "name": "Pictolín eucalipto sin azúcar",
+    "category": "caramelos",
+    "pricePerKg": 13.8
+  },
+  {
+    "id": "pictolinEucaliptoCA",
+    "name": "Pictolín eucalipto con azúcar",
+    "category": "caramelos",
+    "pricePerKg": 8
+  },
+  {
+    "id": "pictolinFullmintSA",
+    "name": "Pictolín Fullmint sin azúcar",
+    "category": "caramelos",
+    "pricePerKg": 12.8
+  },
+  {
+    "id": "pictolinFullmintCA",
+    "name": "Pictolín Fullmint con azúcar",
+    "category": "caramelos",
+    "pricePerKg": 8.8
+  },
+  {
+    "id": "pictolinMielLimonSA",
+    "name": "Pictolín miel y limón sin azúcar",
+    "category": "caramelos",
+    "pricePerKg": 13.8
+  },
+  {
+    "id": "pictolinMielLimonCA",
+    "name": "Pictolín miel y limón con azúcar",
+    "category": "caramelos",
+    "pricePerKg": 8.8
+  },
+  {
+    "id": "pictolinAnisSA",
+    "name": "Pictolín anís sin azúcar",
+    "category": "caramelos",
+    "pricePerKg": 12.8
+  },
+  {
+    "id": "pictolinAnisCA",
+    "name": "Pictolín anís con azúcar",
+    "category": "caramelos",
+    "pricePerKg": 8.8
+  },
+  {
+    "id": "pictolinFruta",
+    "name": "Pictolín masticable de fruta sin azúcar",
+    "category": "caramelos",
+    "pricePerKg": 14.8
+  }
+]
