@@ -434,6 +434,15 @@ function catalogGroup(p){
  if(/almendra|cacahuete|anacardo|macadamia|avellana|nuez|pistacho|piñ[oó]n|castaña|coquito|fruto seco/.test(name))return 'frutos';
  return 'variados';
 }
+const imageUseCount=Object.values(products).reduce((counts,p)=>{
+ if(p.image)counts[p.image]=(counts[p.image]||0)+1;
+ return counts;
+},{});
+function hasUniqueProductImage(id){
+ const url=products[id]?.image;
+ return Boolean(url)&&imageUseCount[url]===1;
+}
+
 const imageCredits={
  "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Almond_slices.jpg/960px-Almond_slices.jpg":{author:"Fumikas Sagisavas",license:"CC0 1.0",url:"https://commons.wikimedia.org/wiki/File:Almond_slices.jpg"},
  
@@ -460,7 +469,7 @@ function renderProducts(){
  const active=document.querySelector('.filter.active')?.dataset.filter||'todos';
  const term=(document.getElementById('productSearch')?.value||'').trim().toLocaleLowerCase('es');
  const entries=Object.entries(products).filter(([id,p])=>(active==='todos'||catalogGroup(p)===active)&&(!term||(p.name+' '+p.desc+' '+p.tag).toLocaleLowerCase('es').includes(term)));
- grid.innerHTML=entries.length?entries.map(([id,p])=>'<article class="product">'+(p.image?'<img class="product-photo" src="'+p.image+'" alt="Fotografía de referencia de '+p.name+'" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement(\'div\'),{className:\'photo-pending\',textContent:\'Fotografía real pendiente\'}))"><span class="image-caption">Imagen de referencia · <a href="'+(imageCredits[p.image]?.url||"#")+'" target="_blank" rel="noopener">foto: '+(imageCredits[p.image]?.author||"fuente")+' · '+(imageCredits[p.image]?.license||"licencia")+'</a></span>':'<div class="photo-pending">Fotografía real pendiente</div>')+'<div class="product-body"><span class="tag">'+({frutos:'Frutos secos',fruta:'Frutas deshidratadas y desecadas',chuches:'Chocolates y golosinas',variados:'Variados / Snacks / Mixes'}[catalogGroup(p)])+'</span><h3>'+p.name+'</h3><p>'+p.desc+'</p><span class="price">'+euro(p.price)+' <span class="unit">/ kg · precio orientativo</span></span><button class="details" data-product="'+id+'">Ver formatos y añadir →</button></div></article>').join(''):'<div class="no-products">No hay productos que coincidan. Prueba con otra palabra o categoría.</div>';
+ grid.innerHTML=entries.length?entries.map(([id,p])=>'<article class="product">'+(hasUniqueProductImage(id)?'<img class="product-photo" src="'+p.image+'" alt="Fotografía de referencia de '+p.name+'" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement(\'div\'),{className:\'photo-pending\',textContent:\'Fotografía real pendiente\'}))"><span class="image-caption">Imagen de referencia · <a href="'+(imageCredits[p.image]?.url||"#")+'" target="_blank" rel="noopener">foto: '+(imageCredits[p.image]?.author||"fuente")+' · '+(imageCredits[p.image]?.license||"licencia")+'</a></span>':'<div class="photo-pending">Fotografía real pendiente</div>')+'<div class="product-body"><span class="tag">'+({frutos:'Frutos secos',fruta:'Frutas deshidratadas y desecadas',chuches:'Chocolates y golosinas',variados:'Variados / Snacks / Mixes'}[catalogGroup(p)])+'</span><h3>'+p.name+'</h3><p>'+p.desc+'</p><span class="price">'+euro(p.price)+' <span class="unit">/ kg · precio orientativo</span></span><button class="details" data-product="'+id+'">Ver formatos y añadir →</button></div></article>').join(''):'<div class="no-products">No hay productos que coincidan. Prueba con otra palabra o categoría.</div>';
  const count=document.getElementById('catalogResultCount');if(count)count.textContent=entries.length+' productos'+(active==='todos'?' en el catálogo':' en esta categoría');
  grid.querySelectorAll('[data-product]').forEach(btn=>btn.addEventListener('click',()=>showProduct(btn.dataset.product)));
 }
@@ -469,7 +478,7 @@ document.getElementById('productSearch')?.addEventListener('input',renderProduct
 renderProducts();
 let selected=null;
 function updatePackPrice(){if(!selected)return;const grams=Number(document.getElementById('weightSelect').value);document.getElementById('packPrice').textContent=euro(selected.price*grams/1000);document.getElementById('modalNote').textContent='Precio de referencia: '+euro(selected.price)+' por kg. El importe del formato se calcula proporcionalmente; confirma disponibilidad y precio final con Fabián antes de comprar.'}
-function showProduct(id){selected=products[id];document.getElementById('modalTitle').textContent=selected.name;document.getElementById('modalTag').textContent=selected.tag;document.getElementById('modalDesc').textContent=selected.desc;document.getElementById('modalPhoto').style.backgroundImage=selected.image?"url('"+selected.image+"')":"none";document.getElementById('modalPhoto').textContent=selected.image?'':'Fotografía real pendiente';document.getElementById('modalPhoto').style.backgroundSize='cover';document.getElementById('modalPhoto').style.backgroundPosition='center';document.getElementById('weightSelect').value='1000';updatePackPrice();document.getElementById('productModal').classList.add('open')}
+function showProduct(id){selected=products[id];const hasPhoto=hasUniqueProductImage(id);document.getElementById('modalTitle').textContent=selected.name;document.getElementById('modalTag').textContent=selected.tag;document.getElementById('modalDesc').textContent=selected.desc;const photo=document.getElementById('modalPhoto');photo.style.backgroundImage=hasPhoto?"url('"+selected.image+"')":"none";photo.textContent=hasPhoto?'':'Fotografía real pendiente';photo.style.backgroundSize='cover';photo.style.backgroundPosition='center';document.querySelector('.modal-image-caption').textContent=hasPhoto?'Imagen de referencia; comprueba que corresponde exactamente a esta variante.':'';document.querySelector('.modal-image-caption').hidden=!hasPhoto;document.getElementById('weightSelect').value='1000';updatePackPrice();document.getElementById('productModal').classList.add('open')}
 document.querySelectorAll('[data-product]').forEach(b=>b.addEventListener('click',()=>showProduct(b.dataset.product)));document.getElementById('weightSelect').addEventListener('change',updatePackPrice);
 document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>document.getElementById(b.dataset.close).classList.remove('open')));
 document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open')}));
