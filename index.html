@@ -472,6 +472,7 @@ const familyImages={
 };
 function productImage(id,p){
  if(p.image)return p.image;
+ if(p.category==='caramelos')return 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Lollipops_in_candy_store.jpg';
  const name=normalizeCatalogText(p.name);
  const visualRules=[
   [/chocolate|chocobola|trufada/,"https://upload.wikimedia.org/wikipedia/commons/9/93/Deliciously_Ella_chocolate-covered_almonds.jpg"],
