@@ -476,6 +476,8 @@ function productImage(id,p){
  const name=normalizeCatalogText(p.name);
  const visualRules=[
   [/chocolate|chocobola|trufada/,"https://upload.wikimedia.org/wikipedia/commons/9/93/Deliciously_Ella_chocolate-covered_almonds.jpg"],
+  [/garrapinad|caramelizad/,"https://upload.wikimedia.org/wikipedia/commons/4/4d/Garrapinyades.jpg"],
+  [/almendra frita/,"https://upload.wikimedia.org/wikipedia/commons/a/a2/Almendras_fritas%2C_aperitivos_%28Espa%C3%B1a%29.jpg?utm_campaign=index&utm_content=original&utm_source=commons.wikimedia.org"],
   [/almendra|marcona|baston|harina|filete|granillo/,"https://upload.wikimedia.org/wikipedia/commons/7/78/Sa_almonds.jpg"],
   [/cacahuete|mani/,"https://upload.wikimedia.org/wikipedia/commons/d/d7/Peanuts_in_their_shells.jpg"],
   [/anacardo/,"https://upload.wikimedia.org/wikipedia/commons/b/b9/CASHEW_NUTS.jpg"],
@@ -528,6 +530,8 @@ const imageCredits={
  "https://upload.wikimedia.org/wikipedia/commons/6/6e/Dried_dates.jpg":{author:"stu_spivack",license:"CC BY-SA 2.0",url:"https://commons.wikimedia.org/wiki/File:Dried_dates.jpg"},
  "https://upload.wikimedia.org/wikipedia/commons/9/93/Deliciously_Ella_chocolate-covered_almonds.jpg":{author:"Mx. Granger",license:"CC0",url:"https://commons.wikimedia.org/wiki/File:Deliciously_Ella_chocolate-covered_almonds.jpg"},
  "https://upload.wikimedia.org/wikipedia/commons/9/9a/Lollipops_in_candy_store.jpg":{author:"Tiia Monto",license:"CC BY-SA 3.0",url:"https://commons.wikimedia.org/wiki/File:Lollipops_in_candy_store.jpg"}
+ "https://upload.wikimedia.org/wikipedia/commons/4/4d/Garrapinyades.jpg":{author:"Josep Xicota",license:"CC BY-SA 3.0",url:"https://commons.wikimedia.org/wiki/File:Garrapinyades.jpg"},
+ "https://upload.wikimedia.org/wikipedia/commons/a/a2/Almendras_fritas%2C_aperitivos_%28Espa%C3%B1a%29.jpg?utm_campaign=index&utm_content=original&utm_source=commons.wikimedia.org":{author:"Juan Emilio Prades Bel",license:"CC BY-SA 4.0",url:"https://commons.wikimedia.org/wiki/File:Almendras_fritas,_aperitivos_(España).jpg"}
 };
 function productPlaceholder(p){
  const group=catalogGroup(p);
