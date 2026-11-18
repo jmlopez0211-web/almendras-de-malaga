@@ -428,8 +428,8 @@ const categoryNames={"frutos":"Frutos secos","variantes":"Almendra y derivados",
 const euro=n=>n.toLocaleString('es-ES',{style:'currency',currency:'EUR'});
 function catalogGroup(p){
  const name=p.name.toLocaleLowerCase('es');
- if(/chocolate|chocobola|lacasitos|sugus|toffee|toffino|gummys|gominola|picot|pictol[ií]n|carachoco|caramelo|confiter[ií]a|werther|café dry|gajos santos|relleno de fruta|relleno miel|taco de miel|dulce de leche|ligero piñones|piñones caserío/.test(name))return 'chuches';
- if(p.category==='fruta'||/pasa|orej[oó]n|higo|d[aá]til|deshidratad|ciruela|cereza|mel[oó]n|manzana|papaya|pl[aá]tano|mango|piñ?a|pomelo|hibisco|kiwi|fresa|ar[aá]ndano/.test(name))return 'fruta';
+ if(p.category==='chocolates'||p.category==='caramelos'||/chocolate|chocobola|lacasitos|sugus|toffee|toffino|gummys|gominola|picot|pictol[ií]n|carachoco|caramelo|confiter[ií]a|werther|café dry|gajos santos|relleno de fruta|relleno miel|taco de miel|dulce de leche/.test(name))return 'chuches';
+ if(p.category==='fruta'||/pasa|orej[oó]n|higo|d[aá]til|deshidratad|ciruela|cereza|mel[oó]n|manzana|papaya|pl[aá]tano|mango|piña|pomelo|hibisco|kiwi|fresa|ar[aá]ndano/.test(name))return 'fruta';
  if(/garrapiñad|caramelizad|con miel|revuelto|mix|pipa|semilla|kiko|garbanzo|haba|aperitivo|chufa/.test(name))return 'variados';
  if(/almendra|cacahuete|anacardo|macadamia|avellana|nuez|pistacho|piñ[oó]n|castaña|coquito|fruto seco/.test(name))return 'frutos';
  return 'variados';
