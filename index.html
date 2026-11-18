@@ -228,10 +228,10 @@ body{font-size:17px}
   <label class="catalog-search"><span aria-hidden="true">⌕</span><input id="productSearch" type="search" placeholder="Buscar almendras, semillas, fruta seca…"></label>
   <div class="catalog-filters" aria-label="Filtrar catálogo por categoría">
 <button class="filter active" data-filter="todos">Todo el catálogo</button>
-<button class="filter" data-filter="almendras">Almendras</button>
 <button class="filter" data-filter="frutos">Frutos secos</button>
-<button class="filter" data-filter="fruta">Frutas deshidratadas</button>
+<button class="filter" data-filter="fruta">Frutas deshidratadas y desecadas</button>
 <button class="filter" data-filter="chuches">Chocolates y golosinas</button>
+<button class="filter" data-filter="variados">Variados / Snacks / Mixes</button>
 </div>
 <p class="catalog-result-count" id="catalogResultCount" aria-live="polite"></p>
 </div>
@@ -428,10 +428,11 @@ const categoryNames={"frutos":"Frutos secos","variantes":"Almendra y derivados",
 const euro=n=>n.toLocaleString('es-ES',{style:'currency',currency:'EUR'});
 function catalogGroup(p){
  const name=p.name.toLocaleLowerCase('es');
- if(p.category==='chocolates'||p.category==='caramelos'||name.includes('chocolate')||name.includes('gominola')||name.includes('caramelo')||name.includes('golosina'))return 'chuches';
- if(name.includes('almendra')||name.includes('marcona'))return 'almendras';
- if(p.category==='fruta')return 'fruta';
- return 'frutos';
+ if(/chocolate|chocobola|lacasitos|sugus|toffee|toffino|gummys|gominola|picot|pictol[ií]n|carachoco|caramelo|confiter[ií]a|werther|café dry|gajos santos|relleno de fruta|relleno miel|taco de miel|dulce de leche|ligero piñones|piñones caserío/.test(name))return 'chuches';
+ if(p.category==='fruta'||/pasa|orej[oó]n|higo|d[aá]til|deshidratad|ciruela|cereza|mel[oó]n|manzana|papaya|pl[aá]tano|mango|piñ?a|pomelo|hibisco|kiwi|fresa|ar[aá]ndano/.test(name))return 'fruta';
+ if(/garrapiñad|caramelizad|con miel|revuelto|mix|pipa|semilla|kiko|garbanzo|haba|aperitivo|chufa/.test(name))return 'variados';
+ if(/almendra|cacahuete|anacardo|macadamia|avellana|nuez|pistacho|piñ[oó]n|castaña|coquito|fruto seco/.test(name))return 'frutos';
+ return 'variados';
 }
 const imageCredits={
  "https://upload.wikimedia.org/wikipedia/commons/1/1b/Hazelnuts_%28Corylus_avellana%29_-_whole_with_kernels.jpg":{author:"Ivar Leidus",license:"CC BY-SA 4.0",url:"https://commons.wikimedia.org/wiki/File:Hazelnuts_(Corylus_avellana)_-_whole_with_kernels.jpg"},
@@ -457,7 +458,7 @@ function renderProducts(){
  const active=document.querySelector('.filter.active')?.dataset.filter||'todos';
  const term=(document.getElementById('productSearch')?.value||'').trim().toLocaleLowerCase('es');
  const entries=Object.entries(products).filter(([id,p])=>(active==='todos'||catalogGroup(p)===active)&&(!term||(p.name+' '+p.desc+' '+p.tag).toLocaleLowerCase('es').includes(term)));
- grid.innerHTML=entries.length?entries.map(([id,p])=>'<article class="product">'+(p.image?'<img class="product-photo" src="'+p.image+'" alt="Fotografía de referencia de '+p.name+'" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement(\'div\'),{className:\'photo-pending\',textContent:\'Fotografía real pendiente\'}))"><span class="image-caption">Imagen de referencia · <a href="'+(imageCredits[p.image]?.url||"#")+'" target="_blank" rel="noopener">foto: '+(imageCredits[p.image]?.author||"fuente")+' · '+(imageCredits[p.image]?.license||"licencia")+'</a></span>':'<div class="photo-pending">Fotografía real pendiente</div>')+'<div class="product-body"><span class="tag">'+p.tag+'</span><h3>'+p.name+'</h3><p>'+p.desc+'</p><span class="price">'+euro(p.price)+' <span class="unit">/ kg · precio orientativo</span></span><button class="details" data-product="'+id+'">Ver formatos y añadir →</button></div></article>').join(''):'<div class="no-products">No hay productos que coincidan. Prueba con otra palabra o categoría.</div>';
+ grid.innerHTML=entries.length?entries.map(([id,p])=>'<article class="product">'+(p.image?'<img class="product-photo" src="'+p.image+'" alt="Fotografía de referencia de '+p.name+'" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement(\'div\'),{className:\'photo-pending\',textContent:\'Fotografía real pendiente\'}))"><span class="image-caption">Imagen de referencia · <a href="'+(imageCredits[p.image]?.url||"#")+'" target="_blank" rel="noopener">foto: '+(imageCredits[p.image]?.author||"fuente")+' · '+(imageCredits[p.image]?.license||"licencia")+'</a></span>':'<div class="photo-pending">Fotografía real pendiente</div>')+'<div class="product-body"><span class="tag">'+({frutos:'Frutos secos',fruta:'Frutas deshidratadas y desecadas',chuches:'Chocolates y golosinas',variados:'Variados / Snacks / Mixes'}[catalogGroup(p)])+'</span><h3>'+p.name+'</h3><p>'+p.desc+'</p><span class="price">'+euro(p.price)+' <span class="unit">/ kg · precio orientativo</span></span><button class="details" data-product="'+id+'">Ver formatos y añadir →</button></div></article>').join(''):'<div class="no-products">No hay productos que coincidan. Prueba con otra palabra o categoría.</div>';
  const count=document.getElementById('catalogResultCount');if(count)count.textContent=entries.length+' productos'+(active==='todos'?' en el catálogo':' en esta categoría');
  grid.querySelectorAll('[data-product]').forEach(btn=>btn.addEventListener('click',()=>showProduct(btn.dataset.product)));
 }
