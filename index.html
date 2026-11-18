@@ -470,7 +470,34 @@ const familyImages={
  chuches:"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Deliciously_Ella_chocolate-covered_almonds.jpg/960px-Deliciously_Ella-chocolate-covered_almonds.jpg",
  variados:"https://upload.wikimedia.org/wikipedia/commons/9/9d/Roasted_chickpeas.jpg"
 };
-function productImage(id,p){return p.image||familyImages[catalogGroup(p)]||familyImages.variados;}
+function productImage(id,p){
+ if(p.image)return p.image;
+ const name=normalizeCatalogText(p.name);
+ const visualRules=[
+  [/almendra|marcona|baston|harina|filete|granillo/,"https://upload.wikimedia.org/wikipedia/commons/7/78/Sa_almonds.jpg"],
+  [/cacahuete|mani/,"https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Peanuts_in_their_shells.jpg/960px-Peanuts_in_their_shells.jpg"],
+  [/anacardo/,"https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/CASHEW_NUTS.jpg/960px-CASHEW_NUTS.jpg"],
+  [/macadamia/,"https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Macadamia_nut_kernels.jpg/960px-Macadamia_nut_kernels.jpg"],
+  [/avellana/,"https://upload.wikimedia.org/wikipedia/commons/1/1b/Hazelnuts_%28Corylus_avellana%29_-_whole_with_kernels.jpg"],
+  [/pistacho/,"https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Pistachios.jpg/960px-Pistachios.jpg"],
+  [/nuez|pecana/,"https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Walnut_kernels.jpg/960px-Walnut_kernels.jpg"],
+  [/piñon/,"https://upload.wikimedia.org/wikipedia/commons/7/7c/Pine_nuts.jpg"],
+  [/arandano|cranberry/,"https://upload.wikimedia.org/wikipedia/commons/b/be/Dried_cranberries_%2820240115%29.jpg"],
+  [/kiwi/,"https://upload.wikimedia.org/wikipedia/commons/6/68/Dried_kiwi_fruit_slices.jpg"],
+  [/pasa|uva pasa/,"https://upload.wikimedia.org/wikipedia/commons/d/d8/Raisins_%2820240207%29.jpg"],
+  [/mango|papaya|piña/,"https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Mangues_sechees.jpg/960px-Mangues_sechees.jpg"],
+  [/higo/,"https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Dried_figs.jpg/960px-Dried_figs.jpg"],
+  [/datil/,"https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Dried_dates.jpg/960px-Dried_dates.jpg"],
+  [/orejon|albaricoque/,"https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Dried_apricots.jpg/960px-Dried_apricots.jpg"],
+  [/pipa|girasol|semilla de girasol/,"https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Sunflower_seeds.JPG/960px-Sunflower_seeds.JPG"],
+  [/calabaza|semilla de calabaza/,"https://upload.wikimedia.org/wikipedia/commons/3/3e/Pumpkin_seeds.jpg"],
+  [/garbanzo/,"https://upload.wikimedia.org/wikipedia/commons/9/9d/Roasted_chickpeas.jpg"],
+  [/haba/,"https://upload.wikimedia.org/wikipedia/commons/b/b2/Fried_broad_beans_%28china%29.jpg"],
+  [/chocolate|chocobola/,"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Deliciously_Ella_chocolate-covered_almonds.jpg/960px-Deliciously_Ella-chocolate-covered_almonds.jpg"]
+ ];
+ const match=visualRules.find(([pattern])=>pattern.test(name));
+ return match?match[1]:(familyImages[catalogGroup(p)]||familyImages.variados);
+}
 function hasUniqueProductImage(id){return Boolean(productImage(id,products[id]));}
 function hasSpecificProductImage(id){return Boolean(products[id]?.image);}
 
