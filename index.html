@@ -187,6 +187,7 @@ p,li,.step,.business-note,.review-invite p,.seo-copy p{font-size:16px;line-heigh
 <button class="filter" data-filter="semillas">Pipas y semillas</button>
 <button class="filter" data-filter="aperitivos">Aperitivos</button>
 <button class="filter" data-filter="chocolates">Chocolates</button>
+<button class="filter" data-filter="caramelos">Caramelos y confitería</button>
 </div>
 </div>
 <div class="grid" id="products" aria-live="polite"></div>
@@ -350,7 +351,34 @@ cacahueteChocolateLeche:{name:"Cacahuete chocolate leche",desc:"Cacahuete cubier
 cacahueteChocolateBlanco:{name:"Cacahuete chocolate blanco",desc:"Cacahuete cubierto de chocolate blanco.",tag:"Chocolates",category:"chocolates",price:24.8,image:"https://p3.hippopx.com/preview/324/290/dried-fruits-close-up-colorful-assorted-figs-apricots-raisins-texture-healthy-snacks-dried-fruit-mix.jpg"},
 mixChocolatesPipa:{name:"Mix chocolates de pipa",desc:"Mezcla de pipas con chocolate.",tag:"Chocolates",category:"chocolates",price:24.8,image:"https://p3.hippopx.com/preview/324/290/dried-fruits-close-up-colorful-assorted-figs-apricots-raisins-texture-healthy-snacks-dried-fruit-mix.jpg"}
 };
-const categoryNames={"frutos":"Frutos secos","variantes":"Almendra y derivados","cacahuetes":"Cacahuetes","dulces":"Garrapiñados y dulces","revueltos":"Revueltos","fruta":"Fruta deshidratada","semillas":"Pipas y semillas","aperitivos":"Aperitivos","chocolates":"Chocolates"};
+lacAsitos:{name:"Lacasitos",desc:"Lacasitos.",tag:"Caramelos y confitería",category:"caramelos",price:25,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+dulceLeche:{name:"Dulce de leche",desc:"Dulce de leche.",tag:"Caramelos y confitería",category:"caramelos",price:19,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+ligeroPinones:{name:"Ligero piñones",desc:"Ligero de piñones.",tag:"Caramelos y confitería",category:"caramelos",price:19,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+pinonesCaserio:{name:"Piñones caserío",desc:"Piñones caserío.",tag:"Caramelos y confitería",category:"caramelos",price:19,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+sugus:{name:"Sugus",desc:"Caramelos Sugus.",tag:"Caramelos y confitería",category:"caramelos",price:17,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+carachoco:{name:"Carachoco",desc:"Carachoco.",tag:"Caramelos y confitería",category:"caramelos",price:15,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+toffinoChocolate:{name:"Toffino de chocolate",desc:"Toffino de chocolate.",tag:"Caramelos y confitería",category:"caramelos",price:12.8,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+toffeeNata:{name:"Toffee nata",desc:"Toffee de nata.",tag:"Caramelos y confitería",category:"caramelos",price:12.4,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+picotasFresa:{name:"Picotas de fresa",desc:"Picotas de fresa.",tag:"Caramelos y confitería",category:"caramelos",price:12.4,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+rellenoMiel:{name:"Relleno miel de abeja",desc:"Caramelo relleno de miel de abeja.",tag:"Caramelos y confitería",category:"caramelos",price:11,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+gummys:{name:"Gummys",desc:"Gominolas Gummys.",tag:"Caramelos y confitería",category:"caramelos",price:10.8,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+gajosSantos:{name:"Gajos Santos",desc:"Gajos Santos.",tag:"Caramelos y confitería",category:"caramelos",price:10.8,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+rellenoFruta:{name:"Relleno de fruta",desc:"Caramelos rellenos de fruta.",tag:"Caramelos y confitería",category:"caramelos",price:10.4,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+tacoMiel:{name:"Taco de miel",desc:"Taco de miel.",tag:"Caramelos y confitería",category:"caramelos",price:8.8,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+cafeDrySA:{name:"Café Dry sin azúcar",desc:"Café Dry sin azúcar.",tag:"Caramelos y confitería",category:"caramelos",price:14.2,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+cafeDryCA:{name:"Café Dry con azúcar",desc:"Café Dry con azúcar.",tag:"Caramelos y confitería",category:"caramelos",price:12,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+werthersSA:{name:"Werther’s sin azúcar",desc:"Werther’s sin azúcar.",tag:"Caramelos y confitería",category:"caramelos",price:17.8,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+werthersCA:{name:"Werther’s con azúcar",desc:"Werther’s con azúcar.",tag:"Caramelos y confitería",category:"caramelos",price:17.8,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+pictolinEucaliptoSA:{name:"Pictolín eucalipto sin azúcar",desc:"Pictolín de eucalipto sin azúcar.",tag:"Caramelos y confitería",category:"caramelos",price:13.8,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+pictolinEucaliptoCA:{name:"Pictolín eucalipto con azúcar",desc:"Pictolín de eucalipto con azúcar.",tag:"Caramelos y confitería",category:"caramelos",price:8,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+pictolinFullmintSA:{name:"Pictolín Fullmint sin azúcar",desc:"Pictolín Fullmint sin azúcar.",tag:"Caramelos y confitería",category:"caramelos",price:12.8,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+pictolinFullmintCA:{name:"Pictolín Fullmint con azúcar",desc:"Pictolín Fullmint con azúcar.",tag:"Caramelos y confitería",category:"caramelos",price:8.8,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+pictolinMielLimonSA:{name:"Pictolín miel y limón sin azúcar",desc:"Pictolín de miel y limón sin azúcar.",tag:"Caramelos y confitería",category:"caramelos",price:13.8,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+pictolinMielLimonCA:{name:"Pictolín miel y limón con azúcar",desc:"Pictolín de miel y limón con azúcar.",tag:"Caramelos y confitería",category:"caramelos",price:8.8,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+pictolinAnisSA:{name:"Pictolín anís sin azúcar",desc:"Pictolín de anís sin azúcar.",tag:"Caramelos y confitería",category:"caramelos",price:12.8,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+pictolinAnisCA:{name:"Pictolín anís con azúcar",desc:"Pictolín de anís con azúcar.",tag:"Caramelos y confitería",category:"caramelos",price:8.8,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+pictolinFruta:{name:"Pictolín masticable de fruta sin azúcar",desc:"Pictolín masticable de fruta sin azúcar.",tag:"Caramelos y confitería",category:"caramelos",price:14.8,image:"https://images.pexels.com/photos/34533460/pexels-photo-34533460.jpeg?auto=compress&cs=tinysrgb&w=1200"},
+const categoryNames={"frutos":"Frutos secos","variantes":"Almendra y derivados","cacahuetes":"Cacahuetes","dulces":"Garrapiñados y dulces","revueltos":"Revueltos","fruta":"Fruta deshidratada","semillas":"Pipas y semillas","aperitivos":"Aperitivos","chocolates":"Chocolates","caramelos":"Caramelos y confitería"};
 const euro=n=>n.toLocaleString('es-ES',{style:'currency',currency:'EUR'});
 function renderProducts(){
  const grid=document.getElementById('products');if(!grid)return;
