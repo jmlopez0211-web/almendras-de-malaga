@@ -177,12 +177,17 @@ p,li,.step,.business-note,.review-invite p,.seo-copy p{font-size:16px;line-heigh
 <div class="catalog-tools">
   <label class="catalog-search"><span aria-hidden="true">⌕</span><input id="productSearch" type="search" placeholder="Buscar almendras, semillas, fruta seca…"></label>
   <div class="catalog-filters" aria-label="Filtrar catálogo">
-    <button class="filter active" data-filter="todos">Todo el surtido</button>
-    <button class="filter" data-filter="frutos">Frutos secos</button>
-    <button class="filter" data-filter="semillas">Semillas y aperitivos</button>
-    <button class="filter" data-filter="dulces">Garrapiñados</button>
-    <button class="filter" data-filter="fruta">Fruta deshidratada</button>
-  </div>
+<button class="filter active" data-filter="todos">Todo el surtido</button>
+<button class="filter" data-filter="frutos">Frutos secos</button>
+<button class="filter" data-filter="variantes">Almendra y derivados</button>
+<button class="filter" data-filter="cacahuetes">Cacahuetes</button>
+<button class="filter" data-filter="dulces">Garrapiñados y dulces</button>
+<button class="filter" data-filter="revueltos">Revueltos</button>
+<button class="filter" data-filter="fruta">Fruta deshidratada</button>
+<button class="filter" data-filter="semillas">Pipas y semillas</button>
+<button class="filter" data-filter="aperitivos">Aperitivos</button>
+<button class="filter" data-filter="chocolates">Chocolates</button>
+</div>
 </div>
 <div class="grid" id="products" aria-live="polite"></div>
 <section class="seo-copy" aria-label="Información sobre almendras y frutos secos en Málaga">
@@ -351,7 +356,7 @@ function renderProducts(){
  const active=document.querySelector('.filter.active')?.dataset.filter||'todos';
  const term=(document.getElementById('productSearch')?.value||'').trim().toLocaleLowerCase('es');
  const entries=Object.entries(products).filter(([id,p])=>(active==='todos'||p.category===active)&&(!term||(p.name+' '+p.desc+' '+p.tag).toLocaleLowerCase('es').includes(term)));
- grid.innerHTML=entries.length?entries.map(([id,p])=>'<article class="product"><img class="product-photo" src="'+p.image+'" alt="'+p.name+'" loading="lazy" decoding="async" onerror="this.style.display=\'none\'"><div class="product-body"><span class="tag">'+p.tag+'</span><h3>'+p.name+'</h3><p>'+p.desc+'</p><span class="product-status">Consultar disponibilidad</span><div><span class="price pending">Tarifa pendiente de confirmar</span></div><button class="details" data-product="'+id+'">Consultar formatos y precio →</button></div></article>').join(''):'<div class="no-products">No hay productos que coincidan con la búsqueda.</div>';
+ grid.innerHTML=entries.length?entries.map(([id,p])=>'<article class="product"><img class="product-photo" src="'+p.image+'" alt="'+p.name+'" loading="lazy" decoding="async" onerror=\\'this.style.display="none"\\'><div class="product-body"><span class="tag">'+p.tag+'</span><h3>'+p.name+'</h3><p>'+p.desc+'</p><span class="price">'+euro(p.price)+' <span class="unit">/ kg</span></span><button class="details" data-product="'+id+'">Ver formatos y precio →</button></div></article>').join(''):'<div class="no-products">No hay productos que coincidan con la búsqueda.</div>';
  grid.querySelectorAll('[data-product]').forEach(btn=>btn.addEventListener('click',()=>showProduct(btn.dataset.product)));
 }
 document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x===btn));renderProducts()}));
