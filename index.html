@@ -1820,22 +1820,22 @@ function buildCartOrderMessage(){
  const buyer=document.getElementById('cartBuyer').value.trim();
  const phone=document.getElementById('cartPhone').value.trim();
  if(!buyer||!phone){alert('Indica tu nombre y teléfono de contacto.');return null}
- const phoneDigits=phone.replace(/\\D/g,'');
+ const phoneDigits=phone.replace(/\D/g,'');
  if(phoneDigits.length<9||phoneDigits.length>15){alert('Comprueba el teléfono: debe contener entre 9 y 15 cifras.');return null}
  let total=0;
  const lines=cart.map(item=>{
   const subtotal=item.price*item.grams/1000*item.quantity;
   total+=subtotal;
-  return '• '+item.name+'\\n  '+item.quantity+' × '+item.grams+' g · '+euro(subtotal);
+  return '• '+item.name+'\n  '+item.quantity+' × '+item.grams+' g · '+euro(subtotal);
  });
  const notes=document.getElementById('cartNotes').value.trim();
- return '🛒 *NUEVO PEDIDO · ALMENDRAS DE MÁLAGA*\\n\\n'
-  +'👤 *Cliente:* '+buyer+'\\n'
-  +'📱 *Teléfono:* '+phone+'\\n\\n'
-  +'📦 *PRODUCTOS*\\n'+lines.join('\\n\\n')+'\\n\\n'
-  +'💰 *TOTAL ORIENTATIVO:* '+euro(total)+'\\n\\n'
-  +'📝 *Observaciones:* '+(notes||'Ninguna')+'\\n\\n'
-  +'📍 Pedido realizado desde el catálogo web.\\n'
+ return '🛒 *NUEVO PEDIDO · ALMENDRAS DE MÁLAGA*\n\n'
+  +'👤 *Cliente:* '+buyer+'\n'
+  +'📱 *Teléfono:* '+phone+'\n\n'
+  +'📦 *PRODUCTOS*\n'+lines.join('\n\n')+'\n\n'
+  +'💰 *TOTAL ORIENTATIVO:* '+euro(total)+'\n\n'
+  +'📝 *Observaciones:* '+(notes||'Ninguna')+'\n\n'
+  +'📍 Pedido realizado desde el catálogo web.\n'
   +'Por favor, confirma disponibilidad, precio final y modalidad de entrega o recogida. El pedido queda pendiente de confirmación.';
 }
 document.getElementById('sendCartWhatsApp744').onclick=()=>{const message=buildCartOrderMessage();if(message)window.location.href='https://wa.me/34744602855?text='+encodeURIComponent(message)};
@@ -1856,7 +1856,7 @@ function chatSay(text,who){const node=document.createElement('div');node.classNa
 function answerProductQuestion(raw){
  const q=normalizeCatalogText(raw);
  const all=Object.entries(products);
- const ignored=['precio','precios','cuanto','cuantos','cuanta','cuantas','cuesta','vale','coste','tenei','teneis','tiene','tienen','hay','disponibilidad','disponible','stock','formato','formatos','gramo','gramos','peso','kilo','kilos','quiero','busco','necesito','producto','productos','favor','por','de','del','la','el','los','las','un','una','con','sin','para','que','es','son','me','dime','consulta','consultar'];
+ const ignored=['100','250','500','1000','g','gr','kg','precio','precios','cuanto','cuantos','cuanta','cuantas','cuesta','vale','coste','tenei','teneis','tiene','tienen','hay','disponibilidad','disponible','stock','formato','formatos','gramo','gramos','peso','kilo','kilos','quiero','busco','necesito','producto','productos','favor','por','de','del','la','el','los','las','un','una','con','sin','para','que','es','son','me','dime','consulta','consultar'];
  const words=catalogSearchWords(q).filter(w=>!ignored.includes(w));
  const matches=all.filter(([id,p])=>{
   const haystack=normalizeCatalogText([p.name,p.desc,p.tag,p.category,catalogGroup(p)].join(' '));
