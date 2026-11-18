@@ -228,6 +228,19 @@ body{font-size:17px}
 .header-whatsapp span:first-child{font-size:16px}
 .header-phone{font-variant-numeric:tabular-nums;white-space:nowrap}
 @media(max-width:560px){.top{align-items:flex-start}.top-actions{width:100%;justify-content:space-between}.header-whatsapp{font-size:12px;padding:9px 11px}.header-phone{font-size:12px}}
+
+/* Catálogo adaptable: tarjetas uniformes y buscador tolerante a tildes */
+.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
+.product{display:flex;flex-direction:column;min-width:0;min-height:100%;overflow:hidden}
+.product-photo,.photo-pending,.product-placeholder{width:100%;height:210px;min-height:210px;object-fit:cover}
+.product-body{display:flex;flex:1;flex-direction:column;align-items:flex-start;min-height:0}
+.product h3{min-height:2.25em}
+.product p{flex:1}
+.product .price{margin-top:auto}
+.catalog-search:focus-within{outline:3px solid #c69a5245;border-color:var(--gold)}
+.filter:focus-visible,.btn:focus-visible,.details:focus-visible{outline:3px solid #c69a52;outline-offset:3px}
+@media(max-width:980px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.grid{grid-template-columns:1fr;gap:16px}.product-photo,.photo-pending,.product-placeholder{height:220px;min-height:220px}.product h3{min-height:0}.product p{flex:0}}
 </style>
   <meta name="google-site-verification" content="iHiqI1tctRvvVuGbg6Nh1xM7byfJKzQverrmuxR5uGE" />
 </head>
@@ -493,11 +506,21 @@ function productPlaceholder(p){
  const category={frutos:'FRUTOS SECOS',fruta:'FRUTA DESHIDRATADA',chuches:'CHOCOLATES Y GOLOSINAS',variados:'SNACKS Y VARIADOS'}[group]||'CATÁLOGO';
  return '<div class="product-placeholder" role="img" aria-label="'+p.name+'"><span class="placeholder-category">'+category+'</span><strong>'+p.name+'</strong></div>';
 }
+function normalizeCatalogText(value){
+ return String(value??'').toLocaleLowerCase('es').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').replace(/\\s+/g,' ').trim();
+}
+function catalogSearchWords(value){
+ const aliases={almendras:'almendra',nueces:'nuez',cacahuetes:'cacahuete',anacardos:'anacardo',pistachos:'pistacho',avellanas:'avellana',pipas:'pipa',semillas:'semilla',gominolas:'gominola',caramelos:'caramelo',chocolates:'chocolate',fritas:'frita',fritos:'frito',tostadas:'tostada',tostados:'tostado',peladas:'pelada',pelados:'pelado',naturales:'natural',garrapinadas:'garrapinada',garrapinados:'garrapinado'};
+ return normalizeCatalogText(value).split(/[^a-z0-9]+/).filter(Boolean).map(word=>aliases[word]||word).filter(word=>word.length>1);
+}
 function renderProducts(){
  const grid=document.getElementById('products');if(!grid)return;
  const active=document.querySelector('.filter.active')?.dataset.filter||'todos';
- const term=(document.getElementById('productSearch')?.value||'').trim().toLocaleLowerCase('es');
- const entries=Object.entries(products).filter(([id,p])=>(active==='todos'||catalogGroup(p)===active)&&(!term||(p.name+' '+p.desc+' '+p.tag).toLocaleLowerCase('es').includes(term)));
+ const words=catalogSearchWords(document.getElementById('productSearch')?.value||'').filter(word=>!['de','del','la','el','los','las','un','una','y','con','sin','por','favor'].includes(word));
+ const entries=Object.entries(products).filter(([id,p])=>{
+  const haystack=normalizeCatalogText([p.name,p.desc,p.tag,p.category,catalogGroup(p)].join(' '));
+  return (active==='todos'||catalogGroup(p)===active)&&words.every(word=>haystack.includes(word));
+ });
  grid.innerHTML=entries.length?entries.map(([id,p])=>{
   const src=productImage(id,p),credit=imageCredits[src],specific=hasSpecificProductImage(id);
   return '<article class="product"><img class="product-photo" src="'+src+'" alt="'+(specific?'Fotografía de referencia de '+p.name:'Imagen ilustrativa de la familia '+catalogGroup(p))+'" loading="lazy" decoding="async" onerror="this.style.display=\'none\'"><span class="image-caption">'+(specific?'Imagen de referencia':'Imagen representativa de la categoría')+(credit?' · <a href="'+credit.url+'" target="_blank" rel="noopener">foto: '+credit.author+' · '+credit.license+'</a>':'')+'</span><div class="product-body"><span class="tag">'+({frutos:'Frutos secos',fruta:'Frutas deshidratadas y desecadas',chuches:'Chocolates y golosinas',variados:'Variados / Snacks / Mixes'}[catalogGroup(p)])+'</span><h3>'+p.name+'</h3><p>'+p.desc+'</p><span class="price">'+euro(p.price)+' <span class="unit">/ kg · precio orientativo</span></span><button class="details" data-product="'+id+'">Ver formatos y añadir →</button></div></article>';
