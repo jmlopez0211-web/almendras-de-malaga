@@ -474,6 +474,7 @@ function productImage(id,p){
  if(p.image)return p.image;
  const name=normalizeCatalogText(p.name);
  const visualRules=[
+  [/chocolate|chocobola/,"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Deliciously_Ella_chocolate-covered_almonds.jpg/960px-Deliciously_Ella-chocolate-covered_almonds.jpg"],
   [/almendra|marcona|baston|harina|filete|granillo/,"https://upload.wikimedia.org/wikipedia/commons/7/78/Sa_almonds.jpg"],
   [/cacahuete|mani/,"https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Peanuts_in_their_shells.jpg/960px-Peanuts_in_their_shells.jpg"],
   [/anacardo/,"https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/CASHEW_NUTS.jpg/960px-CASHEW_NUTS.jpg"],
@@ -493,7 +494,6 @@ function productImage(id,p){
   [/calabaza|semilla de calabaza/,"https://upload.wikimedia.org/wikipedia/commons/3/3e/Pumpkin_seeds.jpg"],
   [/garbanzo/,"https://upload.wikimedia.org/wikipedia/commons/9/9d/Roasted_chickpeas.jpg"],
   [/haba/,"https://upload.wikimedia.org/wikipedia/commons/b/b2/Fried_broad_beans_%28china%29.jpg"],
-  [/chocolate|chocobola/,"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Deliciously_Ella_chocolate-covered_almonds.jpg/960px-Deliciously_Ella-chocolate-covered_almonds.jpg"]
  ];
  const match=visualRules.find(([pattern])=>pattern.test(name));
  return match?match[1]:(familyImages[catalogGroup(p)]||familyImages.variados);
