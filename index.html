@@ -1032,8 +1032,8 @@ const products={
     "tag": "Pipas y semillas",
     "category": "semillas",
     "price": 15.8,
-    "image": "https://i5-mx.walmartimages.com/mg/gm/3pp/asr/e0e376c1-9948-49fc-96e7-b96d947ad357.8f6b7fdec8887eee056a0207ba6d8dc1.jpeg?odnBg=ffffff&odnHeight=2000&odnWidth=2000",
-    "imageVerified": true
+    "image": "",
+    "imageVerified": false
   },
   "calabazaCascaraTostada": {
     "name": "Pipa de calabaza con cáscara tostada",
@@ -1083,8 +1083,8 @@ const products={
     "tag": "Aperitivos",
     "category": "aperitivos",
     "price": 10,
-    "image": "https://images.gestionaweb.cat/2219/imgf-1600-1200/kikos-1-1598227.jpg",
-    "imageVerified": true
+    "image": "",
+    "imageVerified": false
   },
   "kikoGigante": {
     "name": "Kikos gigantes tiernos",
@@ -1867,7 +1867,7 @@ function renderProducts(){
  grid.innerHTML=entries.length?entries.map(([id,p])=>{
   const src=productImage(id,p),credit=imageCredits[src],specific=hasSpecificProductImage(id);
   const photoMarkup=src?'<img class="product-photo" data-image-product="'+id+'" src="'+src+'" alt="Fotografía de referencia de '+p.name+'" loading="lazy" decoding="async">':'<div class="product-placeholder" role="img" aria-label="Fotografía pendiente para '+p.name+'"><span class="placeholder-category">FOTOGRAFÍA PENDIENTE</span><strong>'+p.name+'</strong></div>';
-  return '<article class="product">'+photoMarkup+'<span class="image-caption">'+(specific?'Fotografía verificada para esta variante':'Fotografía pendiente de verificación; no se muestra imagen genérica')+(credit?' · <a href="'+credit.url+'" target="_blank" rel="noopener">foto: '+credit.author+' · '+credit.license+'</a>':'')+'</span><div class="product-body"><span class="tag">'+p.tag+'</span><h3>'+p.name+'</h3><p>'+p.desc+'</p><small class="product-allergen">'+allergenCardText(p)+'</small><span class="price">'+euro(p.price)+' <span class="unit">/ kg · precio orientativo</span></span><button class="details" data-product="'+id+'">Ver formatos y añadir →</button></div></article>';
+  return '<article class="product">'+photoMarkup+'<span class="image-caption">'+(specific?'Imagen de referencia correspondiente al producto':'Fotografía pendiente de verificación; no se muestra imagen genérica')+(credit?' · <a href="'+credit.url+'" target="_blank" rel="noopener">foto: '+credit.author+' · '+credit.license+'</a>':'')+'</span><div class="product-body"><span class="tag">'+p.tag+'</span><h3>'+p.name+'</h3><p>'+p.desc+'</p><small class="product-allergen">'+allergenCardText(p)+'</small><span class="price">'+euro(p.price)+' <span class="unit">/ kg · precio orientativo</span></span><button class="details" data-product="'+id+'">Ver formatos y añadir →</button></div></article>';
  }).join(''):'<div class="no-products">No hay productos que coincidan. Prueba con otra palabra o categoría.</div>';
  grid.querySelectorAll('[data-image-product]').forEach(img=>img.addEventListener('error',()=>{
   const p=products[img.dataset.imageProduct];if(!p)return;
