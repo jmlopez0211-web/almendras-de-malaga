@@ -27,18 +27,12 @@
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><div class="brand">✦ ALMENDRAS <span>DE MÁLAGA</span></div><div class="top-actions"><a class="header-whatsapp" href="https://wa.me/34666068765?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Almendras%20de%20M%C3%A1laga." target="_blank" rel="noopener" aria-label="WhatsApp de cabecera +34 666 068 765"><span aria-hidden="true">◉</span> WhatsApp <span class="header-phone">+34 666 068 765</span></a><div class="langs" aria-label="Language"><button class="active" data-lang="es">ES</button><button data-lang="en">EN</button><button data-lang="fr">FR</button><button data-lang="de">DE</button></div></div></nav>
-<nav class="store-nav" aria-label="Navegación de la tienda"><a href="#inicio">Inicio</a><a href="#catalogo">Catálogo</a><a href="#catalogo">Frutos secos</a><a href="#catalogo">Deshidratados</a><a href="#catalogo">Caramelos</a><a href="#visita">Contacto</a></nav>
-<header class="hero" id="inicio"><div class="hero-photo"></div><span class="hero-credit"><a href="https://commons.wikimedia.org/wiki/File:Malaga_Cathedral_(panorama)_(976006521).jpg" target="_blank" rel="noopener">Foto: bongo vongo · CC BY-SA 2.0</a></span><div class="hero-copy"><div class="eyebrow">Málaga · Junto a la Catedral</div><h1>Frutos secos<br>con sabor a Málaga</h1><p>Almendras, frutos secos y dulces artesanos.</p><a class="btn" href="#catalogo">Comprar ahora ↓</a></div></header>
+<nav class="top"><div class="brand"><span class="brand-mark">✿</span><span class="brand-name">Almendras de Málaga</span><small>FRUTOS SECOS · DESHIDRATADOS · CARAMELOS</small></div><div class="top-actions"><a class="header-whatsapp" href="https://wa.me/34666068765?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Almendras%20de%20M%C3%A1laga." target="_blank" rel="noopener" aria-label="WhatsApp de cabecera +34 666 068 765"><span aria-hidden="true">◉</span> WhatsApp <span class="header-phone">+34 666 068 765</span></a><div class="langs" aria-label="Language"><button class="active" data-lang="es">ES</button><button data-lang="en">EN</button><button data-lang="fr">FR</button><button data-lang="de">DE</button></div></div></nav>
+<nav class="store-nav" aria-label="Navegación de la tienda"><a class="nav-home" href="#inicio">Inicio</a><a href="#catalogo">Catálogo</a><a href="#catalogo" data-family-link="frutos">Frutos secos</a><a href="#catalogo" data-family-link="fruta">Deshidratados</a><a href="#catalogo" data-family-link="chuches">Caramelos</a><a href="#visita">Contacto</a><a class="nav-cart" href="#cartModal" id="navCart">🛒 <span>Pedido</span></a></nav>
+<header class="hero" id="inicio"><div class="hero-photo"></div><span class="hero-credit"><a href="https://commons.wikimedia.org/wiki/File:Malaga_Cathedral_(panorama)_(976006521).jpg" target="_blank" rel="noopener">Foto: bongo vongo · CC BY-SA 2.0</a></span><div class="hero-copy"><div class="hero-kicker">TRADICIÓN MALAGUEÑA</div><h1>Frutos secos<br>de Málaga</h1><p>Selección artesanal, variedad y sabor.<br>En pleno corazón de Málaga.</p><a class="btn" href="#catalogo">Ver catálogo <span>→</span></a></div></header>
 
-<section class="section" id="catalogo"><div class="section-head"><h2 data-t="catalogTitle">Compra por categorías</h2><p>Encuentra rápidamente lo que buscas.</p></div>
+<section class="section catalog-section" id="catalogo"><div class="section-head"><h2 data-t="catalogTitle">Nuestro catálogo</h2><p>Elige una familia y encuentra tu producto.</p></div>
 
-<div class="allergen-panel" id="alergenos">
- <h3>Información importante sobre alérgenos</h3>
- <p>Algunos productos del catálogo contienen frutos de cáscara —como almendra, avellana, nuez, anacardo, pistacho, macadamia y pecana— o cacahuete. Estos ingredientes son alérgenos y deben identificarse antes de consumirlos.</p>
- <p>En mezclas, revueltos, productos fritos, garrapiñados, condimentados y elaborados, la denominación comercial no permite conocer por sí sola todos los ingredientes ni las posibles trazas.</p>
- <p class="allergen-note"><strong>Si tienes una alergia o intolerancia, consúltanos antes de realizar el pedido.</strong> El catálogo del proveedor no incluye fichas completas de ingredientes ni declaraciones de alérgenos o contaminación cruzada. La información definitiva debe comprobarse en la etiqueta del envase o ficha técnica del lote servido. No podemos garantizar ausencia de trazas sin confirmación del fabricante.</p>
-</div>
 <div class="catalog-tools">
   <label class="catalog-search"><span aria-hidden="true">⌕</span><input id="productSearch" type="search" placeholder="Buscar almendras, semillas, fruta seca…"></label>
   <div class="family-tiles" id="familyTiles" aria-label="Accesos a familias de productos"></div>
@@ -48,6 +42,12 @@
 <p class="catalog-result-count" id="catalogResultCount" aria-live="polite"></p>
 </div>
 <div class="grid" id="products" aria-live="polite"></div>
+<div class="allergen-panel" id="alergenos">
+ <h3>Información importante sobre alérgenos</h3>
+ <p>Algunos productos del catálogo contienen frutos de cáscara —como almendra, avellana, nuez, anacardo, pistacho, macadamia y pecana— o cacahuete. Estos ingredientes son alérgenos y deben identificarse antes de consumirlos.</p>
+ <p>En mezclas, revueltos, productos fritos, garrapiñados, condimentados y elaborados, la denominación comercial no permite conocer por sí sola todos los ingredientes ni las posibles trazas.</p>
+ <p class="allergen-note"><strong>Si tienes una alergia o intolerancia, consúltanos antes de realizar el pedido.</strong> El catálogo del proveedor no incluye fichas completas de ingredientes ni declaraciones de alérgenos o contaminación cruzada. La información definitiva debe comprobarse en la etiqueta del envase o ficha técnica del lote servido. No podemos garantizar ausencia de trazas sin confirmación del fabricante.</p>
+</div>
 <section class="seo-copy" aria-label="Información sobre almendras y frutos secos en Málaga">
 <h2>Almendras y frutos secos en el centro de Málaga</h2>
 <p>En Almendras de Málaga, junto a la Catedral, puedes consultar nuestra selección de almendras y frutos secos para particulares, comercios y profesionales. Pregunta por almendras naturales con piel, almendras repeladas sin piel, almendras tostadas con sal y almendras fritas con aceite de oliva y sal.</p>
