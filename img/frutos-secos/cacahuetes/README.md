@@ -465,3 +465,32 @@ Se ha aclarado el significado técnico de “repelado” y se ha confirmado un p
 La búsqueda ofrece una foto libre de frito visualmente similar a cacahuete repelado, pero sin declarar sal; una foto libre de tostado repelado con sal, pero inferior a la ya asignada; y una fotografía comercial muy buena de tostado con piel sin sal, que no puede reutilizarse. No se añade ninguna imagen nueva al catálogo.
 
 **Decisión:** se mantienen 3 de 12 fotos verificadas. Nueve productos del Lote 2 continúan pendientes. Ningún cambio en el Lote 3.
+
+
+## Vigesimotercera ronda: nuevos candidatos y revisión de variantes tostadas
+
+### “Fried Peanut.jpg” — candidato genérico, no asignado
+
+- Derk29, Wikimedia Commons, CC BY-SA 4.0, original 2.448 × 3.264 px. La ficha identifica “Fried peanut”, origen Filipinas, pero no documenta piel fina ni sal. No se asigna a las variantes fritas con/sin piel o sal. https://commons.wikimedia.org/wiki/File:Fried_Peanut.jpg
+
+### “Roasted Peanuts (54251297906).jpg” — foto de tostados genéricos
+
+- Choo Yut Shing, Flickr vía Wikimedia Commons, CC BY 2.0, original 3.600 × 2.400 px. La descripción solo dice “Roasted Peanuts”; no confirma sal ni piel fina. No asignar a las variantes tostadas. https://commons.wikimedia.org/wiki/File:Roasted_Peanuts_(54251297906).jpg
+
+### “Peanuts in a bowl..jpg” — cacahuetes en vaina
+
+- Monika M. Wahi, Wikimedia Commons; página individual describe expresamente “Unshelled”. La foto es de cacahuetes con la vaina exterior y no confirma sal. No asignar a ninguna ficha de granos ni a “con cáscara con/sin sal” sin confirmar preparación. https://commons.wikimedia.org/wiki/File:Peanuts_in_a_bowl..jpg
+
+### “Peanuts with skin.jpg” — crudo con piel, alternativa
+
+- Sanjay Acharya, Wikimedia Commons, CC BY-SA 3.0, original 1.194 × 798 px. Título y descripción confirman cacahuetes con piel; no confirma procesado ni sal. Es una alternativa documentalmente correcta para crudo con piel, pero inferior a la imagen ya incorporada por resolución y composición. No duplicar. https://commons.wikimedia.org/wiki/File:Peanuts_with_skin.jpg
+
+### “Roasted peanuts - chilly.jpg” — descartada por condimento
+
+- Vis M, Wikimedia Commons. La descripción identifica cacahuetes tostados picantes (“hot peanuts”); no es una variante neutra con sal ni sin sal. No asignar.
+
+### Resultado de la vigesimotercera ronda
+
+Las nuevas páginas no aportan evidencia suficiente para asignar una imagen exacta a las variantes restantes. Se mantiene el criterio de no inferir sal ni piel fina a partir de etiquetas genéricas como “roasted”, “fried”, “kernels” o “unshelled”.
+
+**Decisión:** no se integra ninguna foto nueva. El Lote 2 permanece abierto con tres imágenes verificadas y nueve pendientes.
