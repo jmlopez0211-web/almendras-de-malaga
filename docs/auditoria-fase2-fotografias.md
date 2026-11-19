@@ -128,3 +128,22 @@ Continuar con búsqueda por variante, no por categoría genérica. Revisar candi
 
 ### Estado de fase 2
 La corrección del renderizado de imágenes Commons se ha aplicado y la revisión de las fotos dudosas continúa. La fase no puede declararse cerrada: faltan la comprobación visual directa de cada imagen, 64 fotografías ausentes y la integración física de recursos que no están disponibles como binarios en esta sesión.
+
+
+## Nuevos candidatos documentados — búsqueda continuada
+
+| Producto | Archivo candidato | Resolución | Licencia | Estado |
+|---|---|---:|---|---|
+| Almendra Marcona repelada frita | `Almendra marcona.jpg` | 3888×2592 | CC BY 3.0 | Coincidencia de descripción; pendiente inspección visual e integración |
+| Plátano deshidratado | `Dried banana chips.jpg` | 3000×3000 | CC0 | Candidato; comprobar que la imagen muestra producto sin elementos ajenos |
+| Mango deshidratado | `Heap of Sun-dried mango slices.jpg` | 864×1152 | CC0 | Candidato; pendiente inspección visual |
+| Mango deshidratado | `Dry Mango Slices (Mango Orugulu).jpg` | 4000×3000 | CC BY 4.0 | Candidato; descripción indica mango seco, pero variante comercial no confirmada |
+| Mango deshidratado | `Dried Mango Slices.JPG` | 2816×2112 | Dominio público | Candidato; descripción también menciona amchoor/khatai, no aprobado |
+| Anacardo frito | `Cashew nuts.JPG` | 2848×2136 | CC BY-SA 2.1 Japan / GFDL | Candidato por descripción de anacardo frito; pendiente inspección |
+
+Fuentes: páginas de Wikimedia Commons consultadas el 19/11/2026. Ninguna de estas fotografías se marca como aprobada ni se asigna al catálogo en esta etapa porque la inspección visual directa del original y la transferencia del archivo no están disponibles en esta sesión.
+
+## Revisión técnica adicional
+- `js/app.js`: confirmada la función de selección de imágenes, el fallback de error de carga, el renderizado del catálogo, las acciones de formatos/carrito y el asistente.
+- `styles.css`: existe un fallback de imagen tipo placeholder. Se conserva para no sustituir imágenes ausentes por fotografías genéricas o engañosas.
+- `index.html`: cabecera, navegación y secciones de contacto/pie presentes; no se ha realizado un test de navegador real en esta sesión.
