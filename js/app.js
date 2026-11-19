@@ -63,6 +63,28 @@ function allergenCardText(p){
  if(info.found.length)return 'Alérgeno identificado por denominación: '+info.found.join(', ')+'. Verifica la etiqueta del lote.';
  return 'Alérgenos: consultar etiqueta del lote.';
 }
+let activeSubfamily='todos';
+function productFamily(p){
+ const n=normalizeCatalogText(p.name);
+ const tests=[
+ ['almendras',/almendra/],['cacahuetes',/cacahuete|mani/],['anacardos',/anacardo/],['pistachos',/pistacho/],['macadamias',/macadamia/],['avellanas',/avellana/],['nueces',/nuez|pecana|brasil/],['piñones',/pinon/],['castañas',/castana/],['chufas',/chufa/],
+ ['pipas y semillas',/pipa|semilla/],['kikos y maíz',/kiko|maiz frito/],['habas y garbanzos',/haba|garbanzo/],['revueltos y mixes',/revuelto|mix|variado/],['pasas',/pasa/],['mango',/mango/],['plátano',/platano/],['coco',/coco/],['fruta deshidratada',/deshidrat|orejon|datil|higo|ciruela|melon|papaya|piña|kiwi|arandano|fresa|manzana/],['chocolate',/chocolate|chocobola/],['gominolas',/gummy|gummys|gominola/],['caramelos',/caramelo|pictolin|sugus|werther|toffee|toffino|cafe dry|relleno|picota|gajo|dulce de leche|lacasito|carachoco/]
+ ];
+ for(const [label,re] of tests)if(re.test(n))return label;
+ return 'otros';
+}
+function renderSubfamilies(active){
+ const host=document.getElementById('subfamilyFilters');if(!host)return;
+ const labels=[...new Set(Object.values(products).filter(p=>active==='todos'||catalogGroup(p)===active).map(productFamily))].sort((a,b)=>a.localeCompare(b,'es'));
+ host.innerHTML='<button class="subfilter active" data-subfilter="todos">Todas las variedades</button>'+labels.map(x=>'<button class="subfilter" data-subfilter="'+x+'">'+x[0].toUpperCase()+x.slice(1)+'</button>').join('');
+ host.querySelectorAll('[data-subfilter]').forEach(b=>b.onclick=()=>{activeSubfamily=b.dataset.subfilter;host.querySelectorAll('[data-subfilter]').forEach(x=>x.classList.toggle('active',x===b));renderProducts()});
+}
+function renderFamilyTiles(){
+ const host=document.getElementById('familyTiles');if(!host)return;
+ const families=[['frutos','Frutos secos','Almendras, cacahuetes, anacardos y más'],['fruta','Frutas deshidratadas','Pasas, mango, orejones y fruta'],['chuches','Caramelos y golosinas','Gominolas, caramelos y chocolates'],['variados','Pipas, aperitivos y mezclas','Pipas, kikos, habas y revueltos']];
+ host.innerHTML=families.map(([id,title,desc])=>'<button class="family-tile" data-family="'+id+'"><span class="family-tile-title">'+title+'</span><span class="family-tile-desc">'+desc+'</span><span class="family-tile-link">Explorar →</span></button>').join('');
+ host.querySelectorAll('[data-family]').forEach(b=>b.onclick=()=>{const f=b.dataset.family;document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x.dataset.filter===f));activeSubfamily='todos';renderSubfamilies(f);renderProducts();document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})});
+}
 function renderProducts(){
  const grid=document.getElementById('products');if(!grid)return;
  const active=document.querySelector('.filter.active')?.dataset.filter||'todos';
@@ -88,9 +110,9 @@ function renderProducts(){
  const count=document.getElementById('catalogResultCount');if(count)count.textContent=entries.length+' productos'+(active==='todos'?' en el catálogo':' en esta categoría');
  grid.querySelectorAll('[data-product]').forEach(btn=>btn.addEventListener('click',()=>showProduct(btn.dataset.product)));
 }
-document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x===btn));renderProducts()}));
+document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x===btn));activeSubfamily='todos';renderSubfamilies(btn.dataset.filter);renderProducts()}));
 document.getElementById('productSearch')?.addEventListener('input',renderProducts);
-renderProducts();
+renderFamilyTiles();renderSubfamilies('todos');renderProducts();
 let selected=null;
 function updatePackPrice(){if(!selected)return;const grams=Number(document.getElementById('weightSelect').value);document.getElementById('packPrice').textContent=euro(selected.price*grams/1000);document.getElementById('modalNote').textContent='Precio de referencia: '+euro(selected.price)+' por kg. El importe del formato se calcula proporcionalmente y sin recargos; Don Miguel y Fabián confirmarán disponibilidad y precio final antes de aceptar el pedido.'}
 function showProduct(id){selected=products[id];const src=productImage(id,selected),hasPhoto=Boolean(src);document.getElementById('modalTitle').textContent=selected.name;document.getElementById('modalTag').textContent=selected.tag;document.getElementById('modalDesc').textContent=selected.desc;const allergen=document.getElementById('modalAllergen');const info=allergenInfo(selected);allergen.textContent=(info.found.length?'Alérgeno identificado por denominación: '+info.found.join(', ')+'. ':'')+'La ficha del proveedor no detalla todos los ingredientes ni las posibles trazas. Si tienes alergia o intolerancia, confirma la etiqueta del lote con Don Miguel y Fabián antes de comprar.';const photo=document.getElementById('modalPhoto');photo.style.backgroundImage=hasPhoto?"url('"+src+"')":"none";photo.textContent=hasPhoto?'':'Fotografía pendiente de incorporación · '+selected.name;photo.classList.toggle('photo-pending',!hasPhoto);photo.style.backgroundSize='cover';photo.style.backgroundPosition='center';const caption=document.querySelector('.modal-image-caption');caption.innerHTML=hasPhoto?productImageCredit(selected):'No se muestra una imagen genérica para evitar confusiones.';caption.hidden=false;document.getElementById('weightSelect').value='1000';updatePackPrice();document.getElementById('productModal').classList.add('open')}
