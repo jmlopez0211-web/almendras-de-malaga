@@ -1062,7 +1062,7 @@ window.PRODUCTS ={
     "category": "fruta",
     "price": 8,
     "image": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Raisins_and_Sultanas_%284849308352%29.jpg",
-    "imageVerified": true,
+    "imageVerified": false,
     "imageCredit": "bongo vongo · Raisins and Sultanas",
     "imageSource": "https://commons.wikimedia.org/wiki/File:Raisins_and_Sultanas_(4849308352).jpg",
     "imageLicense": "CC BY-SA 2.0"
@@ -1074,7 +1074,7 @@ window.PRODUCTS ={
     "category": "fruta",
     "price": 18,
     "image": "https://upload.wikimedia.org/wikipedia/commons/a/af/Dried_Muscat_Grapes_-_Robin.jpg",
-    "imageVerified": true,
+    "imageVerified": false,
     "imageCredit": "FotoosVanRobin · Dried Muscat Grapes",
     "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_Muscat_Grapes_-_Robin.jpg",
     "imageLicense": "CC BY-SA 2.0"
@@ -1098,7 +1098,7 @@ window.PRODUCTS ={
     "category": "aperitivos",
     "price": 9.8,
     "image": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Fried_broad_beans_%28china%29.jpg",
-    "imageVerified": true,
+    "imageVerified": false,
     "imageCredit": "Alex Ex · Fried broad beans (china)",
     "imageSource": "https://commons.wikimedia.org/wiki/File:Fried_broad_beans_(china).jpg",
     "imageLicense": "CC BY-SA 3.0"
