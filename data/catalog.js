@@ -1182,7 +1182,11 @@ window.PRODUCTS ={
     "tag": "Chocolates",
     "category": "chocolates",
     "price": 29.8,
-    "image": ""
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/91/Panda_-_Smoothie_Tumma_Suklaarusina.jpg",
+    "imageVerified": true,
+    "imageCredit": "Tiia Monto · Panda Smoothie Tumma Suklaarusina",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Panda_-_Smoothie_Tumma_Suklaarusina.jpg",
+    "imageLicense": "CC BY-SA 3.0"
   },
   "pasaChocolateLeche": {
     "name": "Pasa chocolate leche",
