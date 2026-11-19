@@ -717,11 +717,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 19.8,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Banana_Chips.jpg?width=1200",
-    "imageVerified": true,
-    "imageCredit": "Kozak005 · banana chips of Angadanan",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:Banana_Chips.jpg",
-    "imageLicense": "CC BY-SA 4.0"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_banana_chips.jpg?width=1200",
+    "imageVerified": false,
+    "imageCredit": "Fumikas Sagisavas · Dried banana chips",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_banana_chips.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "aloeDeshidratada": {
     "name": "Aloe vera deshidratada",
@@ -889,11 +889,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 16,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Prunesso_dried_plums.jpg?width=1200",
-    "imageVerified": true,
-    "imageCredit": "Prunesso · dried plums",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:Prunesso_dried_plums.jpg",
-    "imageLicense": "CC BY-SA 4.0"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_plums_01.jpg?width=1200",
+    "imageVerified": false,
+    "imageCredit": "Андрей Перцев · dried plums",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_plums_01.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "pipaPeladaCruda": {
     "name": "Pipa pelada cruda",
