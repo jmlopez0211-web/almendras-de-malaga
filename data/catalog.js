@@ -294,7 +294,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 26,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cashew_nuts.JPG?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Midori · fried cashew nuts",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Cashew_nuts.JPG",
+    "imageLicense": "CC BY-SA 2.1 Japan"
   },
   "anacardoFritoSinSal": {
     "name": "Anacardo frito sin sal",
@@ -322,7 +326,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 26,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Roasted_peeled_cashews.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Fumikas Sagisavas · roasted peeled cashews",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Roasted_peeled_cashews.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "macadamiaCruda": {
     "name": "Macadamia cruda",
