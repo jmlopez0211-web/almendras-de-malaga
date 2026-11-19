@@ -16,14 +16,14 @@ function catalogGroup(p){
 function productImage(id,p){
  if(!p||p.imageVerified!==true||typeof p.image!=='string')return '';
  const url=p.image.trim();
- const allowed=url.startsWith('assets/products/')||url.startsWith('https://commons.wikimedia.org/wiki/Special:FilePath/');
+ const allowed=url.startsWith('assets/products/')||url.startsWith('https://commons.wikimedia.org/wiki/Special:FilePath/')||url.startsWith('https://cdn.pixabay.com/');
  if(!allowed)return '';
  const owners=Object.entries(products).filter(([otherId,other])=>otherId!==id&&other.imageVerified===true&&other.image===url);
  return owners.length?'':url;
 }
 function productImageCredit(p){
  if(!p||!p.imageCredit||!p.imageSource||!p.imageLicense)return 'Fotografía real verificada';
- return 'Foto: '+p.imageCredit+' · <a href="'+p.imageSource+'" target="_blank" rel="noopener noreferrer">'+p.imageLicense+' · Wikimedia Commons</a>';
+ return 'Foto: '+p.imageCredit+' · <a href="'+p.imageSource+'" target="_blank" rel="noopener noreferrer">'+p.imageLicense+'</a>';
 }
 function hasUniqueProductImage(id){return Boolean(productImage(id,products[id]));}
 function hasSpecificProductImage(id){return Boolean(productImage(id,products[id]));}
