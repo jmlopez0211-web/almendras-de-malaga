@@ -276,3 +276,18 @@ body{background:var(--cream)}
 .hero-credit{position:absolute;right:12px;bottom:9px;z-index:2;font-size:9px;color:#fff;background:#172b20a8;padding:4px 7px;border-radius:4px}.hero-credit a{color:#fff;text-decoration:none}
 @media(min-width:1200px){.grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:15px}.product-photo{height:210px;min-height:210px}}
 @media(max-width:760px){.store-nav{gap:14px;overflow:auto;white-space:nowrap;margin:0 -10px;padding:10px 14px;font-size:10px}.hero-credit{font-size:8px;right:8px;bottom:7px}}
+
+
+/* Reestructuración comercial: tienda por familias */
+.hero-photo{background-image:url('https://upload.wikimedia.org/wikipedia/commons/7/7e/Malaga_Cathedral_%28panorama%29_%28976006521%29.jpg');background-size:cover;background-position:center 48%;}
+.family-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0 22px}
+.family-tile{appearance:none;border:1px solid var(--line);border-radius:18px;background:var(--white);text-align:left;padding:18px 16px;min-height:120px;cursor:pointer;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s,border-color .18s}
+.family-tile:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 12px 30px #243b2e18}
+.family-tile-title{font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:var(--pine)}
+.family-tile-desc{font-size:13px;color:var(--muted);line-height:1.45}
+.family-tile-link{font-size:12px;color:var(--gold);font-weight:700;margin-top:auto}
+.subfamily-filters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}
+.subfilter{border:1px solid var(--line);background:#fffefa;color:var(--pine);border-radius:30px;padding:8px 13px;font-size:12px;font-weight:700;cursor:pointer}
+.subfilter.active{background:var(--pine);color:white;border-color:var(--pine)}
+.catalog-filters{margin-top:12px}
+@media(max-width:700px){.family-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.family-tile{padding:14px;min-height:112px}.family-tile-title{font-size:17px}.family-tile-desc{font-size:12px}.subfamily-filters{gap:6px}.subfilter{padding:7px 10px;font-size:11px}}
