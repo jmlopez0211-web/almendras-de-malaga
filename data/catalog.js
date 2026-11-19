@@ -139,7 +139,7 @@ window.PRODUCTS ={
     "category": "cacahuetes",
     "price": 6.8,
     "image": "assets/products/cacahuete-crudo-piel.jpg",
-    "imageVerified": true
+    "imageVerified": false
   },
   "cacahueteCrudoRepelado": {
     "name": "Cacahuete crudo repelado",
