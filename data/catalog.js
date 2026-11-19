@@ -427,7 +427,7 @@ window.PRODUCTS ={
     "category": "frutos",
     "price": 28.8,
     "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Roasted_hazelnuts.jpg?width=1200",
-        "imageVerified": true,
+    "imageVerified": true,
     "imageCredit": "Fumikas Sagisavas · Roasted hazelnuts",
     "imageSource": "https://commons.wikimedia.org/wiki/File:Roasted_hazelnuts.jpg",
     "imageLicense": "CC0 1.0"
@@ -507,7 +507,7 @@ window.PRODUCTS ={
     "category": "frutos",
     "price": 33,
     "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kernel_Pistachio.JPG?width=1200",
-        "imageVerified": true,
+    "imageVerified": true,
     "imageCredit": "Hedi Aghlara · shelled pistachio",
     "imageSource": "https://commons.wikimedia.org/wiki/File:Kernel_Pistachio.JPG",
     "imageLicense": "CC BY-SA 3.0"
@@ -519,7 +519,7 @@ window.PRODUCTS ={
     "category": "frutos",
     "price": 39,
     "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried_pistachio_nuts.jpg?width=1200",
-        "imageVerified": true,
+    "imageVerified": true,
     "imageCredit": "Fumikas Sagisavas · fried pistachio nuts",
     "imageSource": "https://commons.wikimedia.org/wiki/File:Fried_pistachio_nuts.jpg",
     "imageLicense": "CC0 1.0"
@@ -543,7 +543,7 @@ window.PRODUCTS ={
     "category": "frutos",
     "price": 23.8,
     "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pistachios_in_shells.jpg?width=1200",
-        "imageVerified": true,
+    "imageVerified": true,
     "imageCredit": "MadMaxMarchHare · pistachios in shells",
     "imageSource": "https://commons.wikimedia.org/wiki/File:Pistachios_in_shells.jpg",
     "imageLicense": "CC BY-SA 2.0"
@@ -911,7 +911,7 @@ window.PRODUCTS ={
     "category": "semillas",
     "price": 15.8,
     "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Shelled_and_fried_pumpkin_seeds.jpg?width=1200",
-        "imageVerified": true,
+    "imageVerified": true,
     "imageCredit": "Fumikas Sagisavas · shelled and fried pumpkin seeds",
     "imageSource": "https://commons.wikimedia.org/wiki/File:Shelled_and_fried_pumpkin_seeds.jpg",
     "imageLicense": "CC0 1.0"
@@ -970,7 +970,11 @@ window.PRODUCTS ={
     "tag": "Aperitivos",
     "category": "aperitivos",
     "price": 10,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ma%C3%ADz_frito_servido_como_aperitivo_en_Argentina.png?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Horacio Cambeiro · Maíz frito servido como aperitivo en Argentina",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Ma%C3%ADz_frito_servido_como_aperitivo_en_Argentina.png",
+    "imageLicense": "CC BY-SA 3.0"
   },
   "kikoGigante": {
     "name": "Kikos gigantes tiernos",
@@ -978,7 +982,11 @@ window.PRODUCTS ={
     "tag": "Aperitivos",
     "category": "aperitivos",
     "price": 10,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kikos.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Nautilia · Kikos",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Kikos.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "pasaThompson": {
     "name": "Pasa Thompson",
@@ -1042,7 +1050,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 17.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castagne_secche_dried_chestnut_italy.JPG?width=1200",
+    "imageVerified": true,
+    "imageCredit": "G.steph.rocket · Castagne secche dried chestnut Italy",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Castagne_secche_dried_chestnut_italy.JPG",
+    "imageLicense": "CC BY-SA 3.0"
   },
   "coquitoBrasil": {
     "name": "Coquito de Brasil",
@@ -1050,7 +1062,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 32,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Brazil_nuts.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Quadell · Brazil nuts",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Brazil_nuts.jpg",
+    "imageLicense": "CC BY-SA 2.0"
   },
   "chufa": {
     "name": "Chufa",
@@ -1058,7 +1074,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tigernuts.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Halima Waziri · Tigernuts",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Tigernuts.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "chocolateNuezLeche": {
     "name": "Nuez cubierta de chocolate con leche",
