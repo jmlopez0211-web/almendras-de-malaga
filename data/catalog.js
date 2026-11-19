@@ -238,7 +238,11 @@ window.PRODUCTS ={
     "tag": "Cacahuetes",
     "category": "cacahuetes",
     "price": 9,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Roasted_ground_nuts.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Sisnoe · roasted and salted ground nuts",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Roasted_ground_nuts.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "cacahueteTostadoPielSinSal": {
     "name": "Cacahuete tostado con piel sin sal",
