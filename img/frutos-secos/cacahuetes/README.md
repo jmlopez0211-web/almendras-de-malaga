@@ -129,3 +129,26 @@ Se refuerza la documentación del candidato para tostado repelado sin sal, y se 
 
 ## Estado tras la novena ronda
 Se localiza una fuente española de alta resolución con licencia CC BY-SA 4.0 para cacahuete frito genérico. La fuente no documenta piel fina, sal ni aceite, así que no se asigna a las variantes exactas. El lote sigue abierto.
+
+
+## Décima ronda: validación cruzada de variantes comerciales y candidato de dominio público
+
+### Candidato fotográfico reutilizable pendiente de confirmar el pelado fino
+
+- **Cacahuete tostado repelado sin sal** — `Roasted Peanuts`, Photos Public Domain. La página declara 3.888 × 2.592 px, indica que son cacahuetes dry-roasted, unsalted y shelled, y afirma que todas las fotografías del sitio están en dominio público. La imagen muestra granos claros sin la piel roja habitual. Se mantiene como candidato de alta calidad, no como definitivo: la descripción usa “shelled” (sin cáscara exterior), pero no especifica por escrito “skinless/blanched”; la fotografía tampoco permite descartar pequeñas zonas de piel en todos los granos. https://www.photos-public-domain.com/2012/04/02/roasted-peanuts/
+
+### Fuentes comerciales para validar el aspecto y los atributos — no reutilizar sus fotografías
+
+- **Frito repelado con sal** — Ahorramas lista expresamente “Cacahuete frito repelado con sal Alipende 200 g”. La ficha comercial confirma la combinación, pero no autoriza la reutilización de su imagen. https://www.ahorramas.com/alimentacion/aperitivos-y-frutos-secos/frutos-secos/cacahuetes/
+- **Frito repelado sin sal** — la misma página lista “Cacahuete frito sin piel y sin sal Frumesa 200 g”. Confirma que existe la variante exacta; imagen y contenido de la tienda sujetos a derechos de Ahorramas/Frumesa. https://www.ahorramas.com/alimentacion/aperitivos-y-frutos-secos/frutos-secos/cacahuetes/
+- **Frito con piel y sal** — la ficha de Tramusset describe cacahuetes fritos con piel, aceite de girasol alto oleico y sal. Es referencia de producto y de aspecto, no una licencia fotográfica. https://eltramusset.com/producto?p=31
+- **Tostado repelado sin sal** — Tramusset describe expresamente el producto como tostado, sin piel y sin sal añadida, e incluye como ingrediente “cacahuete repelado tostado”. Sirve como contraste independiente de la candidata de dominio público, pero no para copiar su foto. https://eltramusset.com/cacahuetes-seleccionados/cacahuetes-tostados-repelados-sin-sal
+- **Frito repelado con sal (especificación técnica)** — ficha de producto acabado de FRIT RAVICH, versión 14, fecha 19/05/2025: describe cacahuetes fritos y salados; ingredientes: cacahuetes repelados, aceite de girasol y sal. La especificación admite un límite de restos de piel, de modo que no debe interpretarse como prueba de ausencia absoluta de cualquier resto. El documento incluye fotografía del envase, no una foto libre del producto a granel. https://prod.isg.bruneau.media/asset/aHR0cHM6Ly9zYWdzc3NtZHJvb3B5cHJkbmUuYmxvYi5jb3JlLndpbmRvd3MubmV0L2Ryb29weWNvbnRhaW5lci82MjBjMDkzMy0yMjdiLTQ0OTctOTI2ZS0wODc2ZTdkMmNkYjIucGRm/?quality=85
+- **Frito repelado sin piel (referencia visual)** — Funtastyc muestra un producto portugués “Amendoim frito sem pele”. La fotografía resulta útil para comparar el tono y la superficie de los granos repelados, pero la página no demuestra una licencia de reutilización ni confirma que sea sin sal. https://www.funtastyc.pt/11752-amendoim-frito-sem-pele-fsa00424.html
+- **Cáscara tostada con/sin sal** — Tramusset ofrece referencias separadas para cacahuetes con cáscara tostados sin sal y con sal. Ahorramas también identifica cacahuete con cáscara tostado y cacahuete con piel tostado con sal. Son referencias de producto, no fuentes fotográficas reutilizables. https://eltramusset.com/cacahuetes ; https://www.ahorramas.com/alimentacion/aperitivos-y-frutos-secos/frutos-secos/cacahuetes/
+
+### Resultado de la décima ronda
+
+La búsqueda ha permitido confirmar comercialmente las combinaciones de frito repelado con sal, frito repelado sin sal y frito con piel y sal, y ha aportado una candidata de dominio público para tostado repelado sin sal. Todavía no hay una fotografía libre y suficientemente documentada para cada variante del lote. En particular, siguen pendientes fotografías reutilizables exactas para frito con piel sin sal, las variantes fritas repeladas sin ambigüedad fotográfica, y las dos variantes de cacahuete con cáscara con/sin sal.
+
+**Decisión:** no se asigna ninguna de estas nuevas referencias al catálogo ni se integra ninguna fotografía en esta ronda. Se conserva el criterio de no usar imágenes comerciales protegidas ni de inferir sal, piel o preparación por semejanza. El Lote 2 continúa abierto; el Lote 3 permanece intacto.
