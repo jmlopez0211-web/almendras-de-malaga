@@ -23,18 +23,6 @@ window.PRODUCTS ={
     "imageSource": "https://commons.wikimedia.org/wiki/File:Blanched_almonds.jpg",
     "imageLicense": "Dominio público"
   },
-  "almendraFritaPiel": {
-    "name": "Almendra frita con piel",
-    "desc": "Almendra frita que conserva la piel.",
-    "tag": "Frutos secos",
-    "category": "frutos",
-    "price": 19.8,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Almendras_fritas.jpg?width=1200",
-    "imageVerified": true,
-    "imageCredit": "Juan Emilio Prades Bel · Almendras fritas",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:Almendras_fritas.jpg",
-    "imageLicense": "CC BY-SA 4.0"
-  },
   "almendraFritaOliva": {
     "name": "Almendra frita con aceite de oliva",
     "desc": "Almendra frita; el catálogo indica aceite de oliva.",
