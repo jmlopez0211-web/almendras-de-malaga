@@ -1082,7 +1082,11 @@ window.PRODUCTS ={
     "tag": "Aperitivos",
     "category": "aperitivos",
     "price": 9.8,
-    "image": ""
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Fried_broad_beans_%28china%29.jpg",
+    "imageVerified": true,
+    "imageCredit": "Alex Ex · Fried broad beans (china)",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Fried_broad_beans_(china).jpg",
+    "imageLicense": "CC BY-SA 3.0"
   },
   "castanaPilonga": {
     "name": "Castaña pilonga",
