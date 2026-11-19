@@ -85,6 +85,12 @@ def download_one(item: dict, out_dir: Path = DEFAULT_OUT, *, retries: int = 3,
         for attempt in range(retries + 1):
             try:
                 with requests.get(url, headers={"User-Agent":USER_AGENT}, stream=True, timeout=(10,45), allow_redirects=True) as r:
+                    if r.status_code == 429:
+                        retry_after = r.headers.get("Retry-After")
+                        wait = int(retry_after) if retry_after and retry_after.isdigit() else min(15 * (2 ** attempt), 120)
+                        if attempt < retries:
+                            time.sleep(wait)
+                            continue
                     r.raise_for_status()
                     mime = r.headers.get("Content-Type","").split(";")[0].strip().lower()
                     if mime not in ALLOWED: raise ValueError(f"Rejected MIME: {mime}")
