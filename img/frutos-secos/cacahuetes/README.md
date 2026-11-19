@@ -632,3 +632,35 @@ Se localizaron referencias comerciales que distinguen de forma explícita las va
 La búsqueda encuentra fuentes comerciales con variantes exactas y algunas imágenes libres que documentan parte de los atributos. Ninguna nueva fotografía libre examinada confirma de manera suficiente la combinación exacta de preparación, piel fina y sal para asignarla a una ficha.
 
 **Decisión:** no integrar imágenes nuevas. Tres variantes continúan verificadas y nueve pendientes. Lote 2 abierto; Lote 3 intacto.
+
+
+## Ronda 30 — contraste de fotos comerciales exactas y licencias abiertas
+
+### Fotografías comerciales exactas: solo referencia visual, no copiar
+
+- **Frito con piel y sal — La Salmantina, “Cacahuete piel frito”.** La página incluye foto descargable del producto y define ingredientes como cacahuete con piel, sal y aceite de orujo de oliva. Es una referencia exacta para la variante frita con piel y sal, pero no publica una licencia de reutilización de la fotografía. https://www.lasalmantina.com/productos/categoria-frutos-secos/cacahuete-piel-frito/
+- **Frito con piel y sal — El Llano.** Fotografía de producto en cuenco y datos de ingredientes: cacahuete mondado con piel, aceite de girasol y sal marina. Referencia exacta; sin licencia abierta indicada. https://www.frutossecoselllano.com/producto/cacahuete-mondado-con-piel-frito/
+- **Frito repelado y salado — Funtastyc / Tostaderos Sol de Alba.** La ficha llama al producto “Amendoim frito sem pele” y lo describe como salado y crujiente; incluye fotografía comercial del producto. No hay permiso de reutilización publicado. https://www.funtastyc.pt/11752-amendoim-frito-sem-pele-fsa00424.html
+- **Frito repelado y salado — La Albufera (AECOC).** Ficha alimentaria exacta: cacahuete repelado, aceite de girasol y sal; declara fritura. No se ofrece fotografía reutilizable. https://www.aecoctrade.es/es/producto/FSRtwgpBfESRl6st4M7MAN
+- **Frito repelado sin sal — Ahorramas / Frumesa.** Catálogo identifica expresamente “cacahuete frito sin piel y sin sal”; el resultado disponible muestra envase, no una foto limpia de los granos. No reutilizar. https://www.ahorramas.com/alimentacion/aperitivos-y-frutos-secos/frutos-secos/cacahuetes/
+- **Frito repelado sin sal — Grão Nutriworld (Brasil).** Ficha e imagen del producto “Amendoim Frito Sem Pele Sem Sal”; fotografía comercial de grano sin piel, no una imagen de licencia abierta. https://graonutriworld.com.br/produtos/amendoim-frito-sem-pele-sem-sal/
+- **Tostado con piel fina y sal — Nutterie.** Fotografía de producto de cacahuetes con piel roja; el título indica roasted red skin peanuts salted y la lista de ingredientes incluye sal. No hay licencia abierta publicada. https://nutterie.com/products/roasted-red-skin-peanuts-salted
+- **Tostado con piel fina sin sal — De Notenman (francés).** La descripción confirma cacahuetes con su piel roja, tostados en aceite de cacahuete y sin sal añadida; la página presenta fotografía del producto. Referencia visual exacta, sin licencia de reutilización publicada. https://denotenman.com/fr/produits/cacahuetes-grillees-non-salees-1
+- **Tostado con piel fina sin sal — Nutterie.** La página y fotografía identifican “roasted red skin peanuts (unsalted)” y declaran cacahuetes y aceite, sin sal añadida. Sin licencia abierta publicada. https://nutterie.com/products/roasted-red-skin-peanuts-unsalted
+- **Tostado con piel fina sin sal — Bates Nut Farm / Krema Nut Company.** Ambas ofrecen fotografía de los granos rojizos y ficha/título “roasted redskin peanuts, no salt”. Son referencias comerciales exactas, no fuentes con licencia de reutilización identificada. https://batesnutfarm.biz/products/spanish-peanuts-roasted-no-salt-12-oz ; https://krema.com/products/redskin-peanuts-roasted-no-salt-10-lb-case
+- **Tostado repelado sin sal — El Enebrón.** La tienda dice “Fotos reales del producto” y describe explícitamente cacahuete repelado tostado sin sal; su tabla nutricional declara sal 0 g. Es una referencia de producto real, pero la foto no tiene licencia abierta publicada. https://elenebron.es/producto/cacahuete-tostado-sin-sal/
+- **Tostado repelado sin sal — Radio Africa Group.** Fotografía de granos pálidos sin piel fina; la ficha identifica roasted blanched unsalted peanuts. Es referencia visual/documental útil, no reutilizable sin permiso. https://radioafricagroup.co.ke/products/peanuts-roasted-blanched-unsalted-25-lbs/203668662/
+
+### Candidatas libres examinadas
+
+- **“Salt Roasted Peanut.jpg” — Gspco, Wikimedia Commons, CC BY-SA 4.0, 5184×3456.** La licencia permite reutilización con atribución y compartir bajo licencia compatible, pero la fotografía muestra cacahuetes dentro de la vaina exterior. No sirve para las variantes fritas o tostadas de grano con piel fina. No asignar. https://commons.wikimedia.org/wiki/File:Salt_Roasted_Peanut.jpg
+- **“A Little Nuts Deep Fried Peanuts.jpg” — Karlaadamk, Wikimedia Commons, CC BY-SA 4.0, 3029×3000.** La descripción indica que la imagen reúne todos los sabores de la marca; no identifica cuál corresponde a cacahuete natural sin cobertura ni permite separar sal, piel y preparación por variante. No asignar. https://commons.wikimedia.org/wiki/File:A_Little_Nuts_Deep_Fried_Peanuts.jpg
+- **“Burmese style fried peanuts.jpg” — Yarzaryeni, Wikimedia Commons, CC BY 3.0.** Visualmente muestra cacahuetes con piel rojiza en el recipiente de fritura, no una toma limpia del producto terminado, y la sal no está documentada. No asignar. https://commons.wikimedia.org/wiki/File:Burmese_style_fried_peanuts.jpg
+
+### Resultado de la trigésima ronda
+
+Se obtienen referencias comerciales visuales/documentales mucho más precisas para el frito con piel y sal, frito repelado con y sin sal, tostado con piel fina con y sin sal y tostado repelado sin sal. Sin embargo, esas fotos no publican licencias de reutilización. Entre las fuentes libres revisadas, los metadatos o el encuadre siguen sin confirmar todos los atributos requeridos.
+
+**Pendiente específico:** no se localiza todavía una fotografía reutilizable y documentada de cacahuete frito con piel fina SIN sal. Siguen pendientes también las referencias libres exactas para crudo repelado y cáscara sin sal.
+
+**Decisión:** ninguna imagen nueva integrada; no se cambia ningún archivo del catálogo. Se mantienen las tres imágenes verificadas y nueve variantes pendientes. Lote 2 sigue abierto; Lote 3 intacto.
