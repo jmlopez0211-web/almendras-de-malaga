@@ -1,0 +1,181 @@
+const products = window.PRODUCTS;
+if (!products || typeof products !== 'object') {
+  throw new Error('No se ha cargado data/catalog.js: catálogo no disponible.');
+}
+
+const categoryNames={"frutos":"Frutos secos","variantes":"Almendra y derivados","cacahuetes":"Cacahuetes","dulces":"Garrapiñados y dulces","revueltos":"Revueltos","fruta":"Fruta deshidratada","semillas":"Pipas y semillas","aperitivos":"Aperitivos","chocolates":"Chocolates","caramelos":"Caramelos y confitería"};
+const euro=n=>n.toLocaleString('es-ES',{style:'currency',currency:'EUR'});
+function catalogGroup(p){
+ const name=p.name.toLocaleLowerCase('es');
+ if(p.category==='chocolates'||p.category==='caramelos'||/chocolate|chocobola|lacasitos|sugus|toffee|toffino|gummys|gominola|picot|pictol[ií]n|carachoco|caramelo|confiter[ií]a|werther|café dry|gajos santos|relleno de fruta|relleno miel|taco de miel|dulce de leche/.test(name))return 'chuches';
+ if(p.category==='fruta'||/pasa|orej[oó]n|higo|d[aá]til|deshidratad|ciruela|cereza|mel[oó]n|manzana|papaya|pl[aá]tano|mango|piña|pomelo|hibisco|kiwi|fresa|ar[aá]ndano/.test(name))return 'fruta';
+ if(/garrapiñad|caramelizad|con miel|revuelto|mix|pipa|semilla|kiko|garbanzo|haba|aperitivo|chufa/.test(name))return 'variados';
+ if(/almendra|cacahuete|anacardo|macadamia|avellana|nuez|pistacho|piñ[oó]n|castaña|coquito|fruto seco/.test(name))return 'frutos';
+ return 'variados';
+}
+function productImage(id,p){
+ if(!p||p.imageVerified!==true||typeof p.image!=='string')return '';
+ const url=p.image.trim();
+ const allowed=url.startsWith('assets/products/')||url.startsWith('https://commons.wikimedia.org/wiki/Special:FilePath/');
+ if(!allowed)return '';
+ const owners=Object.entries(products).filter(([otherId,other])=>otherId!==id&&other.imageVerified===true&&other.image===url);
+ return owners.length?'':url;
+}
+function productImageCredit(p){
+ if(!p||!p.imageCredit||!p.imageSource||!p.imageLicense)return 'Fotografía real verificada';
+ return 'Foto: '+p.imageCredit+' · <a href="'+p.imageSource+'" target="_blank" rel="noopener noreferrer">'+p.imageLicense+' · Wikimedia Commons</a>';
+}
+function hasUniqueProductImage(id){return Boolean(productImage(id,products[id]));}
+function hasSpecificProductImage(id){return Boolean(productImage(id,products[id]));}
+
+
+function productPlaceholder(p){
+ const group=catalogGroup(p);
+ const category={frutos:'FRUTOS SECOS',fruta:'FRUTA DESHIDRATADA',chuches:'CHOCOLATES Y GOLOSINAS',variados:'SNACKS Y VARIADOS'}[group]||'CATÁLOGO';
+ return '<div class="product-placeholder" role="img" aria-label="'+p.name+'"><span class="placeholder-category">'+category+'</span><strong>'+p.name+'</strong></div>';
+}
+function normalizeCatalogText(value){
+ return String(value??'').toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim();
+}
+function catalogSearchWords(value){
+ const aliases={almendras:'almendra',nueces:'nuez',cacahuetes:'cacahuete',anacardos:'anacardo',pistachos:'pistacho',avellanas:'avellana',pipas:'pipa',semillas:'semilla',gominolas:'gominola',caramelos:'caramelo',chocolates:'chocolate',fritas:'frita',fritos:'frito',tostadas:'tostada',tostados:'tostado',peladas:'pelada',pelados:'pelado',naturales:'natural',garrapinadas:'garrapinada',garrapinados:'garrapinado',pinones:'pinon',arandanos:'arandano',datiles:'datil',higos:'higo',pasas:'pasa',ciruelas:'ciruela',frutas:'fruta',orejones:'orejon',castanas:'castana'};
+ return normalizeCatalogText(value).split(/[^a-z0-9]+/).filter(Boolean).map(word=>aliases[word]||word).filter(word=>word.length>1);
+}
+function allergenInfo(p){
+ const n=normalizeCatalogText([p.name,p.desc].join(' '));
+ const rules=[
+  [/almendra/,'Almendra (fruto de cáscara)'],
+  [/cacahuete|mani/,'Cacahuete'],
+  [/avellana/,'Avellana (fruto de cáscara)'],
+  [/anacardo/,'Anacardo (fruto de cáscara)'],
+  [/pistacho/,'Pistacho (fruto de cáscara)'],
+  [/macadamia/,'Macadamia (fruto de cáscara)'],
+  [/nuez de brasil/,'Nuez de Brasil (fruto de cáscara)'],
+  [/pecana/,'Nuez pecana (fruto de cáscara)'],
+  [/nuez|nueces/,'Nuez (fruto de cáscara)']
+ ];
+ const hasSpecificNutName=/nuez de macadamia|pecana|nuez de brasil/.test(n);
+ const found=rules.filter(([re,label])=>re.test(n)&&!(label==='Nuez (fruto de cáscara)'&&hasSpecificNutName)).map(([,label])=>label);
+ return {found:[...new Set(found)]};
+}
+function allergenCardText(p){
+ const info=allergenInfo(p);
+ if(info.found.length)return 'Alérgeno identificado por denominación: '+info.found.join(', ')+'. Verifica la etiqueta del lote.';
+ return 'Alérgenos: consultar etiqueta del lote.';
+}
+function renderProducts(){
+ const grid=document.getElementById('products');if(!grid)return;
+ const active=document.querySelector('.filter.active')?.dataset.filter||'todos';
+ const words=catalogSearchWords(document.getElementById('productSearch')?.value||'').filter(word=>!['de','del','la','el','los','las','un','una','y','con','sin','por','favor'].includes(word));
+ const entries=Object.entries(products).filter(([id,p])=>{
+  const haystack=normalizeCatalogText([p.name,p.desc,p.tag,p.category,catalogGroup(p)].join(' '));
+  return (active==='todos'||catalogGroup(p)===active)&&words.every(word=>haystack.includes(word));
+ });
+ grid.innerHTML=entries.length?entries.map(([id,p])=>{
+  const src=productImage(id,p),specific=hasSpecificProductImage(id);
+  const photoMarkup=src?'<img class="product-photo" data-image-product="'+id+'" src="'+src+'" alt="Fotografía de referencia de '+p.name+'" loading="lazy" decoding="async">':'<div class="product-placeholder" role="img" aria-label="Fotografía pendiente para '+p.name+'"><span class="placeholder-category">FOTOGRAFÍA PENDIENTE</span><strong>'+p.name+'</strong></div>';
+  return '<article class="product">'+photoMarkup+'<span class="image-caption">'+(specific?productImageCredit(p):'Fotografía real pendiente de verificación')+'</span><div class="product-body"><span class="tag">'+p.tag+'</span><h3>'+p.name+'</h3><p>'+p.desc+'</p><small class="product-allergen">'+allergenCardText(p)+'</small><span class="price">'+euro(p.price)+' <span class="unit">/ kg · precio orientativo</span></span><button class="details" data-product="'+id+'">Ver formatos y añadir →</button></div></article>';
+ }).join(''):'<div class="no-products">No hay productos que coincidan. Prueba con otra palabra o categoría.</div>';
+ grid.querySelectorAll('[data-image-product]').forEach(img=>img.addEventListener('error',()=>{
+  const p=products[img.dataset.imageProduct];if(!p)return;
+  const placeholder=document.createElement('div');placeholder.className='product-placeholder';placeholder.setAttribute('role','img');placeholder.setAttribute('aria-label','Imagen no disponible: '+p.name);
+  const category=document.createElement('span');category.className='placeholder-category';category.textContent=({frutos:'FRUTOS SECOS',fruta:'FRUTA DESHIDRATADA',chuches:'CHOCOLATES Y GOLOSINAS',variados:'SNACKS Y VARIADOS'}[catalogGroup(p)]||'CATÁLOGO');
+  const name=document.createElement('strong');name.textContent=p.name;placeholder.append(category,name);img.replaceWith(placeholder);
+  const caption=placeholder.nextElementSibling;if(caption?.classList.contains('image-caption'))caption.textContent='Fotografía no disponible · imagen pendiente de actualización';
+ },{once:true}));
+ const count=document.getElementById('catalogResultCount');if(count)count.textContent=entries.length+' productos'+(active==='todos'?' en el catálogo':' en esta categoría');
+ grid.querySelectorAll('[data-product]').forEach(btn=>btn.addEventListener('click',()=>showProduct(btn.dataset.product)));
+}
+document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x===btn));renderProducts()}));
+document.getElementById('productSearch')?.addEventListener('input',renderProducts);
+renderProducts();
+let selected=null;
+function updatePackPrice(){if(!selected)return;const grams=Number(document.getElementById('weightSelect').value);document.getElementById('packPrice').textContent=euro(selected.price*grams/1000);document.getElementById('modalNote').textContent='Precio de referencia: '+euro(selected.price)+' por kg. El importe del formato se calcula proporcionalmente y sin recargos; Don Miguel y Fabián confirmarán disponibilidad y precio final antes de aceptar el pedido.'}
+function showProduct(id){selected=products[id];const src=productImage(id,selected),hasPhoto=Boolean(src);document.getElementById('modalTitle').textContent=selected.name;document.getElementById('modalTag').textContent=selected.tag;document.getElementById('modalDesc').textContent=selected.desc;const allergen=document.getElementById('modalAllergen');const info=allergenInfo(selected);allergen.textContent=(info.found.length?'Alérgeno identificado por denominación: '+info.found.join(', ')+'. ':'')+'La ficha del proveedor no detalla todos los ingredientes ni las posibles trazas. Si tienes alergia o intolerancia, confirma la etiqueta del lote con Don Miguel y Fabián antes de comprar.';const photo=document.getElementById('modalPhoto');photo.style.backgroundImage=hasPhoto?"url('"+src+"')":"none";photo.textContent=hasPhoto?'':'Fotografía pendiente de incorporación · '+selected.name;photo.classList.toggle('photo-pending',!hasPhoto);photo.style.backgroundSize='cover';photo.style.backgroundPosition='center';const caption=document.querySelector('.modal-image-caption');caption.innerHTML=hasPhoto?productImageCredit(selected):'No se muestra una imagen genérica para evitar confusiones.';caption.hidden=false;document.getElementById('weightSelect').value='1000';updatePackPrice();document.getElementById('productModal').classList.add('open')}
+document.querySelectorAll('[data-product]').forEach(b=>b.addEventListener('click',()=>showProduct(b.dataset.product)));document.getElementById('weightSelect').addEventListener('change',updatePackPrice);
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>document.getElementById(b.dataset.close).classList.remove('open')));
+document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open')}));
+const cart=(()=>{try{const saved=JSON.parse(localStorage.getItem("almendrasCart")||"[]");return Array.isArray(saved)?saved.filter(x=>products[x.id]&&[100,250,500,1000].includes(Number(x.grams))&&Number.isInteger(Number(x.quantity))&&Number(x.quantity)>0).map(x=>({id:x.id,name:products[x.id].name,price:products[x.id].price,grams:Number(x.grams),quantity:Number(x.quantity)})):[]}catch(e){return []}})();
+function renderCart(){try{localStorage.setItem('almendrasCart',JSON.stringify(cart))}catch(e){}const host=document.getElementById('cartItems');host.innerHTML='';let total=0;cart.forEach((item,index)=>{const subtotal=item.price*item.grams/1000*item.quantity;total+=subtotal;const row=document.createElement('div');row.className='cart-line';const info=document.createElement('div');const name=document.createElement('strong');name.textContent=item.name;const detail=document.createElement('small');detail.textContent=item.quantity+' × '+item.grams+' g · '+euro(item.price)+' / kg · '+euro(subtotal);info.append(name,detail);const remove=document.createElement('button');remove.type='button';remove.textContent='Quitar';remove.onclick=()=>{cart.splice(index,1);renderCart()};row.append(info,remove);host.append(row)});if(!cart.length)host.innerHTML='<p class="smallprint">Aún no has añadido productos.</p>';document.getElementById('cartTotal').textContent=euro(total);document.getElementById('cartCount').textContent=cart.reduce((n,x)=>n+x.quantity,0)}
+document.getElementById('addToCart').onclick=()=>{if(!selected)return;const grams=Number(document.getElementById('weightSelect').value);const quantity=Number(document.getElementById('qtyKg').value);if(!Number.isInteger(quantity)||quantity<1||quantity>50){alert('Indica entre 1 y 50 unidades de este formato.');return}const found=cart.find(x=>x.id===Object.keys(products).find(k=>products[k]===selected)&&x.grams===grams);if(found)found.quantity+=quantity;else cart.push({id:Object.keys(products).find(k=>products[k]===selected),name:selected.name,price:selected.price,grams,quantity});renderCart();document.getElementById('productModal').classList.remove('open');document.getElementById('cartModal').classList.add('open')};
+renderCart();
+document.getElementById('cartFab').onclick=()=>{renderCart();document.getElementById('cartModal').classList.add('open')};
+document.getElementById('clearCart').onclick=()=>{cart.length=0;renderCart()};
+
+function buildCartOrderMessage(){
+ if(!cart.length){alert('Añade al menos un producto al pedido.');return null}
+ const buyer=document.getElementById('cartBuyer').value.trim();
+ const phone=document.getElementById('cartPhone').value.trim();
+ if(!buyer||!phone){alert('Indica tu nombre y teléfono de contacto.');return null}
+ const phoneDigits=phone.replace(/\D/g,'');
+ if(phoneDigits.length<9||phoneDigits.length>15){alert('Comprueba el teléfono: debe contener entre 9 y 15 cifras.');return null}
+ let total=0;
+ const lines=cart.map(item=>{
+  const subtotal=item.price*item.grams/1000*item.quantity;
+  total+=subtotal;
+  return '• '+item.name+'\n  '+item.quantity+' × '+item.grams+' g · '+euro(subtotal);
+ });
+ const notes=document.getElementById('cartNotes').value.trim();
+ return '🛒 *NUEVO PEDIDO · ALMENDRAS DE MÁLAGA*\n\n'
+  +'👤 *Cliente:* '+buyer+'\n'
+  +'📱 *Teléfono:* '+phone+'\n\n'
+  +'📦 *PRODUCTOS*\n'+lines.join('\n\n')+'\n\n'
+  +'💰 *TOTAL ORIENTATIVO:* '+euro(total)+'\n\n'
+  +'📝 *Observaciones:* '+(notes||'Ninguna')+'\n\n'
+  +'📍 Pedido realizado desde el catálogo web.\n'
+  +'Por favor, confirma disponibilidad, precio final y modalidad de entrega o recogida. El pedido queda pendiente de confirmación.';
+}
+document.getElementById('sendCartWhatsApp744').onclick=()=>{const message=buildCartOrderMessage();if(message)window.location.href='https://wa.me/34744602855?text='+encodeURIComponent(message)};
+document.getElementById('sendCartWhatsApp666').onclick=()=>{const message=buildCartOrderMessage();if(message)window.location.href='https://wa.me/34666068765?text='+encodeURIComponent(message)};
+
+document.getElementById('share').onclick=async()=>{const data={title:'Almendras de Málaga',text:'Catálogo profesional de frutos secos en Málaga',url:location.href};if(navigator.share){try{await navigator.share(data)}catch(e){}}else{await navigator.clipboard.writeText(location.href);alert('Enlace copiado')}};
+const almondMark='<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 4C14 12 9 20 11 29c2 8 8 13 13 13s11-5 13-13C39 20 34 12 24 4Z" fill="#b77a35" stroke="#70451f" stroke-width="1.8"/><path d="M24 9c-5 8-8 14-7 21 1 5 4 8 7 9" fill="none" stroke="#f3d39a" stroke-width="2.2" stroke-linecap="round"/><path d="M19 15c2-2 4-3 6-4" stroke="#f8e4bb" stroke-width="1.6" stroke-linecap="round"/></svg>';
+function makeQR(id){const host=document.getElementById(id);host.innerHTML='<div class="qr-shell"><div class="qr-code"></div><div class="qr-logo">'+almondMark+'</div></div>';const el=host.querySelector('.qr-code');if(window.QRCode){new QRCode(el,{text:location.href.split('#')[0],width:210,height:210,colorDark:'#243b2e',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});}else el.textContent=location.href}
+function qrCanvas(){const source=document.querySelector('#ownerqr .qr-code canvas');if(!source)return null;const scale=3,pad=16*scale,side=source.width*scale+pad*2,out=document.createElement('canvas');out.width=side;out.height=side;const c=out.getContext('2d');c.fillStyle='#fff';c.fillRect(0,0,side,side);c.drawImage(source,pad,pad,source.width*scale,source.height*scale);const center=side/2,r=29*scale;c.fillStyle='#fff';c.beginPath();c.roundRect(center-r,center-r,2*r,2*r,12*scale);c.fill();c.strokeStyle='#eee1ce';c.lineWidth=2*scale;c.stroke();c.save();c.translate(center-r+8*scale,center-r+8*scale);c.scale((2*r-16*scale)/48,(2*r-16*scale)/48);const svg=new Blob([almondMark],{type:'image/svg+xml'}),url=URL.createObjectURL(svg),img=new Image();return new Promise(resolve=>{img.onload=()=>{c.drawImage(img,0,0,48,48);URL.revokeObjectURL(url);resolve(out)};img.onerror=()=>{URL.revokeObjectURL(url);resolve(out)};img.src=url})}
+window.addEventListener('load',()=>makeQR('qr'));
+document.getElementById('owner').onclick=()=>{document.getElementById('publicUrl').value=location.href.split('#')[0];document.getElementById('ownerModal').classList.add('open');makeQR('ownerqr')};
+document.getElementById('downloadQR').onclick=async()=>{const c=await qrCanvas();if(!c)return;const a=document.createElement('a');a.download='QR-Almendras-de-Malaga.png';a.href=c.toDataURL('image/png');a.click()};
+document.getElementById('copyURL').onclick=async()=>{try{await navigator.clipboard.writeText(document.getElementById('publicUrl').value)}catch(e){document.getElementById('publicUrl').select();document.execCommand('copy')}};
+
+// Asistente local: responde usando las fichas de products, sin inventar stock.
+const chatPanel=document.getElementById('productChat'),chatFab=document.getElementById('chatFab'),chatMessages=document.getElementById('chatMessages');
+function chatSay(text,who){const node=document.createElement('div');node.className='chat-msg '+who;node.textContent=text;chatMessages.appendChild(node);chatMessages.scrollTop=chatMessages.scrollHeight}
+function answerProductQuestion(raw){
+ const q=normalizeCatalogText(raw);
+ const all=Object.entries(products);
+ const ignored=['100','250','500','1000','g','gr','kg','precio','precios','cuanto','cuantos','cuanta','cuantas','cuesta','vale','coste','tenei','teneis','tiene','tienen','hay','disponibilidad','disponible','stock','formato','formatos','gramo','gramos','peso','kilo','kilos','quiero','busco','necesito','producto','productos','favor','por','de','del','la','el','los','las','un','una','con','sin','para','que','es','son','me','dime','consulta','consultar'];
+ const words=catalogSearchWords(q).filter(w=>!ignored.includes(w));
+ const matches=all.filter(([id,p])=>{
+  const haystack=normalizeCatalogText([p.name,p.desc,p.tag,p.category,catalogGroup(p)].join(' '));
+  return words.length>0&&words.every(w=>haystack.includes(w));
+ });
+ const euroPrice=value=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(value);
+ const requestedGrams=(()=>{const m=q.match(/(100|250|500|1000)\s*(g|gr|gramos)?/);if(m)return Number(m[1]);if(/medio kilo|500 g|500gr/.test(q))return 500;if(/un kilo|1 kilo|1 kg|1000 g/.test(q))return 1000;return null})();
+ if(/disponib|stock|hay existencias|teneis|ten[eé]is|queda/.test(q)){
+  if(matches.length)return 'En el catálogo aparece: '+matches.slice(0,8).map(([id,p])=>p.name).join(', ')+'. El stock real no está conectado a la web; Don Miguel y Fabián confirman disponibilidad por WhatsApp: +34 666 068 765.';
+  return 'La web no consulta inventario en tiempo real. Dime el nombre del producto o pregunta directamente a Don Miguel y Fabián por WhatsApp: +34 666 068 765.';
+ }
+ if(matches.length&&requestedGrams){
+  return matches.slice(0,6).map(([id,p])=>p.name+': '+euroPrice(p.price*requestedGrams/1000)+' por '+requestedGrams+' g ('+euroPrice(p.price)+' / kg orientativo).').join('\\n')+'\\nEl precio final y la disponibilidad deben confirmarse.';
+ }
+ if(matches.length&&/precio|cu[aá]nto|coste|vale|format|gram|peso|kilo|kg|cantidad/.test(q)){
+  return matches.slice(0,6).map(([id,p])=>p.name+': '+euroPrice(p.price)+' / kg orientativo. Formatos: 100 g ('+euroPrice(p.price*.1)+'), 250 g ('+euroPrice(p.price*.25)+'), 500 g ('+euroPrice(p.price*.5)+') y 1 kg ('+euroPrice(p.price)+').').join('\\n')+'\\nEl importe final y la disponibilidad deben confirmarse con Don Miguel y Fabián.';
+ }
+ if(matches.length)return 'He encontrado estas referencias en el catálogo:\\n'+matches.slice(0,8).map(([id,p])=>'• '+p.name+' — '+euroPrice(p.price)+' / kg orientativo').join('\\n')+'\\n\\nFormatos: 100 g, 250 g, 500 g y 1 kg. Disponibilidad y precio final pendientes de confirmación.';
+ if(/formato|gram|peso|tamano|tamaño|kilo|kg|cantidad/.test(q))return 'Puedes solicitar los formatos de 100 g, 250 g, 500 g y 1 kg. Para cantidades mayores, consulta con Don Miguel y Fabián.';
+ if(/chocolate|golosin|caramel|snack|fruta|nuez|almendra|cacahuete|pistacho|anacardo|avellana|pipa|semilla/.test(q)){
+  const group=all.filter(([id,p])=>catalogGroup(p)===(/chocolate|golosin|caramel/.test(q)?'chuches':/fruta/.test(q)?'fruta':/snack|pipa|semilla/.test(q)?'variados':'frutos'));
+  return 'En esa familia aparecen, por ejemplo: '+group.slice(0,10).map(([id,p])=>p.name).join(', ')+'. Dime la variedad exacta y te indicaré su precio orientativo.';
+ }
+ return 'Puedo ayudarte con variedades, precios orientativos y formatos. Prueba con el nombre de un producto, por ejemplo «almendra cruda pelada», «pistacho turco tostado» o «kiwi deshidratado». La disponibilidad real la confirman Don Miguel y Fabián.';
+}
+chatFab.addEventListener('click',()=>{const open=!chatPanel.classList.contains('open');chatPanel.classList.toggle('open',open);chatPanel.setAttribute('aria-hidden',String(!open));chatFab.setAttribute('aria-expanded',String(open));if(open)document.getElementById('chatInput').focus()});
+document.getElementById('chatClose').addEventListener('click',()=>{chatPanel.classList.remove('open');chatPanel.setAttribute('aria-hidden','true');chatFab.setAttribute('aria-expanded','false')});
+document.getElementById('chatForm').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('chatInput'),q=input.value.trim();if(!q)return;chatSay(q,'user');chatSay(answerProductQuestion(q),'bot');input.value='';input.focus()});
+const translations={
+en:{eyebrow:'Artisan selection · Historic centre',heroTitle:'The taste of Málaga,<br>made to be shared.',heroText:'Almonds, nuts and caramelised specialities. Discover our products and request a trade price list for your business.',heroBtn:'Explore catalogue ↓',quality:'Selected products',professionalLabel:'Trade enquiries welcome',locationLabel:'Beside the Cathedral',eyebrow2:'Trade catalogue',catalogTitle:'Our products',catalogText:'Tap a product to view prices per kilo and calculated pack prices.',businessNoteTitle:'Trade prices',businessNote:'Ask us for current prices by kilo and pack size. Availability and delivery are confirmed directly.',specialty:'House speciality',p1:'Caramelised almonds',d1:'Almonds coated in crunchy caramel, packed in bags.',indicative:'per kilo',view:'Check pack sizes and request price →',naturalTag:'Natural selection',p2:'Natural almonds',d2:'Selected almonds for bulk or packed sales.',snack:'Snack',p3:'Sunflower seeds',d3:'Roasted sunflower seeds for snacks and retail.',sweet:'Traditional sweet',p4:'Caramelised peanuts',d4:'Peanuts coated in crunchy caramel.',priceFoot:'Prices and pack availability are confirmed directly with the stall. Photographs are illustrative.',forBusiness:'For your business',businessTitle:'A local supplier for your shop',businessText:'Prepare your request with product, quantity and pack size. We can discuss a trade proposal for shops, cafés, hotels, distributors and other professionals.',contact:'Request information',step1:'Choose products from the catalogue.',step2:'Check pack sizes and prices per kilo.',step3:'Send your request for a quotation.',visit:'Visit us',visitTitle:'In the heart of Málaga',address:'Corner of Calle Molina Lario, next to Málaga Cathedral.',maps:'Get directions',share:'Share catalogue',qrTitle:'Scan and save our catalogue',qrText:'Direct access to the digital catalogue',format:'Pack size',priceHead:'Indicative price',quote:'Request a trade quotation',close:'Close',ownerTitle:'Catalogue QR code',download:'Download QR PNG',copy:'Copy link',ownerNote:'This QR code points to the public catalogue.'},
+fr:{eyebrow:'Sélection artisanale · Centre historique',heroTitle:'Le goût de Málaga,<br>à partager.',heroText:'Amandes, fruits secs et spécialités caramélisées. Découvrez nos produits et demandez un tarif professionnel.',heroBtn:'Voir le catalogue ↓',quality:'Produits sélectionnés',professionalLabel:'Offres aux professionnels',locationLabel:'Près de la Cathédrale',eyebrow2:'Catalogue professionnel',catalogTitle:'Nos produits',catalogText:'Touchez un produit pour consulter les formats disponibles et demander le prix actuel.',businessNoteTitle:'Tarifs professionnels',businessNote:'Demandez les tarifs actuels au kilo et par format. La disponibilité et la livraison sont à confirmer directement.',specialty:'Spécialité',p1:'Amandes caramélisées',d1:'Amandes enrobées de caramel croquant, en sachets.',indicative:'prix au kilo',view:'Consulter les formats et demander le prix →',naturalTag:'Sélection naturelle',p2:'Amandes naturelles',d2:'Amandes sélectionnées, en vrac ou emballées.',snack:'Apéritif',p3:'Graines de tournesol',d3:'Graines de tournesol grillées pour la vente et l’apéritif.',sweet:'Douceur traditionnelle',p4:'Cacahuètes caramélisées',d4:'Cacahuètes enrobées de caramel croquant.',priceFoot:'Les prix et les formats disponibles sont confirmés directement au stand. Photos illustratives.',forBusiness:'Pour votre commerce',businessTitle:'Un fournisseur de proximité',businessText:'Préparez votre demande avec le produit, la quantité et le format. Contactez-nous pour une proposition professionnelle.',contact:'Demander des informations',step1:'Choisissez les produits du catalogue.',step2:'Consultez les formats et les prix au kilo.',step3:'Envoyez votre demande de devis.',visit:'Nous rendre visite',visitTitle:'Au cœur de Málaga',address:'Angle de la Calle Molina Lario, près de la Cathédrale.',maps:'Itinéraire',share:'Partager le catalogue',qrTitle:'Scannez notre catalogue',qrText:'Accès direct au catalogue numérique',format:'Format',priceHead:'Prix indicatif',quote:'Demander un devis',close:'Fermer',ownerTitle:'Code QR du catalogue',download:'Télécharger QR PNG',copy:'Copier le lien',ownerNote:'Ce QR code ouvre le catalogue public.'},
+de:{eyebrow:'Handwerkliche Auswahl · Historisches Zentrum',heroTitle:'Der Geschmack Málagas,<br>zum Teilen.',heroText:'Mandeln, Nüsse und karamellisierte Spezialitäten. Entdecken Sie unsere Produkte und fragen Sie nach Händlerpreisen.',heroBtn:'Katalog ansehen ↓',quality:'Ausgewählte Produkte',professionalLabel:'Angebote für Gewerbe',locationLabel:'Neben der Kathedrale',eyebrow2:'Händlerkatalog',catalogTitle:'Unsere Produkte',catalogText:'Tippen Sie auf ein Produkt, um verfügbare Packungsgrößen zu prüfen und den aktuellen Preis anzufragen.',businessNoteTitle:'Händlerpreise',businessNote:'Fragen Sie die aktuellen Preise pro Kilo und Packungsgröße an. Verfügbarkeit und Lieferung werden direkt bestätigt.',specialty:'Spezialität',p1:'Gebrannte Mandeln',d1:'Mandeln mit knuspriger Karamellschicht, abgepackt.',indicative:'Preis pro Kilo',view:'Packungsgrößen prüfen und Preis anfragen →',naturalTag:'Naturauswahl',p2:'Naturmandeln',d2:'Ausgewählte Mandeln lose oder verpackt.',snack:'Snack',p3:'Sonnenblumenkerne',d3:'Geröstete Sonnenblumenkerne als Snack.',sweet:'Traditionelle Süßigkeit',p4:'Gebrannte Erdnüsse',d4:'Erdnüsse mit knusprigem Karamellüberzug.',priceFoot:'Preise und verfügbare Packungsgrößen werden direkt am Stand bestätigt. Fotos dienen der Illustration.',forBusiness:'Für Ihr Geschäft',businessTitle:'Ein lokaler Lieferant für Ihr Geschäft',businessText:'Senden Sie Produkt, Menge und Verpackungsgröße für ein individuelles Angebot.',contact:'Informationen anfragen',step1:'Produkte aus dem Katalog auswählen.',step2:'Größen und Preise pro Kilo ansehen.',step3:'Anfrage für ein Angebot senden.',visit:'Besuchen Sie uns',visitTitle:'Im Herzen von Málaga',address:'Ecke Calle Molina Lario, neben der Kathedrale.',maps:'Route anzeigen',share:'Katalog teilen',qrTitle:'Katalog scannen und speichern',qrText:'Direkter Zugang zum digitalen Katalog',format:'Packungsgröße',priceHead:'Preis pro Kilo',quote:'Angebot anfordern',close:'Schließen',ownerTitle:'Katalog-QR-Code',download:'QR PNG herunterladen',copy:'Link kopieren',ownerNote:'Dieser QR-Code führt zum öffentlichen Katalog.'}
+};
+document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>{const l=b.dataset.lang;document.documentElement.lang=l;document.querySelectorAll('[data-lang]').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('[data-t]').forEach(el=>{const k=el.dataset.t;if(translations[l]&&translations[l][k])el.innerHTML=translations[l][k]})});
+
