@@ -1210,7 +1210,7 @@ window.PRODUCTS ={
     "category": "chocolates",
     "price": 29.8,
     "image": "https://upload.wikimedia.org/wikipedia/commons/6/65/2020-05-09_14_30_59_A_sample_of_Raisinets_in_Fair_Lakes%2C_Fairfax_County%2C_Virginia.jpg?utm_campaign=index&utm_content=original&utm_source=commons.wikimedia.org",
-    "imageVerified": true,
+    "imageVerified": false,
     "imageCredit": "Famartin · A sample of Raisinets in Fair Lakes",
     "imageSource": "https://commons.wikimedia.org/wiki/File:2020-05-09_14_30_59_A_sample_of_Raisinets_in_Fair_Lakes,_Fairfax_County,_Virginia.jpg",
     "imageLicense": "CC BY-SA 4.0"
