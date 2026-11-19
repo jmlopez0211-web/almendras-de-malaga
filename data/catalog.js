@@ -414,7 +414,11 @@ window.PRODUCTS ={
     "tag": "Garrapiñados y dulces",
     "category": "dulces",
     "price": 38,
-    "image": ""
+    "image": "https://cdn.pixabay.com/photo/2012/10/15/20/29/macadamia-61634_1280.jpg",
+    "imageVerified": true,
+    "imageCredit": "Hans · Macadamia, Burned, Caramelized",
+    "imageSource": "https://pixabay.com/photos/macadamia-burned-caramelized-61634/",
+    "imageLicense": "Pixabay Content License"
   },
   "avellanaAmericanaCruda": {
     "name": "Avellana americana cruda",
