@@ -842,7 +842,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 12,
-    "image": ""
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Higos_secos.jpg",
+    "imageVerified": true,
+    "imageCredit": "Tamorlan · Higos secos",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Higos_secos.jpg",
+    "imageLicense": "CC BY 3.0"
   },
   "orejonAlbaricoque": {
     "name": "Orejón de albaricoque",
