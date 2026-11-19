@@ -55,3 +55,16 @@ Hay mejores candidatos para cacahuete frito genérico y tostado con cáscara y s
 
 ## Conclusión de esta ronda
 La búsqueda amplía candidatos para cacahuete frito genérico y tostado repelado con sal. No se ha encontrado una fuente libre que confirme de forma fiable las cuatro combinaciones de cacahuete frito repelado/con piel y con/sin sal, ni tostado repelado sin sal. Los candidatos se mantienen sin asignar hasta inspección de imagen y licencia. El lote continúa abierto.
+
+
+## Cuarta ronda: fuentes verificadas en páginas individuales
+
+- **Frito genérico** — `Fried Peanut.jpg`, Derk29, CC BY-SA 4.0. Commons confirma la descripción “Fried peanut” y la licencia; la página no confirma si tiene piel fina ni sal. https://commons.wikimedia.org/wiki/File:Fried_Peanut.jpg
+- **Frito genérico** — `Fried peanuts.jpg`, Nishant113, CC BY-SA 4.0. La descripción identifica cacahuetes fritos y una preparación tipo snack salado; no confirma las variantes con piel/repelado ni aceite. https://commons.wikimedia.org/wiki/File:Fried_peanuts.jpg
+- **Frito comercial** — `PTC - Fried Peanuts.jpg`, Oakalleyfarms, CC BY-SA 4.0. Identifica cacahuetes fritos de Peanut Trading Company, sin atributos de piel o sal confirmados. https://commons.wikimedia.org/wiki/File:PTC_-_Fried_Peanuts.jpg
+- **Tostado con sal, grano sin cáscara exterior** — Pixabay `Peanuts Roasted Salted - Free photo`, Pixabay Content License. La descripción confirma tostado y salado; la imagen debe inspeccionarse para confirmar la piel fina. https://pixabay.com/photos/peanuts-roasted-salted-kernels-3188500/
+- **Tostado con sal, grano** — Pixabay `Salted roasted peanuts close-up`, Pixabay Content License. La descripción confirma tostado y salado; no confirma pelado de la piel fina. https://pixabay.com/photos/peanuts-food-nutty-salted-peanuts-1276100/
+- **Referencia de pelado** — `Peanuts (Arachis hypogaea) - in shell, shell cracked open, shelled, peeled.jpg`, Ivar Leidus. La descripción explícitamente distingue vaina, semilla con piel y semilla pelada; es una imagen didáctica, no una foto de producto preparado. https://commons.wikimedia.org/wiki/File:Peanuts_(Arachis_hypogaea)_-_in_shell,_shell_cracked_open,_shelled,_peeled.jpg
+
+## Estado tras la cuarta ronda
+Se verificaron páginas individuales para varias fotografías de cacahuete frito y tostado. La búsqueda aún no aporta fotos que documenten de forma fiable **frito con piel con/sin sal**, **frito repelado con/sin sal** ni **tostado repelado sin sal**. Los candidatos de tostado salado no se asignan a fichas repeladas hasta confirmar visualmente la piel fina. Lote abierto.
