@@ -106,3 +106,13 @@ La propiedad `imageVerified` del catálogo no equivale a una auditoría visual i
 ## Próxima acción
 
 Continuar con búsqueda por variante, no por categoría genérica. Revisar candidatos a resolución original, descartar envases/marcas y registrar cada aprobación o rechazo antes de incorporarla. La fase 2 permanecerá abierta hasta que todas las imágenes pendientes estén incorporadas y comprobadas.
+
+
+## Revisión visual y código — actualización 19/11/2026
+
+- Restaurada la fotografía de cabecera de la Catedral de Málaga con atribución enlazada (bongo vongo, CC BY-SA 2.0).
+- Reestructurado el cierre de página con nombre comercial, ubicación, teléfono y WhatsApp; los datos se mantienen coherentes con el bloque de visita.
+- Se han retirado del estado de imagen verificada varias fotografías con correspondencia dudosa o elementos comerciales/embalaje: plátano deshidratado, ciruela sin hueso, cacahuete con cáscara con sal, pasa de Corinto/Sultana, pasa Moscatel y habas picantes.
+- La imagen del cacahuete frito con piel y sal se sustituyó por una candidata de cacahuetes fritos sin puesto/bolsas comerciales.
+- **Estado técnico:** las imágenes marcadas como no verificadas se muestran mediante el placeholder limpio del catálogo, no mediante una fotografía errónea. No se han inventado fotos.
+- **Limitación pendiente:** el entorno GitHub conectado permite editar texto, pero no subir binarios de fotografía. Por tanto, la incorporación física de las 64 imágenes faltantes y la inspección visual a resolución completa no puede completarse aquí; no se declara el catálogo fotográfico terminado.
