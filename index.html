@@ -41,13 +41,10 @@
 </div>
 <div class="catalog-tools">
   <label class="catalog-search"><span aria-hidden="true">⌕</span><input id="productSearch" type="search" placeholder="Buscar almendras, semillas, fruta seca…"></label>
-  <div class="catalog-filters" aria-label="Filtrar catálogo por categoría">
-<button class="filter active" data-filter="todos">Todo el catálogo</button>
-<button class="filter" data-filter="frutos">Frutos secos</button>
-<button class="filter" data-filter="fruta">Frutas deshidratadas y desecadas</button>
-<button class="filter" data-filter="chuches">Chocolates y golosinas</button>
-<button class="filter" data-filter="variados">Variados / Snacks / Mixes</button>
-</div>
+  <div class="family-tiles" id="familyTiles" aria-label="Accesos a familias de productos"></div>
+<div class="catalog-filters" id="catalogFamilyFilters" aria-label="Filtrar catálogo por familia">
+<button class="filter active" data-filter="todos">Todo el catálogo</button><button class="filter" data-filter="frutos">Frutos secos</button><button class="filter" data-filter="fruta">Frutas deshidratadas</button><button class="filter" data-filter="chuches">Caramelos y golosinas</button><button class="filter" data-filter="variados">Pipas, aperitivos y mezclas</button>
+</div><div class="subfamily-filters" id="subfamilyFilters" aria-label="Subfamilias de productos"></div>
 <p class="catalog-result-count" id="catalogResultCount" aria-live="polite"></p>
 </div>
 <div class="grid" id="products" aria-live="polite"></div>
