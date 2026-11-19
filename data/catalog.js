@@ -29,7 +29,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 19.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Almendras_fritas.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Juan Emilio Prades Bel · Almendras fritas",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Almendras_fritas.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "almendraFritaOliva": {
     "name": "Almendra frita con aceite de oliva",
@@ -37,7 +41,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 24,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Almendras_fritas,_aperitivos_(Espa%C3%B1a).jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Juan Emilio Prades Bel · Almendras fritas, aperitivos (España)",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Almendras_fritas,_aperitivos_(España).jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "almendraFritaGirasol": {
     "name": "Almendra frita con aceite de girasol",
