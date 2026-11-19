@@ -926,7 +926,11 @@ window.PRODUCTS ={
     "tag": "Pipas y semillas",
     "category": "semillas",
     "price": 10,
-    "image": ""
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Pumpkin_Seeds_macro_1.jpg",
+    "imageVerified": true,
+    "imageCredit": "Daniel Schwen · Pumpkin Seeds macro 1",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Pumpkin_Seeds_macro_1.jpg",
+    "imageLicense": "CC BY 3.0"
   },
   "pinonNacional": {
     "name": "Piñón nacional",
