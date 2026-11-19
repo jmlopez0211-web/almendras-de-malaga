@@ -570,7 +570,11 @@ window.PRODUCTS ={
     "tag": "Revueltos",
     "category": "revueltos",
     "price": 18,
-    "image": ""
+    "image": "https://upload.wikimedia.org/wikipedia/commons/5/56/Haribo_Matador_Mix_Bowl_Straight.jpg",
+    "imageVerified": true,
+    "imageCredit": "Knud Winckelmann · Haribo Matador Mix Bowl Straight",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Haribo_Matador_Mix_Bowl_Straight.jpg",
+    "imageLicense": "CC BY-SA 3.0"
   },
   "revueloTostadoSinSal": {
     "name": "Revuelto tostado sin sal",
@@ -1018,7 +1022,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 8,
-    "image": ""
+    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Raisins_and_Sultanas_%284849308352%29.jpg",
+    "imageVerified": true,
+    "imageCredit": "bongo vongo · Raisins and Sultanas",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Raisins_and_Sultanas_(4849308352).jpg",
+    "imageLicense": "CC BY-SA 2.0"
   },
   "pasaMoscatel": {
     "name": "Pasa de Málaga Moscatel",
