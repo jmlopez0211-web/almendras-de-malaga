@@ -286,7 +286,7 @@ window.PRODUCTS ={
     "imageVerified": true,
     "imageCredit": "Glane23 · honey roasted peanuts",
     "imageSource": "https://commons.wikimedia.org/wiki/File:Honey_roasted_peanuts.JPG",
-    "imageLicense": "CC BY-SA 3.0"
+    "imageLicense": "CC BY-SA 4.0"
   },
   "anacardoCrudo": {
     "name": "Anacardo crudo suprema",
