@@ -523,3 +523,32 @@ Las nuevas páginas no aportan evidencia suficiente para asignar una imagen exac
 Se localizaron imágenes de cacahuete frito de varias cocinas y productos comerciales, pero ninguna evidencia conjunta de preparación simple, piel fina y sal. Los candidatos de receta, puesto o envase no cumplen el estándar de fotografía de producto.
 
 **Decisión:** no se integra ninguna fotografía nueva. El Lote 2 permanece abierto con tres asignaciones verificadas y nueve pendientes. No se inicia el Lote 3.
+
+
+## Vigesimoquinta ronda: nuevas fotografías de cacahuete frito y tostado
+
+### “Fried groundnut.jpg” — candidato frito genérico, descartado para variantes exactas
+
+- **Fried groundnut.jpg** — Obasi Ogbeyialu Precious, Wikimedia Commons, CC BY-SA 4.0; original 3.968 × 2.976 px. La ficha individual describe cacahuete frito como aperitivo nigeriano. La página no confirma si conserva la piel fina ni si lleva sal. Aunque la preparación frita está documentada, no sirve para asignar ninguna variante específica del catálogo. https://commons.wikimedia.org/wiki/File:Fried_groundnut.jpg
+
+### “Roasted Peanuts with shell.jpg” — tostado con vaina, sal desconocida
+
+- **Roasted Peanuts with shell.jpg** — Sanjay Acharya, Wikimedia Commons, CC BY-SA 4.0; original 5.666 × 3.763 px. La descripción y la imagen confirman cacahuetes tostados con cáscara exterior. No se documenta la presencia o ausencia de sal, por lo que no puede asignarse a “cacahuete con cáscara con sal” ni “sin sal”. https://commons.wikimedia.org/wiki/File:Roasted_Peanuts_with_shell.jpg
+
+### “Kacang kulit roasted peanuts with shells.JPG” — tostado con vaina, sal desconocida
+
+- **Kacang kulit roasted peanuts with shells.JPG** — Midori, Wikimedia Commons, multi-licencia GFDL/CC BY-SA 2.1 Japan; original 2.848 × 2.136 px. La descripción confirma cacahuetes tostados con cáscara. No acredita sal ni una variante comercial exacta. Se mantiene como referencia, no como asignación. https://commons.wikimedia.org/wiki/File:Kacang_kulit_roasted_peanuts_with_shells.JPG
+
+### “Peanuts (shelled raw marketed).jpg” — crudo sin vaina exterior, piel fina no confirmada
+
+- **Peanuts (shelled raw marketed).jpg** — David E Mead, Wikimedia Commons, CC0 1.0; original 5.152 × 3.864 px. La página describe cacahuetes crudos comercializados sin la vaina exterior. No confirma que se haya retirado también la piel fina, por lo que no es una foto exacta de cacahuete crudo repelado. https://commons.wikimedia.org/wiki/File:Peanuts_(shelled_raw_marketed).jpg
+
+### “Roasted peanuts.jpg” — tostado genérico
+
+- **Roasted peanuts.jpg** — Vis M, Wikimedia Commons, CC BY-SA 4.0; original 3.474 × 3.472 px. La descripción confirma tostado, pero no sal ni piel fina. No asignar a las variantes tostadas específicas. https://commons.wikimedia.org/wiki/File:Roasted_peanuts.jpg
+
+### Resultado de la vigesimoquinta ronda
+
+Las nuevas fuentes confirman preparación frita o tostada y, en algunos casos, la cáscara exterior, pero no documentan conjuntamente piel fina y sal. Ninguna foto se asigna.
+
+**Decisión:** se mantienen tres fotografías verificadas y nueve variantes pendientes. El Lote 2 sigue abierto; el Lote 3 permanece intacto.
