@@ -188,3 +188,29 @@ La consulta de catálogos confirma que existen productos comercializados exactam
 Se localiza la primera candidata de alta resolución con licencia apta para tienda para la variante **cacahuete con cáscara con sal**. La imagen de tostado con cáscara no confirma que sea sin sal y se descarta para esa variante. La variante con cáscara sin sal sigue necesitando una foto reutilizable cuya fuente confirme expresamente que no lleva sal.
 
 **Decisión:** la foto Pexels se mantiene como candidata pendiente de copia local e inspección del archivo descargado; no se cambia aún el catálogo. Lote 2 abierto y Lote 3 intacto.
+
+
+## Decimotercera ronda: corrección visual y candidato para cacahuete crudo con piel
+
+### Corrección de la duodécima ronda: Pexels “Salted Peanuts in Shells”
+
+Tras abrir la imagen original, se comprueba que **no muestra vainas/cáscaras exteriores**. Muestra granos sueltos, algunos con la piel fina rojiza y otros con la semilla clara visible, además de sal. Por tanto:
+- Se retira como candidata para **cacahuete con cáscara con sal**.
+- Tampoco se asigna a frito ni tostado, porque la página no acredita con precisión la preparación.
+- Queda solo como referencia visual de cacahuete en grano con sal, preparación indeterminada. No se integra ni se reasigna a ninguna ficha.
+
+Fuente y licencia de la página Pexels: https://www.pexels.com/photo/close-up-of-salted-peanuts-in-shells-35237495/ — licencia Pexels, permite uso comercial conforme a sus condiciones; la denominación “in shells” de la página no debe confundirse con la vaina exterior que exige la ficha de este catálogo.
+
+### Candidato nuevo: cacahuete crudo con piel
+
+- **“Raw peanuts with skin on white plate.jpg”** — Undeka 11, Wikimedia Commons, CC BY-SA 4.0, original 3.358 × 2.516 px (JPEG, 2,72 MB). La descripción de Commons confirma cacahuetes crudos con piel marrón sobre plato blanco; la inspección visual del original muestra granos individuales sin vaina exterior y con piel fina marrón/rojiza. Correspondencia visual y documental alta para **cacahuete crudo con piel**. Requiere conservar atribución, enlace de licencia y compartir-alike si se modifica. Aún no se copia/optimiza localmente ni se asigna al catálogo. https://commons.wikimedia.org/wiki/File:Raw_peanuts_with_skin_on_white_plate.jpg
+
+### Auditoría de la imagen que ya figura en el catálogo
+
+La ficha `cacahueteCrudoPiel` apunta actualmente a `assets/products/cacahuete-crudo-piel.jpg` y estaba marcada `imageVerified: true`, pero el archivo inspeccionado mide solo **200 × 140 px** y no hay autor, fuente ni licencia registrados junto a la ficha. Aunque visualmente parece representar granos crudos con piel, la procedencia y los derechos de uso no se pueden demostrar. Se debe retirar su estado de verificada y mostrar el marcador de fotografía pendiente hasta integrar una copia local con procedencia/licencia comprobadas. El archivo original se conserva sin borrar, pero deja de mostrarse como foto verificada.
+
+### Resultado de la decimotercera ronda
+
+La foto de Commons es una candidata fuerte para cacahuete crudo con piel. Se corrige el falso positivo de Pexels para cacahuete con vaina. La foto candidata de Commons no se asigna todavía porque falta la descarga, optimización y registro local del archivo; el producto no debe presentar como verificada una foto pequeña sin procedencia trazable.
+
+**Decisión:** mantener el Lote 2 abierto. No se cambia ningún precio, descripción, filtro o función. No se inicia el Lote 3.
