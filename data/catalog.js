@@ -159,12 +159,6 @@ window.PRODUCTS ={
     "category": "cacahuetes",
     "price": 6.8,
     "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Peanuts_(shelled_raw_marketed).jpg?width=1200",
-    "imageCredit": "David E Mead · raw shelled peanuts at market",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:Peanuts_(shelled_raw_marketed).jpg",
-    "imageLicense": "CC0 1.0",
-    "imageVerified": true,
-    "imageCredit": "Ivar Leidus",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:Peanuts_(Arachis_hypogaea)_-_in_shell,_shell_cracked_open,_shelled,_peeled.jpg",
     "imageLicense": "CC BY-SA 4.0"
   },
   "cacahueteCascaraSal": {
