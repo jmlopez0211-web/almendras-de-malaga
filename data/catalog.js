@@ -69,7 +69,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 24.8,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Almendras_tostadas_sin_piel.jpg?width=1200"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Almendras_tostadas_sin_piel.jpg?width=1200",
+    "imageCredit": "Cebes · toasted peeled almonds",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Almendras_tostadas_sin_piel.jpg",
+    "imageLicense": "CC BY 3.0",
+    "imageVerified": false
   },
   "almendraTostadaRepeladaSinSal": {
     "name": "Almendra tostada repelada sin sal",
@@ -159,7 +163,10 @@ window.PRODUCTS ={
     "category": "cacahuetes",
     "price": 6.8,
     "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Peanuts_(shelled_raw_marketed).jpg?width=1200",
-    "imageLicense": "CC BY-SA 4.0"
+    "imageLicense": "CC0 1.0",
+    "imageCredit": "David E Mead · raw shelled peanuts at market",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Peanuts_(shelled_raw_marketed).jpg",
+    "imageVerified": false
   },
   "cacahueteCascaraSal": {
     "name": "Cacahuete con cáscara con sal",
@@ -203,7 +210,11 @@ window.PRODUCTS ={
     "tag": "Cacahuetes",
     "category": "cacahuetes",
     "price": 9,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried_peanuts.jpg?width=1200"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried_peanuts.jpg?width=1200",
+    "imageCredit": "Nishant113 · fried peanuts",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Fried_peanuts.jpg",
+    "imageLicense": "CC BY-SA 4.0",
+    "imageVerified": false
   },
   "cacahueteFritoRepeladoSal": {
     "name": "Cacahuete frito repelado con sal",
@@ -211,7 +222,11 @@ window.PRODUCTS ={
     "tag": "Cacahuetes",
     "category": "cacahuetes",
     "price": 9,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried_Peanut.jpg?width=1200"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried_Peanut.jpg?width=1200",
+    "imageCredit": "Derk29 · fried peanut",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Fried_Peanut.jpg",
+    "imageLicense": "CC BY-SA 4.0",
+    "imageVerified": false
   },
   "cacahueteFritoRepeladoSinSal": {
     "name": "Cacahuete frito repelado sin sal",
