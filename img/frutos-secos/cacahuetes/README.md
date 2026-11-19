@@ -590,3 +590,25 @@ Se amplió la búsqueda a Commons, Pixabay, Hippopx y Photos Public Domain, con 
 Ninguna nueva fotografía cumple conjuntamente la identificación visual y documental de una variante exacta. Los repositorios alternativos aportan imágenes de cacahuetes genéricos, tostados/fritos sin detalle suficiente de piel o sal, o composiciones comparativas que no representan una unidad de producto uniforme.
 
 **Decisión:** no se integra ninguna imagen. Se mantienen las tres fotografías verificadas y nueve variantes pendientes. Lote 2 continúa abierto; Lote 3 permanece intacto.
+
+
+## Ronda 28 — variantes fritas y tostadas, referencias comerciales y otros idiomas
+
+Búsqueda dirigida a cacahuetes fritos con piel, fritos repelados, tostados con piel y tostados repelados sin sal.
+
+- **Catálogo Pano / Panofruits (referencia comercial, no reutilización):** presenta fotografías etiquetadas explícitamente «Cacahuetes repelados fritos salados», «Cacahuetes repelados fritos sin sal», «Cacahuetes crudos repelados», «Cacahuetes cáscara tostados» y «Cacahuetes tostado sin sal». La nomenclatura confirma que las variantes comerciales existen, pero el PDF no ofrece una licencia de reutilización de las fotografías; no copiar. https://www.pano.cat/descargas/catalogo_frutos_secos_cast.pdf
+- **Catálogo Borges Bain (referencia comercial, no reutilización):** identifica visualmente «Cacahuete piel frito salado» y «Cacahuete cáscara tostado salado». Es evidencia de producto exacto, pero no una fuente reutilizable de imagen. https://lopezaragon.com/descargas/borges/catalogo-bain-generic-esp.pdf
+- **Transgourmet/Gourmet — Cacahuete repelado frito:** ficha de producto identifica ingredientes cacahuete repelado, aceite de girasol y sal 1%; la foto corresponde a bolsa comercial y no es reutilizable como imagen de catálogo. https://gestiona.alimentiumconnect.com/Multimedia/Data_33782/698f58f3-7d6d-4682-a10d-d00479d168dd.pdf
+- **FRIT RAVICH — cacahuete repelado salado:** especificación comercial confirma cacahuetes repelados, aceite y sal; fotografía de envase, no reutilizable. https://prod.isg.bruneau.media/asset/aHR0cHM6Ly9zYWdzc3NtZHJvb3B5cHJkbmUuYmxvYi5jb3JlLndpbmRvd3MubmV0L2Ryb29weWNvbnRhaW5lci82MjBjMDkzMy0yMjdiLTQ0OTctOTI2ZS0wODc2ZTdkMmNkYjIucGRm/?quality=85
+- **Aperitivos Losán — “Panchitos con piel” y “Panchito repelado”:** página comercial documenta cacahuetes fritos con piel y repelados, ambos con sal y aceites. Las imágenes son comerciales y la ficha de “repelado” no permite asumir visualmente que toda la piel fina está retirada; no reutilizar. https://aperitivoslosan.es/fritos/
+- **Commons — “Roasted peanuts.jpg” (Vis M):** alta resolución, CC BY-SA 4.0, pero descripción solo dice roasted; sal y estado de piel fina no confirmados. No asignar. https://commons.wikimedia.org/wiki/File:Roasted_peanuts.jpg
+- **Commons — “Roasted Peanuts with shell.jpg” (Sanjay Acharya):** alta resolución, CC BY-SA 4.0; confirma tostados con cáscara exterior, pero no sal ni estado de la piel fina de las semillas. No asignar. https://commons.wikimedia.org/wiki/File:Roasted_Peanuts_with_shell.jpg
+- **Commons — “Kacang kulit roasted peanuts with shells.JPG” (Midori):** licencia copyleft indicada en Commons; confirma tostados con cáscara exterior, no sal. No asignar a variante salada ni sin sal porque el dato de sal no está documentado. https://commons.wikimedia.org/wiki/File:Kacang_kulit_roasted_peanuts_with_shells.JPG
+- **Commons — “Fried peanuts.jpg”:** foto de cacahuetes fritos, descripción en hindi/inglés de snack popular; no verifica piel fina ni sal. No asignar. https://commons.wikimedia.org/wiki/File:Fried_peanuts.jpg
+- **Unsplash — “A close-up view of roasted peanuts” (Rafael Rodrigues):** licencia Unsplash; título y etiquetas genéricas de cacahuetes tostados, sin confirmación de sal ni pelado exacto. No asignar. https://unsplash.com/photos/a-close-up-view-of-roasted-peanuts-vuXnF-Z6K-Y
+
+### Resultado de la vigesimoctava ronda
+
+Se localizaron referencias comerciales que distinguen de forma explícita las variantes fritas con piel, fritas repeladas, tostadas con cáscara y tostadas sin sal. Sin embargo, sus fotografías no tienen una licencia reutilizable acreditada. Las fuentes libres encontradas no documentan conjuntamente los atributos exactos de piel fina, preparación y sal.
+
+**Decisión:** ninguna imagen nueva integrada. Se mantienen tres fotografías verificadas y nueve variantes pendientes. Lote 2 continúa abierto; Lote 3 permanece intacto.
