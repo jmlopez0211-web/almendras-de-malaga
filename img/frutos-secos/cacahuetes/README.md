@@ -103,3 +103,17 @@ Se ha localizado un candidato documentalmente muy preciso para **tostado repelad
 
 ## Estado tras la séptima ronda
 Nuevas fuentes aportan descripciones explícitas para tostado sin sal/sin cáscara exterior y varias fotografías de cacahuete frito. No se han inspeccionado las imágenes a resolución original en el repositorio, por lo que no se asignan aún. Las combinaciones frito con piel con/sin sal y frito repelado con/sin sal continúan sin evidencia visual y documental suficiente. Lote abierto.
+
+
+## Octava ronda: fuentes con descripción de producto más precisa
+
+- **Tostado repelado sin sal** — `Roasted Peanuts`, Photos Public Domain. La fuente dice dry roasted, unsalted y shelled; declara dominio público. Candidato documentalmente exacto, pendiente inspección visual para confirmar ausencia de piel fina. https://www.photos-public-domain.com/2012/04/02/roasted-peanuts/
+- **Tostado repelado sin sal (textura)** — misma fuente, descripción explícita dry roasted, unsalted y shelled; dominio público declarado. https://www.photos-public-domain.com/2012/04/02/roasted-peanuts-texture/
+- **Cacahuete sin cáscara, sin sal y con aceite vegetal** — `Shelled Peanuts`, Photos Public Domain. La fuente confirma sin cáscara exterior, sin sal y recubrimiento de aceite vegetal; no confirma si es crudo o frito ni si conserva la piel fina, por lo que no encaja en una ficha exacta todavía. https://www.photos-public-domain.com/2017/12/08/shelled-peanuts/
+- **Tostado genérico** — `Roasted Peanuts (2019).jpg`, Augustus Binu, CC BY-SA 3.0. Commons confirma la fotografía y licencia, pero no sal, piel fina ni preparación exacta. https://commons.wikimedia.org/wiki/File:Roasted_Peanuts_(2019).jpg
+- **Tostado con cáscara** — `Roasted Peanuts with shell.jpg`, Sanjay Acharya, CC BY-SA 4.0. Descripción y fotografía confirman cáscara exterior; no confirma sal. https://commons.wikimedia.org/wiki/File:Roasted_Peanuts_with_shell.jpg
+- **Tostado genérico** — `Roasted peanuts.jpg`, Vis M, CC BY-SA 4.0. La página identifica cacahuetes tostados, sin confirmar piel fina o sal. https://commons.wikimedia.org/wiki/File:Roasted_peanuts.jpg
+- **Referencia visual de pelado** — Commons `Peanuts (Arachis hypogaea) - in shell, shell cracked open, shelled, peeled.jpg`, Ivar Leidus; identifica explícitamente estados con cáscara, descascarados y pelados. No es una imagen de producto preparado. https://commons.wikimedia.org/wiki/File:Peanuts_(Arachis_hypogaea)_-_in_shell,_shell_cracked_open,_shelled,_peeled.jpg
+
+## Estado tras la octava ronda
+Se refuerza la documentación del candidato para tostado repelado sin sal, y se localiza una fuente de cacahuete sin cáscara y sin sal con aceite, pero esta última no demuestra preparación frita. No se asignan imágenes. Continúan sin evidencia exacta las variantes fritas con piel/repeladas y con/sin sal. Lote abierto.
