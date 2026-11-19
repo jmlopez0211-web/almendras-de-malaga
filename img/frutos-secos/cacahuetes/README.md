@@ -413,3 +413,28 @@ La imagen es única y no está asignada a otra ficha. El catálogo conserva 152 
 La búsqueda de Commons y de fotografías de dominio público aporta imágenes de procesos de cocción y de cacahuetes tostados sin sal, pero no una foto terminada que confirme todos los atributos de los productos pendientes. No se fuerza ninguna asignación a partir de fotos de proceso, composiciones mixtas o descripciones que omiten piel o sal.
 
 **Decisión:** no se integra ninguna foto de esta ronda. El Lote 2 sigue abierto, con tres fichas verificadas y nueve pendientes. No se toca el Lote 3.
+
+
+## Vigesimosegunda ronda: últimas variantes fritas y definición técnica de “repelado”
+
+### Referencia terminológica para cacahuete crudo repelado
+
+- **Ficha técnica “Blanched Peanuts”** — documento técnico de producto de Gastaldi publicado en un repositorio institucional. Define expresamente los blanched peanuts como cacahuetes seleccionados “without skin”, enteros o partidos. Incluye una fotografía de producto de granos blanqueados, de tono crema y sin piel fina roja; esto ayuda a distinguir correctamente el aspecto de la variante repelada. No se reutiliza la fotografía: el documento no declara una licencia comercial abierta para la imagen. Se emplea exclusivamente como referencia técnica. https://epd.inti.gob.ar/assets/uploads/libreria/IES-0024770002-EN.pdf
+
+### “Uncle Bud’s Deep Fried Peanuts” — producto exacto, pero no la variante del catálogo
+
+- **Uncle Bud's Deep Fried Peanuts.jpg** — Mr.Atoz, Wikimedia Commons, CC BY-SA 3.0, original 2.776 × 2.135 px. La inspección del original muestra el envase rotulado “Salted Deep Fried Peanuts”, ingredientes cacahuetes, sal y aceite de soja, y la frase “Shell-n-all”. La fuente confirma fritura y sal, pero el producto se vende/consume con la vaina exterior incluida; no es cacahuete frito con la piel fina del grano y sin vaina. La fotografía es principalmente del envase, no una fotografía limpia del contenido. No asignar a las variantes fritas del catálogo. https://commons.wikimedia.org/wiki/File:Uncle_Bud%27s_Deep_Fried_Peanuts.jpg
+
+### “A Little Nuts Deep Fried Peanuts” — descartada por surtido de sabores
+
+- **A Little Nuts Deep Fried Peanuts.jpg** — Karlaadamk, Wikimedia Commons, CC BY-SA 4.0, original 3.029 × 3.000 px. La descripción dice “All of the flavors of A Little Nuts Deep Fried Peanuts”; no especifica cuál es la preparación o el sabor de cada grupo, ni presencia/ausencia de piel fina o sal para una variante concreta. No utilizar como foto de una ficha individual. https://commons.wikimedia.org/wiki/File:A_Little_Nuts_Deep_Fried_Peanuts.jpg
+
+### “Fried groundnut.jpg” — candidato genérico todavía no verificable en detalle
+
+- **Fried groundnut.jpg** — Obasi Ogbeyialu Precious, Wikimedia Commons, CC BY-SA 4.0, original 3.968 × 2.976 px. La descripción confirma que es un aperitivo nigeriano de cacahuete frito. No describe sal ni piel fina; el archivo original no pudo revisarse visualmente en esta consulta. No se asigna por faltar esa evidencia. https://commons.wikimedia.org/wiki/File:Fried_groundnut.jpg
+
+### Resultado de la vigesimosegunda ronda
+
+Se ha aclarado el significado técnico de “repelado” y se ha confirmado un producto comercial de cacahuete frito y salado, pero “shell-n-all” significa que conserva la vaina, por lo que no representa las fichas fritas de este lote. Las nuevas imágenes libres de fritos siguen siendo genéricas, surtidos o envases, sin prueba completa de piel fina y sal.
+
+**Decisión:** no se integra ninguna foto nueva. El Lote 2 mantiene tres fotografías verificadas y nueve variantes pendientes. Lote 3 permanece intacto.
