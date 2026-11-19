@@ -718,7 +718,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 23,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_hibiscus_flowers.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Jugemu · dried hibiscus flowers",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_hibiscus_flowers.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "kiwiDeshidratado": {
     "name": "Kiwi deshidratado",
