@@ -150,7 +150,11 @@ window.PRODUCTS ={
     "tag": "Cacahuetes",
     "category": "cacahuetes",
     "price": 6.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Peanuts_%28Arachis_hypogaea%29_-_in_shell%2C_shell_cracked_open%2C_shelled%2C_peeled.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Ivar Leidus",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Peanuts_(Arachis_hypogaea)_-_in_shell,_shell_cracked_open,_shelled,_peeled.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "cacahueteCascaraSal": {
     "name": "Cacahuete con cáscara con sal",
@@ -170,7 +174,11 @@ window.PRODUCTS ={
     "tag": "Cacahuetes",
     "category": "cacahuetes",
     "price": 6.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Roasted_Peanuts_with_shell.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Sanjay Acharya",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Roasted_Peanuts_with_shell.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "cacahueteFritoPielSal": {
     "name": "Cacahuete frito con piel con sal",
@@ -218,7 +226,11 @@ window.PRODUCTS ={
     "tag": "Cacahuetes",
     "category": "cacahuetes",
     "price": 9,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Roasted_peanuts.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Vis M",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Roasted_peanuts.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "cacahueteTostadoRepeladoSal": {
     "name": "Cacahuete tostado repelado con sal",
@@ -290,7 +302,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 26,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Roasted_Cashew_Nuts_%2853550391740%29.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Choo Yut Shing",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Roasted_Cashew_Nuts_(53550391740).jpg",
+    "imageLicense": "CC BY 2.0"
   },
   "anacardoTostadoSinSal": {
     "name": "Anacardo tostado sin sal",
