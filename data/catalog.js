@@ -530,11 +530,7 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 49.8,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dry_pista_without_shell.jpg?width=1200",
-    "imageVerified": true,
-    "imageCredit": "Karikkan · dry pistachio without shell",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:Dry_pista_without_shell.jpg",
-    "imageLicense": "CC BY-SA 3.0"
+    "image": ""
   },
   "revueloNatural": {
     "name": "Revuelto natural",
