@@ -90,3 +90,16 @@ Los candidatos de frito genérico aumentan, pero no resuelven las variantes **fr
 
 ## Estado tras la sexta ronda
 Se ha localizado un candidato documentalmente muy preciso para **tostado repelado sin sal**. Pendiente inspección visual del grano para confirmar ausencia de piel fina. Las variantes de cacahuete frito con piel/repelado y con/sin sal siguen sin fuente exacta verificable. Lote abierto.
+
+
+## Séptima ronda: nuevas fuentes con descripción explícita
+
+- **Tostado repelado sin sal** — `Roasted Peanuts`, Photos Public Domain. La página declara dry-roasted, unsalted y shelled; dominio público según el sitio. Sigue pendiente inspección visual para comprobar que se retiró también la piel fina. https://www.photos-public-domain.com/2012/04/02/roasted-peanuts/
+- **Tostado repelado sin sal (textura)** — `Roasted Peanuts Texture`, misma fuente y descripción: dry-roasted, unsalted, shelled; dominio público según el sitio. https://www.photos-public-domain.com/2012/04/02/roasted-peanuts-texture/
+- **Cacahuete frito genérico** — `Kacang goreng fried peanuts.JPG`, Sakurai Midori, CC BY 3.0 o GFDL. La página identifica fried peanuts (Indonesia), pero no confirma piel fina ni sal. https://commons.wikimedia.org/wiki/File:Kacang_goreng_fried_peanuts.JPG
+- **Cacahuete frito genérico** — `Fried groundnut.jpg`, Obasi Ogbeyialu Precious, CC BY-SA 4.0. La descripción lo identifica como snack de cacahuete frito; no confirma pelado ni sal. https://commons.wikimedia.org/wiki/File:Fried_groundnut.jpg
+- **Tostado con sal y sin cáscara exterior** — Hippopx, imagen etiquetada roasted/salted/shelled y licencia Public Domain/free for commercial use. La metadata no permite confirmar piel fina; candidato pendiente de inspección. https://www.hippopx.com/en/free-photo-jgwpb
+- **Cacahuete crudo / pelado** — Public Domain Pictures, George Hodan, imagen etiquetada shelled/peeled; el sitio ofrece descarga libre, pero revisar términos de la descarga antes de uso comercial. https://www.publicdomainpictures.net/en/view-image.php?image=20116&large=1&picture=peanuts
+
+## Estado tras la séptima ronda
+Nuevas fuentes aportan descripciones explícitas para tostado sin sal/sin cáscara exterior y varias fotografías de cacahuete frito. No se han inspeccionado las imágenes a resolución original en el repositorio, por lo que no se asignan aún. Las combinaciones frito con piel con/sin sal y frito repelado con/sin sal continúan sin evidencia visual y documental suficiente. Lote abierto.
