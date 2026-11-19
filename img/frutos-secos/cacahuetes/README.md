@@ -68,3 +68,15 @@ La búsqueda amplía candidatos para cacahuete frito genérico y tostado repelad
 
 ## Estado tras la cuarta ronda
 Se verificaron páginas individuales para varias fotografías de cacahuete frito y tostado. La búsqueda aún no aporta fotos que documenten de forma fiable **frito con piel con/sin sal**, **frito repelado con/sin sal** ni **tostado repelado sin sal**. Los candidatos de tostado salado no se asignan a fichas repeladas hasta confirmar visualmente la piel fina. Lote abierto.
+
+
+## Quinta ronda: nuevas categorías y candidatos
+
+- `Fried peanuts.jpg` — Nishant113, CC BY-SA 4.0. La página individual describe cacahuetes fritos como snack popular; no confirma si están repelados ni la cantidad de sal. https://commons.wikimedia.org/wiki/File:Fried_peanuts.jpg
+- `PTC - Fried Peanuts.jpg` — Oakalleyfarms, CC BY-SA 4.0. Producto comercial de Peanut Trading Company, frito; no confirma piel fina ni sal. https://commons.wikimedia.org/wiki/File:PTC_-_Fried_Peanuts.jpg
+- `Deep Fried Peanuts.jpg` — Mr.Atoz, CC BY-SA 3.0. Confirma cacahuete frito; no confirma las variantes específicas. https://commons.wikimedia.org/wiki/File:Deep_Fried_Peanuts.jpg
+- `Fried Peanut.jpg` — Derk29, CC BY-SA 4.0. Confirma cacahuete frito; no confirma piel ni sal. https://commons.wikimedia.org/wiki/File:Fried_Peanut.jpg
+- Se revisó la categoría de cacahuetes como alimento y la de cacahuetes tostados; aparecen más imágenes, pero las descripciones no documentan suficientemente las variantes exactas.
+
+## Estado tras la quinta ronda
+Los candidatos de frito genérico aumentan, pero no resuelven las variantes **frito con piel con/sin sal**, **frito repelado con/sin sal** ni **tostado repelado sin sal**. No se asignan imágenes definitivas y el Lote 2 sigue abierto.
