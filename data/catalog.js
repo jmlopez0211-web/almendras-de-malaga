@@ -262,7 +262,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 20.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Raw_cashew.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Fumikas Sagisavas · Raw cashew",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Raw_cashew.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "anacardoFritoSal": {
     "name": "Anacardo frito con sal",
