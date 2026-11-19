@@ -586,7 +586,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 19.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_apple_slices.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Fumikas Sagisavas · dried apple slices",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_apple_slices.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "jengibreAzucar": {
     "name": "Jengibre deshidratado con azúcar",
@@ -614,7 +618,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 19.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Banana_Chips.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Kozak005 · banana chips of Angadanan",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Banana_Chips.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "aloeDeshidratada": {
     "name": "Aloe vera deshidratada",
@@ -702,7 +710,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 19.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_cranberries_%2820240115%29.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "François Nguyen · dried cranberries",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_cranberries_(20240115).jpg",
+    "imageLicense": "CC BY 2.0"
   },
   "datilMedjoul": {
     "name": "Dátil gigante Medjoul",
@@ -750,7 +762,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 18.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_apricots.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Vis M · dried apricots",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_apricots.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "ciruelaSinHueso": {
     "name": "Ciruela sin hueso",
