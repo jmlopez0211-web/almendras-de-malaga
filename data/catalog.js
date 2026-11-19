@@ -938,7 +938,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 99.8,
-    "image": ""
+    "image": "https://upload.wikimedia.org/wikipedia/commons/8/83/Pine_nuts_in_bowl.jpg",
+    "imageVerified": true,
+    "imageCredit": "Saintfevrier · Pine nuts in bowl",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Pine_nuts_in_bowl.jpg",
+    "imageLicense": "CC BY-SA 3.0"
   },
   "pinonChino": {
     "name": "Piñón chino",
@@ -946,7 +950,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 60,
-    "image": ""
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/97/Jat_%28pine_nut%29_%28Pinus_koraiensis%29.jpg",
+    "imageVerified": true,
+    "imageCredit": "국립국어원 · Jat (pine nut) (Pinus koraiensis)",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Jat_(pine_nut)_(Pinus_koraiensis).jpg",
+    "imageLicense": "CC BY-SA 2.0 Korea"
   },
   "garbanzoFrito": {
     "name": "Garbanzo frito",
