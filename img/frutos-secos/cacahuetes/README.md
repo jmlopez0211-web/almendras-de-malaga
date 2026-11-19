@@ -552,3 +552,21 @@ Se localizaron imágenes de cacahuete frito de varias cocinas y productos comerc
 Las nuevas fuentes confirman preparación frita o tostada y, en algunos casos, la cáscara exterior, pero no documentan conjuntamente piel fina y sal. Ninguna foto se asigna.
 
 **Decisión:** se mantienen tres fotografías verificadas y nueve variantes pendientes. El Lote 2 sigue abierto; el Lote 3 permanece intacto.
+
+
+## Vigesimosexta ronda: revisión de nuevas entradas de Commons
+
+- **“Salted peanuts.jpg”** — Shark2025, Wikimedia Commons, CC BY-SA 4.0, original 3.120 × 4.160 px. La ficha confirma cacahuetes salados, pero no declara si son crudos, tostados o fritos ni si conservan la piel fina. No asignar a ninguna variante específica. https://commons.wikimedia.org/wiki/File:Salted_peanuts.jpg
+- **“Groundnut fries.jpg”** — Thamizhpparithi Maari, Wikimedia Commons, CC BY-SA 4.0, original 4.208 × 2.368 px. La descripción identifica “curry peanuts”; al ser una preparación condimentada, no representa las variantes simples del catálogo. Descartada. https://commons.wikimedia.org/wiki/File:Groundnut_fries.jpg
+- **“Fried peanuts.jpg”** — Nishant113, Wikimedia Commons, CC BY-SA 4.0, original 4.160 × 3.120 px. La página confirma cacahuetes fritos como snack indio, pero no documenta piel fina ni sal. Se mantiene como candidato genérico, no como asignación exacta. https://commons.wikimedia.org/wiki/File:Fried_peanuts.jpg
+- **“Fried Peanut.jpg”** — Derk29, Wikimedia Commons, CC BY-SA 4.0, original 2.448 × 3.264 px. Confirma cacahuete frito de Filipinas, sin información sobre piel fina o sal. No asignar. https://commons.wikimedia.org/wiki/File:Fried_Peanut.jpg
+- **“Deep Fried Peanuts.jpg”** — Mr.Atoz, Wikimedia Commons; página describe cacahuete frito. No aporta evidencia suficiente de piel fina o sal para variantes concretas. No asignar. https://commons.wikimedia.org/wiki/File:Deep_Fried_Peanuts.jpg
+- **“Kacang goreng fried peanuts.JPG”** — Sakurai Midori, Wikimedia Commons, CC BY 3.0/GFDL. Confirma cacahuetes fritos de Indonesia; no declara piel fina ni sal. No asignar. https://commons.wikimedia.org/wiki/File:Kacang_goreng_fried_peanuts.JPG
+- **“Boiled peanuts.jpg”** — Bryantdmo, Wikimedia Commons, CC BY-SA 4.0. La descripción confirma cacahuetes hervidos, una preparación distinta de las fichas del lote. Descartada. https://commons.wikimedia.org/wiki/File:Boiled_peanuts.jpg
+- **“Frying Peanut on a street shop”** — Nasir Khan Saikat, Wikimedia Commons, CC BY-SA 3.0. Documenta el proceso de fritura en un puesto y cacahuetes con vaina; no es una fotografía limpia del producto terminado ni confirma las variantes de piel/sal. No asignar. https://commons.wikimedia.org/wiki/File:Frying_Peanut_(Arachis_hypogaea)_on_a_street_shop_(1).jpg
+
+### Resultado de la vigesimosexta ronda
+
+Las nuevas páginas documentan cacahuetes salados o fritos de forma genérica, pero no la combinación exacta de preparación, piel fina y sal necesaria para una ficha. Las fotos de curry, hervidos y proceso de puesto quedan descartadas por preparación o presentación.
+
+**Decisión:** ninguna foto nueva integrada. Se mantienen tres fotografías verificadas y nueve variantes pendientes. Lote 2 abierto; Lote 3 intacto.
