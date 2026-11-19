@@ -152,3 +152,26 @@ Se localiza una fuente española de alta resolución con licencia CC BY-SA 4.0 p
 La búsqueda ha permitido confirmar comercialmente las combinaciones de frito repelado con sal, frito repelado sin sal y frito con piel y sal, y ha aportado una candidata de dominio público para tostado repelado sin sal. Todavía no hay una fotografía libre y suficientemente documentada para cada variante del lote. En particular, siguen pendientes fotografías reutilizables exactas para frito con piel sin sal, las variantes fritas repeladas sin ambigüedad fotográfica, y las dos variantes de cacahuete con cáscara con/sin sal.
 
 **Decisión:** no se asigna ninguna de estas nuevas referencias al catálogo ni se integra ninguna fotografía en esta ronda. Se conserva el criterio de no usar imágenes comerciales protegidas ni de inferir sal, piel o preparación por semejanza. El Lote 2 continúa abierto; el Lote 3 permanece intacto.
+
+
+## Undécima ronda: catálogo de variantes y fotografías de referencia
+
+### Coincidencias exactas encontradas en catálogos comerciales (solo referencia)
+
+- **Frito con piel y sal** — Carrefour identifica “Cacahuetes fritos y salados con piel Classic 200 g”. La denominación confirma los tres atributos relevantes, pero la fotografía comercial no se reutiliza. https://www.carrefour.es/supermercado/productoscrf-cacahuetes-guisantes/F-1kc6vZ17olZ152e/g
+- **Frito sin sal** — Carrefour lista “Cacahuetes fritos Classic sin sal añadida 200 g” y “Cacahuetes fritos sin sal añadida Classic 200 g”. La ficha no basta por sí sola para confirmar la piel fina; sirve como referencia de preparación y sal. Misma fuente comercial, sin permiso de reutilización de imagen.
+- **Tostado con cáscara sin sal / con sal** — el catálogo de Tramusset separa ambas variantes. El folleto mayorista ApartaNorte también muestra cacahuetes XXL tostados con cáscara en las dos versiones, con y sin sal. Las imágenes son ilustrativas de catálogo comercial y no se consideran libres. https://eltramusset.com/cacahuetes ; https://cdnc.heyzine.com/flip-book/pdf/f76e714b56d75c57060166287ac4c60fd7a985b0.pdf
+- **Frito repelado con sal y tostado con cáscara** — el folleto ApartaNorte muestra un producto denominado “cacahuete repelado frito pequeño con sal” y, por separado, cacahuete tostado con cáscara XXL con/sin sal. Permite comparar visualmente el tipo de grano, pero no aporta una licencia compatible para copiar las fotos. Misma fuente.
+- **Frito con piel / frito repelado** — Naturafrutossecos presenta fotografías separadas bajo esos nombres. No especifica la sal en esas fichas y no declara una licencia abierta para sus fotografías; se emplea solo como referencia visual. https://naturafrutossecos.es/16-cacahuete/
+
+### Commons: metadatos confirmados de candidatos genéricos
+
+- **Frito genérico** — “Fried peanuts.jpg”, Nishant113, CC BY-SA 4.0, original 4.160 × 3.120 px. La página describe un snack de cacahuetes fritos, pero no confirma piel fina ni presencia/ausencia de sal. No asignar a una variante específica. https://commons.wikimedia.org/wiki/File:Fried_peanuts.jpg
+- **Frito genérico** — “Fried Peanut.jpg”, Derk29, CC BY-SA 4.0, original 2.448 × 3.264 px. La descripción identifica cacahuete frito de Filipinas, sin confirmar sal o piel fina. No asignar a una variante específica. https://commons.wikimedia.org/wiki/File:Fried_Peanut.jpg
+- **Referencia didáctica de piel y cáscara** — “Peanuts (Arachis hypogaea) - in shell, shell cracked open, shelled, peeled.jpg”, Ivar Leidus, CC BY-SA 4.0, original 6.000 × 4.000 px. Distingue vaina, grano con piel y grano pelado, pero no representa una preparación frita o tostada de venta. No asignar como foto de producto. https://commons.wikimedia.org/wiki/File:Peanuts_(Arachis_hypogaea)_-_in_shell,_shell_cracked_open,_shelled,_peeled.jpg
+
+### Resultado de la undécima ronda
+
+La consulta de catálogos confirma que existen productos comercializados exactamente como frito con piel y sal, frito sin sal, tostado con cáscara con sal y tostado con cáscara sin sal. Esto mejora el patrón de comparación, pero no convierte sus imágenes en material reutilizable. Las dos fotografías libres de Commons continúan siendo genéricas y no resuelven las variantes específicas.
+
+**Decisión:** no se integra ni asigna ninguna de las nuevas imágenes. El Lote 2 continúa abierto hasta disponer de fotografía reutilizable y correspondencia visual/documental suficiente. El Lote 3 sigue sin tocarse.
