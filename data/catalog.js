@@ -266,7 +266,11 @@ window.PRODUCTS ={
     "tag": "Garrapiñados y dulces",
     "category": "dulces",
     "price": 12,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cacahou%C3%A8te.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Oueta · sugar-coated peanut",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Cacahou%C3%A8te.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "cacahueteMiel": {
     "name": "Cacahuete con miel",
@@ -274,7 +278,11 @@ window.PRODUCTS ={
     "tag": "Garrapiñados y dulces",
     "category": "dulces",
     "price": 16.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Honey_roasted_peanuts.JPG?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Glane23 · honey roasted peanuts",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Honey_roasted_peanuts.JPG",
+    "imageLicense": "CC BY-SA 3.0"
   },
   "anacardoCrudo": {
     "name": "Anacardo crudo suprema",
