@@ -570,3 +570,23 @@ Las nuevas fuentes confirman preparación frita o tostada y, en algunos casos, l
 Las nuevas páginas documentan cacahuetes salados o fritos de forma genérica, pero no la combinación exacta de preparación, piel fina y sal necesaria para una ficha. Las fotos de curry, hervidos y proceso de puesto quedan descartadas por preparación o presentación.
 
 **Decisión:** ninguna foto nueva integrada. Se mantienen tres fotografías verificadas y nueve variantes pendientes. Lote 2 abierto; Lote 3 intacto.
+
+
+## Ronda 27 — repositorios alternativos y búsqueda multilingüe
+
+Se amplió la búsqueda a Commons, Pixabay, Hippopx y Photos Public Domain, con términos de producto y estados de pelado.
+
+- **“Peanuts (Arachis hypogaea) - in shell, shell cracked open, shelled, peeled.jpg”** — Ivar Leidus, Wikimedia Commons, CC BY-SA 4.0, 6000×4000. La descripción y la composición documentan varias etapas: vaina cerrada/abierta, semilla con piel y semilla pelada. Es una imagen botánica comparativa, no una fotografía de producto uniforme; no asignar a una ficha comercial de cacahuete crudo repelado. https://commons.wikimedia.org/wiki/File:Peanuts_(Arachis_hypogaea)_-_in_shell,_shell_cracked_open,_shelled,_peeled.jpg
+- **“fried Peanuts” (Hippopx)** — Public Domain, 1920×1280, etiquetada como cacahuetes fritos. La página no confirma piel fina ni sal, por lo que no sirve para ninguna de las cuatro variantes fritas exactas. https://www.hippopx.com/en/free-photo-twrsi
+- **“Shelled Peanuts” (Photos Public Domain)** — la descripción confirma sin cáscara y sin sal, pero indica recubrimiento de aceite vegetal y no confirma si la piel fina roja está retirada ni el método de preparación. No asignar a crudo repelado ni tostado repelado sin sal. https://www.photos-public-domain.com/2017/12/08/shelled-peanuts/
+- **“Roasted Peanuts” (Photos Public Domain)** — la descripción confirma tostados en seco, sin sal y sin cáscara exterior. No especifica si se retiró la piel fina roja; no asignar a tostado repelado sin sal. https://www.photos-public-domain.com/2012/04/02/roasted-peanuts/
+- **“Peanuts” (Public Domain Pictures, George Hodan)** — dominio público, 3951×2617, tags shelled/peeled. Los metadatos no identifican preparación, sal ni piel fina de manera suficiente; candidato visual genérico, no asignable. https://www.publicdomainpictures.net/en/view-image.php?image=20116&large=1&picture=peanuts
+- **“Peanuts Food Nutty Salted Peanuts” (Pixabay)** — la página describe cacahuetes tostados y salados, pero no permite verificar de forma suficiente el estado de la piel fina para una variante repelada ni la presencia de piel para una variante con piel. No duplicar la fotografía ya asignada al tostado repelado con sal. https://pixabay.com/photos/peanuts-food-nutty-salted-peanuts-1276100/
+- **“Peanuts in shell close-up” (Pixabay)** — muestra cacahuetes con vaina y uno abierto; tags incluyen roasted/salted, pero la descripción no confirma sal ni preparación. No asignar a cacahuete con cáscara con o sin sal. https://pixabay.com/photos/nuts-peanuts-roasted-snacks-1736520/
+- **“Unshelled peanuts up close” (Pixabay)** — fotografía de vainas; etiquetas incluyen roast/roasted/salted, pero no confirman los atributos del producto. No asignar.
+
+### Resultado de la vigesimoséptima ronda
+
+Ninguna nueva fotografía cumple conjuntamente la identificación visual y documental de una variante exacta. Los repositorios alternativos aportan imágenes de cacahuetes genéricos, tostados/fritos sin detalle suficiente de piel o sal, o composiciones comparativas que no representan una unidad de producto uniforme.
+
+**Decisión:** no se integra ninguna imagen. Se mantienen las tres fotografías verificadas y nueve variantes pendientes. Lote 2 continúa abierto; Lote 3 permanece intacto.
