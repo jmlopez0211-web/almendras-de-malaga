@@ -554,7 +554,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 49.8,
-    "image": ""
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Blanched_pistachios.jpg",
+    "imageVerified": true,
+    "imageCredit": "Nadiatalent · Blanched pistachios",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Blanched_pistachios.jpg",
+    "imageLicense": "Dominio público (liberación del autor)"
   },
   "revueloNatural": {
     "name": "Revuelto natural",
