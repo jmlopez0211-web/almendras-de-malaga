@@ -31,3 +31,14 @@ Investigación de fuentes iniciada. Las fuentes anteriores son candidatas; no se
 
 ## Licencias
 CC0 permite reutilización sin obligación de atribución (aunque se recomienda citar). Para CC BY-SA y GFDL deben conservarse créditos, enlaces de licencia y los requisitos de compartir-alike cuando corresponda. Antes de descargar e integrar cada archivo, revisar la página exacta de Commons y registrar cualquier modificación/optimización.
+
+## Segunda ronda de búsqueda
+
+- **Cacahuete frito (preparación genérica)** — `Deep Fried Peanuts.jpg`, Mr.Atoz, CC BY-SA 3.0. La página confirma que son cacahuetes fritos, pero no confirma piel fina, sal ni aceite; candidato genérico. https://commons.wikimedia.org/wiki/File:Deep_Fried_Peanuts.jpg
+- **Cacahuete frito comercial** — `Uncle Bud's Deep Fried Peanuts.jpg`, Mr.Atoz, CC BY-SA 3.0. No confirma atributos específicos de las fichas. https://commons.wikimedia.org/wiki/File:Uncle_Bud%27s_Deep_Fried_Peanuts.jpg
+- **Cacahuete frito con cáscara (producto comercial)** — `A Little Nuts Deep Fried Peanuts.jpg`, Karlaadamk, CC BY-SA 4.0. No confirma sal ni receta exacta. https://commons.wikimedia.org/wiki/File:A_Little_Nuts_Deep_Fried_Peanuts.jpg
+- **Cacahuete crudo con cáscara** — `Arachis hypogaea - Peanuts in shell.jpg`, T.K. Naliaka. La descripción confirma estado crudo y cáscara; revisar licencia exacta. https://commons.wikimedia.org/wiki/File:Arachis_hypogaea_-_Peanuts_in_shell.jpg
+- **Cacahuete tostado con cáscara y sal** — foto de Mustafa akın en Unsplash; la descripción confirma tostado, sal y cáscara. Candidata exacta. https://unsplash.com/photos/salted-peanuts-in-shells-and-roasted-hruWZimkos4
+
+## Resultado de la segunda ronda
+Hay mejores candidatos para cacahuete frito genérico y tostado con cáscara y sal. Aún no se verifican fotos exactas para frito con piel con/sin sal, frito repelado con/sin sal, tostado repelado con/sin sal y cacahuete con cáscara sin sal. No se cierra el lote ni se cambia el catálogo hasta confirmar licencias y correspondencia visual.
