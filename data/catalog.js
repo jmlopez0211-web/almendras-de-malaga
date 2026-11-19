@@ -394,7 +394,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Walnuts_in_their_shells_available_for_sale.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Whoisjohngalt · walnuts in their shells",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Walnuts_in_their_shells_available_for_sale.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "nuezChilena": {
     "name": "Nuez chilena mariposa",
@@ -402,7 +406,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 26.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Walnut_Shell_Two_halves.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Isodomesticity · walnut halves",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Walnut_Shell_Two_halves.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "nuezCalifornia": {
     "name": "Nuez de California 85 %",
@@ -410,7 +418,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 19.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Intact_shelled_walnut_01.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Jay Dobkin · intact shelled walnut",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Intact_shelled_walnut_01.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "nuezPecanPelada": {
     "name": "Nuez pecana pelada",
