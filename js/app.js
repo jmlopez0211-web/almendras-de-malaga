@@ -90,8 +90,8 @@ function renderProducts(){
  const active=document.querySelector('.filter.active')?.dataset.filter||'todos';
  const words=catalogSearchWords(document.getElementById('productSearch')?.value||'').filter(word=>!['de','del','la','el','los','las','un','una','y','con','sin','por','favor'].includes(word));
  const entries=Object.entries(products).filter(([id,p])=>{
-  const haystack=normalizeCatalogText([p.name,p.desc,p.tag,p.category,catalogGroup(p)].join(' '));
-  return (active==='todos'||catalogGroup(p)===active)&&words.every(word=>haystack.includes(word));
+  const haystack=normalizeCatalogText([p.name,p.desc,p.tag,p.category,catalogGroup(p),productFamily(p)].join(' '));
+  return (active==='todos'||catalogGroup(p)===active)&&(activeSubfamily==='todos'||productFamily(p)===activeSubfamily)&&words.every(word=>haystack.includes(word));
  });
  // Las fichas con una imagen única y verificada aparecen primero; las pendientes siguen visibles.
  entries.sort(([idA],[idB])=>Number(hasUniqueProductImage(idB))-Number(hasUniqueProductImage(idA)));
