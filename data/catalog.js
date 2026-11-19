@@ -870,7 +870,11 @@ window.PRODUCTS ={
     "tag": "Pipas y semillas",
     "category": "semillas",
     "price": 7,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pipas_de_girasol_peladas,_2021-01-05,_DD_041-080_FS.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Diego Delso · Pipas de girasol peladas",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Pipas_de_girasol_peladas,_2021-01-05,_DD_041-080_FS.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "pipaPeladaFritaSal": {
     "name": "Pipa pelada frita con sal",
