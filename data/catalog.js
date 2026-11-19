@@ -574,7 +574,11 @@ window.PRODUCTS ={
     "tag": "Revueltos",
     "category": "revueltos",
     "price": 22,
-    "image": ""
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/97/MixedNuts.JPG?utm_campaign=index&utm_content=original&utm_source=commons.wikimedia.org",
+    "imageVerified": true,
+    "imageCredit": "Vicki Nunn · MixedNuts",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:MixedNuts.JPG",
+    "imageLicense": "Dominio público (liberación del autor)"
   },
   "revueloGominolas": {
     "name": "Revuelto de gominolas",
