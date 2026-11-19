@@ -339,3 +339,22 @@ Ambas imágenes requieren atribución, enlace a la licencia CC BY-SA 4.0 y compa
 La comparación visual de estos originales mejora la referencia sobre el color y el aspecto de granos con/sin piel, pero no resuelve una variante comercial concreta. La fotografía española de fritos continúa siendo genérica; las dos fotos filipinas carecen de información de procedencia/preparación suficiente.
 
 **Decisión:** no se añade ninguna nueva imagen al catálogo. Se mantienen solo las dos asignaciones verificadas de la ronda 17 y los diez productos restantes del Lote 2 continúan pendientes.
+
+
+## Decimonovena ronda: contraste de alternativas CC0 y CC BY-SA
+
+### Raw shelled peanuts at a market — alternativa no seleccionada
+
+- **“Peanuts (shelled raw marketed).jpg”** — David E Mead, Wikimedia Commons, CC0 1.0, original 5.152 × 3.864 px. La descripción confirma cacahuetes crudos comercializados sin vaina exterior; la inspección visual muestra granos con piel fina rojiza/rosada y variación natural de tonos. Es válido como referencia de cacahuete crudo con piel, pero la foto es una cesta de mercado con composición y colores irregulares; la foto de plato blanco ya asignada a cacahueteCrudoPiel es más limpia y específica. No duplicar ni sustituir. https://commons.wikimedia.org/wiki/File:Peanuts_(shelled_raw_marketed).jpg
+- **“Peanuts raw.jpg”** — Photosticlife, Wikimedia Commons, CC BY-SA 4.0, original 2.976 × 3.968 px. La página confirma que son crudos; el original muestra semillas sueltas con piel rojiza y algunos granos claros. Es una referencia válida para el aspecto de cacahuete crudo con piel, pero menos limpia para el catálogo y sin ventaja sobre la imagen ya asignada. No duplicar. https://commons.wikimedia.org/wiki/File:Peanuts_raw.jpg
+
+### Archivos descartados por no mostrar un producto comercial completo
+
+- **“Cacahuete - Petr Kratochvil.jpg”** — CC0 1.0, 803 × 515 px. Imagen de una sola vaina exterior sobre fondo blanco. No acredita preparación ni sal y no representa una cantidad/presentación de producto adecuada. https://commons.wikimedia.org/wiki/File:Cacahuete_-_Petr_Kratochvil.jpg
+- **“Organic peanut seeds.jpg”** — Renatotcm, CC BY-SA 4.0, 960 × 1.280 px. La inspección muestra unas pocas semillas en una mano y un fondo exterior; no es una fotografía limpia de producto y no confirma procesado, piel fina o sal. https://commons.wikimedia.org/wiki/File:Organic_peanut_seeds.jpg
+
+### Resultado de la decimonovena ronda
+
+Se confirma una segunda alternativa libre para cacahuete crudo con piel, pero no mejora la imagen seleccionada. Las imágenes de una sola vaina o unas pocas semillas en la mano no alcanzan el nivel de presentación del catálogo. Ninguna resuelve los productos fritos ni los tostados con/sin piel y sal.
+
+**Decisión:** mantener sin cambios las dos fotografías ya asignadas. No se añade ni sustituye ninguna otra imagen. El Lote 2 sigue abierto.
