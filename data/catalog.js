@@ -1026,7 +1026,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 18,
-    "image": ""
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/af/Dried_Muscat_Grapes_-_Robin.jpg",
+    "imageVerified": true,
+    "imageCredit": "FotoosVanRobin · Dried Muscat Grapes",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_Muscat_Grapes_-_Robin.jpg",
+    "imageLicense": "CC BY-SA 2.0"
   },
   "habaFrita": {
     "name": "Habas fritas",
@@ -1034,7 +1038,11 @@ window.PRODUCTS ={
     "tag": "Aperitivos",
     "category": "aperitivos",
     "price": 8.8,
-    "image": ""
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Habas_fritas-10.jpg",
+    "imageVerified": true,
+    "imageCredit": "Tamorlan · Habas fritas",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Habas_fritas-10.jpg",
+    "imageLicense": "CC BY-SA 3.0"
   },
   "habaPicante": {
     "name": "Habas picantes",
