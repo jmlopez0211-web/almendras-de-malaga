@@ -82,7 +82,7 @@ function renderSubfamilies(active){
 function renderFamilyTiles(){
  const host=document.getElementById('familyTiles');if(!host)return;
  const families=[['frutos','Frutos secos','Almendras, cacahuetes, anacardos y más'],['fruta','Frutas deshidratadas','Pasas, mango, orejones y fruta'],['chuches','Caramelos y golosinas','Gominolas, caramelos y chocolates'],['variados','Pipas, aperitivos y mezclas','Pipas, kikos, habas y revueltos']];
- host.innerHTML=families.map(([id,title,desc])=>'<button class="family-tile" data-family="'+id+'"><span class="family-tile-title">'+title+'</span><span class="family-tile-desc">'+desc+'</span><span class="family-tile-link">Explorar →</span></button>').join('');
+ host.innerHTML=families.map(([id,title,desc])=>{const sample=Object.entries(products).find(([pid,p])=>catalogGroup(p)===id&&productImage(pid,p));const photo=sample?'<img class="family-tile-photo" src="'+productImage(sample[0],sample[1])+'" alt="" loading="lazy">':'';return '<button class="family-tile" data-family="'+id+'">'+photo+'<span class="family-tile-title">'+title+'</span><span class="family-tile-desc">'+desc+'</span><span class="family-tile-link">Explorar →</span></button>'}).join('');
  host.querySelectorAll('[data-family]').forEach(b=>b.onclick=()=>{const f=b.dataset.family;document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x.dataset.filter===f));activeSubfamily='todos';renderSubfamilies(f);renderProducts();document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})});
 }
 function renderProducts(){
