@@ -612,3 +612,23 @@ Búsqueda dirigida a cacahuetes fritos con piel, fritos repelados, tostados con 
 Se localizaron referencias comerciales que distinguen de forma explícita las variantes fritas con piel, fritas repeladas, tostadas con cáscara y tostadas sin sal. Sin embargo, sus fotografías no tienen una licencia reutilizable acreditada. Las fuentes libres encontradas no documentan conjuntamente los atributos exactos de piel fina, preparación y sal.
 
 **Decisión:** ninguna imagen nueva integrada. Se mantienen tres fotografías verificadas y nueve variantes pendientes. Lote 2 continúa abierto; Lote 3 permanece intacto.
+
+
+## Ronda 29 — búsqueda por preparación exacta y referencias comerciales contrastadas
+
+- **Pixabay — “Salted roasted peanuts close-up” (Brett_Hondow):** licencia Pixabay; página identifica expresamente cacahuetes tostados y salados. No se verifica si la piel fina está retirada o presente de forma uniforme. No asignar a tostado repelado salado ni tostado con piel salado. https://pixabay.com/photos/peanuts-food-nutty-salted-peanuts-1276100/
+- **Pixabay — “Peanut Peanuts Shelled” (Engin_Akyurt):** licencia Pixabay; imagen de cacahuetes sin cáscara exterior, pero etiquetas incluyen salt/roasted sin descripción documental que confirme la preparación, la piel fina o sal. No asignar. https://pixabay.com/photos/peanut-peanuts-shelled-hard-salt-3709919/
+- **Pixabay — “Peanuts in shell close-up” (Couleur):** licencia Pixabay; vainas con una abierta. Tags roasted/salted no son suficientes para verificar esos atributos; no asignar. https://pixabay.com/photos/nuts-peanuts-roasted-snacks-1736520/
+- **Pixabay — “Unshelled peanuts up close” (SvetlozarHristov):** licencia Pixabay; la descripción confirma vainas, pero no preparación ni sal. No asignar. https://pixabay.com/photos/delicious-closeup-food-groundnuts-4803127/
+- **Pixabay — “Bowl of peanuts on burlap” (guvo59):** licencia Pixabay; cacahuetes con cáscara exterior. La descripción no confirma preparación ni sal. No asignar. https://pixabay.com/photos/peanuts-nuts-food-snack-healthy-9317291/
+- **Pixabay — “Peanuts in their shells” (qinkqink):** licencia Pixabay; pila de vainas, no fotografía de producto final con preparación/sal documentadas. No asignar. https://pixabay.com/photos/background-texture-food-raw-snack-5371436/
+- **Pixabay — “Peanuts and peanut butter in bowls overhead” (cgdsro):** licencia Pixabay; composición que mezcla cacahuetes con cáscara, granos y mantequilla. No representa una variante uniforme. No asignar. https://pixabay.com/photos/food-closeup-healthy-peanuts-3126526/
+- **Carrefour — referencias comerciales:** catálogo actual distingue cacahuetes fritos y salados con piel, fritos sin sal añadida, tostados con cáscara y tostados con cáscara sin sal. Sirve para contrastar nombres/variantes, pero las imágenes de producto son comerciales y no se reutilizan. https://www.carrefour.es/supermercado/productoscrf-cacahuetes-guisantes/F-1kc6vZ17olZ152e/g
+- **Tramusset — referencias comerciales:** identifica cacahuetes fritos con piel y sal, fritos repelados con sal, tostados con piel y sal y tostados repelados sin sal, además de crudos con y sin piel. Las fotografías comerciales no se reutilizan. https://eltramusset.com/cacahuetes
+- **Frutos Secos Mari Carmen — frito con piel:** ficha comercial documenta cacahuete mondado con piel, aceite y sal. No reutilizar su fotografía. https://frutossecosmaricarmen.es/producto/cacahuete-frito-con-piel/
+
+### Resultado de la vigesimonovena ronda
+
+La búsqueda encuentra fuentes comerciales con variantes exactas y algunas imágenes libres que documentan parte de los atributos. Ninguna nueva fotografía libre examinada confirma de manera suficiente la combinación exacta de preparación, piel fina y sal para asignarla a una ficha.
+
+**Decisión:** no integrar imágenes nuevas. Tres variantes continúan verificadas y nueve pendientes. Lote 2 abierto; Lote 3 intacto.
