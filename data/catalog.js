@@ -1050,7 +1050,11 @@ window.PRODUCTS ={
     "tag": "Chocolates",
     "category": "chocolates",
     "price": 33.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Whole_Foods_Chocolate_Covered_Cashews_%2817200536966%29.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Willis Lam · chocolate-covered cashews",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Whole_Foods_Chocolate_Covered_Cashews_(17200536966).jpg",
+    "imageLicense": "CC BY-SA 2.0"
   },
   "chocolateAvellanaNegro": {
     "name": "Avellana cubierta de chocolate negro",
