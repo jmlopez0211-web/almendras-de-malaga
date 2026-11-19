@@ -1098,7 +1098,11 @@ window.PRODUCTS ={
     "tag": "Chocolates",
     "category": "chocolates",
     "price": 29.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chocolate_Covered_Almond.JPG?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Hedi Aghlara · chocolate covered almond",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Chocolate_Covered_Almond.JPG",
+    "imageLicense": "CC BY-SA 3.0"
   },
   "almendraChocolateLeche": {
     "name": "Almendra cubierta de chocolate con leche",
