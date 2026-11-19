@@ -9,8 +9,8 @@
 
 | Nombre exacto | Descripción breve | Fotografía específica que debe buscarse | Estado actual |
 |---|---|---|---|
-| Almendra cruda con piel | Almendra sin tostar, presentada con su piel. | Producto entero crudo con piel/cáscara visible; primer plano de las piezas reales, mostrando claramente la cáscara. | Foto asignada: verificar correspondencia exacta |
-| Almendra cruda pelada | Almendra cruda sin piel. | Piezas crudas sin piel, limpias y enteras; tono natural y textura real, sin cáscaras. | Foto asignada: almendra repelada (dominio público) |
+| Almendra cruda con piel | Almendra sin tostar, presentada con su piel. | Almendras crudas enteras con piel marrón visible, en primer plano. | Foto verificada: HaJunkiyada, CC BY-SA 4.0 — Wikimedia Commons |
+| Almendra cruda pelada | Almendra cruda sin piel. | Almendras blanqueadas/repeladas, claras y sin piel. | Foto verificada: Nadiatalent, dominio público — Wikimedia Commons |
 | Almendra frita con piel | Almendra frita que conserva la piel. | Piezas fritas reales, dorado ligero y superficie propia de fritura; mostrar piel si el nombre la indica y no añadir sal visual si no la lleva. | Fotografía real pendiente |
 | Almendra frita con aceite de oliva | Almendra frita; el catálogo indica aceite de oliva. | Piezas fritas reales, dorado ligero y superficie propia de fritura; mostrar piel si el nombre la indica y no añadir sal visual si no la lleva. | Fotografía real pendiente |
 | Almendra frita con aceite de girasol | Almendra frita; el catálogo indica aceite de girasol. | Piezas fritas reales, dorado ligero y superficie propia de fritura; mostrar piel si el nombre la indica y no añadir sal visual si no la lleva. | Fotografía real pendiente |
@@ -199,3 +199,14 @@
 Los catálogos profesionales separan explícitamente almendra cruda con piel, repelada, frita, tostada, laminada, granillo, harina y bastones; no las presentan como una sola imagen genérica. También diferencian cacahuete crudo con piel, crudo repelado, frito repelado y tostado con cáscara. Para las almendras procesadas, bastón es una tira alargada, lámina es una rebanada fina, granillo son fragmentos pequeños y harina es material molido de textura fina o gruesa. Referencias consultadas: Aperitivos Zali (Málaga), catálogo ITAC Professional, Ferrer Segarra, Covalco, Montsec, Secofrut y Jasa Alimentación.
 
 **Nota de licencia:** las fotografías de otras tiendas se han usado solo como referencia de clasificación y aspecto. No se copian a esta web. Para publicar imágenes de terceros se necesita permiso/licencia compatible o fotografía propia del producto.
+
+
+## Lote fotográfico 1 · Primeras cinco almendras (19 de noviembre de 2026)
+
+- **Almendra cruda con piel:** HaJunkiyada, *Raw almonds in a bowl*, CC BY-SA 4.0. [Fuente](https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Raw_almonds_in_a_bowl.jpg)
+- **Almendra cruda pelada:** Nadiatalent, *Blanched almonds.jpg*, dominio público. [Fuente](https://commons.wikimedia.org/wiki/File:Blanched_almonds.jpg)
+- **Almendra frita con piel:** pendiente; no se encontró una imagen que verifique claramente la piel y preparación exactas.
+- **Almendra frita con aceite de oliva:** pendiente; una fotografía de almendra frita no permite verificar el aceite usado.
+- **Almendra frita con aceite de girasol:** pendiente; no se encontró una fotografía real que documente la preparación y aceite exactos.
+
+Las dos imágenes verificadas se integran en index.html con crédito y licencia visibles. Las otras tres referencias mantienen marcador fotográfico, sin imágenes genéricas ni reutilizadas.
