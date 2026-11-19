@@ -806,7 +806,11 @@ window.PRODUCTS ={
     "tag": "Pipas y semillas",
     "category": "semillas",
     "price": 8.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Sunflower_seeds_salted.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Nesrinuyar1 · salted sunflower seeds",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Sunflower_seeds_salted.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "pipaGarrapinada": {
     "name": "Pipa garrapiñada",
