@@ -91,5 +91,9 @@
 </div></div></div><button id="cartFab" class="cart-fab" type="button" aria-label="Abrir carrito">Pedido <span id="cartCount">0</span></button>
 <script src="data/catalog.js"></script>
 <script src="js/app.js"></script>
+<script>
+ document.querySelectorAll("[data-family-link]").forEach(link=>link.addEventListener("click",()=>{const target=document.querySelector(".filter[data-filter=\""+link.dataset.familyLink+"\"]");if(target)target.click()}));
+ document.getElementById("navCart")?.addEventListener("click",e=>{e.preventDefault();document.getElementById("cartFab")?.click()});
+</script>
 
 </body></html>
