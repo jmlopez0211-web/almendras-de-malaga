@@ -293,3 +293,28 @@ Se inspeccionaron los dos archivos originales enlazados por las páginas, no sol
 Se encuentran tres fotos libres con mejor contraste visual entre grano pelado claro, grano de piel rojiza con sal y aperitivo frito rojizo. Ninguna demuestra simultáneamente todos los atributos de preparación, piel fina y sal para una ficha concreta. No se ha localizado todavía una foto reutilizable exacta para frito con piel sin sal, frito repelado con/sin sal ni tostado repelado sin sal.
 
 **Decisión:** no se integra ninguna de estas imágenes. Lote 2 sigue abierto; lote 3 sin iniciar.
+
+
+## Decimoséptima ronda: dos fotografías verificadas incorporadas en el catálogo
+
+Se han incorporado dos fotografías distintas a dos fichas del catálogo. Se sirven desde Wikimedia Commons mediante el endpoint de archivo que ya admite el renderizador; no se han copiado todavía a la carpeta local de imágenes. Los datos de autor, fuente y licencia están registrados en cada objeto de producto y el pie de foto muestra el enlace correspondiente.
+
+1. **Cacahuete crudo con piel** — “Raw peanuts with skin on white plate.jpg”, Undeka 11, original 3.358 × 2.516 px, CC BY-SA 4.0. La página describe cacahuetes crudos con piel marrón y la inspección visual confirma granos individuales sin vaina exterior y con la piel fina presente. Asignado a `cacahueteCrudoPiel`.  
+   Fuente: https://commons.wikimedia.org/wiki/File:Raw_peanuts_with_skin_on_white_plate.jpg
+2. **Cacahuete con cáscara con sal** — “Cacahuetes tostados enteros con cáscara y salados.jpg”, Juan Emilio Prades Bel, original 3.072 × 2.304 px, CC BY-SA 4.0. El título y la descripción confirman producto entero en la vaina exterior, tostado y salado; la inspección del original confirma que son vainas, no granos sueltos con piel. Asignado a `cacahueteCascaraSal`.  
+   Fuente: https://commons.wikimedia.org/wiki/File:Cacahuetes_tostados_enteros_con_c%C3%A1scara_y_salados.jpg
+
+### Licencias y cambios
+
+Ambas imágenes requieren atribución, enlace a la licencia CC BY-SA 4.0 y compartir bajo la misma licencia si se realizan modificaciones. No se han recortado ni alterado las obras originales en esta actualización. La tienda las solicita a Wikimedia Commons con ancho máximo indicado en la URL.
+
+### Validación después de la incorporación
+
+- Se mantienen las 152 fichas del catálogo.
+- Las dos nuevas URL son distintas y no se repiten en ningún otro producto.
+- El renderizador permite URL de Wikimedia Commons y muestra autor, fuente y licencia cuando estos campos existen.
+- `data/catalog.js` continúa cargándose antes de `js/app.js`.
+- No se han cambiado precio, texto, categoría, filtros ni otras funciones.
+- Las imágenes no se han probado todavía en una sesión real del navegador publicada en GitHub Pages; la validación realizada es estática sobre los datos y las condiciones del renderizador.
+
+**Estado:** Lote 2 continúa abierto. Diez variantes siguen pendientes de fotografía exacta y reutilizable. No se inicia el Lote 3.
