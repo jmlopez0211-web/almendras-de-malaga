@@ -19,19 +19,46 @@ ALLOWED = {"image/jpeg": ".jpg", "image/png": ".png", "image/webp": ".webp"}
 MAGIC = {"image/jpeg": (b"\xff\xd8\xff",), "image/png": (b"\x89PNG\r\n\x1a\n",), "image/webp": (b"RIFF",)}
 USER_AGENT = "AlmendrasDeMalagaImagePipeline/1.0 (photo audit; contact repository owner)"
 
-def commons_file_url(title: str) -> tuple[str, dict]:
-    """Resolve a Wikimedia Commons File title to its original URL and metadata."""
+def commons_file_url(title: str, *, thumbnail_width: int = 1200) -> tuple[str, dict]:
+    """Resolve a Commons title to a thumbnail URL and attribution metadata.
+
+    Exact-title lookup is attempted first. If the title is missing, Commons search
+    is used as a fallback; the returned match is recorded and is NOT product approval.
+    """
     api = "https://commons.wikimedia.org/w/api.php"
-    r = requests.get(api, params={"action":"query","format":"json","prop":"imageinfo",
-        "iiprop":"url|size|mime|extmetadata","titles":"File:"+title}, headers={"User-Agent":USER_AGENT}, timeout=(10,30))
+    headers = {"User-Agent": USER_AGENT}
+    base = {"action": "query", "format": "json", "prop": "imageinfo",
+            "iiprop": "url|size|mime|extmetadata", "iiurlwidth": thumbnail_width}
+    r = requests.get(api, params={**base, "titles": "File:" + title},
+                     headers=headers, timeout=(10, 30))
     r.raise_for_status()
     page = next(iter(r.json()["query"]["pages"].values()))
-    if "missing" in page: raise ValueError(f"Commons file not found: {title}")
+    matched_title = page.get("title", "File:" + title)
+    if "missing" in page:
+        search = requests.get(api, params={"action":"query","format":"json",
+            "generator":"search","gsrsearch":title,"gsrnamespace":6,"gsrlimit":5,
+            "prop":"imageinfo","iiprop":"url|size|mime|extmetadata",
+            "iiurlwidth":thumbnail_width}, headers=headers, timeout=(10,30))
+        search.raise_for_status()
+        pages = search.json().get("query", {}).get("pages", {})
+        if not pages:
+            raise ValueError(f"Commons file not found and search returned no candidates: {title}")
+        page = next(iter(pages.values()))
+        matched_title = page.get("title", "")
     info = page["imageinfo"][0]
-    return info["url"], {"source_url":info.get("descriptionurl"),"mime":info.get("mime"),
-        "width":info.get("width"),"height":info.get("height"),
-        "license":info.get("extmetadata",{}).get("LicenseShortName",{}).get("value"),
-        "artist":info.get("extmetadata",{}).get("Artist",{}).get("value")}
+    # Prefer a Commons thumbnail to reduce bandwidth and avoid repeated original-file
+    # requests that trigger Wikimedia rate limits. Fall back only if unavailable.
+    download_url = info.get("thumburl") or info.get("url")
+    extmeta = info.get("extmetadata", {})
+    metadata = {"source_url": info.get("descriptionurl"), "commons_title": matched_title,
+        "requested_title": title, "mime": info.get("mime"), "width": info.get("width"),
+        "height": info.get("height"), "thumbnail_width": thumbnail_width,
+        "license": extmeta.get("LicenseShortName", {}).get("value"),
+        "license_url": extmeta.get("LicenseUrl", {}).get("value"),
+        "artist": extmeta.get("Artist", {}).get("value"),
+        "credit": extmeta.get("Credit", {}).get("value"),
+        "thumbnail_used": bool(info.get("thumburl"))}
+    return download_url, metadata
 
 def resolve_candidate(item: dict) -> tuple[str, dict]:
     if item.get("url"):
@@ -131,7 +158,7 @@ def load_manifest(path: Path) -> list[dict]:
     return data
 
 def download_manifest(manifest=DEFAULT_MANIFEST, out_dir=DEFAULT_OUT, **kwargs) -> dict:
-    results=[download_one(item,out_dir,**kwargs) for item in load_manifest(Path(manifest))]
+    results=[]\n    for index, item in enumerate(load_manifest(Path(manifest))):\n        if index: time.sleep(kwargs.pop("request_delay", 3))\n        results.append(download_one(item,out_dir,**kwargs))
     report={"download_results":results,"inspection":inspect_directory(Path(out_dir)),
             "note":"All downloads are candidates. This report does not approve or verify catalog products."}
     REPORT.parent.mkdir(parents=True,exist_ok=True)
@@ -173,11 +200,11 @@ def main():
     ap.add_argument("command",choices=["download","inspect","sync-git","sync-api"])
     ap.add_argument("--manifest",default=str(DEFAULT_MANIFEST)); ap.add_argument("--directory",default=str(DEFAULT_OUT))
     ap.add_argument("--min-width",type=int,default=900); ap.add_argument("--min-height",type=int,default=700)
-    ap.add_argument("--retries",type=int,default=3); ap.add_argument("--push",action="store_true",help="Push after git commit")
+    ap.add_argument("--retries",type=int,default=3); ap.add_argument("--push",action="store_true",help="Push after git commit")\n    ap.add_argument("--request-delay",type=float,default=3.0,help="Seconds between Commons candidate downloads")
     ap.add_argument("--owner"); ap.add_argument("--repo"); ap.add_argument("--branch",default="main"); ap.add_argument("--base-path",default="assets/images")
     args=ap.parse_args(); directory=Path(args.directory)
     if args.command=="download":
-        print(json.dumps(download_manifest(args.manifest,directory,retries=args.retries,min_width=args.min_width,min_height=args.min_height),ensure_ascii=False,indent=2))
+        print(json.dumps(download_manifest(args.manifest,directory,retries=args.retries,min_width=args.min_width,min_height=args.min_height,request_delay=args.request_delay),ensure_ascii=False,indent=2))
     elif args.command=="inspect":
         print(json.dumps(inspect_directory(directory),ensure_ascii=False,indent=2))
     elif args.command=="sync-git":
