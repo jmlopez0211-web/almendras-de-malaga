@@ -1478,7 +1478,7 @@ window.PRODUCTS ={
     "category": "caramelos",
     "price": 17.8,
     "image": "https://upload.wikimedia.org/wikipedia/commons/b/b4/An_Open_Bag_of_Werther%27s_Original.jpg",
-    "imageVerified": true,
+    "imageVerified": false,
     "imageCredit": "Paul Hurst · An Open Bag of Werther's Original",
     "imageSource": "https://commons.wikimedia.org/wiki/File:An_Open_Bag_of_Werther%27s_Original.jpg",
     "imageLicense": "CC BY-SA 2.5"
