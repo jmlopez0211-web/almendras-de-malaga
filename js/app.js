@@ -16,7 +16,7 @@ function catalogGroup(p){
 function productImage(id,p){
  if(!p||p.imageVerified!==true||typeof p.image!=='string')return '';
  const url=p.image.trim();
- const allowed=url.startsWith('assets/products/')||url.startsWith('https://commons.wikimedia.org/wiki/Special:FilePath/')||url.startsWith('https://cdn.pixabay.com/');
+ const allowed=url.startsWith('assets/products/')||url.startsWith('https://commons.wikimedia.org/wiki/Special:FilePath/')||url.startsWith('https://upload.wikimedia.org/wikipedia/commons/')||url.startsWith('https://thumb.wikimedia.org/wikipedia/commons/thumb/')||url.startsWith('https://cdn.pixabay.com/');
  if(!allowed)return '';
  const owners=Object.entries(products).filter(([otherId,other])=>otherId!==id&&other.imageVerified===true&&other.image===url);
  return owners.length?'':url;
