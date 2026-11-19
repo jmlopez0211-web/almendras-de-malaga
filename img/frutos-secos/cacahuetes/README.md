@@ -494,3 +494,32 @@ La búsqueda ofrece una foto libre de frito visualmente similar a cacahuete repe
 Las nuevas páginas no aportan evidencia suficiente para asignar una imagen exacta a las variantes restantes. Se mantiene el criterio de no inferir sal ni piel fina a partir de etiquetas genéricas como “roasted”, “fried”, “kernels” o “unshelled”.
 
 **Decisión:** no se integra ninguna foto nueva. El Lote 2 permanece abierto con tres imágenes verificadas y nueve pendientes.
+
+
+## Vigesimocuarta ronda: búsqueda de fritos específicos y revisión de tostados
+
+### “Burmese style fried peanuts.jpg” — referencia de receta, no producto exacto
+
+- Wikimedia Commons, archivo original 4.608 × 3.456 px, página individual titulada “Burmese style fried peanuts”. La descripción confirma estilo de preparación, pero no acredita piel fina, sal ni aceite utilizado. La receta puede incluir condimentos propios; no asignar a ninguna variante de frito neutro. https://commons.wikimedia.org/wiki/File:Burmese_style_fried_peanuts.jpg
+
+### “Kacang Bagula” — descartada por salsa y condimentos
+
+- Wikimedia Commons, CC BY-SA 4.0. La descripción documenta cacahuetes fritos en una salsa de cacahuete molido, petis y especias (chile, ajo, azúcar y sal). No es una fotografía de cacahuete frito simple ni de una de las cuatro variantes del catálogo. https://commons.wikimedia.org/wiki/File:Kacang_Bagula_001.jpg
+
+### “Alun-Alun Jombang - Kacang Goreng” — puesto de venta
+
+- Wikimedia Commons, descripción “Fried peanuts being sold by one of the vendors in Jombang Town Square”. Aunque la preparación es frita, el contexto es un puesto/venta y la ficha no confirma piel fina ni sal. No asignar a una variante concreta. https://commons.wikimedia.org/wiki/File:Alun-Alun_Jombang_-_Kacang_Goreng.jpg
+
+### “PTC - Fried Peanuts” — envase comercial de fritos
+
+- Oakalleyfarms, Wikimedia Commons, CC BY-SA 4.0, original 577 × 433 px. La ficha identifica Peanut Trading Company Deep Fried Peanuts, pero la fotografía es de baja resolución y del producto/envasado; no muestra con claridad los granos ni confirma piel fina y sal para una variante específica. No asignar. https://commons.wikimedia.org/wiki/File:PTC_-_Fried_Peanuts.jpg
+
+### “Roasted Peanuts” — nuevo candidato de tostado genérico
+
+- Anshul Patle, Wikimedia Commons, CC BY-SA 4.0, original 4.160 × 3.120 px. La descripción identifica cacahuetes tostados vendidos frente a un cine; no confirma si llevan sal ni si conservan piel fina. No asignar a “tostado con piel con/sin sal” ni “tostado repelado con/sin sal”. https://commons.wikimedia.org/wiki/File:Roasted_Peanuts.jpg
+
+### Resultado de la vigesimocuarta ronda
+
+Se localizaron imágenes de cacahuete frito de varias cocinas y productos comerciales, pero ninguna evidencia conjunta de preparación simple, piel fina y sal. Los candidatos de receta, puesto o envase no cumplen el estándar de fotografía de producto.
+
+**Decisión:** no se integra ninguna fotografía nueva. El Lote 2 permanece abierto con tres asignaciones verificadas y nueve pendientes. No se inicia el Lote 3.
