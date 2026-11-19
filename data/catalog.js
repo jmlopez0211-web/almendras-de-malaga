@@ -382,7 +382,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 28.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Roasted_hazelnuts.jpg?width=1200",
+        "imageVerified": true,
+    "imageCredit": "Fumikas Sagisavas · Roasted hazelnuts",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Roasted_hazelnuts.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "nuezCascara": {
     "name": "Nuez con cáscara",
@@ -442,7 +446,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 33,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kernel_Pistachio.JPG?width=1200",
+        "imageVerified": true,
+    "imageCredit": "Hedi Aghlara · shelled pistachio",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Kernel_Pistachio.JPG",
+    "imageLicense": "CC BY-SA 3.0"
   },
   "pistachoMondadoTostado": {
     "name": "Pistacho mondado tostado",
@@ -450,7 +458,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 39,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried_pistachio_nuts.jpg?width=1200",
+        "imageVerified": true,
+    "imageCredit": "Fumikas Sagisavas · fried pistachio nuts",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Fried_pistachio_nuts.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "pistachoTurcoTostado": {
     "name": "Pistacho turco tostado",
@@ -466,7 +478,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 23.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pistachios_in_shells.jpg?width=1200",
+        "imageVerified": true,
+    "imageCredit": "MadMaxMarchHare · pistachios in shells",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Pistachios_in_shells.jpg",
+    "imageLicense": "CC BY-SA 2.0"
   },
   "pistachoRepeladoCrudo": {
     "name": "Pistacho repelado crudo",
@@ -770,7 +786,11 @@ window.PRODUCTS ={
     "tag": "Pipas y semillas",
     "category": "semillas",
     "price": 15.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Shelled_and_fried_pumpkin_seeds.jpg?width=1200",
+        "imageVerified": true,
+    "imageCredit": "Fumikas Sagisavas · shelled and fried pumpkin seeds",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Shelled_and_fried_pumpkin_seeds.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "calabazaCascaraTostada": {
     "name": "Pipa de calabaza con cáscara tostada",
