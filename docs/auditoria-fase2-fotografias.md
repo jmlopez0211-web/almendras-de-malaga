@@ -116,3 +116,15 @@ Continuar con búsqueda por variante, no por categoría genérica. Revisar candi
 - La imagen del cacahuete frito con piel y sal se sustituyó por una candidata de cacahuetes fritos sin puesto/bolsas comerciales.
 - **Estado técnico:** las imágenes marcadas como no verificadas se muestran mediante el placeholder limpio del catálogo, no mediante una fotografía errónea. No se han inventado fotos.
 - **Limitación pendiente:** el entorno GitHub conectado permite editar texto, pero no subir binarios de fotografía. Por tanto, la incorporación física de las 64 imágenes faltantes y la inspección visual a resolución completa no puede completarse aquí; no se declara el catálogo fotográfico terminado.
+
+
+## Corrección adicional de renderizado — 19/11/2026
+
+- Corregido `productImage()` en `js/app.js`: ahora admite URL directas `upload.wikimedia.org/wikipedia/commons/` y miniaturas `thumb.wikimedia.org/wikipedia/commons/thumb/` además de los formatos previamente permitidos. Esto evita que imágenes Commons existentes sean descartadas por la lista blanca y aparezcan como placeholders.
+- La fotografía de Werther's que muestra un envase se ha desmarcado como verificada, por la regla de catálogo sin embalajes ni marcas visibles.
+- Candidato documentado: **Almendra marcona frita repelada**, Commons `Almendra marcona.jpg`, 3888×2592, CC BY 3.0, Tamorlan. No se asigna a otra variedad sin verificar.
+- Candidato documentado: **Fried Peanut.jpg**, 2448×3264, CC BY-SA 4.0, Derk29. Es una fotografía de cacahuete frito; su variante exacta y composición limpia deben comprobarse antes de aprobarla.
+- Candidato documentado: **Almendras tostadas sin piel.jpg**, 2592×1944, CC BY 3.0, Cebes. La descripción confirma almendras tostadas y peladas; no confirma sal.
+
+### Estado de fase 2
+La corrección del renderizado de imágenes Commons se ha aplicado y la revisión de las fotos dudosas continúa. La fase no puede declararse cerrada: faltan la comprobación visual directa de cada imagen, 64 fotografías ausentes y la integración física de recursos que no están disponibles como binarios en esta sesión.
