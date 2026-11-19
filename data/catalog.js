@@ -69,7 +69,7 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 24.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Almendras_tostadas_sin_piel.jpg?width=1200"
   },
   "almendraTostadaRepeladaSinSal": {
     "name": "Almendra tostada repelada sin sal",
@@ -158,7 +158,10 @@ window.PRODUCTS ={
     "tag": "Cacahuetes",
     "category": "cacahuetes",
     "price": 6.8,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Peanuts_%28Arachis_hypogaea%29_-_in_shell%2C_shell_cracked_open%2C_shelled%2C_peeled.jpg?width=1200",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Peanuts_(shelled_raw_marketed).jpg?width=1200",
+    "imageCredit": "David E Mead · raw shelled peanuts at market",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Peanuts_(shelled_raw_marketed).jpg",
+    "imageLicense": "CC0 1.0",
     "imageVerified": true,
     "imageCredit": "Ivar Leidus",
     "imageSource": "https://commons.wikimedia.org/wiki/File:Peanuts_(Arachis_hypogaea)_-_in_shell,_shell_cracked_open,_shelled,_peeled.jpg",
@@ -206,7 +209,7 @@ window.PRODUCTS ={
     "tag": "Cacahuetes",
     "category": "cacahuetes",
     "price": 9,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried_peanuts.jpg?width=1200"
   },
   "cacahueteFritoRepeladoSal": {
     "name": "Cacahuete frito repelado con sal",
@@ -214,7 +217,7 @@ window.PRODUCTS ={
     "tag": "Cacahuetes",
     "category": "cacahuetes",
     "price": 9,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried_Peanut.jpg?width=1200"
   },
   "cacahueteFritoRepeladoSinSal": {
     "name": "Cacahuete frito repelado sin sal",
