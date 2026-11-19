@@ -207,10 +207,43 @@ Fuente y licencia de la página Pexels: https://www.pexels.com/photo/close-up-of
 
 ### Auditoría de la imagen que ya figura en el catálogo
 
-La ficha `cacahueteCrudoPiel` apunta actualmente a `assets/products/cacahuete-crudo-piel.jpg` y estaba marcada `imageVerified: true`, pero el archivo inspeccionado mide solo **200 × 140 px** y no hay autor, fuente ni licencia registrados junto a la ficha. Aunque visualmente parece representar granos crudos con piel, la procedencia y los derechos de uso no se pueden demostrar. Se debe retirar su estado de verificada y mostrar el marcador de fotografía pendiente hasta integrar una copia local con procedencia/licencia comprobadas. El archivo original se conserva sin borrar, pero deja de mostrarse como foto verificada.
+La ficha `cacahueteCrudoPiel` apunta actualmente a `assets/products/cacahuete-crudo-piel.jpg` y estaba marcada `imageVerified: true`, pero el archivo inspeccionado mide solo **200 × 140 px** y no hay autor, fuente ni licencia registrados junto a la ficha. Aunque visualmente parece representar granos crudos con piel, la procedencia y los derechos de uso no se pueden demostrar. Se retiró su estado de verificada en data/catalog.js y la tienda muestra el marcador de fotografía pendiente. El archivo original se conserva sin borrar, pero ya no se presenta como foto verificada.
 
 ### Resultado de la decimotercera ronda
 
 La foto de Commons es una candidata fuerte para cacahuete crudo con piel. Se corrige el falso positivo de Pexels para cacahuete con vaina. La foto candidata de Commons no se asigna todavía porque falta la descarga, optimización y registro local del archivo; el producto no debe presentar como verificada una foto pequeña sin procedencia trazable.
 
 **Decisión:** mantener el Lote 2 abierto. No se cambia ningún precio, descripción, filtro o función. No se inicia el Lote 3.
+
+
+## Decimocuarta ronda: nueva inspección a resolución alta y revisión del estado de piel
+
+### Corrección sobre Photos Public Domain: “Roasted Peanuts”
+
+Se inspeccionaron los dos archivos originales enlazados por las páginas, no solo la miniatura. Ambas fuentes confirman preparación dry-roasted, ausencia de sal, retirada de la vaina exterior y dominio público. Sin embargo, en los originales se aprecian zonas marrones/rojizas adheridas a varios granos y no hay una declaración textual de “skinless” o “blanched”. **No se consideran exactos para “tostado repelado sin sal”.** Se conservan como referencias de cacahuete tostado sin sal, con estado de la piel fina no suficientemente demostrado.
+
+- Roasted Peanuts: https://www.photos-public-domain.com/2012/04/02/roasted-peanuts/
+- Roasted Peanuts Texture: https://www.photos-public-domain.com/2012/04/02/roasted-peanuts-texture/
+
+### Nuevo candidato pendiente: tostado repelado con sal
+
+- **“Peanuts Roasted Salted”** — manfredrichter, Pixabay, 4.246 × 2.627 px, JPEG, publicado el 28/02/2018. La página identifica expresamente cacahuetes tostados y salados; también incluye las etiquetas “kernels” y “without shell”. La imagen descargada en vista de 1.280 px muestra granos claros, con sal visible y sin piel roja evidente en la mayoría de las piezas. No obstante, la descripción “without shell” no demuestra por sí sola que se haya eliminado la piel fina. **Candidato prometedor para “cacahuete tostado repelado con sal”, pero aún no asignable** hasta comprobar el original de alta resolución y resolver la piel fina. La página declara Pixabay Content License. https://pixabay.com/photos/peanuts-roasted-salted-kernels-3188500/
+
+### Nueva referencia de tostado con piel, licencia libre, sal indeterminada
+
+- **“Dry Roasted Virginia Peanuts.jpg”** — Gogerr, Wikimedia Commons, CC BY-SA 4.0, original 3.024 × 4.032 px. La ficha titula la foto “Dry Roasted Virginia Peanuts” y la descripción identifica cacahuetes Virginia de Picard's Peanuts. La imagen original muestra granos tostados con piel fina rojiza. La fuente no confirma si la presentación fotografiada es salada o sin sal; el fabricante vende referencias de ambos tipos y no se puede deducir cuál aparece en el cuenco. No asignar a ninguna variante con/sin sal. https://commons.wikimedia.org/wiki/File:Dry_Roasted_Virginia_Peanuts.jpg
+
+### Referencias visuales sin licencia de reutilización para la tienda
+
+- Getty/iStock presenta fotos de cacahuete frito repelado con sal y de tostado repelado con sal que ayudan a fijar el aspecto visual objetivo, pero son fotografías comerciales protegidas; no descargar ni incorporar sin licencia específica.
+- Pexels Deshelled Peanuts on White Surface y Close-Up Shot of Peanuts documentan granos salados, pero no confirman de forma suficiente si están fritos/tostados ni si se ha retirado la piel fina. No asignar. https://www.pexels.com/photo/deshelled-peanuts-on-white-surface-4202959/ ; https://www.pexels.com/photo/close-up-shot-of-peanuts-6086351/
+
+### Resultado de la decimocuarta ronda
+
+- **Crudo con piel:** existe una candidata libre de Commons de alta resolución con descripción y aspecto coincidentes; pendiente copia/optimización local.
+- **Tostado repelado sin sal:** las dos fotos de dominio público no demuestran ausencia de piel fina; se retira esa asignación tentativa.
+- **Tostado repelado con sal:** Pixabay aporta una candidata visual/documental prometedora, pero no declara explícitamente que esté blanqueado/repelado de la piel fina.
+- **Tostado con piel:** nueva imagen Commons de buena resolución, pero sal indeterminada.
+- **Fritos:** siguen existiendo fuentes libres para “frito genérico”, pero ninguna nueva fuente de esta ronda confirma de forma conjunta preparación, presencia/ausencia de piel fina y sal.
+
+**Decisión:** no se incorpora ninguna imagen de esta ronda. Se mantiene el Lote 2 abierto y el Lote 3 intacto.
