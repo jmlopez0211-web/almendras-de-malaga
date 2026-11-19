@@ -194,7 +194,11 @@ window.PRODUCTS ={
     "tag": "Cacahuetes",
     "category": "cacahuetes",
     "price": 9,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/PTC_-_Fried_Peanuts.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Oakalleyfarms · Peanut Trading Company Deep Fried Peanuts",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:PTC_-_Fried_Peanuts.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "cacahueteFritoPielSinSal": {
     "name": "Cacahuete frito con piel sin sal",
