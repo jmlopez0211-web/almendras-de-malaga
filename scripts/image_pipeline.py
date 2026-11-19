@@ -110,7 +110,7 @@ def download_one(item: dict, out_dir: Path = DEFAULT_OUT, *, retries: int = 3,
                     if dest.exists(): dest = out_dir / (key + "-candidate" + ext)
                     temp.replace(dest)
                     digest = hashlib.sha256(dest.read_bytes()).hexdigest()
-                    result.update({"status":"DOWNLOADED_UNVERIFIED","path":str(dest.relative_to(ROOT)),
+                    result.update({"status":"DOWNLOADED_UNVERIFIED","path":str(dest.resolve().relative_to(ROOT.resolve())),
                         "sha256":digest,"bytes":total,"mime":mime,"format":fmt,"width":width,"height":height,
                         "aspect_ratio":round(width/height,4),"metadata":metadata})
                     return result
