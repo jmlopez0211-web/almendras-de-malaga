@@ -117,3 +117,15 @@ Nuevas fuentes aportan descripciones explícitas para tostado sin sal/sin cásca
 
 ## Estado tras la octava ronda
 Se refuerza la documentación del candidato para tostado repelado sin sal, y se localiza una fuente de cacahuete sin cáscara y sin sal con aceite, pero esta última no demuestra preparación frita. No se asignan imágenes. Continúan sin evidencia exacta las variantes fritas con piel/repeladas y con/sin sal. Lote abierto.
+
+
+## Novena ronda: candidato español de cacahuetes fritos
+
+- **Cacahuete frito genérico** — `Cacahuetes fritos.jpg`, Juan Emilio Prades Bel, CC BY-SA 4.0. La página individual identifica explícitamente la fotografía como cacahuetes fritos, muestra original de 3.072 × 2.304 px y licencia CC BY-SA 4.0. Es candidato válido para una ficha genérica de frito, pero no confirma si conserva la piel fina ni si lleva sal; por tanto, no sirve aún para variantes específicas. https://commons.wikimedia.org/wiki/File:Cacahuetes_fritos.jpg
+- **Frito genérico** — `Fried peanuts.jpg`, Nishant113, CC BY-SA 4.0. La página identifica “tasty fried peanuts”, sin confirmar piel o sal. https://commons.wikimedia.org/wiki/File:Fried_peanuts.jpg
+- **Frito genérico** — `Fried Peanut.jpg`, Derk29, CC BY-SA 4.0. Identifica la preparación como cacahuete frito, sin atributos adicionales. https://commons.wikimedia.org/wiki/File:Fried_Peanut.jpg
+- **Frito genérico** — `Deep Fried Peanuts.jpg`, Mr.Atoz, licencia libre indicada en Commons; descripción fried peanuts. No confirma pelado ni sal. https://commons.wikimedia.org/wiki/File:Deep_Fried_Peanuts.jpg
+- **Evidencia científica visual (no reutilizable como imagen comercial)** — artículo 2024 muestra comparativa de cacahuetes fritos con y sin piel, pero la figura tiene copyright y no es fotografía de producto comercial libre. Se usa únicamente como referencia para comprender la diferencia visual. https://www.researchgate.net/figure/Color-changes-of-untreated-and-three-heat-treated-peanuts-with-and-without-skins-Fried_fig1_391560496
+
+## Estado tras la novena ronda
+Se localiza una fuente española de alta resolución con licencia CC BY-SA 4.0 para cacahuete frito genérico. La fuente no documenta piel fina, sal ni aceite, así que no se asigna a las variantes exactas. El lote sigue abierto.
