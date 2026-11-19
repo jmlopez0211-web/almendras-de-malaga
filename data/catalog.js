@@ -734,7 +734,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 19.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/DATES_MEDJOOL.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "ORGANIChouse · Medjool dates",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:DATES_MEDJOOL.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "datilSinHueso": {
     "name": "Dátil sin hueso",
