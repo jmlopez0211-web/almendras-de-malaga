@@ -886,7 +886,11 @@ window.PRODUCTS ={
     "tag": "Aperitivos",
     "category": "aperitivos",
     "price": 8.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried_chickpeas.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Fumikas Sagisavas · fried chickpeas",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Fried_chickpeas.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "garbanzoTostado": {
     "name": "Garbanzo tostado",
@@ -894,7 +898,11 @@ window.PRODUCTS ={
     "tag": "Aperitivos",
     "category": "aperitivos",
     "price": 8.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Roasted_chickpeas.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Fumikas Sagisavas · roasted chickpeas",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Roasted_chickpeas.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "kikoPequeno": {
     "name": "Kikos pequeños supercrujientes",
