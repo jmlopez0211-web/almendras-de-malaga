@@ -482,7 +482,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 33,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Roasted_Pecans_-_Juglandaceae_Carya_illinoinensis_(Pecan_Tree).jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Botanyclass for catawba · Roasted Pecans",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Roasted_Pecans_-_Juglandaceae_Carya_illinoinensis_(Pecan_Tree).jpg",
+    "imageLicense": "CC0 1.0"
   },
   "nuezCaramelizada": {
     "name": "Nuez caramelizada",
