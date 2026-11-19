@@ -582,7 +582,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 19.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_cherries_01.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Zeynel Cebeci · sun-dried cherries",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_cherries_01.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "melonDeshidratado": {
     "name": "Melón deshidratado",
@@ -790,7 +794,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 16,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Prunesso_dried_plums.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Prunesso · dried plums",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Prunesso_dried_plums.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "pipaPeladaCruda": {
     "name": "Pipa pelada cruda",
