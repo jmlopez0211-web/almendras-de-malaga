@@ -44,7 +44,7 @@ footer{text-align:center;padding:26px 0 35px;color:var(--muted);font-size:11px}.
 body{background:radial-gradient(ellipse at 15% 10%,#fffdf7 0,#f7f1e5 58%,#f1e8d8 100%)}
 .top{padding:22px 0}.brand{font-size:13px;letter-spacing:.19em}
 .hero{min-height:590px;border:1px solid #d9c7a8;border-radius:28px;background:#293c2e}
-.hero-photo{background-image:url('https://images.pexels.com/photos/9811631/pexels-photo-9811631.jpeg?auto=compress&cs=tinysrgb&w=1200');background-size:200% 300%;background-position:0 0;filter:saturate(1.02) contrast(1.04)}
+.hero-photo{background-image:none;background-size:200% 300%;background-position:0 0;filter:saturate(1.02) contrast(1.04)}
 .hero:after{background:linear-gradient(90deg,#16281feF 0%,#1d3026d9 43%,#243b2e55 100%)}
 .hero-copy{padding:clamp(56px,8vw,100px) 7%}
 .hero h1{max-width:630px;text-wrap:balance;text-shadow:0 2px 18px #0003}
@@ -444,7 +444,7 @@ const products={
   },
   "cacahueteCrudoPiel": {
     "name": "Cacahuete crudo con piel",
-    "desc": "Cacahuete crudo con piel: presentación indicada en el nombre del producto.",
+    "desc": "Cacahuete sin tostar, conservando su piel.",
     "tag": "Cacahuetes",
     "category": "cacahuetes",
     "price": 6.8,
@@ -548,7 +548,7 @@ const products={
   },
   "cacahueteMiel": {
     "name": "Cacahuete con miel",
-    "desc": "Preparación dulce identificada como Cacahuete con miel. Consulta la composición y los alérgenos antes de comprar.",
+    "desc": "Cacahuetes con miel. Consulta la etiqueta para comprobar ingredientes y posibles trazas.",
     "tag": "Garrapiñados y dulces",
     "category": "dulces",
     "price": 16.8,
@@ -564,7 +564,7 @@ const products={
   },
   "anacardoFritoSal": {
     "name": "Anacardo frito con sal",
-    "desc": "Anacardo frito con sal: presentación indicada en el nombre del producto.",
+    "desc": "Anacardos fritos y sazonados con sal.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 26,
@@ -572,7 +572,7 @@ const products={
   },
   "anacardoFritoSinSal": {
     "name": "Anacardo frito sin sal",
-    "desc": "Anacardo frito sin sal: presentación indicada en el nombre del producto.",
+    "desc": "Anacardos fritos, sin sal añadida.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 26,
@@ -580,7 +580,7 @@ const products={
   },
   "anacardoTostadoSal": {
     "name": "Anacardo tostado con sal",
-    "desc": "Anacardo tostado con sal: presentación indicada en el nombre del producto.",
+    "desc": "Anacardos tostados y sazonados con sal.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 26,
@@ -588,7 +588,7 @@ const products={
   },
   "anacardoTostadoSinSal": {
     "name": "Anacardo tostado sin sal",
-    "desc": "Anacardo tostado sin sal: presentación indicada en el nombre del producto.",
+    "desc": "Anacardos tostados, sin sal añadida.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 26,
@@ -605,7 +605,7 @@ const products={
   },
   "macadamiaFritaSal": {
     "name": "Macadamia frita con sal",
-    "desc": "Macadamia frita con sal: presentación indicada en el nombre del producto.",
+    "desc": "Macadamias fritas y sazonadas con sal.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 42,
@@ -613,7 +613,7 @@ const products={
   },
   "macadamiaFritaSinSal": {
     "name": "Macadamia frita sin sal",
-    "desc": "Macadamia frita sin sal: presentación indicada en el nombre del producto.",
+    "desc": "Macadamias fritas, sin sal añadida.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 42,
@@ -621,7 +621,7 @@ const products={
   },
   "macadamiaTostadaSal": {
     "name": "Macadamia tostada con sal",
-    "desc": "Macadamia tostada con sal: presentación indicada en el nombre del producto.",
+    "desc": "Macadamias tostadas y sazonadas con sal.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 44,
@@ -629,7 +629,7 @@ const products={
   },
   "macadamiaTostadaSinSal": {
     "name": "Macadamia tostada sin sal",
-    "desc": "Macadamia tostada sin sal: presentación indicada en el nombre del producto.",
+    "desc": "Macadamias tostadas, sin sal añadida.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 44,
@@ -645,7 +645,7 @@ const products={
   },
   "avellanaAmericanaCruda": {
     "name": "Avellana americana cruda",
-    "desc": "Avellana americana cruda: presentación indicada en el nombre del producto.",
+    "desc": "Avellana americana sin tostar.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 24,
@@ -653,7 +653,7 @@ const products={
   },
   "avellanaAmericanaTostada": {
     "name": "Avellana americana tostada",
-    "desc": "Avellana americana tostada: presentación indicada en el nombre del producto.",
+    "desc": "Avellana americana tostada.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 28.8,
@@ -685,7 +685,7 @@ const products={
   },
   "nuezPecanPelada": {
     "name": "Nuez pecana pelada",
-    "desc": "Nuez pecana pelada: presentación indicada en el nombre del producto.",
+    "desc": "Nuez pecana sin cáscara.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 27.8,
@@ -693,7 +693,7 @@ const products={
   },
   "nuezPecanTostada": {
     "name": "Nuez pecana tostada",
-    "desc": "Nuez pecana tostada: presentación indicada en el nombre del producto.",
+    "desc": "Nuez pecana tostada.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 33,
@@ -701,7 +701,7 @@ const products={
   },
   "nuezCaramelizada": {
     "name": "Nuez caramelizada",
-    "desc": "Preparación dulce identificada como Nuez caramelizada. Consulta la composición y los alérgenos antes de comprar.",
+    "desc": "Nueces recubiertas de caramelo. Consulta la etiqueta para comprobar ingredientes y posibles trazas.",
     "tag": "Garrapiñados y dulces",
     "category": "dulces",
     "price": 32,
@@ -717,7 +717,7 @@ const products={
   },
   "pistachoMondadoTostado": {
     "name": "Pistacho mondado tostado",
-    "desc": "Pistacho mondado tostado: presentación indicada en el nombre del producto.",
+    "desc": "Pistachos sin cáscara, tostados.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 39,
@@ -725,7 +725,7 @@ const products={
   },
   "pistachoTurcoTostado": {
     "name": "Pistacho turco tostado",
-    "desc": "Pistacho turco tostado: presentación indicada en el nombre del producto.",
+    "desc": "Pistachos de variedad turca, tostados.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 29.8,
@@ -789,7 +789,7 @@ const products={
   },
   "revueloPacoJose": {
     "name": "Revuelto Paco José",
-    "desc": "Variedad de revuelto Paco José.",
+    "desc": "Mezcla de la variedad Revuelto Paco José. La composición exacta debe confirmarse en el puesto.",
     "tag": "Revueltos",
     "category": "revueltos",
     "price": 34,
@@ -805,7 +805,7 @@ const products={
   },
   "revueloDulceMCarmen": {
     "name": "Revuelto dulce Mª Carmen",
-    "desc": "Variedad de revuelto dulce Mª Carmen.",
+    "desc": "Mezcla dulce de la variedad Revuelto Mª Carmen. La composición exacta debe confirmarse en el puesto.",
     "tag": "Revueltos",
     "category": "revueltos",
     "price": 39.8,
@@ -813,7 +813,7 @@ const products={
   },
   "revueloDeliciasVirginia": {
     "name": "Revuelto Delicias Virginia",
-    "desc": "Variedad Delicias Virginia.",
+    "desc": "Mezcla de la variedad Delicias Virginia. La composición exacta debe confirmarse en el puesto.",
     "tag": "Revueltos",
     "category": "revueltos",
     "price": 28.8,
@@ -1013,7 +1013,7 @@ const products={
   },
   "calabazaPeladaCruda": {
     "name": "Pipa de calabaza pelada cruda",
-    "desc": "Semillas de calabaza en la presentación indicada.",
+    "desc": "Semillas de calabaza sin cáscara y sin tostar.",
     "tag": "Pipas y semillas",
     "category": "semillas",
     "price": 11.8,
@@ -1021,7 +1021,7 @@ const products={
   },
   "calabazaPeladaTostada": {
     "name": "Pipa de calabaza pelada tostada",
-    "desc": "Semillas de calabaza en la presentación indicada.",
+    "desc": "Semillas de calabaza sin cáscara, tostadas.",
     "tag": "Pipas y semillas",
     "category": "semillas",
     "price": 15.8,
@@ -1029,7 +1029,7 @@ const products={
   },
   "calabazaCascaraTostada": {
     "name": "Pipa de calabaza con cáscara tostada",
-    "desc": "Semillas de calabaza en la presentación indicada.",
+    "desc": "Semillas de calabaza tostadas, conservando su cáscara.",
     "tag": "Pipas y semillas",
     "category": "semillas",
     "price": 10,
@@ -1037,7 +1037,7 @@ const products={
   },
   "pinonNacional": {
     "name": "Piñón nacional",
-    "desc": "Piñón nacional: presentación indicada en el nombre del producto.",
+    "desc": "Piñones identificados en la tarifa como de origen nacional.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 99.8,
@@ -1045,7 +1045,7 @@ const products={
   },
   "pinonChino": {
     "name": "Piñón chino",
-    "desc": "Piñón chino: presentación indicada en el nombre del producto.",
+    "desc": "Piñones identificados en la tarifa como de origen chino.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 60,
@@ -1133,7 +1133,7 @@ const products={
   },
   "castanaPilonga": {
     "name": "Castaña pilonga",
-    "desc": "Castaña pilonga: presentación indicada en el nombre del producto.",
+    "desc": "Castaña seca de la variedad pilonga.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 17.8,
@@ -1141,7 +1141,7 @@ const products={
   },
   "coquitoBrasil": {
     "name": "Coquito de Brasil",
-    "desc": "Coquito de Brasil: presentación indicada en el nombre del producto.",
+    "desc": "Fruto seco comercializado como coquito de Brasil.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 32,
@@ -1149,7 +1149,7 @@ const products={
   },
   "chufa": {
     "name": "Chufa",
-    "desc": "Chufa: presentación indicada en el nombre del producto.",
+    "desc": "Tubérculo de chufa presentado en formato seco.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 8,
