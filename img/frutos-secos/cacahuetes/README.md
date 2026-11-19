@@ -175,3 +175,16 @@ La búsqueda ha permitido confirmar comercialmente las combinaciones de frito re
 La consulta de catálogos confirma que existen productos comercializados exactamente como frito con piel y sal, frito sin sal, tostado con cáscara con sal y tostado con cáscara sin sal. Esto mejora el patrón de comparación, pero no convierte sus imágenes en material reutilizable. Las dos fotografías libres de Commons continúan siendo genéricas y no resuelven las variantes específicas.
 
 **Decisión:** no se integra ni asigna ninguna de las nuevas imágenes. El Lote 2 continúa abierto hasta disponer de fotografía reutilizable y correspondencia visual/documental suficiente. El Lote 3 sigue sin tocarse.
+
+
+## Duodécima ronda: fotografía Pexels de cacahuetes salados con cáscara
+
+- **Cacahuete con cáscara con sal** — “Close-Up of Salted Peanuts in Shells”, Mustafa Akın, Pexels, 4.470 × 2.644 px, tomada el 16/12/2025. La ficha describe explícitamente cacahuetes salados con cáscara y la página marca licencia gratuita. La licencia Pexels autoriza el uso de fotografías en webs y tiendas de comercio electrónico; no exige atribución, aunque se recomienda. Es una candidata de buena correspondencia documental para la ficha, pendiente de incorporar una copia local y revisar el archivo original/recorte antes de marcarla como verificada. https://www.pexels.com/photo/close-up-of-salted-peanuts-in-shells-35237495/
+- **Cacahuete tostado con cáscara (sal no confirmada)** — “Close-Up View of Roasted Peanuts”, Mustafa Akın, Pexels, 5.119 × 3.413 px. La página confirma tostado y cáscara, pero no menciona ausencia de sal; por ello no sirve para la ficha “sin sal”. Se conserva solo como referencia genérica hasta encontrar confirmación documental de la sal. https://www.pexels.com/photo/close-up-view-of-roasted-peanuts-35237494/
+- **Cacahuete tostado con cáscara sin sal (contraste comercial)** — Krema Nut Company ofrece una foto y ficha de “In-Shell Peanuts Roasted, NO SALT”; confirma visualmente que la variante existe, pero es una imagen comercial sin licencia de reutilización acreditada. No copiar. https://krema.com/products/in-shell-peanuts-roasted-no-salt-8-oz-bag
+
+### Resultado de la duodécima ronda
+
+Se localiza la primera candidata de alta resolución con licencia apta para tienda para la variante **cacahuete con cáscara con sal**. La imagen de tostado con cáscara no confirma que sea sin sal y se descarta para esa variante. La variante con cáscara sin sal sigue necesitando una foto reutilizable cuya fuente confirme expresamente que no lleva sal.
+
+**Decisión:** la foto Pexels se mantiene como candidata pendiente de copia local e inspección del archivo descargado; no se cambia aún el catálogo. Lote 2 abierto y Lote 3 intacto.
