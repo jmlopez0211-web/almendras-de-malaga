@@ -69,7 +69,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 23.8,
-    "image": ""
+    "image": "https://upload.wikimedia.org/wikipedia/commons/3/30/Almendras_tostadas_al_horno_%28Xert%2C_Espa%C3%B1a%29.jpg",
+    "imageVerified": true,
+    "imageCredit": "Juan Emilio Prades Bel · Almendras tostadas al horno (Xert, España)",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Almendras_tostadas_al_horno_(Xert,_España).jpg",
+    "imageLicense": "CC BY 4.0"
   },
   "almendraTostadaRepeladaSal": {
     "name": "Almendra tostada repelada con sal",
