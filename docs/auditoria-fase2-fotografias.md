@@ -164,3 +164,15 @@ Fuentes web: Wikimedia Commons, consultadas el 19/11/2026. La revisión de metad
 
 ## Recuento de referencias de imagen en catálogo
 En una lectura por bloques del `data/catalog.js`, se detectan 61 bloques de producto sin campo `image` en el patrón de lectura usado. La cifra puede diferir del inventario previo (64) por estructura del archivo o limitaciones del patrón; debe reconciliarse con una extracción JSON/JS completa antes de cerrar la auditoría. No se altera el catálogo con asignaciones no verificadas.
+
+
+## Bloque de fruta deshidratada — búsqueda adicional
+
+| Producto | Candidato | Resolución | Licencia | Estado |
+|---|---|---:|---|---|
+| Coco deshidratado | `Yummy Dried Coconut.jpg` | 1280×960 | CC BY 4.0 | Candidato; comprobar que coincide con formato de dados del catálogo |
+| Coco deshidratado | `Desicated_coconutB.jpg` | 4096×2721 | CC BY-SA (según página Commons) | Candidato; la descripción incluye chips, flakes y shred; no es prueba de dados |
+| Higo de Málaga | `Dried figs (2).jpg` | 3000×3000 | CC0 | Candidato visual genérico; no prueba origen Málaga |
+| Higo de Málaga | `DRIED_FIGS.jpg` | 6144×8160 | CC0 | Candidato visual genérico; no prueba origen Málaga |
+
+No se aprueba coco en dados ni higo con denominación/origen Málaga a partir de estas fotos genéricas. Se mantiene el requisito de producto exacto y sin envase/branding.
