@@ -71,6 +71,8 @@ function renderProducts(){
   const haystack=normalizeCatalogText([p.name,p.desc,p.tag,p.category,catalogGroup(p)].join(' '));
   return (active==='todos'||catalogGroup(p)===active)&&words.every(word=>haystack.includes(word));
  });
+ // Las fichas con una imagen única y verificada aparecen primero; las pendientes siguen visibles.
+ entries.sort(([idA],[idB])=>Number(hasUniqueProductImage(idB))-Number(hasUniqueProductImage(idA)));
  grid.innerHTML=entries.length?entries.map(([id,p])=>{
   const src=productImage(id,p),specific=hasSpecificProductImage(id);
   const photoMarkup=src?'<img class="product-photo" data-image-product="'+id+'" src="'+src+'" alt="Fotografía de referencia de '+p.name+'" loading="lazy" decoding="async">':'<div class="product-placeholder" role="img" aria-label="Fotografía pendiente para '+p.name+'"><span class="placeholder-category">FOTOGRAFÍA PENDIENTE</span><strong>'+p.name+'</strong></div>';
