@@ -138,8 +138,11 @@ window.PRODUCTS ={
     "tag": "Cacahuetes",
     "category": "cacahuetes",
     "price": 6.8,
-    "image": "assets/products/cacahuete-crudo-piel.jpg",
-    "imageVerified": false
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Raw_peanuts_with_skin_on_white_plate.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Undeka 11 · cacahuetes crudos con piel",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Raw_peanuts_with_skin_on_white_plate.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "cacahueteCrudoRepelado": {
     "name": "Cacahuete crudo repelado",
@@ -155,7 +158,11 @@ window.PRODUCTS ={
     "tag": "Cacahuetes",
     "category": "cacahuetes",
     "price": 6.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cacahuetes_tostados_enteros_con_c%C3%A1scara_y_salados.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Juan Emilio Prades Bel · cacahuetes tostados enteros con cáscara y salados",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Cacahuetes_tostados_enteros_con_c%C3%A1scara_y_salados.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "cacahueteCascaraSinSal": {
     "name": "Cacahuete con cáscara sin sal",
