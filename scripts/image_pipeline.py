@@ -158,7 +158,12 @@ def load_manifest(path: Path) -> list[dict]:
     return data
 
 def download_manifest(manifest=DEFAULT_MANIFEST, out_dir=DEFAULT_OUT, **kwargs) -> dict:
-    results=[]\n    for index, item in enumerate(load_manifest(Path(manifest))):\n        if index: time.sleep(kwargs.pop("request_delay", 3))\n        results.append(download_one(item,out_dir,**kwargs))
+    results = []
+    request_delay = kwargs.pop("request_delay", 3.0)
+    for index, item in enumerate(load_manifest(Path(manifest))):
+        if index:
+            time.sleep(request_delay)
+        results.append(download_one(item, out_dir, **kwargs))
     report={"download_results":results,"inspection":inspect_directory(Path(out_dir)),
             "note":"All downloads are candidates. This report does not approve or verify catalog products."}
     REPORT.parent.mkdir(parents=True,exist_ok=True)
@@ -200,7 +205,9 @@ def main():
     ap.add_argument("command",choices=["download","inspect","sync-git","sync-api"])
     ap.add_argument("--manifest",default=str(DEFAULT_MANIFEST)); ap.add_argument("--directory",default=str(DEFAULT_OUT))
     ap.add_argument("--min-width",type=int,default=900); ap.add_argument("--min-height",type=int,default=700)
-    ap.add_argument("--retries",type=int,default=3); ap.add_argument("--push",action="store_true",help="Push after git commit")\n    ap.add_argument("--request-delay",type=float,default=3.0,help="Seconds between Commons candidate downloads")
+    ap.add_argument("--retries", type=int, default=3)
+    ap.add_argument("--push", action="store_true", help="Push after git commit")
+    ap.add_argument("--request-delay", type=float, default=3.0, help="Seconds between Commons candidate downloads")
     ap.add_argument("--owner"); ap.add_argument("--repo"); ap.add_argument("--branch",default="main"); ap.add_argument("--base-path",default="assets/images")
     args=ap.parse_args(); directory=Path(args.directory)
     if args.command=="download":
