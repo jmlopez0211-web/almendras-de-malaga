@@ -93,22 +93,33 @@ function renderProducts(){
   const haystack=normalizeCatalogText([p.name,p.desc,p.tag,p.category,catalogGroup(p),productFamily(p)].join(' '));
   return (active==='todos'||catalogGroup(p)===active)&&(activeSubfamily==='todos'||productFamily(p)===activeSubfamily)&&words.every(word=>haystack.includes(word));
  });
- // Las fichas con una imagen única y verificada aparecen primero; las pendientes siguen visibles.
  entries.sort(([idA],[idB])=>Number(hasUniqueProductImage(idB))-Number(hasUniqueProductImage(idA)));
- grid.innerHTML=entries.length?entries.map(([id,p])=>{
-  const src=productImage(id,p),specific=hasSpecificProductImage(id);
-  const photoMarkup=src?'<img class="product-photo" data-image-product="'+id+'" src="'+src+'" alt="Fotografía de referencia de '+p.name+'" loading="lazy" decoding="async">':'<div class="product-placeholder" role="img" aria-label="Fotografía pendiente para '+p.name+'"><span class="placeholder-category">FOTOGRAFÍA PENDIENTE</span><strong>'+p.name+'</strong></div>';
-  return '<article class="product">'+photoMarkup+'<span class="image-caption">'+(specific?productImageCredit(p):'Fotografía real pendiente de verificación')+'</span><div class="product-body"><span class="tag">'+p.tag+'</span><h3>'+p.name+'</h3><p>'+p.desc+'</p><small class="product-allergen">'+allergenCardText(p)+'</small><span class="price">'+euro(p.price)+' <span class="unit">/ kg · precio orientativo</span></span><button class="details" data-product="'+id+'">Ver formatos y añadir →</button></div></article>';
- }).join(''):'<div class="no-products">No hay productos que coincidan. Prueba con otra palabra o categoría.</div>';
+ const card=([id,p])=>{
+  const src=productImage(id,p);
+  const photo=src?'<img class="product-photo" data-image-product="'+id+'" src="'+src+'" alt="'+p.name+'" loading="lazy" decoding="async">':'<div class="product-placeholder" role="img" aria-label="Fotografía pendiente para '+p.name+'"><span class="placeholder-category">'+({frutos:'FRUTOS SECOS',fruta:'FRUTA DESHIDRATADA',chuches:'GOLOSINAS',variados:'APERITIVOS'}[catalogGroup(p)]||'CATÁLOGO')+'</span><strong>'+p.name+'</strong></div>';
+  return '<article class="product">'+photo+'<div class="product-body"><h3>'+p.name+'</h3><p>'+p.desc+'</p><span class="price">'+euro(p.price)+' <span class="unit">/ kg</span></span><button class="details" data-product="'+id+'">Ver formatos · Añadir</button></div></article>';
+ };
+ const grouped=active==='todos'&&activeSubfamily==='todos'&&words.length===0;
+ if(grouped){
+  const familyOrder=[['frutos','Frutos secos'],['fruta','Frutas deshidratadas'],['variados','Pipas, aperitivos y mezclas'],['chuches','Caramelos y golosinas']];
+  const sections=familyOrder.map(([key,title])=>{
+   const items=entries.filter(([id,p])=>catalogGroup(p)===key);
+   if(!items.length)return '';
+   return '<section class="catalog-family-section" data-catalog-family="'+key+'"><div class="catalog-family-heading"><h3>'+title+'</h3><span>'+items.length+' productos</span><button class="family-see-all" data-see-family="'+key+'">Ver familia →</button></div><div class="family-product-grid">'+items.map(card).join('')+'</div></section>';
+  }).join('');
+  grid.classList.add('catalog-grouped');grid.innerHTML=sections||'<div class="no-products">No hay productos disponibles.</div>';
+ }else{
+  grid.classList.remove('catalog-grouped');grid.innerHTML=entries.length?entries.map(card).join(''):'<div class="no-products">No hay productos que coincidan. Prueba con otra palabra o categoría.</div>';
+ }
  grid.querySelectorAll('[data-image-product]').forEach(img=>img.addEventListener('error',()=>{
   const p=products[img.dataset.imageProduct];if(!p)return;
   const placeholder=document.createElement('div');placeholder.className='product-placeholder';placeholder.setAttribute('role','img');placeholder.setAttribute('aria-label','Imagen no disponible: '+p.name);
   const category=document.createElement('span');category.className='placeholder-category';category.textContent=({frutos:'FRUTOS SECOS',fruta:'FRUTA DESHIDRATADA',chuches:'CHOCOLATES Y GOLOSINAS',variados:'SNACKS Y VARIADOS'}[catalogGroup(p)]||'CATÁLOGO');
   const name=document.createElement('strong');name.textContent=p.name;placeholder.append(category,name);img.replaceWith(placeholder);
-  const caption=placeholder.nextElementSibling;if(caption?.classList.contains('image-caption'))caption.textContent='Fotografía no disponible · imagen pendiente de actualización';
- },{once:true}));
+ }));
  const count=document.getElementById('catalogResultCount');if(count)count.textContent=entries.length+' productos'+(active==='todos'?' en el catálogo':' en esta categoría');
  grid.querySelectorAll('[data-product]').forEach(btn=>btn.addEventListener('click',()=>showProduct(btn.dataset.product)));
+ grid.querySelectorAll('[data-see-family]').forEach(btn=>btn.addEventListener('click',()=>{const f=btn.dataset.seeFamily;document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x.dataset.filter===f));activeSubfamily='todos';renderSubfamilies(f);renderProducts();document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})}));
 }
 document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x===btn));activeSubfamily='todos';renderSubfamilies(btn.dataset.filter);renderProducts()}));
 document.getElementById('productSearch')?.addEventListener('input',renderProducts);
