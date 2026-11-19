@@ -393,3 +393,23 @@ Se confirma una segunda alternativa libre para cacahuete crudo con piel, pero no
 La imagen es única y no está asignada a otra ficha. El catálogo conserva 152 productos. La URL Pixabay pasa el nuevo filtro del renderizador. Se comprobará de nuevo la integridad completa tras el siguiente micro-lote; la carga real de la página publicada requiere prueba en navegador y no se declara todavía verificada.
 
 **Estado:** tres de las doce fichas del Lote 2 tienen foto asignada. Nueve siguen pendientes. Lote 2 abierto; Lote 3 intacto.
+
+
+## Vigesimoprimera ronda: documentación de fotos de fritura en puesto y de variantes sin sal
+
+### “Frying Peanut on a street shop” — descartadas como foto del producto terminado
+
+- **Frying Peanut (Arachis hypogaea) on a street shop (1).jpg** — Nasir Khan Saikat, Wikimedia Commons, CC BY-SA 3.0, original 4.947 × 3.097 px. El texto de la ficha identifica cacahuetes en un puesto de Dhaka mientras se fríen. La inspección del original muestra vainas exteriores completas en una sartén/recipiente de puesto, no granos de cacahuete frito listos para la venta. No confirma piel fina, sal ni producto final. No asignar a ninguna de las cuatro variantes fritas. https://commons.wikimedia.org/wiki/File:Frying_Peanut_(Arachis_hypogaea)_on_a_street_shop_(1).jpg
+- **Frying Peanut (Arachis hypogaea) on a street shop (2).jpg** — Nasir Khan Saikat, Wikimedia Commons, CC BY-SA 3.0, original 5.184 × 3.456 px. La segunda fotografía muestra el aparato de cocción y el puesto; el contenido visible sigue siendo cacahuete en vaina, sin detalle del producto final. No asignar. https://commons.wikimedia.org/wiki/File:Frying_Peanut_(Arachis_hypogaea)_on_a_street_shop_(2).jpg
+
+### Repaso de candidatos para productos sin sal
+
+- **Roasted Peanuts / Roasted Peanuts Texture** — Photos Public Domain declara expresamente que son tostados en seco y sin sal, pero en la inspección de los originales se ve piel fina adherida a parte de los granos. No sirven para “tostado repelado sin sal”; tampoco para “tostado con piel sin sal” sin una inspección visual que confirme que todo el contenido de la foto corresponde al mismo producto. Se mantienen como referencia, no asignar. https://www.photos-public-domain.com/2012/04/02/roasted-peanuts/ ; https://www.photos-public-domain.com/2012/04/02/roasted-peanuts-texture/
+- **Shelled Peanuts** — Photos Public Domain declara que son sin sal y sin vaina exterior, pero también indica que están recubiertos de aceite vegetal. La foto no demuestra que la piel fina esté retirada ni si la preparación coincide con el producto crudo/frito/tostado de esta ficha. No asignar a cacahuete crudo repelado. https://www.photos-public-domain.com/2017/12/08/shelled-peanuts/
+- **Roasted Peanuts in the Shell** — Photos Public Domain declara tostado y cáscara, pero no confirma si llevan o no sal. No asignar a ninguna variante con cáscara hasta resolver este dato. https://www.photos-public-domain.com/2016/11/15/roasted-peanuts-in-the-shell/
+
+### Resultado de la vigesimoprimera ronda
+
+La búsqueda de Commons y de fotografías de dominio público aporta imágenes de procesos de cocción y de cacahuetes tostados sin sal, pero no una foto terminada que confirme todos los atributos de los productos pendientes. No se fuerza ninguna asignación a partir de fotos de proceso, composiciones mixtas o descripciones que omiten piel o sal.
+
+**Decisión:** no se integra ninguna foto de esta ronda. El Lote 2 sigue abierto, con tres fichas verificadas y nueve pendientes. No se toca el Lote 3.
