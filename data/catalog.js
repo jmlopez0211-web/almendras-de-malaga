@@ -141,8 +141,11 @@ window.PRODUCTS ={
     "tag": "Almendra y derivados",
     "category": "variantes",
     "price": 18.8,
-    "image": "assets/products/granillo-almendra.jpg",
-    "imageVerified": true
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bowl_of_chopped_almonds.jpg?width=1200",
+    "imageVerified": false,
+    "imageCredit": "Douglas P Perkins · bowl of chopped almonds",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Bowl_of_chopped_almonds.jpg",
+    "imageLicense": "CC BY-SA 3.0"
   },
   "cacahueteCrudoPiel": {
     "name": "Cacahuete crudo con piel",
