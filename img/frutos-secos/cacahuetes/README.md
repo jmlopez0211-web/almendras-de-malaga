@@ -247,3 +247,28 @@ Se inspeccionaron los dos archivos originales enlazados por las páginas, no sol
 - **Fritos:** siguen existiendo fuentes libres para “frito genérico”, pero ninguna nueva fuente de esta ronda confirma de forma conjunta preparación, presencia/ausencia de piel fina y sal.
 
 **Decisión:** no se incorpora ninguna imagen de esta ronda. Se mantiene el Lote 2 abierto y el Lote 3 intacto.
+
+
+## Decimoquinta ronda: fotos con cáscara verificadas y nuevos límites de asignación
+
+### Cacahuete con cáscara y sal: candidato de alta correspondencia
+
+- **“Cacahuetes tostados enteros con cáscara y salados.jpg”** — Juan Emilio Prades Bel, Wikimedia Commons, CC BY-SA 4.0, original 3.072 × 2.304 px. La descripción y el título de la página individual identifican explícitamente cacahuetes tostados, enteros, con cáscara y salados. Inspección del original: se muestran las vainas/cáscaras exteriores completas, no granos sueltos con piel fina. Es la primera candidata libre con correspondencia documental fuerte para **“Cacahuete con cáscara con sal”**. Matiz: la fuente especifica que están tostados, mientras que el nombre actual del catálogo solo dice con cáscara y sal. No se cambia la descripción del producto ni se asigna la foto hasta confirmar que esa preparación coincide con el producto vendido. Licencia exige atribución, enlace CC BY-SA 4.0 y compartir-alike si se modifica. https://commons.wikimedia.org/wiki/File:Cacahuetes_tostados_enteros_con_c%C3%A1scara_y_salados.jpg
+
+### Cacahuete en cáscara sin sal: referencias crudas, no exactas aún
+
+- **“Arachis hypogaea - Peanuts in shell.jpg”** — T.K. Naliaka, Wikimedia Commons, CC BY-SA 4.0, original 908 × 754 px. La descripción indica cacahuetes crudos en cáscara, listos para cocinar/comer; la inspección visual muestra vainas exteriores enteras y una abierta. No documenta que el producto sea sin sal ni que coincida con la preparación comercial de la ficha. Además, su composición incluye manos/personas y otros frutos; no es una foto limpia de producto para catálogo. Referencia visual, no asignar. https://commons.wikimedia.org/wiki/File:Arachis_hypogaea_-_Peanuts_in_shell.jpg
+- **“Close-Up of Raw Peanuts in Shells”** — King Shooter, Pexels, 5.472 × 3.648 px, licencia Pexels gratuita. Descripción explícita de cacahuetes crudos en sus vainas. La foto tiene buena resolución y presenta numerosas vainas, pero no documenta específicamente “sin sal” ni preparación tostada. Candidata de referencia para la geometría de la cáscara, no asignar a la ficha sin sal hasta confirmar si el producto vendido es crudo. https://www.pexels.com/photo/close-up-of-raw-peanuts-in-shells-33501329/
+- **“Roasted Peanuts in the Shell”** — Photos Public Domain, original 3.888 × 2.592 px, declarado dominio público. La página confirma tostado y cáscara; no dice si están salados o sin sal. No asignar a una variante con/sin sal. https://www.photos-public-domain.com/2016/11/15/roasted-peanuts-in-the-shell/
+
+### Referencias comerciales de presentación sin sal (no copiar las imágenes)
+
+- Whitley Peanut Factory presenta “Unsalted Roasted-n-Shell Peanuts” y Texas Roasting Company vende “Roasted Unsalted Peanuts”. Ambas fichas identifican con claridad el producto tostado en cáscara sin sal, pero son fotografías de producto comerciales sin licencia abierta identificada. Sirven para confirmar el nombre comercial y el aspecto de la presentación, no para reutilizar las fotos. https://whitleyspeanut.com/products/unsalted_in_shell_peanuts ; https://txroasting.com/products/unsalted-peanuts-in-shell-16oz-case-of-12
+
+### Resultado de la decimoquinta ronda
+
+- **Cáscara con sal:** aparece una candidata libre de alta resolución que confirma cáscara exterior, sal y tostado; falta validar que tostado coincida con el producto real del catálogo.
+- **Cáscara sin sal:** se identifican referencias de producto comercial exactas, pero sus fotografías no son reutilizables. Las fotos libres encontradas documentan cacahuetes crudos o tostados en cáscara, sin confirmar el estado de sal.
+- **Cacahuete crudo con piel:** la candidata Commons de la ronda 13 sigue siendo la opción de mayor calidad documental y visual, pero todavía no se ha descargado ni integrado localmente.
+
+**Decisión:** ninguna foto nueva se ha integrado en esta ronda. No se altera ningún otro producto. Lote 2 abierto; Lote 3 intacto.
