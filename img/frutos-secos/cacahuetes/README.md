@@ -682,3 +682,29 @@ Se obtienen referencias comerciales visuales/documentales mucho más precisas pa
 La revisión de imágenes libres vuelve a encontrar licencias correctas para fotos genéricas, pero no una correspondencia documental completa de preparación, piel fina y sal. Las referencias comerciales de tostado con piel sin sal y tostado repelado sin sal siguen siendo mejores para validar la apariencia, aunque sin licencia abierta para incorporarlas.
 
 **Decisión:** no integrar imágenes nuevas. Se mantienen tres variantes verificadas y nueve pendientes; Lote 2 abierto y Lote 3 intacto.
+
+
+## Ronda 32 — fotografía comercial exacta de redskin sin sal y búsqueda de frito sin sal con piel
+
+### Referencias visuales exactas localizadas (no se integran sin autorización)
+
+- **Tostado con piel fina sin sal — Oh! Nuts, “Dry Roasted Unsalted Redskin Peanuts”.** La fotografía muestra granos individuales con piel roja fina, algunos abiertos y sin vaina exterior. La ficha especifica dry roasted, ingredients: peanuts, sodium 0 mg y “in their red skin”. Es la referencia visual/documental más completa encontrada hasta ahora para cacahueteTostadoPielSinSal; la página mantiene copyright comercial y no declara licencia reutilizable. https://ohnuts.com/products/dry-roasted-unsalted-redskin-peanuts
+- **Tostado con piel fina sin sal — Montreal Nut Factory, “Arachides rôties à sec à peau rouge non salées”.** Foto de granos con piel roja sobre fondo claro; la ficha confirma tostado en seco, sin sal y solo cacahuetes en ingredientes. Comercial, sin licencia abierta. https://www.montrealnutfactory.com/fr/products/copy-of-peanuts-dry-roasted-red-skinned-salted-arachides-salees-a-la-peau-rouge-roties-a-sec
+- **Tostado con piel fina sin sal — Nutterie.** Segunda fuente fotográfica clara; la página dice roasted red skin peanuts (unsalted), ingredientes cacahuete y aceite de canola, sodio 3 mg. Comercial, sin licencia abierta. https://nutterie.com/products/roasted-red-skin-peanuts-unsalted
+- **Tostado con piel fina sin sal — De Notenman (neerlandés/inglés).** La ficha dice skin-on, roasted, unsalted, sal 0 g y responde expresamente que la piel fina permanece. Foto comercial, sin licencia abierta. https://www.denotenman.com/en/products/unsalted-roasted-peanuts-1
+- **Catálogo mayorista — Bulk Barrel.** Separa productos “Roasted Redskin Unsalted”, “Roasted Redskin Salted”, “Raw Redskin” y “Raw Blanched”. Es una nomenclatura muy útil para diferenciar piel roja frente a pelado, pero su catálogo y fotografías no tienen licencia de reutilización publicada. https://bulkbarrel.ca/portfolio-category/peanuts/
+- **Catálogo español — Natura Frutos Secos.** Muestra miniaturas comerciales separadas para “Cacahuete Pelado Crudo”, “Cacahuete Frito Repelado”, “Cacahuete Frito con Piel”, “Cacahuete Tostado Sin Sal” y “Cacahuete Valenciano Tostado sin Sal”. Su texto aclara que el valenciano tostado sin sal es en cáscara; la página de “Tostado Sin Sal” confirma tostado y ausencia de sal, pero no aclara piel fina ni cáscara exterior. No asignar ninguna foto a una ficha específica sin confirmar esos atributos. https://naturafrutossecos.es/16-cacahuete/
+- **Cacahuete tostado sin sal — Natura Frutos Secos.** Ficha independiente confirma “Sal: sin sal” y “Tipo: tostado” y muestra galería de producto; no distingue piel fina de repelado. La fotografía no tiene licencia abierta. https://naturafrutossecos.es/cacahuete/532-cacahuete-tostado-sin-sal.html
+- **Frito con piel sin sal — Copaval.** El catálogo lista por separado “CACAHUETE FRITO CON PIEL”, “CACAHUETE REPELADO FRITO” y “CACAHUETE FRITO SIN SAL”, pero no dice que este último sea con piel; no se puede asumir que “frito sin sal” y “frito con piel” describan la misma variante. Las imágenes comerciales no tienen licencia libre publicada. https://copaval.com/productos/
+
+### Candidatas de dominio público descartadas tras inspección visual
+
+- **FDA / Wikimedia Commons — “RECALLED – Cashew Butter, Tahini and Roasted Blanched Peanuts (8047620089).jpg”.** La licencia es dominio público de obra del gobierno estadounidense, pero la imagen real muestra la etiqueta de un envase de mantequilla de cacahuete, no cacahuetes tostados repelados. No sirve para ninguna ficha. https://commons.wikimedia.org/wiki/File:RECALLED_%E2%80%93_Cashew_Butter,_Tahini_and_Roasted_Blanched_Peanuts_(8047620089).jpg
+- **FDA / Wikimedia Commons — variante (8047624516).** Dominio público, pero la imagen muestra una etiqueta de mantequilla de cacahuete con ingredientes roasted Spanish peanuts, palm oil y salt, no el producto en grano. Descartada. https://commons.wikimedia.org/wiki/File:RECALLED_%E2%80%93_Cashew_Butter,_Tahini_and_Roasted_Blanched_Peanuts_(8047624516).jpg
+- **Commons — “Fried peanuts.jpg” (Nishant113, CC BY-SA 4.0, 4160×3120).** La licencia permite reutilización con atribución, pero la descripción solo confirma un snack de cacahuetes fritos; no aporta estado de piel fina ni sal. No asignar. https://commons.wikimedia.org/wiki/File:Fried_peanuts.jpg
+
+### Resultado de la trigésima segunda ronda
+
+Se ha localizado una referencia comercial casi ideal para cacahuete tostado con piel fina sin sal: foto limpia de los granos, descripción de redskin, tostado en seco y sodio cero. Aún no se puede incorporar por copyright no cedido. Para el frito con piel fina sin sal, Copaval lista “frito con piel” y “frito sin sal” por separado, pero no prueba que sean el mismo SKU; no se combinan ambas descripciones por inferencia.
+
+**Decisión:** ninguna nueva imagen integrada. Se mantienen tres variantes verificadas y nueve pendientes. Lote 2 continúa abierto; Lote 3 intacto.
