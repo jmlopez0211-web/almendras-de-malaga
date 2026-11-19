@@ -390,7 +390,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 44,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/2021-10-09_22_37_58_Mauna_Loa_dry_roasted_macadamia_nuts_with_Hawaiian_sea_salt_at_the_Royal_Kona_Resort_in_Kailua-Kona,_Hawaii_County,_Hawaii.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Famartin · Mauna Loa dry roasted macadamia nuts with Hawaiian sea salt",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:2021-10-09_22_37_58_Mauna_Loa_dry_roasted_macadamia_nuts_with_Hawaiian_sea_salt_at_the_Royal_Kona_Resort_in_Kailua-Kona,_Hawaii_County,_Hawaii.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "macadamiaTostadaSinSal": {
     "name": "Macadamia tostada sin sal",
