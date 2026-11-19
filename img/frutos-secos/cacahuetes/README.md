@@ -664,3 +664,21 @@ Se obtienen referencias comerciales visuales/documentales mucho más precisas pa
 **Pendiente específico:** no se localiza todavía una fotografía reutilizable y documentada de cacahuete frito con piel fina SIN sal. Siguen pendientes también las referencias libres exactas para crudo repelado y cáscara sin sal.
 
 **Decisión:** ninguna imagen nueva integrada; no se cambia ningún archivo del catálogo. Se mantienen las tres imágenes verificadas y nueve variantes pendientes. Lote 2 sigue abierto; Lote 3 intacto.
+
+
+## Ronda 31 — revisión visual de Commons y búsqueda de variantes sin sal
+
+- **“Fried peanuts.jpg” — Nishant113, Wikimedia Commons, CC BY-SA 4.0, 4160×3120.** La descripción solo identifica un snack indio de cacahuetes fritos. La licencia permite reutilización bajo atribución y compartir igual, pero la ficha no documenta piel fina ni presencia/ausencia de sal; no asignar a las variantes fritas concretas. https://commons.wikimedia.org/wiki/File:Fried_peanuts.jpg
+- **“Deep Fried Peanuts.jpg” — Mr.Atoz, Wikimedia Commons.** La imagen de alta resolución muestra claramente cacahuetes todavía dentro de sus vainas exteriores, no granos mondados; aunque la ficha declara deep fried peanuts, no identifica sal ni piel fina. No asignar a frito con piel ni a frito repelado. https://commons.wikimedia.org/wiki/File:Deep_Fried_Peanuts.jpg
+- **“Kacang goreng fried peanuts.JPG” — Sakurai Midori, Wikimedia Commons.** La fotografía muestra un montón de cacahuetes fritos sobre papel, pero el metadato solo dice “fried peanuts” (Indonesia); no confirma sal y la foto no permite asegurar con rigor si la piel fina está presente o retirada. No asignar. https://commons.wikimedia.org/wiki/File:Kacang_goreng_fried_peanuts.JPG
+- **“A close-up view of roasted peanuts” — Rafael Rodrigues, Unsplash.** La licencia Unsplash permite uso, pero el título y etiquetas solo indican cacahuetes tostados; no confirman sal ni estado de la piel fina. No asignar. https://unsplash.com/photos/a-close-up-view-of-roasted-peanuts-vuXnF-Z6K-Y
+- **“A pile of roasted peanuts” — Rafael Rodrigues, Unsplash.** Misma limitación: foto genérica sin confirmación de piel fina ni sal. No asignar. https://unsplash.com/photos/a-pile-of-roasted-peanuts-LBc9qvBfwZA
+- **“Roasted peanuts and seeds are being prepared” — Lisa Alam, Unsplash.** Imagen de proceso/mezcla, no de producto final homogéneo ni de variante aislada. No asignar. https://unsplash.com/photos/roasted-peanuts-and-seeds-are-being-prepared-Oc9CrT-tXPE
+- **“Salted peanuts in their shells mixed with roasted shelled peanuts” — Mustafa Akın, Unsplash.** La propia descripción indica mezcla de cacahuetes con vaina y granos tostados sin cáscara; no es una variante uniforme. No asignar. https://unsplash.com/photos/salted-peanuts-in-shells-and-roasted-hruWZimkos4
+- **“Burmese style fried peanuts.jpg” — Yarzaryeni, Wikimedia Commons, CC BY 3.0.** Foto de cacahuetes rojizos dentro de recipiente de fritura/proceso; no fotografía limpia del producto ya terminado y no documenta sal. No asignar. https://commons.wikimedia.org/wiki/File:Burmese_style_fried_peanuts.jpg
+
+### Resultado de la trigésima primera ronda
+
+La revisión de imágenes libres vuelve a encontrar licencias correctas para fotos genéricas, pero no una correspondencia documental completa de preparación, piel fina y sal. Las referencias comerciales de tostado con piel sin sal y tostado repelado sin sal siguen siendo mejores para validar la apariencia, aunque sin licencia abierta para incorporarlas.
+
+**Decisión:** no integrar imágenes nuevas. Se mantienen tres variantes verificadas y nueve pendientes; Lote 2 abierto y Lote 3 intacto.
