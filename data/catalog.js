@@ -642,7 +642,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 19.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_pineapple.JPG?width=1200",
+    "imageVerified": true,
+    "imageCredit": "JHistory · dried pineapple",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_pineapple.JPG",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "cocoDado": {
     "name": "Coco dado deshidratado",
@@ -674,7 +678,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 19.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_kiwi_fruit_slices.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Fumikas Sagisavas · dried kiwi fruit slices",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_kiwi_fruit_slices.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "fresaDeshidratada": {
     "name": "Fresa deshidratada",
@@ -682,7 +690,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 28,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_Strawberries.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Fumikas Sagisavas · dried strawberries",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_Strawberries.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "arandanoDeshidratado": {
     "name": "Arándano deshidratado",
