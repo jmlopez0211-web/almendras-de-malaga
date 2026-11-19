@@ -506,7 +506,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 29.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Roasted_pistachio.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "毒島みるく · roasted pistachio",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Roasted_pistachio.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "pistachoCascaraNacional": {
     "name": "Pistacho cáscara tostado nacional",
@@ -526,7 +530,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 49.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dry_pista_without_shell.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Karikkan · dry pistachio without shell",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Dry_pista_without_shell.jpg",
+    "imageLicense": "CC BY-SA 3.0"
   },
   "revueloNatural": {
     "name": "Revuelto natural",
