@@ -358,3 +358,38 @@ La comparación visual de estos originales mejora la referencia sobre el color y
 Se confirma una segunda alternativa libre para cacahuete crudo con piel, pero no mejora la imagen seleccionada. Las imágenes de una sola vaina o unas pocas semillas en la mano no alcanzan el nivel de presentación del catálogo. Ninguna resuelve los productos fritos ni los tostados con/sin piel y sal.
 
 **Decisión:** mantener sin cambios las dos fotografías ya asignadas. No se añade ni sustituye ninguna otra imagen. El Lote 2 sigue abierto.
+
+
+## Vigésima ronda: fotografía exacta para tostado repelado con sal
+
+### Candidato aprobado: Pixabay “Peanuts, Roasted, Salted”
+
+- **Título de la ficha:** “Peanuts, Roasted, Salted image. Free for use.”
+- **Autor:** manfredrichter.
+- **Fuente:** https://pixabay.com/photos/peanuts-roasted-salted-kernels-3188500/
+- **Resolución original declarada:** 4.246 × 2.627 px.
+- **Licencia:** Pixabay Content License.
+- **Descripción/etiquetas de la fuente:** peanuts, roasted, salted, kernels, peanut kernels, without shell.
+- **Inspección visual del archivo:** el original mostrado por Pixabay presenta granos claros, de superficie lisa, sin la piel fina rojiza/marrón que aparece en cacahuetes con piel. Se ven mitades y granos enteros, con una cobertura ligera de sal. La preparación tostada y la sal están confirmadas por el título y los metadatos de la fuente; la ausencia de piel fina se contrasta visualmente. La etiqueta “without shell” por sí sola sería ambigua, pero la fotografía completa la evidencia visual.
+- **Decisión:** asignado a **cacahuete tostado repelado con sal** (cacahueteTostadoRepeladoSal). Se sirve la versión de 1.280 px del CDN de Pixabay para la tarjeta, enlazando la página original y declarando la licencia. No se reutiliza en otra variante.
+
+### Fuentes de contraste descartadas
+
+- **“Peanut Kernels.jpg”** — Thamizhpparithi Maari, CC BY-SA 4.0, 2.048 × 1.536 px. Aunque el título dice kernels, la imagen muestra granos con piel fina rojiza/marrón, y la descripción no confirma que estén repelados, tostados ni salados. No asignar. https://commons.wikimedia.org/wiki/File:Peanut_Kernels.jpg
+- **“Peanut, Salt, Shelled”** — Engin Akyurt, Pixabay Content License, 8.192 × 5.464 px. La página confirma sal y grano sin vaina exterior, pero etiqueta el producto como raw; la imagen muestra piel fina rojiza en muchos granos. No sirve para tostado repelado. https://pixabay.com/photos/peanut-peanuts-shelled-hard-salt-3709931/
+- **Pexels “A close-up shot of salted roasted peanuts”** — Engin Akyurt, 8.192 × 5.464 px, licencia gratuita. La descripción confirma tostado y sal, pero no indica si se ha eliminado la piel fina. No se asigna a la variante con piel ni a la repelada. https://www.pexels.com/photo/close-up-photo-of-peanuts-10111745/
+- **Pexels “Peanuts and its Shells in Hands”** — Pablo RAMON, 3.456 × 2.304 px, licencia gratuita. La página describe cacahuetes crudos pelados y vainas en manos; no ofrece una presentación limpia de producto a granel y no permite asegurar la ausencia de piel fina. No asignar a cacahuete crudo repelado. https://www.pexels.com/photo/peanuts-and-its-shells-in-hands-18076611/
+- **“Peanut Kernels.jpg”** no se usa como sinónimo de “cacahuete repelado”: la piel fina permanece visible en los granos fotografiados.
+
+### Cambios técnicos limitados
+
+- Se añadió a la lista permitida del renderizador únicamente el CDN oficial de imágenes de Pixabay (cdn.pixabay.com), además de los archivos locales y las URL de archivo de Wikimedia ya admitidas.
+- La línea de crédito deja de añadir automáticamente “Wikimedia Commons” a todas las licencias; ahora muestra el crédito y el texto de licencia registrados por cada producto, para no atribuir erróneamente una imagen de Pixabay a Commons.
+- Se mantiene el enlace a la ficha del autor como fuente y la licencia de Pixabay en el registro del producto.
+- No se modificaron diseños, filtros, carrito, WhatsApp, textos, precios ni fichas distintas del producto señalado.
+
+### Validación de esta ronda
+
+La imagen es única y no está asignada a otra ficha. El catálogo conserva 152 productos. La URL Pixabay pasa el nuevo filtro del renderizador. Se comprobará de nuevo la integridad completa tras el siguiente micro-lote; la carga real de la página publicada requiere prueba en navegador y no se declara todavía verificada.
+
+**Estado:** tres de las doce fichas del Lote 2 tienen foto asignada. Nueve siguen pendientes. Lote 2 abierto; Lote 3 intacto.
