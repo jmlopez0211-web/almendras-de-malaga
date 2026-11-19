@@ -586,7 +586,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 19.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_papaya.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Yael Y.",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_papaya.jpg",
+    "imageLicense": "CC BY-SA 3.0"
   },
   "platanoDeshidratado": {
     "name": "Plátano deshidratado",
@@ -610,7 +614,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 19.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_mango_%281%29.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "François Nguyen",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_mango_(1).jpg",
+    "imageLicense": "CC BY 2.0"
   },
   "pinaDeshidratada": {
     "name": "Piña deshidratada",
@@ -682,7 +690,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 8.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_dates.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "stu_spivack",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_dates.jpg",
+    "imageLicense": "CC BY-SA 2.0"
   },
   "higoTurco": {
     "name": "Higo turco",
@@ -690,7 +702,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 13.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_figs.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Wyatt Tyrone Smith",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_figs.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "higoMalaga": {
     "name": "Higo de Málaga",
