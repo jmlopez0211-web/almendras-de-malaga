@@ -1286,7 +1286,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 10.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Gummy_bears.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Thomas Rosenau · gummy bears",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Gummy_bears.jpg",
+    "imageLicense": "CC BY-SA 2.5"
   },
   "gajosSantos": {
     "name": "Gajos Santos",
