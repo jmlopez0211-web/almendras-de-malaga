@@ -1238,7 +1238,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 17,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bulk_Swiss_candy.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Fumikas Sagisavas · bulk Swiss candy",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Bulk_Swiss_candy.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "carachoco": {
     "name": "Carachoco",
