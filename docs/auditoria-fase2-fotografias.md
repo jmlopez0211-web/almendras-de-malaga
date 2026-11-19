@@ -147,3 +147,20 @@ Fuentes: páginas de Wikimedia Commons consultadas el 19/11/2026. Ninguna de est
 - `js/app.js`: confirmada la función de selección de imágenes, el fallback de error de carga, el renderizado del catálogo, las acciones de formatos/carrito y el asistente.
 - `styles.css`: existe un fallback de imagen tipo placeholder. Se conserva para no sustituir imágenes ausentes por fotografías genéricas o engañosas.
 - `index.html`: cabecera, navegación y secciones de contacto/pie presentes; no se ha realizado un test de navegador real en esta sesión.
+
+
+## Búsqueda continuada — nuevos candidatos
+
+| Producto / referencia | Archivo | Resolución | Licencia / evidencia | Estado |
+|---|---|---:|---|---|
+| Almendra tostada repelada | `Almendras tostadas sin piel.jpg` | 2592×1944 | Página Commons identifica almendras tostadas y peladas; licencia en página | Candidato, pendiente inspección |
+| Anacardo frito | `Cashew nuts.JPG` | 2848×2136 | Página Commons identifica anacardos fritos; CC BY-SA 2.1 Japan / GFDL | Candidato, pendiente inspección |
+| Anacardo frito con sal | `Salted Fried Cashew Nuts from Antique, Sep 2026.jpg` | 4080×3072 | Fotografía propia; licencia indicada en página Commons | Candidato, pendiente inspección |
+| Cacahuete garrapiñado | `Sugar coated candied peanuts.jpg` | 6000×4000 | CC BY-SA 4.0; descripción exacta | Candidato, pendiente inspección |
+| Nuez garrapiñada | `Nueces Garapiñadas en mexico.jpg` | 1836×3264 | Descripción de nueces endulzadas; licencia en Commons | Candidato, pendiente inspección |
+| Almendra garrapiñada | Categoría Commons de almendras garrapiñadas | Varias (hasta 5184×3888) | Candidatos múltiples; revisar cada archivo | No asignar aún |
+
+Fuentes web: Wikimedia Commons, consultadas el 19/11/2026. La revisión de metadatos no equivale a inspección visual del archivo original. No se incorporan como aprobadas.
+
+## Recuento de referencias de imagen en catálogo
+En una lectura por bloques del `data/catalog.js`, se detectan 61 bloques de producto sin campo `image` en el patrón de lectura usado. La cifra puede diferir del inventario previo (64) por estructura del archivo o limitaciones del patrón; debe reconciliarse con una extracción JSON/JS completa antes de cerrar la auditoría. No se altera el catálogo con asignaciones no verificadas.
