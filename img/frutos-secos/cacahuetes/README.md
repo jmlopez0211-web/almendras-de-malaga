@@ -438,3 +438,30 @@ La búsqueda de Commons y de fotografías de dominio público aporta imágenes d
 Se ha aclarado el significado técnico de “repelado” y se ha confirmado un producto comercial de cacahuete frito y salado, pero “shell-n-all” significa que conserva la vaina, por lo que no representa las fichas fritas de este lote. Las nuevas imágenes libres de fritos siguen siendo genéricas, surtidos o envases, sin prueba completa de piel fina y sal.
 
 **Decisión:** no se integra ninguna foto nueva. El Lote 2 mantiene tres fotografías verificadas y nueve variantes pendientes. Lote 3 permanece intacto.
+
+
+## Vigesimotercera ronda: cacahuete frito indonesio y variantes tostadas sin sal
+
+### Candidato visual para frito repelado, pendiente de confirmar la sal
+
+- **“Kacang goreng fried peanuts.JPG”** — Sakurai Midori, Wikimedia Commons, CC BY 3.0 (también GFDL), original 2.592 × 1.944 px. La ficha individual describe expresamente “Fried peanuts, Indonesia” y la inspección del original muestra una gran cantidad de granos fritos de color beige/dorado, sin la piel rojiza típica visible en la mayoría de las piezas. Es un candidato visual para la familia de cacahuete frito repelado. Sin embargo, la fuente no declara los ingredientes ni el estado de sal; la presentación sobre papel de periódico tampoco tiene la limpieza de una foto de producto de catálogo. **No asignar** a frito repelado con sal ni sin sal hasta confirmar la sal y mejorar la presentación. https://commons.wikimedia.org/wiki/File:Kacang_goreng_fried_peanuts.JPG
+
+### Fotos libres de tostados: descartes por falta de exactitud o calidad de presentación
+
+- **“Simply peanuts.png”** — Radtr, Wikimedia Commons, CC BY-SA 4.0, 1.576 × 1.188 px. La descripción individual declara “Roasted peanuts with salt”. Inspección del original: aparecen solo dos granos claros, aparentemente sin piel fina, sobre un fondo oscuro. La preparación y sal están confirmadas, y el aspecto es compatible con tostado repelado con sal; sin embargo, esta ficha ya tiene una fotografía superior asignada (Pixabay, manfredrichter) con gran cantidad de granos y la misma variante. No duplicar ni sustituir por una foto de menor calidad. https://commons.wikimedia.org/wiki/File:Simply_peanuts.png
+- **“Roasted Peanuts (54251297906).jpg”** — Choo Yut Shing, Wikimedia Commons, CC BY 2.0, original 3.600 × 2.400 px. La descripción solo dice “Roasted Peanuts”. Inspección del original: el plato contiene mezcla de granos con piel roja y piezas abiertas/clara sin piel. No confirma sal y no representa una variante pura con piel o repelada. No asignar. https://commons.wikimedia.org/wiki/File:Roasted_Peanuts_(54251297906).jpg
+- **“Sand roasted peanuts in Kerala 02.jpg”** y **“Sand roasted peanuts in Kerala.jpg”** — Vis M, Wikimedia Commons, CC BY-SA 4.0, originales 6.936 × 9.248 px. La inspección de las vistas de 960 px muestra a un vendedor y el proceso de tostado en arena, con los granos dentro de una criba y una sartén/recipiente de trabajo. Son fotos documentales de elaboración, no producto terminado para una tarjeta de catálogo. Tampoco indican sal ni estado de piel. No asignar. https://commons.wikimedia.org/wiki/File:Sand_roasted_peanuts_in_Kerala_02.jpg ; https://commons.wikimedia.org/wiki/File:Sand_roasted_peanuts_in_Kerala.jpg
+- **“Roasted Peanuts with shell.jpg”** — Sanjay Acharya, Wikimedia Commons, CC BY-SA 4.0, original 5.666 × 3.763 px. Confirma tostado y vaina exterior, pero no confirma si lleva sal; no asignar a “con sal” ni “sin sal” hasta resolver el dato. https://commons.wikimedia.org/wiki/File:Roasted_Peanuts_with_shell.jpg
+
+### Referencias comerciales o técnicas no reutilizables
+
+- **Roasted Red Skin Peanuts (Unsalted)** — Nutterie presenta una foto muy limpia de granos tostados con piel rojiza y la página declara expresamente “unsalted”. La imagen encaja visualmente con “cacahuete tostado con piel sin sal”, pero es fotografía de producto de una tienda, sin licencia de reutilización comercial abierta declarada. No copiar ni enlazar como si fuera libre. https://nutterie.com/products/roasted-red-skin-peanuts-unsalted
+- **“Cacahuete repelado frito y salado”** — la especificación de calidad de GESFRIO confirma cacahuete sin piel, aceite vegetal de girasol y sal; es una referencia textual precisa para frito repelado con sal, pero no otorga derechos sobre las imágenes del documento. https://gesfrio.com/index.php?controller=attachment&id_attachment=151
+- **Borges Medina Foods** también describe el producto “Fried blanched peanuts” con cacahuete, aceite de girasol alto oleico y sal. Fuente de atributos, no de una foto reutilizable. https://borgesmedinafoods.com/en/producto/cacahuete-repelado-frito/
+- **Half Nuts / Anthap** identifican de forma expresa cacahuetes sin la piel roja, tostados y salados. Son referencias comerciales útiles para verificar el aspecto esperado de un repelado, pero sus fotos de tienda no son de licencia abierta. https://halfnuts.net/products/blanched-peanuts-roasted-and-salted ; https://www.anthap.co.uk/products/anthap-salted-blanched-peanut
+
+### Resultado de la vigesimotercera ronda
+
+La búsqueda ofrece una foto libre de frito visualmente similar a cacahuete repelado, pero sin declarar sal; una foto libre de tostado repelado con sal, pero inferior a la ya asignada; y una fotografía comercial muy buena de tostado con piel sin sal, que no puede reutilizarse. No se añade ninguna imagen nueva al catálogo.
+
+**Decisión:** se mantienen 3 de 12 fotos verificadas. Nueve productos del Lote 2 continúan pendientes. Ningún cambio en el Lote 3.
