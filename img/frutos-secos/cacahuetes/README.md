@@ -80,3 +80,13 @@ Se verificaron páginas individuales para varias fotografías de cacahuete frito
 
 ## Estado tras la quinta ronda
 Los candidatos de frito genérico aumentan, pero no resuelven las variantes **frito con piel con/sin sal**, **frito repelado con/sin sal** ni **tostado repelado sin sal**. No se asignan imágenes definitivas y el Lote 2 sigue abierto.
+
+
+## Sexta ronda: candidato exacto para tostado repelado sin sal
+
+- **Cacahuete tostado repelado sin sal** — `Roasted Peanuts` (Photos Public Domain), fotografía descrita expresamente como dry-roasted, unsalted, shelled peanuts. La página declara las fotos en dominio público y ofrece descarga de alta resolución. Es un candidato muy sólido para esta ficha; antes de integrar, inspeccionar la imagen para confirmar que los granos no conservan la piel fina roja. https://www.photos-public-domain.com/2012/04/02/roasted-peanuts/
+- **Cacahuete tostado repelado sin sal (textura alternativa)** — `Roasted Peanuts Texture`, misma fuente, descrita expresamente como dry-roasted, unsalted, shelled peanuts y en dominio público. https://www.photos-public-domain.com/2012/04/02/roasted-peanuts-texture/
+- **Cacahuete frito** — se revisaron más páginas de Commons: `Fried peanuts.jpg`, `Fried Peanut.jpg`, `PTC - Fried Peanuts.jpg` y `Deep Fried Peanuts.jpg`. Confirman la preparación frita genérica, pero no piel fina, sal o aceite exactos; no asignar a variantes específicas.
+
+## Estado tras la sexta ronda
+Se ha localizado un candidato documentalmente muy preciso para **tostado repelado sin sal**. Pendiente inspección visual del grano para confirmar ausencia de piel fina. Las variantes de cacahuete frito con piel/repelado y con/sin sal siguen sin fuente exacta verificable. Lote abierto.
