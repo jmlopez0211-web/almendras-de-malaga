@@ -272,3 +272,24 @@ Se inspeccionaron los dos archivos originales enlazados por las páginas, no sol
 - **Cacahuete crudo con piel:** la candidata Commons de la ronda 13 sigue siendo la opción de mayor calidad documental y visual, pero todavía no se ha descargado ni integrado localmente.
 
 **Decisión:** ninguna foto nueva se ha integrado en esta ronda. No se altera ningún otro producto. Lote 2 abierto; Lote 3 intacto.
+
+
+## Decimosexta ronda: revisión de cacahuetes salados y fritos en Commons
+
+### “Cacahuetes-rafax.JPG”: cacahuetes salados sin preparación confirmada
+
+- Rafael Ortega Díaz, Wikimedia Commons, archivo original 2.272 × 1.704 px, **dedicación al dominio público por el autor**. La página individual titula y describe la imagen como “Salted Peanuts”. La inspección del original muestra granos claros, aparentemente repelados/blanqueados, sin vaina exterior ni piel roja visible. No documenta si están crudos, fritos o tostados; por tanto, no puede asignarse a ninguna de las fichas preparadas (frito/tostado) del Lote 2. Se conserva como referencia de grano claro y salado. https://commons.wikimedia.org/wiki/File:Cacahuetes-rafax.JPG
+
+### “Salted peanuts.jpg”: granos con piel y sal, preparación sin confirmar
+
+- Shark2025, Wikimedia Commons, CC BY-SA 4.0, original 3.120 × 4.160 px. El autor describe expresamente “Salted peanuts”. Visualmente se aprecian granos sueltos con piel rojiza/marrón y una capa blanca de sal o condimento. La fuente no confirma si son crudos, fritos o tostados. No asignar a frito con piel con sal ni a tostado con piel con sal sin prueba adicional de la preparación. https://commons.wikimedia.org/wiki/File:Salted_peanuts.jpg
+
+### “Fried peanuts.jpg”: candidato visual de frito con piel y sal, no aprobado
+
+- Nishant113, Wikimedia Commons, CC BY-SA 4.0, original 4.160 × 3.120 px. La descripción identifica “tasty fried peanuts” y un snack popular de India; la categoría Commons incluye “Salty food” y “namkeen”. Inspección visual de la imagen grande: granos individuales con superficie rojiza, una apariencia compatible con piel fina o recubrimiento, y partículas claras sobre la superficie. Sin embargo, la ficha no especifica directamente “skin-on” ni “salt” como ingredientes, y el aspecto rojizo podría incluir un sazonado/recubrimiento. Se mantiene como **candidato visual de confianza media** para “cacahuete frito con piel con sal”, pero no se asigna. https://commons.wikimedia.org/wiki/File:Fried_peanuts.jpg
+
+### Resultado de la decimosexta ronda
+
+Se encuentran tres fotos libres con mejor contraste visual entre grano pelado claro, grano de piel rojiza con sal y aperitivo frito rojizo. Ninguna demuestra simultáneamente todos los atributos de preparación, piel fina y sal para una ficha concreta. No se ha localizado todavía una foto reutilizable exacta para frito con piel sin sal, frito repelado con/sin sal ni tostado repelado sin sal.
+
+**Decisión:** no se integra ninguna de estas imágenes. Lote 2 sigue abierto; lote 3 sin iniciar.
