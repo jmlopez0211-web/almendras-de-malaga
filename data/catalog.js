@@ -630,7 +630,11 @@ window.PRODUCTS ={
     "tag": "Revueltos",
     "category": "revueltos",
     "price": 29,
-    "image": ""
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Frutta_disidratata.jpg?utm_campaign=index&utm_content=original&utm_source=commons.wikimedia.org",
+    "imageVerified": true,
+    "imageCredit": "Luigi Chiesa · Frutta disidratata (mix dried fruit)",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Frutta_disidratata.jpg",
+    "imageLicense": "CC BY-SA 3.0 (también CC BY-SA 2.5 Italia / GFDL)"
   },
   "revueloDulceMCarmen": {
     "name": "Revuelto dulce Mª Carmen",
