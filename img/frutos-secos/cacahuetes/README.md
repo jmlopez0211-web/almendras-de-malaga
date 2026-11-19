@@ -318,3 +318,24 @@ Ambas imágenes requieren atribución, enlace a la licencia CC BY-SA 4.0 y compa
 - Las imágenes no se han probado todavía en una sesión real del navegador publicada en GitHub Pages; la validación realizada es estática sobre los datos y las condiciones del renderizador.
 
 **Estado:** Lote 2 continúa abierto. Diez variantes siguen pendientes de fotografía exacta y reutilizable. No se inicia el Lote 3.
+
+
+## Decimoctava ronda: inspección de originales de tres candidatos adicionales
+
+### “Cacahuetes fritos.jpg” — inspección visual completa
+
+- Juan Emilio Prades Bel, Wikimedia Commons, CC BY-SA 4.0, original 3.072 × 2.304 px. La página describe únicamente cacahuetes fritos. La imagen ampliada muestra granos con piel rojiza/marrón y brillo aceitoso, con algunas piezas más claras; no permite confirmar que la totalidad sean repeladas o con piel ni que no lleven sal. No asignar a una de las cuatro variantes fritas específicas. Se mantiene como foto de fritura genérica. https://commons.wikimedia.org/wiki/File:Cacahuetes_fritos.jpg
+
+### “Mani without balat.jpg” — descartado por procedencia y preparación
+
+- Página de Wikimedia Commons: original 4.000 × 3.000 px, CC BY-SA 4.0; atribución mostrada: Yolynne Medina; título “Peanuts”, descripción “Peanuts from the Philippines”. La inspección visual sí muestra granos sin piel fina roja, pero la página declara que falta la información de origen y no documenta si son crudos, fritos o tostados ni el estado de sal. La licencia de la página no resuelve esa falta de trazabilidad. No reutilizar para el catálogo hasta que el autor/origen y la preparación se aclaren. https://commons.wikimedia.org/wiki/File:Mani_without_balat.jpg
+
+### “Mani with balat.jpg” — descartado por procedencia y preparación
+
+- Página de Wikimedia Commons: original 1.275 × 956 px, CC BY-SA 4.0; atribución mostrada: Yolynne Medina; título “Peanuts”, descripción “Peanuts from the Philippines”. Visualmente muestra granos oscuros con piel rojiza, pero no documenta método de preparación, aceite ni sal y la ficha también advierte que falta la información de origen. Además, la resolución es menor. No reutilizar para una variante concreta. https://commons.wikimedia.org/wiki/File:Mani_with_balat.jpg
+
+### Resultado de la decimoctava ronda
+
+La comparación visual de estos originales mejora la referencia sobre el color y el aspecto de granos con/sin piel, pero no resuelve una variante comercial concreta. La fotografía española de fritos continúa siendo genérica; las dos fotos filipinas carecen de información de procedencia/preparación suficiente.
+
+**Decisión:** no se añade ninguna nueva imagen al catálogo. Se mantienen solo las dos asignaciones verificadas de la ronda 17 y los diez productos restantes del Lote 2 continúan pendientes.
