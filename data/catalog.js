@@ -77,7 +77,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 24.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Almendras_tostadas_sin_piel.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Cebes · toasted peeled almonds",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Almendras_tostadas_sin_piel.jpg",
+    "imageLicense": "CC BY 3.0"
   },
   "almendraGarrapinada": {
     "name": "Almendra garrapiñada",
@@ -94,7 +98,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 20.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Marcona_Almonds_Close_Up_%286332260836%29.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Jonathan Pincas · Marcona almonds close-up",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Marcona_Almonds_Close_Up_(6332260836).jpg",
+    "imageLicense": "CC BY 2.0"
   },
   "bastonAlmendra": {
     "name": "Bastón de almendra",
