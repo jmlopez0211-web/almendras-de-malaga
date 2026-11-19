@@ -614,7 +614,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 19.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_ginger_slices.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Fumikas Sagisavas · dried ginger slices",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_ginger_slices.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "papayaDeshidratada": {
     "name": "Papaya deshidratada",
@@ -686,7 +690,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 19.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_grapefruit_slices.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Fumikas Sagisavas · dried grapefruit slices",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_grapefruit_slices.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "hibiscoDeshidratado": {
     "name": "Flor de hibiscos deshidratada",
@@ -910,7 +918,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 7.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Raisins_02.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Shams948 · raisins",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Raisins_02.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "pasaGolden": {
     "name": "Pasa rubia Golden",
@@ -918,7 +930,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 12.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Raisins_05.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Shams948 · raisins",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Raisins_05.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "pasaCorintoSultana": {
     "name": "Pasa Corinto y Sultana",
