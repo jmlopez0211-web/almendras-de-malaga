@@ -226,7 +226,11 @@ window.PRODUCTS ={
     "tag": "Cacahuetes",
     "category": "cacahuetes",
     "price": 9,
-    "image": ""
+    "image": "https://cdn.pixabay.com/photo/2018/02/28/17/28/peanuts-3188500_1280.jpg",
+    "imageVerified": true,
+    "imageCredit": "manfredrichter · cacahuetes tostados, salados y sin piel visible",
+    "imageSource": "https://pixabay.com/photos/peanuts-roasted-salted-kernels-3188500/",
+    "imageLicense": "Pixabay Content License"
   },
   "cacahueteTostadoRepeladoSinSal": {
     "name": "Cacahuete tostado repelado sin sal",
