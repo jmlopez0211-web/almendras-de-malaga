@@ -306,7 +306,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 39.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Macadamia_nuts.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "စာကလေး SarKaLay · Macadamia nuts",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Macadamia_nuts.jpg",
+    "imageLicense": "CC0 1.0"
   },
   "macadamiaFritaSal": {
     "name": "Macadamia frita con sal",
@@ -394,7 +398,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 27.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/2_pecan_nut_halves.jpg?width=1200",
+    "imageVerified": true,
+    "imageCredit": "Markus Brunner · shelled pecan halves",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:2_pecan_nut_halves.jpg",
+    "imageLicense": "CC BY-SA 3.0 / GFDL"
   },
   "nuezPecanTostada": {
     "name": "Nuez pecana tostada",
