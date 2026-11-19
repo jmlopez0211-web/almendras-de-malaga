@@ -34,6 +34,7 @@
 - Mantener los formatos disponibles de 100 g, 250 g, 500 g y 1 kg cuando correspondan al producto y el cálculo proporcional existente.
 - No cambiar la cuadrícula, el modal de producto, los filtros ni los botones de compra al trabajar solo con imágenes o datos.
 - Mantener accesibles búsqueda, carrito, contacto, ubicación y WhatsApp.
+- En el orden de presentación del catálogo, priorizar las fichas con fotografía realmente verificada y única, manteniendo todas las fichas y el orden original entre productos con el mismo estado fotográfico.
 
 ## WhatsApp
 - El teléfono principal de pedidos es `34744602855`; construir enlaces como `https://wa.me/34744602855?text=` usando `encodeURIComponent()`.
