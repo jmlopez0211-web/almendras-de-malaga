@@ -86,8 +86,8 @@ def main():
         ok = fail("Primary order phone 34666068765 is missing from HTML or app.js") and ok
     if secondary not in html:
         ok = fail("Secondary contact 34744602855 is missing from HTML") and ok
-    if "wa.me/" + secondary in html or "wa.me/" + secondary in app:
-        ok = fail("WhatsApp order links must use the primary number, not the secondary contact") and ok
+    if "sendCartWhatsApp666" not in html or "sendCartWhatsApp666" not in app or "wa.me/" + primary not in app:
+        ok = fail("Cart WhatsApp action must route to the primary order number") and ok
 
     if ok:
         print(f"PASS: {len(products)} catalog products; required fields, image uniqueness, HTML ids/anchors, script order and phone routing verified.")
