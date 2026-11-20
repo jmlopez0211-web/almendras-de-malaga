@@ -1,3 +1,17 @@
+// TARIFAS DE ENVÍO DE EJEMPLO: editar estos importes cuando se confirme la tarifa real.
+const SHIPPING_TIERS = [
+ {maxGrams:100,label:"Hasta 100 g",price:2.50},
+ {maxGrams:250,label:"Hasta 250 g",price:3.50},
+ {maxGrams:500,label:"Hasta 500 g",price:4.50},
+ {maxGrams:1000,label:"Hasta 1 kg",price:5.50},
+ {maxGrams:5000,label:"Hasta 5 kg",price:7.50},
+ {maxGrams:10000,label:"Hasta 10 kg",price:9.50},
+ {maxGrams:20000,label:"Hasta 20 kg",price:12.50},
+ {maxGrams:Infinity,label:"Más de 20 kg",price:15.00}
+];
+function calculateShipping(totalGrams){const grams=Math.max(0,Number(totalGrams)||0);return SHIPPING_TIERS.find(tier=>grams<=tier.maxGrams)||SHIPPING_TIERS[SHIPPING_TIERS.length-1];}
+function getCartWeightGrams(items){return items.reduce((sum,item)=>sum+Number(item.grams||0)*Number(item.quantity||0),0);}
+
 const products = window.PRODUCTS;
 if (!products || typeof products !== 'object') {
   throw new Error('No se ha cargado data/catalog.js: catálogo no disponible.');
@@ -231,13 +245,14 @@ document.addEventListener('keydown',e=>{
  }
  if(e.key==='Escape'&&!opened&&chatPanel?.classList.contains('open'))closeChatPanel();
 });
-const cart=(()=>{try{const saved=JSON.parse(localStorage.getItem("almendrasCart")||"[]");return Array.isArray(saved)?saved.filter(x=>x&&typeof x==='object'&&hasProductId(x.id)&&[100,250,500,1000].includes(Number(x.grams))&&Number.isInteger(Number(x.quantity))&&Number(x.quantity)>0&&Number(x.quantity)<=50).map(x=>({id:x.id,name:products[x.id].name,price:products[x.id].price,grams:Number(x.grams),quantity:Number(x.quantity)})):[]}catch(e){return []}})();
-function renderCart(){try{localStorage.setItem('almendrasCart',JSON.stringify(cart))}catch(e){}const host=document.getElementById('cartItems');host.innerHTML='';let total=0;cart.forEach((item,index)=>{const subtotal=item.price*item.grams/1000*item.quantity;total+=subtotal;const row=document.createElement('div');row.className='cart-line';row.setAttribute('role','listitem');const info=document.createElement('div');const name=document.createElement('strong');name.textContent=item.name;const detail=document.createElement('small');detail.textContent=item.quantity+' × '+item.grams+' g · '+euro(item.price)+' / kg · '+euro(subtotal);info.append(name,detail);const remove=document.createElement('button');remove.type='button';remove.textContent='Quitar';remove.setAttribute('aria-label','Quitar '+item.name+', formato '+item.grams+' gramos');remove.onclick=()=>{cart.splice(index,1);renderCart()};row.append(info,remove);host.append(row)});if(!cart.length)host.innerHTML='<p class="smallprint">Aún no has añadido productos.</p>';document.getElementById('cartTotal').textContent=euro(total);document.getElementById('cartCount').textContent=cart.reduce((n,x)=>n+x.quantity,0)}
+const cart=(()=>{try{const saved=JSON.parse(localStorage.getItem("almendrasCart")||"[]");return Array.isArray(saved)?saved.filter(x=>x&&typeof x==='object'&&hasProductId(x.id)&&[100,250,500,1000,5000,10000,20000].includes(Number(x.grams))&&Number.isInteger(Number(x.quantity))&&Number(x.quantity)>0&&Number(x.quantity)<=50).map(x=>({id:x.id,name:products[x.id].name,price:products[x.id].price,grams:Number(x.grams),quantity:Number(x.quantity)})):[]}catch(e){return []}})();
+function renderCart(){try{localStorage.setItem('almendrasCart',JSON.stringify(cart))}catch(e){}const host=document.getElementById('cartItems');host.innerHTML='';let subtotal=0;cart.forEach((item,index)=>{const itemSubtotal=item.price*item.grams/1000*item.quantity;subtotal+=itemSubtotal;const row=document.createElement('div');row.className='cart-line';row.setAttribute('role','listitem');const info=document.createElement('div');const name=document.createElement('strong');name.textContent=item.name;const detail=document.createElement('small');detail.textContent=item.quantity+' × '+item.grams+' g · '+euro(item.price)+' / kg · '+euro(itemSubtotal);info.append(name,detail);const remove=document.createElement('button');remove.type='button';remove.textContent='Quitar';remove.setAttribute('aria-label','Quitar '+item.name+', formato '+item.grams+' gramos');remove.onclick=()=>{cart.splice(index,1);renderCart()};row.append(info,remove);host.append(row)});if(!cart.length)host.innerHTML='<p class="smallprint">Aún no has añadido productos.</p>';const weight=getCartWeightGrams(cart);const tier=calculateShipping(weight);const total=subtotal+tier.price;document.getElementById('cartSubtotal').textContent=euro(subtotal);document.getElementById('cartWeight').textContent=weight.toLocaleString('es-ES')+' g ('+(weight/1000).toLocaleString('es-ES',{maximumFractionDigits:3})+' kg)';document.getElementById('cartShipping').textContent=euro(tier.price)+' · '+tier.label;document.getElementById('cartTotal').textContent=euro(total);document.getElementById('cartCount').textContent=cart.reduce((n,x)=>n+x.quantity,0)}
+
 document.getElementById('addToCart').onclick=()=>{
  if(!selected||!selectedId)return;
  const grams=Number(document.getElementById('weightSelect').value);
  const quantity=Number(document.getElementById('qtyKg').value);
- if(![100,250,500,1000].includes(grams)){alert('Selecciona un formato válido.');return}
+ if(![100,250,500,1000,5000,10000,20000].includes(grams)){alert('Selecciona un formato válido.');return}
  if(!Number.isInteger(quantity)||quantity<1||quantity>50){alert('Indica entre 1 y 50 unidades de este formato.');return}
  const found=cart.find(x=>x.id===selectedId&&x.grams===grams);
  if(found&&found.quantity+quantity>50){alert('El máximo acumulado por producto y formato es de 50 unidades.');return}
@@ -257,21 +272,27 @@ function buildCartOrderMessage(){
  if(!buyer||!phone){alert('Indica tu nombre y teléfono de contacto.');return null}
  const phoneDigits=phone.replace(/\D/g,'');
  if(phoneDigits.length<9||phoneDigits.length>15){alert('Comprueba el teléfono: debe contener entre 9 y 15 cifras.');return null}
- let total=0;
+ let subtotalProducts=0;
  const lines=cart.map(item=>{
   const subtotal=item.price*item.grams/1000*item.quantity;
-  total+=subtotal;
+  subtotalProducts+=subtotal;
   return '• '+item.name+'\n  '+item.quantity+' × '+item.grams+' g · '+euro(subtotal);
  });
+ const totalGrams=getCartWeightGrams(cart);
+ const shippingTier=calculateShipping(totalGrams);
+ const finalTotal=subtotalProducts+shippingTier.price;
  const notes=document.getElementById('cartNotes').value.trim();
  return '🛒 *NUEVO PEDIDO · ALMENDRAS DE MÁLAGA*\n\n'
   +'👤 *Cliente:* '+buyer+'\n'
   +'📱 *Teléfono:* '+phone+'\n\n'
   +'📦 *PRODUCTOS*\n'+lines.join('\n\n')+'\n\n'
-  +'💰 *TOTAL ORIENTATIVO:* '+euro(total)+'\n\n'
+  +'⚖️ *PESO TOTAL:* '+totalGrams.toLocaleString('es-ES')+' g ('+(totalGrams/1000).toLocaleString('es-ES',{maximumFractionDigits:3})+' kg)\n'
+  +'🚚 *ENVÍO:* '+shippingTier.label+' · '+euro(shippingTier.price)+'\n'
+  +'🧾 *SUBTOTAL PRODUCTOS:* '+euro(subtotalProducts)+'\n'
+  +'💰 *TOTAL FINAL:* '+euro(finalTotal)+'\n\n'
   +'📝 *Observaciones:* '+(notes||'Ninguna')+'\n\n'
   +'📍 Pedido realizado desde el catálogo web.\n'
-  +'Por favor, confirma disponibilidad, precio final y modalidad de entrega o recogida. El pedido queda pendiente de confirmación.';
+  +'El envío se calcula automáticamente por peso. Una vez recibido el pago, prepararemos y enviaremos el pedido.';
 }
 
 document.getElementById('sendCartWhatsApp666').onclick=()=>{const message=buildCartOrderMessage();if(message)window.location.href='https://wa.me/34666068765?text='+encodeURIComponent(message)};
