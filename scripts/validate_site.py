@@ -42,7 +42,7 @@ def main():
     html = INDEX.read_text(encoding="utf-8")
     app = APP.read_text(encoding="utf-8")
     catalog_text = CATALOG.read_text(encoding="utf-8")
-    match = re.search(r"window\\.PRODUCTS\\s*=\\s*(\\{.*\\})\\s*;?\\s*$", catalog_text, re.S)
+    match = re.search(r"window\.PRODUCTS\s*=\s*(\{.*})\s*;?\s*$", catalog_text, re.S)
     if not match:
         return fail("data/catalog.js does not expose a parseable JSON object as window.PRODUCTS") and 1
     try:
