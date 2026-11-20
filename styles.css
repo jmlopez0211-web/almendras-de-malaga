@@ -338,3 +338,8 @@ body{background:#f7f4eb}.wrap{max-width:none;padding:0}.top{max-width:1280px;mar
 .skip-link:focus{transform:translateY(0);outline:3px solid #b58a50;outline-offset:3px}
 :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #b58a50;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+
+/* Language selector: explain the scope of partial translations */
+.language-note{flex-basis:100%;display:block;margin-top:-5px;color:var(--muted);font-size:11px;line-height:1.4;text-align:right}
+@media(max-width:560px){.language-note{font-size:10px;text-align:left;margin-top:0}}
