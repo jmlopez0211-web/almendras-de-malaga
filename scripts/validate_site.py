@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import xml.etree.ElementTree as ET
 from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
@@ -16,6 +17,7 @@ CATALOG = ROOT / "data" / "catalog.js"
 APP = ROOT / "js" / "app.js"
 CSS = ROOT / "styles.css"
 SITEMAP = ROOT / "sitemap.xml"
+ROBOTS = ROOT / "robots.txt"
 PRIMARY_PHONE = "34666068765"
 SECONDARY_PHONE = "34744602855"
 EXPECTED_PRODUCTS = 151
@@ -83,7 +85,7 @@ def check_local_reference(page: Path, reference: str) -> str | None:
 
 def main() -> int:
     ok = True
-    required = (INDEX, CATALOG, APP, CSS, SITEMAP)
+    required = (INDEX, CATALOG, APP, CSS, SITEMAP, ROBOTS)
     for path in required:
         if not path.is_file():
             ok = fail(f"missing required file: {path.relative_to(ROOT)}") and ok
@@ -138,7 +140,16 @@ def main() -> int:
         if 'name="viewport"' not in content:
             ok = fail(f"{page.name} is missing the responsive viewport meta tag") and ok
 
-        for reference in parser.hrefs + parser.srcs:
+        for reference in parser.hrefs:
+            if reference.startswith("#"):
+                fragment = reference[1:]
+                if fragment and fragment not in parser.ids:
+                    ok = fail(f"{page.name} links to a missing anchor: {reference}") and ok
+                continue
+            diagnostic = check_local_reference(page, reference)
+            if diagnostic:
+                ok = fail(diagnostic) and ok
+        for reference in parser.srcs:
             diagnostic = check_local_reference(page, reference)
             if diagnostic:
                 ok = fail(diagnostic) and ok
@@ -178,6 +189,16 @@ def main() -> int:
         ok = fail("safe dynamic HTML rendering or modal focus management is missing") and ok
 
     sitemap = SITEMAP.read_text(encoding="utf-8")
+    try:
+        sitemap_root = ET.fromstring(sitemap)
+        if not sitemap_root.tag.endswith("urlset"):
+            ok = fail("sitemap.xml root element must be urlset") and ok
+    except ET.ParseError as exc:
+        ok = fail(f"sitemap.xml is not valid XML: {exc}") and ok
+    robots = ROBOTS.read_text(encoding="utf-8")
+    if "Sitemap: https://jmlopez0211-web.github.io/almendras-de-malaga/sitemap.xml" not in robots:
+        ok = fail("robots.txt does not point to the public sitemap") and ok
+
     for page in html_files:
         page_url = "https://jmlopez0211-web.github.io/almendras-de-malaga/"
         if page.name != "index.html":
