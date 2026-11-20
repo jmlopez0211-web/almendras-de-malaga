@@ -4,6 +4,8 @@ Catálogo digital de frutos secos, almendras, aperitivos, frutas deshidratadas y
 
 **Web pública:** https://jmlopez0211-web.github.io/almendras-de-malaga/
 
+La implementación, sus módulos, reglas de negocio, límites y procedimientos de validación están documentados en [docs/implementacion-integral.md](docs/implementacion-integral.md).
+
 ## Características
 - Catálogo de 151 productos alimentado desde `data/catalog.js`.
 - Búsqueda tolerante a tildes, filtros por familias y subfamilias.
