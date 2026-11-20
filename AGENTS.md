@@ -46,8 +46,10 @@
 - Leer los archivos implicados y sus dependencias antes de editar.
 - Hacer cambios pequeños, localizados y reversibles. Para fotografías, trabajar en micro-lotes de 6 a 8 productos como máximo.
 - Antes de cada commit:
-  1. Comprobar sintaxis de todo JavaScript modificado.
-  2. Comprobar que `window.PRODUCTS` se carga antes de `js/app.js`.
+  1. Ejecutar `node --check js/app.js`.
+  2. Ejecutar `python3 scripts/validate_site.py`.
+  3. Ejecutar `python3 -m unittest discover -s tests -v`.
+  4. Comprobar que `window.PRODUCTS` se carga antes de `js/app.js`.
   3. Contar las fichas y comparar con el recuento anterior.
   4. Detectar URLs/archivos de imagen repetidos en productos distintos.
   5. Comprobar que las referencias de imagen existen y que las fichas sin foto siguen visibles.
