@@ -68,6 +68,9 @@ class StorefrontReleaseTests(unittest.TestCase):
         self.assertIn("const escapeHTML=", app)
         self.assertIn("escapeHTML(p.name)", app)
         self.assertIn("renderProductImageCredit", app)
+        self.assertIn("const hasProductId=", app)
+        self.assertIn("image.addEventListener('error'", app)
+        self.assertIn("remove.setAttribute('aria-label'", app)
 
     def test_modal_focus_management_exists(self):
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
