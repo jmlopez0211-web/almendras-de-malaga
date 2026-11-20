@@ -17,7 +17,11 @@ function catalogGroup(p){
 function productImage(id,p){
  if(!p||p.imageVerified!==true||typeof p.image!=='string')return '';
  const url=p.image.trim();
- const allowed=url.startsWith('assets/products/')||url.startsWith('https://commons.wikimedia.org/wiki/Special:FilePath/')||url.startsWith('https://upload.wikimedia.org/wikipedia/commons/')||url.startsWith('https://thumb.wikimedia.org/wikipedia/commons/thumb/')||url.startsWith('https://cdn.pixabay.com/');
+ const localAsset=/^assets\/products\/[A-Za-z0-9._/-]+$/.test(url)&&!url.split('/').includes('..');
+ let parsed;
+ try{parsed=new URL(url,location.href)}catch(e){return ''}
+ const remoteHosts=new Set(['commons.wikimedia.org','upload.wikimedia.org','thumb.wikimedia.org','cdn.pixabay.com']);
+ const allowed=(localAsset&&parsed.origin===location.origin)||(parsed.protocol==='https:'&&remoteHosts.has(parsed.hostname));
  if(!allowed)return '';
  const owners=Object.entries(products).filter(([otherId,other])=>otherId!==id&&other.imageVerified===true&&other.image===url);
  return owners.length?'':url;
@@ -199,7 +203,6 @@ document.getElementById('addToCart').onclick=()=>{
  if(found)found.quantity+=quantity;
  else cart.push({id:selectedId,name:selected.name,price:selected.price,grams,quantity});
  renderCart();
- closeModal('productModal',false);
  openModal('cartModal');
 };
 renderCart();
@@ -290,12 +293,12 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>{
  document.querySelectorAll('[data-lang]').forEach(x=>x.classList.toggle('active',x===b));
  document.querySelectorAll('[data-t]').forEach(el=>{
   const k=el.dataset.t;
-  if(l==='es'){if(el.dataset.originalHtml)el.innerHTML=el.dataset.originalHtml}
-  else if(translations[l]&&translations[l][k]){
-   if(!el.dataset.originalHtml)el.dataset.originalHtml=el.innerHTML;
-   el.innerHTML=translations[l][k];
-  }
+  if(!el.dataset.originalHtml)el.dataset.originalHtml=el.innerHTML;
+  if(l==='es')el.innerHTML=el.dataset.originalHtml;
+  else if(translations[l]&&translations[l][k])el.innerHTML=translations[l][k];
+  else el.innerHTML=el.dataset.originalHtml;
  });
  try{localStorage.setItem('almendrasLanguage',l)}catch(e){}
 });
+try{const savedLanguage=localStorage.getItem('almendrasLanguage');if(savedLanguage&&savedLanguage!=='es')document.querySelector('[data-lang="'+savedLanguage+'"]')?.click()}catch(e){}
 
