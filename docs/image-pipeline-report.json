@@ -7,7 +7,7 @@
       "path": null,
       "sha256": null,
       "errors": [
-        "'assets/images/candidates/almendraMarconaFrita-candidate.jpg' is not in the subpath of '/data/data/com.termux/files/home/almendras-de-malaga'"
+        "'assets/images/candidates/almendraMarconaFrita-candidate.jpg' is not in the subpath of '.'"
       ]
     },
     {
@@ -17,7 +17,7 @@
       "path": null,
       "sha256": null,
       "errors": [
-        "'assets/images/candidates/almendraTostadaRepelada-candidate.jpg' is not in the subpath of '/data/data/com.termux/files/home/almendras-de-malaga'"
+        "'assets/images/candidates/almendraTostadaRepelada-candidate.jpg' is not in the subpath of '.'"
       ]
     },
     {
@@ -27,7 +27,7 @@
       "path": null,
       "sha256": null,
       "errors": [
-        "'assets/images/candidates/platanoDeshidratado-candidate.jpg' is not in the subpath of '/data/data/com.termux/files/home/almendras-de-malaga'"
+        "'assets/images/candidates/platanoDeshidratado-candidate.jpg' is not in the subpath of '.'"
       ]
     },
     {
@@ -47,7 +47,7 @@
       "path": null,
       "sha256": null,
       "errors": [
-        "'assets/images/candidates/anacardoFrito-candidate.jpg' is not in the subpath of '/data/data/com.termux/files/home/almendras-de-malaga'"
+        "'assets/images/candidates/anacardoFrito-candidate.jpg' is not in the subpath of '.'"
       ]
     }
   ],
