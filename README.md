@@ -14,6 +14,10 @@ Catálogo digital de frutos secos, almendras, aperitivos, frutas deshidratadas y
 - Contacto alternativo: **+34 744 60 28 55**.
 - Catálogo compartible y código QR.
 - Diseño adaptable a móvil y escritorio.
+- Diálogos con gestión de foco y cierre mediante Escape.
+- Escape de contenido dinámico del catálogo y validación de URLs de imagen.
+- Protección de los límites de cantidad al restaurar y modificar el carrito.
+- Validación automatizada de las cinco páginas SEO y sus teléfonos.
 - Páginas informativas y metadatos SEO.
 
 ## Arquitectura
@@ -36,12 +40,12 @@ node --check js/app.js
 python3 scripts/validate_site.py
 ```
 
-El workflow de GitHub Actions ejecuta estas validaciones en cada push y pull request hacia `main`.
+El workflow de GitHub Actions ejecuta la comprobación de sintaxis, el validador de publicación y las pruebas de regresión en cada push y pull request hacia `main`.
 
 Si existe el conjunto de pruebas local:
 
 ```bash
-pytest -q tests
+python3 -m unittest discover -s tests -v
 ```
 
 ## Reglas del catálogo y fotografías
