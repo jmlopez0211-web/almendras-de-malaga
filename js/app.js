@@ -161,7 +161,7 @@ function buildCartOrderMessage(){
   +'📍 Pedido realizado desde el catálogo web.\n'
   +'Por favor, confirma disponibilidad, precio final y modalidad de entrega o recogida. El pedido queda pendiente de confirmación.';
 }
-document.getElementById('sendCartWhatsApp744').onclick=()=>{const message=buildCartOrderMessage();if(message)window.location.href='https://wa.me/34744602855?text='+encodeURIComponent(message)};
+
 document.getElementById('sendCartWhatsApp666').onclick=()=>{const message=buildCartOrderMessage();if(message)window.location.href='https://wa.me/34666068765?text='+encodeURIComponent(message)};
 
 async function copyTextSafely(value){try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(value);return true}}catch(e){}const area=document.createElement('textarea');area.value=value;area.setAttribute('readonly','');area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();let copied=false;try{copied=document.execCommand('copy')}catch(e){}area.remove();return copied}
@@ -189,8 +189,8 @@ function answerProductQuestion(raw){
  const euroPrice=value=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(value);
  const requestedGrams=(()=>{const m=q.match(/(100|250|500|1000)\s*(g|gr|gramos)?/);if(m)return Number(m[1]);if(/medio kilo|500 g|500gr/.test(q))return 500;if(/un kilo|1 kilo|1 kg|1000 g/.test(q))return 1000;return null})();
  if(/disponib|stock|hay existencias|teneis|ten[eé]is|queda/.test(q)){
-  if(matches.length)return 'En el catálogo aparece: '+matches.slice(0,8).map(([id,p])=>p.name).join(', ')+'. El stock real no está conectado a la web; Don Miguel y Fabián confirman disponibilidad por WhatsApp: +34 744 60 28 55.';
-  return 'La web no consulta inventario en tiempo real. Dime el nombre del producto o pregunta directamente a Don Miguel y Fabián por WhatsApp: +34 744 60 28 55.';
+  if(matches.length)return 'En el catálogo aparece: '+matches.slice(0,8).map(([id,p])=>p.name).join(', ')+'. El stock real no está conectado a la web; Don Miguel y Fabián confirman disponibilidad por WhatsApp: +34 666 068 765.';
+  return 'La web no consulta inventario en tiempo real. Dime el nombre del producto o pregunta directamente a Don Miguel y Fabián por WhatsApp: +34 666 068 765.';
  }
  if(matches.length&&requestedGrams){
   return matches.slice(0,6).map(([id,p])=>p.name+': '+euroPrice(p.price*requestedGrams/1000)+' por '+requestedGrams+' g ('+euroPrice(p.price)+' / kg orientativo).').join('\\n')+'\\nEl precio final y la disponibilidad deben confirmarse.';
