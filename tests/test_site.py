@@ -79,6 +79,32 @@ class StorefrontReleaseTests(unittest.TestCase):
         self.assertIn("if(e.key==='Tab'&&opened)", app)
         self.assertIn('aria-hidden="true"', html)
 
+    def test_shipping_tiers_are_editable_and_cover_all_weight_breakpoints(self):
+        app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
+        match = re.search(r"const SHIPPING_TIERS = \[(.*?)\];", app, re.S)
+        self.assertIsNotNone(match, "Shipping tier configuration missing")
+        tiers = re.findall(r"maxGrams:(\d+|Infinity),label:\"([^\"]+)\",price:([0-9.]+)", match.group(1))
+        self.assertEqual(len(tiers), 8)
+        limits = [int(x[0]) if x[0] != "Infinity" else float("inf") for x in tiers]
+        self.assertEqual(limits, [100, 250, 500, 1000, 5000, 10000, 20000, float("inf")])
+        self.assertEqual([float(x[2]) for x in tiers], [2.5, 3.5, 4.5, 5.5, 7.5, 9.5, 12.5, 15.0])
+        def tier_for(weight):
+            return next(i for i,limit in enumerate(limits) if weight <= limit)
+        self.assertEqual([tier_for(w) for w in [100,101,250,251,500,501,1000,1001,5000,5001,10000,10001,20000,20001]], [0,1,1,2,2,3,3,4,4,5,5,6,6,7])
+
+    def test_cart_supports_large_pack_formats_and_shipping_summary(self):
+        app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
+        html = (ROOT / "index.html").read_text(encoding="utf-8")
+        for grams in (5000, 10000, 20000):
+            self.assertIn(str(grams), app)
+            self.assertIn(f'value="{grams}"', html)
+        for element_id in ("cartSubtotal", "cartWeight", "cartShipping", "cartTotal"):
+            self.assertIn(f'id="{element_id}"', html)
+        for phrase in ("getCartWeightGrams", "calculateShipping", "PESO TOTAL", "ENVÍO", "TOTAL FINAL"):
+            self.assertIn(phrase, app)
+        self.assertIn("wa.me/" + PRIMARY, app)
+        self.assertNotRegex(app, r"DNI|CIF")
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
