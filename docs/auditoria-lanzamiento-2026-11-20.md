@@ -41,7 +41,7 @@ El código permite:
 3. Calcular formatos de 100 g, 250 g, 500 g y 1 kg.
 4. Añadir, quitar y conservar artículos en el carrito local.
 5. Preparar un resumen con productos, cantidades, formato, importes, nombre, teléfono y observaciones.
-6. Enviar la solicitud a WhatsApp principal (+34 744 60 28 55) o al contacto alternativo (+34 666 068 765).
+6. Enviar la solicitud a WhatsApp principal (+34 666 068 765) o al contacto alternativo (+34 744 60 28 55).
 
 No se ha conectado el stock. Los precios del archivo son numéricos y válidos estructuralmente, pero el repositorio no demuestra que coincidan con la tarifa comercial vigente ni si incluyen IVA. Tampoco define tarifas, zonas o plazos de entrega.
 
@@ -80,3 +80,18 @@ La sintaxis de `js/app.js` se comprobó antes de publicar los cambios y el conte
 - Real Decreto Legislativo 1/2007, artículo 97 (información precontractual): https://www.boe.es/eli/es/rdlg/2007/11/16/1/con/20071130
 
 Esta auditoría es técnica y documental; no sustituye una revisión jurídica de las condiciones comerciales concretas.
+
+
+## Correcciones posteriores de la revisión integral
+
+- Los cinco artículos SEO secundarios envían sus botones de consulta a WhatsApp principal +34 666 068 765 y conservan el +34 744 60 28 55 como teléfono alternativo.
+- El bloque de contacto de la portada identifica expresamente el 666 como principal y el 744 como alternativo.
+- Se retiró el horario 10:00–20:00 de la portada al no constar una confirmación verificable en el expediente de lanzamiento; ahora se indica que debe consultarse el horario vigente.
+- El botón que abre el QR se denomina «Descargar QR del catálogo»; no existe un área privada ni un sistema de autenticación de propietario.
+- Se añadió escape HTML para los campos dinámicos del catálogo, atribución fotográfica construida con nodos DOM y validación de protocolos/orígenes admitidos para imágenes.
+- El carrito limita las unidades acumuladas por producto y formato a 50 y descarta entradas malformadas o excesivas al restaurar localStorage.
+- Los diálogos actualizan aria-hidden, gestionan Escape y mantienen el foco dentro del modal; se añade aviso de que las traducciones EN/FR/DE son parciales y que el catálogo fuente conserva sus nombres y descripciones en español.
+- Se ampliaron los controles automáticos para revisar todas las páginas HTML, enlaces locales, archivos de imagen locales, teléfonos, accesibilidad básica, sitemap y carga ordenada del catálogo.
+- Se añadieron pruebas de regresión con la biblioteca estándar de Python y se ejecutan desde GitHub Actions junto con la validación JavaScript.
+
+La validación estática y las pruebas de regresión han pasado en GitHub Actions. El despliegue de GitHub Pages para la revisión integral también ha finalizado correctamente. Sigue pendiente la prueba manual interactiva en varios navegadores/dispositivos y la información legal/comercial indicada en el apartado de bloqueos; por ello no se declara cerrada la preparación legal para venta online.
