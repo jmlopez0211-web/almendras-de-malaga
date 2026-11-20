@@ -1,0 +1,160 @@
+# Auditoría automática de referencias fotográficas
+
+**Limitación:** análisis de código/metadatos; no inspecciona visualmente archivos ni valida licencias.
+## Resumen
+- **catalog_products_detected:** 151
+- **missing_image:** 61
+- **verified_true:** 77
+- **verified_false:** 13
+- **verification_unspecified:** 61
+- **missing_source:** 4
+- **missing_credit:** 4
+- **missing_license:** 4
+- **local_file_missing:** 0
+
+## Productos sin imagen
+- almendraFritaGirasol — Almendra frita con aceite de girasol
+- almendraFritaSinSal — Almendra frita sin sal
+- cacahueteFritoRepeladoSinSal — Cacahuete frito repelado sin sal
+- cacahueteTostadoRepeladoSinSal — Cacahuete tostado repelado sin sal
+- anacardoFritoSinSal — Anacardo frito sin sal
+- macadamiaFritaSal — Macadamia frita con sal
+- macadamiaFritaSinSal — Macadamia frita sin sal
+- macadamiaTostadaSinSal — Macadamia tostada sin sal
+- avellanaAmericanaCruda — Avellana americana cruda
+- nuezCaramelizada — Nuez caramelizada
+- revueloTostadoSinSal — Revuelto tostado sin sal
+- revueloEspecial — Revuelto especial
+- revueloTresPasas — Revuelto de tres pasas
+- revueloPacoJose — Revuelto Paco José
+- revueloDulceMCarmen — Revuelto dulce Mª Carmen
+- revueloDeliciasVirginia — Revuelto Delicias Virginia
+- melonDeshidratado — Melón deshidratado
+- aloeDeshidratada — Aloe vera deshidratada
+- cocoDado — Coco dado deshidratado
+- pipaGarrapinada — Pipa garrapiñada
+- calabazaPeladaCruda — Pipa de calabaza pelada cruda
+- chocolateNuezLeche — Nuez cubierta de chocolate con leche
+- chocolatePistachoLeche — Pistacho cubierto de chocolate con leche
+- chocolateAvellanaNegro — Avellana cubierta de chocolate negro
+- avellanaTrufadaCanela — Avellana trufada canela
+- arandanoChocolateNegro — Arándanos chocolate negro
+- almendraChocolateLeche — Almendra cubierta de chocolate con leche
+- almendraChocolateBlanco — Almendra cubierta de chocolate blanco
+- mixChocolatesAlmendra — Mix chocolates de almendra
+- chocobolaBlanca — Chocobola blanca
+- chocobolaLeche — Chocobola leche
+- mangoChocolateNegro — Mango chocolate negro
+- platanoChocolateLeche — Plátano chocolate leche
+- revueltoChocolates — Revuelto de chocolates
+- cacahueteChocolateNegro — Cacahuete chocolate negro
+- cacahueteChocolateLeche — Cacahuete chocolate leche
+- cacahueteChocolateBlanco — Cacahuete chocolate blanco
+- mixChocolatesPipa — Mix chocolates de pipa
+- dulceLeche — Dulce de leche
+- ligeroPinones — Ligero piñones
+- pinonesCaserio — Piñones caserío
+- carachoco — Carachoco
+- toffinoChocolate — Toffino de chocolate
+- toffeeNata — Toffee nata
+- picotasFresa — Picotas de fresa
+- rellenoMiel — Relleno miel de abeja
+- gajosSantos — Gajos Santos
+- rellenoFruta — Relleno de fruta
+- tacoMiel — Taco de miel
+- cafeDrySA — Café Dry sin azúcar
+- cafeDryCA — Café Dry con azúcar
+- werthersSA — Werther’s sin azúcar
+- pictolinEucaliptoSA — Pictolín eucalipto sin azúcar
+- pictolinEucaliptoCA — Pictolín eucalipto con azúcar
+- pictolinFullmintSA — Pictolín Fullmint sin azúcar
+- pictolinFullmintCA — Pictolín Fullmint con azúcar
+- pictolinMielLimonSA — Pictolín miel y limón sin azúcar
+- pictolinMielLimonCA — Pictolín miel y limón con azúcar
+- pictolinAnisSA — Pictolín anís sin azúcar
+- pictolinAnisCA — Pictolín anís con azúcar
+- pictolinFruta — Pictolín masticable de fruta sin azúcar
+
+## Imágenes no verificadas
+- almendraFritaGirasol — Almendra frita con aceite de girasol (imageVerified=None)
+- almendraFritaSinSal — Almendra frita sin sal (imageVerified=None)
+- almendraTostadaRepeladaSal — Almendra tostada repelada con sal (imageVerified=False)
+- granilloAlmendra — Granillo de almendra (imageVerified=False)
+- cacahueteCrudoRepelado — Cacahuete crudo repelado (imageVerified=False)
+- cacahueteFritoPielSal — Cacahuete frito con piel con sal (imageVerified=False)
+- cacahueteFritoPielSinSal — Cacahuete frito con piel sin sal (imageVerified=False)
+- cacahueteFritoRepeladoSal — Cacahuete frito repelado con sal (imageVerified=False)
+- cacahueteFritoRepeladoSinSal — Cacahuete frito repelado sin sal (imageVerified=None)
+- cacahueteTostadoRepeladoSinSal — Cacahuete tostado repelado sin sal (imageVerified=None)
+- anacardoFritoSinSal — Anacardo frito sin sal (imageVerified=None)
+- macadamiaFritaSal — Macadamia frita con sal (imageVerified=None)
+- macadamiaFritaSinSal — Macadamia frita sin sal (imageVerified=None)
+- macadamiaTostadaSinSal — Macadamia tostada sin sal (imageVerified=None)
+- avellanaAmericanaCruda — Avellana americana cruda (imageVerified=None)
+- nuezCaramelizada — Nuez caramelizada (imageVerified=None)
+- revueloTostadoSinSal — Revuelto tostado sin sal (imageVerified=None)
+- revueloEspecial — Revuelto especial (imageVerified=None)
+- revueloTresPasas — Revuelto de tres pasas (imageVerified=None)
+- revueloPacoJose — Revuelto Paco José (imageVerified=None)
+- revueloDulceMCarmen — Revuelto dulce Mª Carmen (imageVerified=None)
+- revueloDeliciasVirginia — Revuelto Delicias Virginia (imageVerified=None)
+- melonDeshidratado — Melón deshidratado (imageVerified=None)
+- platanoDeshidratado — Plátano deshidratado (imageVerified=False)
+- aloeDeshidratada — Aloe vera deshidratada (imageVerified=None)
+- cocoDado — Coco dado deshidratado (imageVerified=None)
+- ciruelaSinHueso — Ciruela sin hueso (imageVerified=False)
+- pipaGarrapinada — Pipa garrapiñada (imageVerified=None)
+- calabazaPeladaCruda — Pipa de calabaza pelada cruda (imageVerified=None)
+- pasaCorintoSultana — Pasa Corinto y Sultana (imageVerified=False)
+- pasaMoscatel — Pasa de Málaga Moscatel (imageVerified=False)
+- habaPicante — Habas picantes (imageVerified=False)
+- chocolateNuezLeche — Nuez cubierta de chocolate con leche (imageVerified=None)
+- chocolatePistachoLeche — Pistacho cubierto de chocolate con leche (imageVerified=None)
+- chocolateAvellanaNegro — Avellana cubierta de chocolate negro (imageVerified=None)
+- avellanaTrufadaCanela — Avellana trufada canela (imageVerified=None)
+- arandanoChocolateNegro — Arándanos chocolate negro (imageVerified=None)
+- pasaChocolateLeche — Pasa chocolate leche (imageVerified=False)
+- almendraChocolateLeche — Almendra cubierta de chocolate con leche (imageVerified=None)
+- almendraChocolateBlanco — Almendra cubierta de chocolate blanco (imageVerified=None)
+- mixChocolatesAlmendra — Mix chocolates de almendra (imageVerified=None)
+- chocobolaBlanca — Chocobola blanca (imageVerified=None)
+- chocobolaLeche — Chocobola leche (imageVerified=None)
+- mangoChocolateNegro — Mango chocolate negro (imageVerified=None)
+- platanoChocolateLeche — Plátano chocolate leche (imageVerified=None)
+- revueltoChocolates — Revuelto de chocolates (imageVerified=None)
+- cacahueteChocolateNegro — Cacahuete chocolate negro (imageVerified=None)
+- cacahueteChocolateLeche — Cacahuete chocolate leche (imageVerified=None)
+- cacahueteChocolateBlanco — Cacahuete chocolate blanco (imageVerified=None)
+- mixChocolatesPipa — Mix chocolates de pipa (imageVerified=None)
+- dulceLeche — Dulce de leche (imageVerified=None)
+- ligeroPinones — Ligero piñones (imageVerified=None)
+- pinonesCaserio — Piñones caserío (imageVerified=None)
+- carachoco — Carachoco (imageVerified=None)
+- toffinoChocolate — Toffino de chocolate (imageVerified=None)
+- toffeeNata — Toffee nata (imageVerified=None)
+- picotasFresa — Picotas de fresa (imageVerified=None)
+- rellenoMiel — Relleno miel de abeja (imageVerified=None)
+- gajosSantos — Gajos Santos (imageVerified=None)
+- rellenoFruta — Relleno de fruta (imageVerified=None)
+- tacoMiel — Taco de miel (imageVerified=None)
+- cafeDrySA — Café Dry sin azúcar (imageVerified=None)
+- cafeDryCA — Café Dry con azúcar (imageVerified=None)
+- werthersSA — Werther’s sin azúcar (imageVerified=None)
+- werthersCA — Werther’s con azúcar (imageVerified=False)
+- pictolinEucaliptoSA — Pictolín eucalipto sin azúcar (imageVerified=None)
+- pictolinEucaliptoCA — Pictolín eucalipto con azúcar (imageVerified=None)
+- pictolinFullmintSA — Pictolín Fullmint sin azúcar (imageVerified=None)
+- pictolinFullmintCA — Pictolín Fullmint con azúcar (imageVerified=None)
+- pictolinMielLimonSA — Pictolín miel y limón sin azúcar (imageVerified=None)
+- pictolinMielLimonCA — Pictolín miel y limón con azúcar (imageVerified=None)
+- pictolinAnisSA — Pictolín anís sin azúcar (imageVerified=None)
+- pictolinAnisCA — Pictolín anís con azúcar (imageVerified=None)
+- pictolinFruta — Pictolín masticable de fruta sin azúcar (imageVerified=None)
+
+## Referencias locales inexistentes
+
+## Metadatos incompletos
+- almendraGarrapinada — fuente:True; crédito:True; licencia:True
+- bastonAlmendra — fuente:True; crédito:True; licencia:True
+- harinaAlmendra — fuente:True; crédito:True; licencia:True
+- fileteAlmendra — fuente:True; crédito:True; licencia:True

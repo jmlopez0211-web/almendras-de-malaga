@@ -1,0 +1,183 @@
+{
+  "download_results": [
+    {
+      "product_key": "almendraMarconaFrita",
+      "status": "FAILED",
+      "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Almendra_marcona.jpg/1280px-Almendra_marcona.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "path": null,
+      "sha256": null,
+      "errors": [
+        "'assets/images/candidates/almendraMarconaFrita-candidate.jpg' is not in the subpath of '/data/data/com.termux/files/home/almendras-de-malaga'"
+      ]
+    },
+    {
+      "product_key": "almendraTostadaRepelada",
+      "status": "FAILED",
+      "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Almendras_tostadas_sin_piel.jpg/1280px-Almendras_tostadas_sin_piel.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "path": null,
+      "sha256": null,
+      "errors": [
+        "'assets/images/candidates/almendraTostadaRepelada-candidate.jpg' is not in the subpath of '/data/data/com.termux/files/home/almendras-de-malaga'"
+      ]
+    },
+    {
+      "product_key": "platanoDeshidratado",
+      "status": "FAILED",
+      "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Dried_banana_chips.jpg/1280px-Dried_banana_chips.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "path": null,
+      "sha256": null,
+      "errors": [
+        "'assets/images/candidates/platanoDeshidratado-candidate.jpg' is not in the subpath of '/data/data/com.termux/files/home/almendras-de-malaga'"
+      ]
+    },
+    {
+      "product_key": "mangoDeshidratado",
+      "status": "FAILED",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Heap_of_Sun-dried_mango_slices.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "path": null,
+      "sha256": null,
+      "errors": [
+        "429 Client Error: Too many requests. Please contact the Wikimedia SRE team at noc@wikimedia.org and refer to this message. (daab851) for url: https://upload.wikimedia.org/wikipedia/commons/d/d5/Heap_of_Sun-dried_mango_slices.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      ]
+    },
+    {
+      "product_key": "anacardoFrito",
+      "status": "FAILED",
+      "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Cashew_nuts.JPG/1280px-Cashew_nuts.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "path": null,
+      "sha256": null,
+      "errors": [
+        "'assets/images/candidates/anacardoFrito-candidate.jpg' is not in the subpath of '/data/data/com.termux/files/home/almendras-de-malaga'"
+      ]
+    }
+  ],
+  "inspection": {
+    "files": [
+      {
+        "path": "assets/images/candidates/almendraMarconaFrita-candidate.jpg",
+        "status": "INSPECTED_UNVERIFIED",
+        "sha256": "9b2be9af5db128bb9d9f32b9c36165fecba25744f4f9d78a1f836e62726d8b30",
+        "width": 1280,
+        "height": 853,
+        "format": "JPEG",
+        "mode": "RGB",
+        "aspect_ratio": 1.5006,
+        "meets_minimum": true
+      },
+      {
+        "path": "assets/images/candidates/almendraMarconaFrita.jpg",
+        "status": "INSPECTED_UNVERIFIED",
+        "sha256": "9b2be9af5db128bb9d9f32b9c36165fecba25744f4f9d78a1f836e62726d8b30",
+        "width": 1280,
+        "height": 853,
+        "format": "JPEG",
+        "mode": "RGB",
+        "aspect_ratio": 1.5006,
+        "meets_minimum": true
+      },
+      {
+        "path": "assets/images/candidates/almendraTostadaRepelada-candidate.jpg",
+        "status": "INSPECTED_UNVERIFIED",
+        "sha256": "4c40475cd8c842be64e8cded5738e230a012f48ec5512814f75d999677672c4d",
+        "width": 1280,
+        "height": 960,
+        "format": "JPEG",
+        "mode": "RGB",
+        "aspect_ratio": 1.3333,
+        "meets_minimum": true
+      },
+      {
+        "path": "assets/images/candidates/almendraTostadaRepelada.jpg",
+        "status": "INSPECTED_UNVERIFIED",
+        "sha256": "4c40475cd8c842be64e8cded5738e230a012f48ec5512814f75d999677672c4d",
+        "width": 1280,
+        "height": 960,
+        "format": "JPEG",
+        "mode": "RGB",
+        "aspect_ratio": 1.3333,
+        "meets_minimum": true
+      },
+      {
+        "path": "assets/images/candidates/anacardoFrito-candidate.jpg",
+        "status": "INSPECTED_UNVERIFIED",
+        "sha256": "6c7514388120e9a26d1ec6f12666fde089e57b4a1f49098b9517abe648f9b4e2",
+        "width": 1280,
+        "height": 960,
+        "format": "JPEG",
+        "mode": "RGB",
+        "aspect_ratio": 1.3333,
+        "meets_minimum": true
+      },
+      {
+        "path": "assets/images/candidates/anacardoFrito.jpg",
+        "status": "INSPECTED_UNVERIFIED",
+        "sha256": "6c7514388120e9a26d1ec6f12666fde089e57b4a1f49098b9517abe648f9b4e2",
+        "width": 1280,
+        "height": 960,
+        "format": "JPEG",
+        "mode": "RGB",
+        "aspect_ratio": 1.3333,
+        "meets_minimum": true
+      },
+      {
+        "path": "assets/images/candidates/platanoDeshidratado-candidate.jpg",
+        "status": "INSPECTED_UNVERIFIED",
+        "sha256": "d37e9ada1f2e0d7b07c7bfc4e610b159022fd50a6cdb01b473637f8ac81ae06d",
+        "width": 1280,
+        "height": 1280,
+        "format": "JPEG",
+        "mode": "RGB",
+        "aspect_ratio": 1.0,
+        "meets_minimum": true
+      },
+      {
+        "path": "assets/images/candidates/platanoDeshidratado.jpg",
+        "status": "INSPECTED_UNVERIFIED",
+        "sha256": "d37e9ada1f2e0d7b07c7bfc4e610b159022fd50a6cdb01b473637f8ac81ae06d",
+        "width": 1280,
+        "height": 1280,
+        "format": "JPEG",
+        "mode": "RGB",
+        "aspect_ratio": 1.0,
+        "meets_minimum": true
+      }
+    ],
+    "duplicates": [
+      {
+        "sha256": "9b2be9af5db128bb9d9f32b9c36165fecba25744f4f9d78a1f836e62726d8b30",
+        "files": [
+          "assets/images/candidates/almendraMarconaFrita-candidate.jpg",
+          "assets/images/candidates/almendraMarconaFrita.jpg"
+        ]
+      },
+      {
+        "sha256": "4c40475cd8c842be64e8cded5738e230a012f48ec5512814f75d999677672c4d",
+        "files": [
+          "assets/images/candidates/almendraTostadaRepelada-candidate.jpg",
+          "assets/images/candidates/almendraTostadaRepelada.jpg"
+        ]
+      },
+      {
+        "sha256": "6c7514388120e9a26d1ec6f12666fde089e57b4a1f49098b9517abe648f9b4e2",
+        "files": [
+          "assets/images/candidates/anacardoFrito-candidate.jpg",
+          "assets/images/candidates/anacardoFrito.jpg"
+        ]
+      },
+      {
+        "sha256": "d37e9ada1f2e0d7b07c7bfc4e610b159022fd50a6cdb01b473637f8ac81ae06d",
+        "files": [
+          "assets/images/candidates/platanoDeshidratado-candidate.jpg",
+          "assets/images/candidates/platanoDeshidratado.jpg"
+        ]
+      }
+    ],
+    "summary": {
+      "files": 8,
+      "corrupt": 0,
+      "low_resolution": 0,
+      "duplicate_groups": 4
+    }
+  },
+  "note": "All downloads are candidates. This report does not approve or verify catalog products."
+}

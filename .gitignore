@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Backups locales
+backups/
+*.backup_*
+*.bak
+*.bak-*
+*.before_*
+
+# Archivos temporales
+*.tmp
+*.temp
+.DS_Store
+
+# Estados de trabajo locales de auditoría
+docs/*_state.json
+docs/*_report.json
+photo_candidates.json
+photo_candidates_next.json
+docs/catalog_alphabet_image_candidates.json
+
+# Candidatos de imágenes no verificados
+assets/images/candidates/
+assets/images/tmp/
+
+# Copias de seguridad de cambios locales
+*.pre_cart_fix_*
+*.bak_telefonos_*
+*.bak_queries_*
