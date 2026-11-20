@@ -1,16 +1,21 @@
-// TARIFAS DE ENVÍO DE EJEMPLO: editar estos importes cuando se confirme la tarifa real.
+// TARIFAS DE ENVÍO EDITABLES. Importes provisionales: confirmar con el transportista.
 const SHIPPING_TIERS = [
  {maxGrams:100,label:"Hasta 100 g",price:2.50},
- {maxGrams:250,label:"Hasta 250 g",price:3.50},
- {maxGrams:500,label:"Hasta 500 g",price:4.50},
- {maxGrams:1000,label:"Hasta 1 kg",price:5.50},
- {maxGrams:5000,label:"Hasta 5 kg",price:7.50},
- {maxGrams:10000,label:"Hasta 10 kg",price:9.50},
- {maxGrams:20000,label:"Hasta 20 kg",price:12.50},
+ {maxGrams:250,label:"101–250 g",price:3.50},
+ {maxGrams:500,label:"251–500 g",price:4.50},
+ {maxGrams:1000,label:"501 g–1 kg",price:5.50},
+ {maxGrams:5000,label:"1,001–5 kg",price:7.50},
+ {maxGrams:10000,label:"5,001–10 kg",price:9.50},
+ {maxGrams:20000,label:"10,001–20 kg",price:12.50},
  {maxGrams:Infinity,label:"Más de 20 kg",price:15.00}
 ];
-function calculateShipping(totalGrams){const grams=Math.max(0,Number(totalGrams)||0);return SHIPPING_TIERS.find(tier=>grams<=tier.maxGrams)||SHIPPING_TIERS[SHIPPING_TIERS.length-1];}
-function getCartWeightGrams(items){return items.reduce((sum,item)=>sum+Number(item.grams||0)*Number(item.quantity||0),0);}
+// Para actualizar tarifas, modifica únicamente los valores price.
+function calculateShipping(totalGrams){
+ const grams=Math.max(0,Number(totalGrams)||0);
+ if(grams===0)return {maxGrams:0,label:"Sin productos",price:0};
+ return SHIPPING_TIERS.find(tier=>grams<=tier.maxGrams)||SHIPPING_TIERS[SHIPPING_TIERS.length-1];
+}
+function getCartWeightGrams(items){return items.reduce((sum,item)=>sum+Math.max(0,Number(item.grams)||0)*Math.max(0,Number(item.quantity)||0),0);}
 
 const products = window.PRODUCTS;
 if (!products || typeof products !== 'object') {
