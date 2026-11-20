@@ -1,6 +1,6 @@
 # Catálogo revisado · Almendras de Málaga
 
-**Fuente:** las 152 fichas de `index.html` de la web. Se conserva literalmente el nombre de cada producto. Las descripciones resumen únicamente lo que permite afirmar el nombre y el texto actual del catálogo; las composiciones no especificadas quedan pendientes de confirmar con Fabián.
+**Fuente:** matriz de revisión de 152 nombres procedente de la versión anterior del catálogo. En la comprobación de `data/catalog.js` publicada en `main` el 20-11-2026 aparecen 151 fichas operativas. La fila «Almendra frita con piel» figura en esta matriz, pero no en `data/catalog.js`; queda como discrepancia pendiente de confirmar con el comercio (existencia y precio por kilo) y no se reincorpora automáticamente. Se conserva literalmente el resto de nombres. Las descripciones resumen únicamente lo que permite afirmar el nombre y el texto actual del catálogo; las composiciones no especificadas quedan pendientes de confirmar con Fabián.
 
 **Regla fotográfica:** si no se dispone de una imagen que coincida con el producto y su preparación exactos, mantener en la web el rótulo **Fotografía real pendiente**. No usar fotos de ingredientes parecidos, variantes crudas para fritos, ni fotos de nuez pelada para productos con cáscara.
 
