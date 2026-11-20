@@ -18,5 +18,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Check JavaScript syntax
         run: node --check js/app.js
-      - name: Validate catalog and site structure
+      - name: Validate catalogue, pages and release rules
         run: python3 scripts/validate_site.py
+      - name: Run regression tests
+        run: python3 -m unittest discover -s tests -v
