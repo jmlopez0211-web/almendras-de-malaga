@@ -16,7 +16,7 @@ class ShippingTests(unittest.TestCase):
         source = APP.read_text(encoding="utf-8")
         self.assertIn("Importes provisionales", source)
         self.assertIn("modifica únicamente los valores price", source)
-        self.assertEqual(len(re.findall(r"price\s*:\s*\d+\.\d+", source[:source.index("const products")])), 7)
+        self.assertEqual(len(re.findall(r"price\s*:\s*\d+\.\d+", source[:source.index("const products")])), 8)
 
     def test_zero_weight_has_no_shipping_charge(self):
         source = APP.read_text(encoding="utf-8")
