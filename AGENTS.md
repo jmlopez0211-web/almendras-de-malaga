@@ -8,7 +8,7 @@
   - `styles.css`: estilos y diseño adaptable.
   - `data/catalog.js`: datos del catálogo; expone `window.PRODUCTS`.
   - `js/app.js`: renderizado, filtros, búsqueda, formatos, carrito y WhatsApp.
-  - `js/chatbot.js`: asistente de catálogo, separado de la cuadrícula.
+  - El asistente local de catálogo está integrado actualmente en `js/app.js`, al final del archivo; no existe todavía un `js/chatbot.js` independiente.
   - `img/frutos-secos/`: fotografías locales verificadas de la Fase 1.
   - `assets/products/`: imágenes existentes; no moverlas hasta comprobar cada ruta y actualizar sus referencias.
 - Usar rutas relativas compatibles con el subdirectorio de GitHub Pages. Los scripts clásicos se cargan en orden: catálogo antes que aplicación.
@@ -16,7 +16,7 @@
 ## Integridad del catálogo
 - No eliminar, renombrar ni ocultar productos para resolver un problema visual.
 - Conservar nombres, descripciones, categorías, precios y formatos salvo que exista una corrección respaldada por la tarifa original y se solicite aplicarla.
-- El catálogo actual contiene 152 fichas. Toda modificación debe informar de cualquier variación del recuento.
+- El catálogo operativo de `data/catalog.js` en `main` contiene 151 fichas (comprobación del 20-11-2026). `catalogo-revisado.md` conserva 152 filas históricas; la ficha adicional «Almendra frita con piel» no está en el catálogo operativo y no debe añadirse sin confirmar existencia y precio con la tarifa vigente. Toda modificación debe informar de cualquier variación del recuento.
 - La falta de fotografía nunca debe impedir que una ficha aparezca en la cuadrícula.
 
 ## Fotografías: regla estricta
