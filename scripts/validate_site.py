@@ -52,7 +52,7 @@ def fail(message: str) -> bool:
 
 def load_catalog():
     source = CATALOG.read_text(encoding="utf-8")
-    match = re.search(r"window\\.PRODUCTS\\s*=\\s*(\\{.*\\})\\s*;?\\s*$", source, re.S)
+    match = re.search(r"window\.PRODUCTS\s*=\s*(\{.*\})\s*;?\s*$", source, re.S)
     if not match:
         raise ValueError("data/catalog.js must expose a JSON object as window.PRODUCTS")
     return json.loads(match.group(1))
