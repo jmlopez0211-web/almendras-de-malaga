@@ -6,6 +6,7 @@ if (!products || typeof products !== 'object') {
 const categoryNames={"frutos":"Frutos secos","variantes":"Almendra y derivados","cacahuetes":"Cacahuetes","dulces":"Garrapiñados y dulces","revueltos":"Revueltos","fruta":"Fruta deshidratada","semillas":"Pipas y semillas","aperitivos":"Aperitivos","chocolates":"Chocolates","caramelos":"Caramelos y confitería"};
 const euro=n=>n.toLocaleString('es-ES',{style:'currency',currency:'EUR'});
 const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+const hasProductId=id=>Object.prototype.hasOwnProperty.call(products,String(id));
 function catalogGroup(p){
  const name=p.name.toLocaleLowerCase('es');
  if(p.category==='chocolates'||p.category==='caramelos'||/chocolate|chocobola|lacasitos|sugus|toffee|toffino|gummys|gominola|picot|pictol[ií]n|carachoco|caramelo|confiter[ií]a|werther|café dry|gajos santos|relleno de fruta|relleno miel|taco de miel|dulce de leche/.test(name))return 'chuches';
@@ -105,6 +106,7 @@ function renderFamilyTiles(){
  const host=document.getElementById('familyTiles');if(!host)return;
  const families=[['frutos','Frutos secos','Almendras, cacahuetes, anacardos y más'],['fruta','Frutas deshidratadas','Pasas, mango, orejones y fruta'],['chuches','Caramelos y golosinas','Gominolas, caramelos y chocolates'],['variados','Pipas, aperitivos y mezclas','Pipas, kikos, habas y revueltos']];
  host.innerHTML=families.map(([id,title,desc])=>{const sample=Object.entries(products).find(([pid,p])=>catalogGroup(p)===id&&productImage(pid,p));const photo=sample?'<img class="family-tile-photo" src="'+escapeHTML(productImage(sample[0],sample[1]))+'" alt="" loading="lazy" decoding="async">':'';return '<button class="family-tile" data-family="'+id+'">'+photo+'<span class="family-tile-title">'+title+'</span><span class="family-tile-desc">'+desc+'</span><span class="family-tile-link">Explorar →</span></button>'}).join('');
+ host.querySelectorAll('.family-tile-photo').forEach(img=>img.addEventListener('error',()=>img.remove(),{once:true}));
  host.querySelectorAll('[data-family]').forEach(b=>b.onclick=()=>{const f=b.dataset.family;document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x.dataset.filter===f));activeSubfamily='todos';renderSubfamilies(f);renderProducts();document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})});
 }
 function renderProducts(){
@@ -174,7 +176,46 @@ function closeModal(id,restoreFocus=true){
  }
 }
 function updatePackPrice(){if(!selected)return;const grams=Number(document.getElementById('weightSelect').value);document.getElementById('packPrice').textContent=euro(selected.price*grams/1000);document.getElementById('modalNote').textContent='Precio de referencia: '+euro(selected.price)+' por kg. El importe del formato se calcula proporcionalmente y sin recargos; Don Miguel y Fabián confirmarán disponibilidad y precio final antes de aceptar el pedido.'}
-function showProduct(id){if(!products[id])return;selectedId=id;selected=products[id];const src=productImage(id,selected),hasPhoto=Boolean(src);document.getElementById('modalTitle').textContent=selected.name;document.getElementById('modalTag').textContent=selected.tag;document.getElementById('modalDesc').textContent=selected.desc;const allergen=document.getElementById('modalAllergen');const info=allergenInfo(selected);allergen.textContent=(info.found.length?'Alérgeno identificado por denominación: '+info.found.join(', ')+'. ':'')+'La ficha del proveedor no detalla todos los ingredientes ni las posibles trazas. Si tienes alergia o intolerancia, confirma la etiqueta del lote con Don Miguel y Fabián antes de comprar.';const photo=document.getElementById('modalPhoto');photo.style.backgroundImage=hasPhoto?"url('"+src+"')":"none";photo.textContent=hasPhoto?'':'Fotografía pendiente de incorporación · '+selected.name;photo.classList.toggle('photo-pending',!hasPhoto);photo.style.backgroundSize='cover';photo.style.backgroundPosition='center';const caption=document.querySelector('.modal-image-caption');renderProductImageCredit(caption,selected,hasPhoto);document.getElementById('weightSelect').value='1000';updatePackPrice();openModal('productModal')}
+function showProduct(id){
+ if(!hasProductId(id))return;
+ selectedId=id;
+ selected=products[id];
+ const src=productImage(id,selected);
+ const hasPhoto=Boolean(src);
+ document.getElementById('modalTitle').textContent=selected.name;
+ document.getElementById('modalTag').textContent=selected.tag;
+ document.getElementById('modalDesc').textContent=selected.desc;
+ const allergen=document.getElementById('modalAllergen');
+ const info=allergenInfo(selected);
+ allergen.textContent=(info.found.length?'Alérgeno identificado por denominación: '+info.found.join(', ')+'. ':'')+'La ficha del proveedor no detalla todos los ingredientes ni las posibles trazas. Si tienes alergia o intolerancia, confirma la etiqueta del lote con Don Miguel y Fabián antes de comprar.';
+ const photo=document.getElementById('modalPhoto');
+ const caption=document.querySelector('.modal-image-caption');
+ photo.replaceChildren();
+ photo.classList.toggle('photo-pending',!hasPhoto);
+ if(hasPhoto){
+  photo.setAttribute('aria-label','Fotografía ilustrativa de '+selected.name);
+  const image=document.createElement('img');
+  image.src=src;
+  image.alt='Fotografía ilustrativa de '+selected.name;
+  image.loading='eager';
+  image.decoding='async';
+  image.addEventListener('error',()=>{
+   photo.replaceChildren();
+   photo.classList.add('photo-pending');
+   photo.textContent='Fotografía no disponible · '+selected.name;
+   renderProductImageCredit(caption,selected,false);
+  },{once:true});
+  photo.append(image);
+ }else{
+  photo.setAttribute('aria-label','Fotografía pendiente para '+selected.name);
+  photo.textContent='Fotografía pendiente de incorporación · '+selected.name;
+ }
+ renderProductImageCredit(caption,selected,hasPhoto);
+ document.getElementById('weightSelect').value='1000';
+ document.getElementById('qtyKg').value='1';
+ updatePackPrice();
+ openModal('productModal');
+}
 document.getElementById('weightSelect').addEventListener('change',updatePackPrice);
 document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>closeModal(b.dataset.close)));
 document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModal(m)}));
@@ -190,8 +231,8 @@ document.addEventListener('keydown',e=>{
  }
  if(e.key==='Escape'&&!opened&&chatPanel?.classList.contains('open'))closeChatPanel();
 });
-const cart=(()=>{try{const saved=JSON.parse(localStorage.getItem("almendrasCart")||"[]");return Array.isArray(saved)?saved.filter(x=>x&&typeof x==='object'&&products[x.id]&&[100,250,500,1000].includes(Number(x.grams))&&Number.isInteger(Number(x.quantity))&&Number(x.quantity)>0&&Number(x.quantity)<=50).map(x=>({id:x.id,name:products[x.id].name,price:products[x.id].price,grams:Number(x.grams),quantity:Number(x.quantity)})):[]}catch(e){return []}})();
-function renderCart(){try{localStorage.setItem('almendrasCart',JSON.stringify(cart))}catch(e){}const host=document.getElementById('cartItems');host.innerHTML='';let total=0;cart.forEach((item,index)=>{const subtotal=item.price*item.grams/1000*item.quantity;total+=subtotal;const row=document.createElement('div');row.className='cart-line';const info=document.createElement('div');const name=document.createElement('strong');name.textContent=item.name;const detail=document.createElement('small');detail.textContent=item.quantity+' × '+item.grams+' g · '+euro(item.price)+' / kg · '+euro(subtotal);info.append(name,detail);const remove=document.createElement('button');remove.type='button';remove.textContent='Quitar';remove.onclick=()=>{cart.splice(index,1);renderCart()};row.append(info,remove);host.append(row)});if(!cart.length)host.innerHTML='<p class="smallprint">Aún no has añadido productos.</p>';document.getElementById('cartTotal').textContent=euro(total);document.getElementById('cartCount').textContent=cart.reduce((n,x)=>n+x.quantity,0)}
+const cart=(()=>{try{const saved=JSON.parse(localStorage.getItem("almendrasCart")||"[]");return Array.isArray(saved)?saved.filter(x=>x&&typeof x==='object'&&hasProductId(x.id)&&[100,250,500,1000].includes(Number(x.grams))&&Number.isInteger(Number(x.quantity))&&Number(x.quantity)>0&&Number(x.quantity)<=50).map(x=>({id:x.id,name:products[x.id].name,price:products[x.id].price,grams:Number(x.grams),quantity:Number(x.quantity)})):[]}catch(e){return []}})();
+function renderCart(){try{localStorage.setItem('almendrasCart',JSON.stringify(cart))}catch(e){}const host=document.getElementById('cartItems');host.innerHTML='';let total=0;cart.forEach((item,index)=>{const subtotal=item.price*item.grams/1000*item.quantity;total+=subtotal;const row=document.createElement('div');row.className='cart-line';row.setAttribute('role','listitem');const info=document.createElement('div');const name=document.createElement('strong');name.textContent=item.name;const detail=document.createElement('small');detail.textContent=item.quantity+' × '+item.grams+' g · '+euro(item.price)+' / kg · '+euro(subtotal);info.append(name,detail);const remove=document.createElement('button');remove.type='button';remove.textContent='Quitar';remove.setAttribute('aria-label','Quitar '+item.name+', formato '+item.grams+' gramos');remove.onclick=()=>{cart.splice(index,1);renderCart()};row.append(info,remove);host.append(row)});if(!cart.length)host.innerHTML='<p class="smallprint">Aún no has añadido productos.</p>';document.getElementById('cartTotal').textContent=euro(total);document.getElementById('cartCount').textContent=cart.reduce((n,x)=>n+x.quantity,0)}
 document.getElementById('addToCart').onclick=()=>{
  if(!selected||!selectedId)return;
  const grams=Number(document.getElementById('weightSelect').value);
@@ -242,7 +283,7 @@ function makeQR(id){const host=document.getElementById(id);host.innerHTML='<div 
 function qrCanvas(){const source=document.querySelector('#ownerqr .qr-code canvas');if(!source)return null;const scale=3,pad=16*scale,side=source.width*scale+pad*2,out=document.createElement('canvas');out.width=side;out.height=side;const c=out.getContext('2d');c.fillStyle='#fff';c.fillRect(0,0,side,side);c.drawImage(source,pad,pad,source.width*scale,source.height*scale);const center=side/2,r=29*scale;c.fillStyle='#fff';c.beginPath();c.roundRect(center-r,center-r,2*r,2*r,12*scale);c.fill();c.strokeStyle='#eee1ce';c.lineWidth=2*scale;c.stroke();c.save();c.translate(center-r+8*scale,center-r+8*scale);c.scale((2*r-16*scale)/48,(2*r-16*scale)/48);const svg=new Blob([almondMark],{type:'image/svg+xml'}),url=URL.createObjectURL(svg),img=new Image();return new Promise(resolve=>{img.onload=()=>{c.drawImage(img,0,0,48,48);URL.revokeObjectURL(url);resolve(out)};img.onerror=()=>{URL.revokeObjectURL(url);resolve(out)};img.src=url})}
 window.addEventListener('load',()=>makeQR('qr'));
 document.getElementById('owner').onclick=()=>{document.getElementById('publicUrl').value=location.href.split('#')[0];openModal('ownerModal');makeQR('ownerqr')};
-document.getElementById('downloadQR').onclick=async()=>{const c=await qrCanvas();if(!c)return;const a=document.createElement('a');a.download='QR-Almendras-de-Malaga.png';a.href=c.toDataURL('image/png');a.click()};
+document.getElementById('downloadQR').onclick=async()=>{const c=await qrCanvas().catch(()=>null);if(!c){alert('No se pudo generar el QR. Comprueba la conexión y vuelve a intentarlo.');return}try{const a=document.createElement('a');a.download='QR-Almendras-de-Malaga.png';a.href=c.toDataURL('image/png');a.click()}catch(e){alert('No se pudo descargar el QR en este navegador.')}};
 document.getElementById('copyURL').onclick=async()=>{const value=document.getElementById('publicUrl').value;if(await copyTextSafely(value)){alert('Enlace copiado')}else{document.getElementById('publicUrl').focus();document.getElementById('publicUrl').select();alert('Selecciona y copia el enlace manualmente.')}};
 
 // Asistente local: responde usando las fichas de products, sin inventar stock.
