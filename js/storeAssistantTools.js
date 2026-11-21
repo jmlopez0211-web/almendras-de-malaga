@@ -72,22 +72,26 @@ function interpretLocal(text){
  const shopping=/\b(quiero|añade|agrega|mete|pon|comprar|compra|pedido|lleva|dame)\b/.test(q);
  if(shopping){
   const chunks=String(text).replace(/[,;]+/g," y ").split(/\s+y\s+/i).map(x=>x.trim()).filter(Boolean);
-  const parsed=[];
+  const parsed=[],needsFormat=[];
   for(const chunk of chunks){
    const grams=parseWeight(chunk);
    const product=findProductForPhrase(chunk);
    if(!product)continue;
-   if(!grams)continue;
-   const qtyMatch=norm(chunk).match(/\b([2-9]|[1-5][0-9])\s*(?:bolsas|paquetes|unidades)\b/);
-   parsed.push({id:product.id,name:product.p.name,grams,quantity:qtyMatch?Number(qtyMatch[1]):1});
+   const qtyMatch=norm(chunk).match(/\\b([1-9]|[1-5][0-9])\\s*(?:bolsas|paquetes|unidades)\\b/);
+   const quantity=qtyMatch?Number(qtyMatch[1]):1;
+   if(!grams){needsFormat.push({name:product.p.name,quantity});continue}
+   parsed.push({id:product.id,name:product.p.name,grams,quantity});
   }
-  if(parsed.length){
+  if(parsed.length||needsFormat.length){
    try{
     parsed.forEach(x=>addToCart(x.id,x.grams,x.quantity));
     const s=cartSummary();
-    const added=parsed.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g").join("\n");
-    const breakdown=s.items.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g = "+x.subtotal.toFixed(2)+" €").join("\n");
-    return {handled:true,reply:"He añadido al carrito:\n"+added+"\n\n"+breakdown+"\n\n⚖️ Peso total: "+s.weightGrams+" g\n🧾 Subtotal: "+s.subtotal.toFixed(2)+" €\n🚚 Envío ("+s.shipping.label+"): "+s.shipping.price.toFixed(2)+" €\n💰 Total: "+s.total.toFixed(2)+" €.\n\nTarifas de envío provisionales; disponibilidad y precio final pendientes de confirmación."};
+    const added=parsed.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g").join("\\n");
+    const breakdown=s.items.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g = "+x.subtotal.toFixed(2)+" €").join("\\n");
+    let reply=parsed.length?"He añadido al carrito:\\n"+added+"\\n\\n"+breakdown+"\\n\\n⚖️ Peso total: "+s.weightGrams+" g\\n🧾 Subtotal: "+s.subtotal.toFixed(2)+" €\\n🚚 Envío ("+s.shipping.label+"): "+s.shipping.price.toFixed(2)+" €\\n💰 Total: "+s.total.toFixed(2)+" €.":"";
+    if(needsFormat.length)reply+=(reply?"\\n\\n":"")+"Para añadir "+needsFormat.map(x=>x.quantity+" bolsa(s) de "+x.name).join(" y ")+" necesito que me indiques el formato de cada bolsa (100 g, 250 g, 500 g, 1 kg, etc.).";
+    reply+="\\n\\nTarifas de envío provisionales; disponibilidad y precio final pendientes de confirmación.";
+    return {handled:true,reply};
    }catch(e){return {handled:true,reply:"No he podido completar el carrito: "+e.message}}
   }
  }
