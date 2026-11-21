@@ -1,6 +1,6 @@
 import fs from "node:fs";
 const sitemap=fs.readFileSync("sitemap.xml","utf8");
-const urls=[...sitemap.matchAll(/<loc>\\s*([^<]+)\\s*<\\/loc>/g)].map(m=>m[1].trim());
+const urls=[...sitemap.matchAll(/<loc>\s*([^<]+)\s*<\/loc>/g)].map(m=>m[1].trim());
 const concurrency=8, timeoutMs=15000;
 let next=0, ok=0, bad=[];
 async function check(url){
