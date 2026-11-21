@@ -6,7 +6,7 @@ const PHONE="34666068765";
 const norm=s=>String(s||"").toLocaleLowerCase("es").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim();
 function catalog(){return window.PRODUCTS||{}}
 function searchProducts(query,limit=12){
- const q=norm(query), words=q.split(/\s+/).filter(w=>w.length>1);
+ const aliases={almendras:"almendra",nueces:"nuez",cacahuetes:"cacahuete",anacardos:"anacardo",pistachos:"pistacho",avellanas:"avellana",pipas:"pipa",semillas:"semilla",pasas:"pasa",frutas:"fruta"}; const q=norm(query), words=q.split(/\s+/).filter(w=>w.length>1).map(w=>aliases[w]||w);
  return Object.entries(catalog()).map(([id,p])=>{
   const hay=norm([id,p.name,p.desc,p.tag,p.category].join(" "));
   const score=words.reduce((n,w)=>n+(hay.includes(w)?2:0),0);
