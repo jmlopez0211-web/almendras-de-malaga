@@ -4,7 +4,7 @@ import path from "node:path";
 const sitemapPath = "sitemap.xml";
 const base = "https://jmlopez0211-web.github.io/almendras-de-malaga/";
 const sitemap = fs.readFileSync(sitemapPath, "utf8");
-const urls = [...sitemap.matchAll(/<loc>\\s*([^<]+)\\s*<\\/loc>/g)].map(m => m[1].trim()).filter(u => u.startsWith(base + "productos/"));
+const urls = [...sitemap.matchAll(/<loc>\s*([^<]+)\s*<\/loc>/g)].map(m => m[1].trim()).filter(u => u.startsWith(base + "productos/"));
 let checked = 0, fixed = 0, valid = 0, errors = [];
 
 for (const url of urls) {
