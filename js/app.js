@@ -268,7 +268,16 @@ document.getElementById('addToCart').onclick=()=>{
  openModal('cartModal');
 };
 renderCart();
-window.addEventListener('almendras:cart-updated',()=>renderCart());
+window.addEventListener('almendras:cart-updated',event=>{
+ cart.length=0;
+ const incoming=Array.isArray(event.detail)?event.detail:[];
+ incoming.forEach(item=>{
+  if(item&&hasProductId(item.id)&&[100,250,500,1000,5000,10000,20000].includes(Number(item.grams))&&Number.isInteger(Number(item.quantity))&&Number(item.quantity)>0&&Number(item.quantity)<=50){
+   cart.push({id:item.id,name:products[item.id].name,price:products[item.id].price,grams:Number(item.grams),quantity:Number(item.quantity)});
+  }
+ });
+ renderCart();
+});
 document.getElementById('cartFab').onclick=()=>{renderCart();openModal('cartModal')};
 document.getElementById('clearCart').onclick=()=>{cart.length=0;renderCart()};
 
