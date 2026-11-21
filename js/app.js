@@ -354,7 +354,7 @@ const chatSessionId=(()=>{try{let id=sessionStorage.getItem('almendrasChatSessio
 async function sendAssistantMessage(q){
  const storeTools=window.storeAssistantTools;
  const base=String(window.ALMENDRAS_ASSISTANT_API||'').replace(/\/+$/,'');
- if(!base&&storeTools){
+ if(storeTools){
   const local=storeTools.interpretLocal(q);
   if(local.handled){chatSay(local.reply,'bot');return}
  }
