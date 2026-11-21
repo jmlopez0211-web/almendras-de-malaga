@@ -7,7 +7,7 @@ const m=raw.match(/window\\.PRODUCTS\\s*=\\s*(\\{[\\s\\S]*\\})\\s*;?\\s*$/);
 if(!m)throw new Error("No se pudo leer data/catalog.js");
 const products=JSON.parse(m[1]);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const slug=s=>String(s).normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const slug=s=>String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 const euro=n=>Number(n).toLocaleString("es-ES",{minimumFractionDigits:2,maximumFractionDigits:2})+" €";
 const date=new Date().toISOString().slice(0,10);
 const productDir="productos",categoryDir="categorias";fs.mkdirSync(productDir,{recursive:true});fs.mkdirSync(categoryDir,{recursive:true});
