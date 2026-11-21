@@ -16,6 +16,52 @@ assert.ok(index.includes('name="twitter:card"'),"Twitter Card portada");
 assert.ok(index.includes('"@type":"Store"'),"Schema Store");
 assert.ok(index.includes('"@type":"FAQPage"'),"Schema FAQ");
 assert.equal(canonical(index),baseUrl,"Canonical portada");
+
+function readMetaContent(html,prefix){
+ const start=html.indexOf(prefix);
+ if(start<0)return "";
+ const valueStart=start+prefix.length;
+ const end=html.indexOf('"',valueStart);
+ return end<0?"":html.slice(valueStart,end);
+}
+const homeTitle=index.slice(index.indexOf("<title>")+7,index.indexOf("</title>"));
+const homeDescription=readMetaContent(index,'<meta name="description" content="');
+const ogTitle=readMetaContent(index,'<meta property="og:title" content="');
+const ogDescription=readMetaContent(index,'<meta property="og:description" content="');
+const twitterTitle=readMetaContent(index,'<meta name="twitter:title" content="');
+const twitterDescription=readMetaContent(index,'<meta name="twitter:description" content="');
+assert.ok(homeTitle.startsWith("Almendras de Málaga |"),"La portada prioriza la keyword principal en el title");
+assert.ok(homeDescription.startsWith("Almendras de Málaga"),"La descripción comienza por la keyword principal");
+assert.equal(ogTitle,homeTitle,"Open Graph title debe coincidir con el title de la portada");
+assert.equal(ogDescription,homeDescription,"Open Graph description debe coincidir con la meta description");
+assert.equal(twitterTitle,homeTitle,"Twitter title debe coincidir con el title de la portada");
+assert.equal(twitterDescription,homeDescription,"Twitter description debe coincidir con la meta description");
+assert.ok(index.includes('class="home-featured"'),"La portada incluye la selección comercial estática");
+const featuredLinks=[...index.matchAll(/<a class="home-featured-link" href="([^"]+)">/g)].map(match=>match[1]);
+const expectedFeatured=[
+ "productos/almendracrudapiel-almendra-cruda-con-piel.html",
+ "productos/almendracrudapelada-almendra-cruda-pelada.html",
+ "productos/almendramarcona-almendra-marcona.html",
+ "productos/almendragarrapinada-almendra-garrapinada.html",
+ "productos/almendrafritaoliva-almendra-frita-con-aceite-de-oliva.html"
+];
+assert.deepEqual(featuredLinks,expectedFeatured,"La portada enlaza las cinco fichas comerciales previstas y en el orden definido");
+for(const href of featuredLinks){
+ assert.ok(fs.existsSync(path.join(root,href)),"Ficha destacada inexistente: "+href);
+ assert.ok(urls.includes(baseUrl+href),"Ficha destacada fuera del sitemap: "+href);
+}
+for(const file of [
+ "comprar-almendras-malaga.html",
+ "comprar-frutos-secos-malaga.html",
+ "almendras-al-por-mayor.html",
+ "almendras-garrapinadas-caseras.html",
+ "almendras-beneficios-y-usos.html"
+]){
+ const html=fs.readFileSync(path.join("blog",file),"utf8");
+ assert.ok(html.includes('class="contextual-home-link"'),"Falta el enlace contextual hacia el catálogo principal: "+file);
+ assert.ok(html.includes('href="../#catalogo"'),"El enlace contextual no apunta al catálogo de la portada: "+file);
+}
+
 for(const url of urls){
  assert.ok(url.startsWith(baseUrl),"URL externa o base incorrecta: "+url);
  const rel=url.slice(baseUrl.length); const file=rel.endsWith("/")?rel+"index.html":(rel||"index.html");
