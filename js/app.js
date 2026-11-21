@@ -9,7 +9,8 @@ const SHIPPING_TIERS = [
  {maxGrams:20000,label:"10,001–20 kg",price:12.50},
  {maxGrams:Infinity,label:"Más de 20 kg",price:15.00}
 ];
-// Fuente común: data/commercial.json. Si no se puede cargar, se mantienen estos valores provisionales.\nfetch("data/commercial.json").then(r=>r.ok?r.json():Promise.reject()).then(config=>{const tiers=config?.shipping?.tiers;if(Array.isArray(tiers)&&tiers.length===SHIPPING_TIERS.length){tiers.forEach((t,i)=>{SHIPPING_TIERS[i].maxGrams=t.maxGrams??Infinity;SHIPPING_TIERS[i].label=t.label;SHIPPING_TIERS[i].price=Number(t.price)});}}).catch(()=>{});
+// Fuente común: data/commercial.json. Si no se puede cargar, se mantienen estos valores provisionales.
+fetch("data/commercial.json").then(r=>r.ok?r.json():Promise.reject()).then(config=>{const tiers=config?.shipping?.tiers;if(Array.isArray(tiers)&&tiers.length===SHIPPING_TIERS.length){tiers.forEach((t,i)=>{SHIPPING_TIERS[i].maxGrams=t.maxGrams??Infinity;SHIPPING_TIERS[i].label=t.label;SHIPPING_TIERS[i].price=Number(t.price)});}}).catch(()=>{});
 function calculateShipping(totalGrams){
  const grams=Math.max(0,Number(totalGrams)||0);
  if(grams===0)return {maxGrams:0,label:"Sin productos",price:0};
@@ -281,22 +282,41 @@ function buildCartOrderMessage(){
  const lines=cart.map(item=>{
   const subtotal=item.price*item.grams/1000*item.quantity;
   subtotalProducts+=subtotal;
-  return '• '+item.name+'\n  '+item.quantity+' × '+item.grams+' g · '+euro(subtotal);
+  return '• '+item.name+'
+  '+item.quantity+' × '+item.grams+' g · '+euro(subtotal);
  });
  const totalGrams=getCartWeightGrams(cart);
  const shippingTier=calculateShipping(totalGrams);
  const finalTotal=subtotalProducts+shippingTier.price;
  const notes=document.getElementById('cartNotes').value.trim();
- return '🛒 *NUEVO PEDIDO · ALMENDRAS DE MÁLAGA*\n\n'
-  +'👤 *Cliente:* '+buyer+'\n'
-  +'📱 *Teléfono:* '+phone+'\n\n'
-  +'📦 *PRODUCTOS*\n'+lines.join('\n\n')+'\n\n'
-  +'⚖️ *PESO TOTAL:* '+totalGrams.toLocaleString('es-ES')+' g ('+(totalGrams/1000).toLocaleString('es-ES',{maximumFractionDigits:3})+' kg)\n'
-  +'🚚 *ENVÍO:* '+shippingTier.label+' · '+euro(shippingTier.price)+'\n'
-  +'🧾 *SUBTOTAL PRODUCTOS:* '+euro(subtotalProducts)+'\n'
-  +'💰 *TOTAL FINAL:* '+euro(finalTotal)+'\n\n'
-  +'📝 *Observaciones:* '+(notes||'Ninguna')+'\n\n'
-  +'📍 Pedido realizado desde el catálogo web.\n'
+ return '🛒 *NUEVO PEDIDO · ALMENDRAS DE MÁLAGA*
+
+'
+  +'👤 *Cliente:* '+buyer+'
+'
+  +'📱 *Teléfono:* '+phone+'
+
+'
+  +'📦 *PRODUCTOS*
+'+lines.join('
+
+')+'
+
+'
+  +'⚖️ *PESO TOTAL:* '+totalGrams.toLocaleString('es-ES')+' g ('+(totalGrams/1000).toLocaleString('es-ES',{maximumFractionDigits:3})+' kg)
+'
+  +'🚚 *ENVÍO:* '+shippingTier.label+' · '+euro(shippingTier.price)+'
+'
+  +'🧾 *SUBTOTAL PRODUCTOS:* '+euro(subtotalProducts)+'
+'
+  +'💰 *TOTAL FINAL:* '+euro(finalTotal)+'
+
+'
+  +'📝 *Observaciones:* '+(notes||'Ninguna')+'
+
+'
+  +'📍 Pedido realizado desde el catálogo web.
+'
   +'El envío se calcula automáticamente por peso. Una vez recibido el pago, prepararemos y enviaremos el pedido.';
 }
 
@@ -332,12 +352,20 @@ function answerProductQuestion(raw){
   return 'La web no consulta inventario en tiempo real. Dime el nombre del producto o pregunta directamente a Don Miguel y Fabián por WhatsApp: +34 666 068 765.';
  }
  if(matches.length&&requestedGrams){
-  return matches.slice(0,6).map(([id,p])=>p.name+': '+euroPrice(p.price*requestedGrams/1000)+' por '+requestedGrams+' g ('+euroPrice(p.price)+' / kg orientativo).').join('\n')+'\nEl precio final y la disponibilidad deben confirmarse.';
+  return matches.slice(0,6).map(([id,p])=>p.name+': '+euroPrice(p.price*requestedGrams/1000)+' por '+requestedGrams+' g ('+euroPrice(p.price)+' / kg orientativo).').join('
+')+'
+El precio final y la disponibilidad deben confirmarse.';
  }
  if(matches.length&&/precio|cu[aá]nto|coste|vale|format|gram|peso|kilo|kg|cantidad/.test(q)){
-  return matches.slice(0,6).map(([id,p])=>p.name+': '+euroPrice(p.price)+' / kg orientativo. Formatos: 100 g ('+euroPrice(p.price*.1)+'), 250 g ('+euroPrice(p.price*.25)+'), 500 g ('+euroPrice(p.price*.5)+'), 1 kg ('+euroPrice(p.price)+'), 5 kg ('+euroPrice(p.price*5)+'), 10 kg ('+euroPrice(p.price*10)+') y 20 kg ('+euroPrice(p.price*20)+').').join('\n')+'\nEl importe final y la disponibilidad deben confirmarse con Don Miguel y Fabián.';
+  return matches.slice(0,6).map(([id,p])=>p.name+': '+euroPrice(p.price)+' / kg orientativo. Formatos: 100 g ('+euroPrice(p.price*.1)+'), 250 g ('+euroPrice(p.price*.25)+'), 500 g ('+euroPrice(p.price*.5)+'), 1 kg ('+euroPrice(p.price)+'), 5 kg ('+euroPrice(p.price*5)+'), 10 kg ('+euroPrice(p.price*10)+') y 20 kg ('+euroPrice(p.price*20)+').').join('
+')+'
+El importe final y la disponibilidad deben confirmarse con Don Miguel y Fabián.';
  }
- if(matches.length)return 'He encontrado estas referencias en el catálogo:\n'+matches.slice(0,8).map(([id,p])=>'• '+p.name+' — '+euroPrice(p.price)+' / kg orientativo').join('\n')+'\n\nFormatos: 100 g, 250 g, 500 g, 1 kg, 5 kg, 10 kg y 20 kg. Disponibilidad y precio final pendientes de confirmación.';
+ if(matches.length)return 'He encontrado estas referencias en el catálogo:
+'+matches.slice(0,8).map(([id,p])=>'• '+p.name+' — '+euroPrice(p.price)+' / kg orientativo').join('
+')+'
+
+Formatos: 100 g, 250 g, 500 g, 1 kg, 5 kg, 10 kg y 20 kg. Disponibilidad y precio final pendientes de confirmación.';
  if(/formato|gram|peso|tamano|tamaño|kilo|kg|cantidad/.test(q))return 'Puedes solicitar los formatos de 100 g, 250 g, 500 g, 1 kg, 5 kg, 10 kg y 20 kg. Para cantidades superiores, consulta con Don Miguel y Fabián.';
  if(/chocolate|golosin|caramel|snack|fruta|nuez|almendra|cacahuete|pistacho|anacardo|avellana|pipa|semilla/.test(q)){
   const group=all.filter(([id,p])=>catalogGroup(p)===(/chocolate|golosin|caramel/.test(q)?'chuches':/fruta/.test(q)?'fruta':/snack|pipa|semilla/.test(q)?'variados':'frutos'));
@@ -359,7 +387,9 @@ async function sendAssistantMessage(q){
   typing.remove();
   if(!response.ok||!data.reply)throw new Error(data.error||'No se pudo responder');
   chatSay(data.reply,'bot');
- }catch(error){typing.remove();chatSay(answerProductQuestion(q)+'\n\nEl asistente inteligente no está disponible ahora.','bot')}
+ }catch(error){typing.remove();chatSay(answerProductQuestion(q)+'
+
+El asistente inteligente no está disponible ahora.','bot')}
 }
 document.getElementById('chatForm').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('chatInput'),q=input.value.trim();if(!q)return;chatSay(q,'user');input.value='';input.focus();sendAssistantMessage(q)});
 document.querySelectorAll('[data-assistant-prompt]').forEach(button=>button.addEventListener('click',()=>{const input=document.getElementById('chatInput');input.value=button.dataset.assistantPrompt;document.getElementById('chatForm').requestSubmit()}));
