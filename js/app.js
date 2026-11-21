@@ -319,7 +319,8 @@ function answerProductQuestion(raw){
  const q=normalizeCatalogText(raw);
  const all=Object.entries(products);
  const ignored=['100','250','500','1000','g','gr','kg','precio','precios','cuanto','cuantos','cuanta','cuantas','cuesta','vale','coste','tenei','teneis','tiene','tienen','hay','disponibilidad','disponible','stock','formato','formatos','gramo','gramos','peso','kilo','kilos','quiero','busco','necesito','producto','productos','favor','por','de','del','la','el','los','las','un','una','con','sin','para','que','es','son','me','dime','consulta','consultar'];
- const searchQuery=q.replace(/\\b(?:100|250|500|1000|5000|10000|20000)\\s*(?:g|gr|gramos)?\\b|\\b(?:1|5|10|20)\\s*(?:kg|kilo|kilos)\\b/g,' ');\n const words=catalogSearchWords(searchQuery).filter(w=>!ignored.includes(w));
+ const searchQuery=q.replace(/\b(?:100|250|500|1000|5000|10000|20000)\s*(?:g|gr|gramos)?\b|\b(?:1|5|10|20)\s*(?:kg|kilo|kilos)\b/g,' ');
+ const words=catalogSearchWords(searchQuery).filter(w=>!ignored.includes(w));
  const matches=all.filter(([id,p])=>{
   const haystack=normalizeCatalogText([p.name,p.desc,p.tag,p.category,catalogGroup(p)].join(' '));
   return words.length>0&&words.every(w=>haystack.includes(w));
