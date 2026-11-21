@@ -55,7 +55,7 @@ function parseWeight(text){
 }
 function findProductForPhrase(phrase){
  const q=norm(phrase);
- const words=q.split(/\\s+/).filter(w=>w.length>2&&!["quiero","para","poner","añade","agrega","comprar","pedido","medio","medio","kilo","cuarto","gramos","gramo","bolsa","bolsas","de","del","una","un"].includes(w));
+ const aliases={almendras:"almendra",pistachos:"pistacho",cacahuetes:"cacahuete",anacardos:"anacardo",nueces:"nuez",avellanas:"avellana",crudas:"cruda",tostadas:"tostada",fritas:"frita"}; const words=q.split(/\\s+/).filter(w=>w.length>2&&!["quiero","para","poner","añade","agrega","comprar","pedido","medio","kilo","cuarto","gramos","gramo","bolsa","bolsas","de","del","una","un"].includes(w)).map(w=>aliases[w]||w);
  const scored=Object.entries(catalog()).map(([id,p])=>{
   const hay=norm([id,p.name,p.desc,p.tag,p.category].join(" "));
   let score=words.reduce((n,w)=>n+(hay.includes(w)?3:0),0);
