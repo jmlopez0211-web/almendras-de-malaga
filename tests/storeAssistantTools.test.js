@@ -35,3 +35,6 @@ test("total requested weight over 20kg is split into valid package formats",()=>
 
 
 test("natural-language removal by bag weight removes matching cart line",()=>{tools.clearCart();tools.addToCart("almond",500,1);const result=tools.interpretLocal("Quita la bolsa de 500 gramos");assert.equal(result.handled,true);assert.match(result.reply,/He eliminado/i);assert.equal(tools.readCart().length,0);});
+
+test("colloquial Spanish add verbs and 25kg package splitting",()=>{for(const phrase of ["Añade 25 kg de almendra cruda","Agrega 25 kg de almendra cruda","Mete 25 kg de almendra cruda","Ponme 25 kg de almendra cruda"]){tools.clearCart();const result=tools.interpretLocal(phrase);assert.equal(result.handled,true,phrase);assert.equal(tools.cartSummary().weightGrams,25000,phrase);assert.deepEqual(Array.from(tools.cartSummary().items,x=>x.grams),[20000,5000],phrase);}});
+test("colloquial removal verbs remove the requested format",()=>{for(const phrase of ["Quita la bolsa de 500 gramos","Borra la bolsa de 500 gramos","Elimina la bolsa de 500 gramos","Saca la bolsa de 500 gramos"]){tools.clearCart();tools.addToCart("almond",500,1);const result=tools.interpretLocal(phrase);assert.equal(result.handled,true,phrase);assert.equal(tools.readCart().length,0,phrase);}});
