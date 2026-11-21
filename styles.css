@@ -415,3 +415,15 @@ body:has(.modal[aria-hidden="false"]) .chat-fab,body:has(.modal[aria-hidden="fal
 @keyframes adultFabFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
 @media(max-width:560px){.chat-fab{right:12px;bottom:12px;padding:7px 15px 7px 7px;gap:8px;font-size:13px}.fab-mascot{width:42px;height:42px}.chat-panel{right:10px;bottom:72px;width:calc(100vw - 20px);height:min(470px,calc(100dvh - 90px));border-radius:19px}.chat-brand .almond-mascot{width:42px;height:42px;flex-basis:42px}}
 @media(prefers-reduced-motion:reduce){.chat-fab{animation:none!important}}
+
+/* Asistente visual premium: adulto, cálido y separado del pedido */
+.chat-fab{right:16px;bottom:calc(82px + env(safe-area-inset-bottom,0px));z-index:82;min-height:58px;padding:7px 18px 7px 7px;gap:11px;border:2px solid #d8b878;border-radius:999px;background:linear-gradient(135deg,#214b34 0%,#326648 68%,#805d36 100%);color:#fff;box-shadow:0 7px 20px #173b2b42,0 2px 0 #f5e4bf inset;animation:almendritaFloat 4.5s ease-in-out infinite}
+.chat-fab .fab-mascot{width:46px;height:46px;flex:0 0 46px;border:2px solid #e4c78f;background:#fff8e9;box-shadow:0 2px 8px #173b2b24}
+.chat-fab .fab-label{font-size:14px;font-weight:800;letter-spacing:.1px}.chat-fab .fab-spark{font-size:17px;color:#f1d79d}
+.chat-fab[aria-expanded=true]{background:#6d4b2c;border-color:#e0c18a;animation:none}
+.chat-panel{right:16px;bottom:calc(148px + env(safe-area-inset-bottom,0px));width:min(390px,calc(100vw - 28px));height:min(520px,calc(100dvh - 205px));z-index:81;border-radius:22px;border:1.5px solid #d4b67e;box-shadow:0 18px 45px #2e241d38}
+.assistant-welcome-bubble{right:20px;bottom:calc(145px + env(safe-area-inset-bottom,0px));max-width:min(285px,calc(100vw - 42px));padding:12px 15px;border-radius:18px 18px 5px 18px;background:#fffaf0;border:1.5px solid #d4b67e;color:#244632;font-size:13px;font-weight:700;box-shadow:0 7px 22px #173b2b24}
+@keyframes almendritaFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@media(max-width:560px){.chat-fab{right:12px;bottom:calc(76px + env(safe-area-inset-bottom,0px));min-height:56px;padding:6px 14px 6px 6px;gap:8px;font-size:13px}.fab-mascot{width:43px;height:43px;flex-basis:43px}.chat-fab .fab-label{font-size:13px}.chat-panel{right:10px;bottom:calc(140px + env(safe-area-inset-bottom,0px));width:calc(100vw - 20px);height:min(470px,calc(100dvh - 175px));border-radius:20px}.assistant-welcome-bubble{right:12px;bottom:calc(138px + env(safe-area-inset-bottom,0px));max-width:calc(100vw - 78px);font-size:12px;padding:10px 12px}}
+@media(prefers-reduced-motion:reduce){.chat-fab{animation:none!important}}
+body:has(#cartModal[aria-hidden=false]) .chat-fab,body:has(#cartModal[aria-hidden=false]) .chat-panel,body:has(#cartModal[aria-hidden=false]) .assistant-welcome-bubble{display:none!important}
