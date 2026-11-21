@@ -72,10 +72,16 @@ function hasUniqueProductImage(id){return Boolean(productImage(id,products[id]))
 function hasSpecificProductImage(id){return Boolean(productImage(id,products[id]));}
 
 
+function productIllustration(p){
+ const group=catalogGroup(p);
+ const palette=group==='frutos'?['#8b5b31','#d9b47a','#5c3921']:group==='fruta'?['#a75a3c','#d98b4b','#7a3e2b']:group==='chuches'?['#d96b91','#e6b94f','#6da58a']:['#c58a45','#8c5930','#d9b47a'];
+ const shapes=group==='frutos'?'<ellipse cx="118" cy="95" rx="25" ry="46" transform="rotate(-35 118 95)" fill="'+palette[0]+'"/><ellipse cx="170" cy="108" rx="25" ry="46" transform="rotate(32 170 108)" fill="'+palette[1]+'"/><ellipse cx="145" cy="145" rx="24" ry="43" transform="rotate(-10 145 145)" fill="'+palette[2]+'"/><ellipse cx="93" cy="150" rx="24" ry="43" transform="rotate(25 93 150)" fill="'+palette[1]+'"/><ellipse cx="195" cy="155" rx="23" ry="42" transform="rotate(-28 195 155)" fill="'+palette[0]+'"/>' : group==='fruta'?'<circle cx="100" cy="110" r="38" fill="'+palette[0]+'"/><circle cx="155" cy="92" r="34" fill="'+palette[1]+'"/><circle cx="185" cy="145" r="42" fill="'+palette[2]+'"/><circle cx="125" cy="160" r="32" fill="'+palette[1]+'"/><circle cx="78" cy="170" r="25" fill="'+palette[2]+'"/>' : group==='chuches'?'<rect x="72" y="72" width="65" height="38" rx="19" fill="'+palette[0]+'" transform="rotate(-25 104 91)"/><rect x="142" y="105" width="70" height="42" rx="21" fill="'+palette[1]+'" transform="rotate(18 177 126)"/><circle cx="110" cy="160" r="29" fill="'+palette[2]+'"/><rect x="145" y="155" width="55" height="35" rx="17" fill="'+palette[0]+'" transform="rotate(-15 172 172)"/>' :'<ellipse cx="90" cy="100" rx="29" ry="17" fill="'+palette[0]+'" transform="rotate(20 90 100)"/><ellipse cx="145" cy="88" rx="30" ry="18" fill="'+palette[1]+'" transform="rotate(-20 145 88)"/><ellipse cx="190" cy="125" rx="29" ry="17" fill="'+palette[2]+'" transform="rotate(15 190 125)"/><ellipse cx="120" cy="155" rx="29" ry="17" fill="'+palette[2]+'" transform="rotate(-25 120 155)"/><ellipse cx="175" cy="175" rx="30" ry="18" fill="'+palette[0]+'" transform="rotate(25 175 175)"/>';
+ return '<svg class="product-illustration" viewBox="0 0 280 240" aria-hidden="true"><defs><linearGradient id="illBg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4e7cf"/><stop offset="1" stop-color="#e7d3b1"/></linearGradient><filter id="illShadow"><feDropShadow dx="0" dy="5" stdDeviation="4" flood-opacity=".12"/></filter></defs><rect width="280" height="240" rx="16" fill="url(#illBg)"/><circle cx="140" cy="120" r="92" fill="#fff8e9" opacity=".45"/><g filter="url(#illShadow)">'+shapes+'</g><path d="M55 202 Q140 222 225 202" fill="none" stroke="#b99a6d" stroke-width="2" opacity=".5"/><text x="140" y="222" text-anchor="middle" font-size="10" letter-spacing="2" fill="#6e5b42">ILUSTRACIÓN</text></svg>';
+}
 function productPlaceholder(p){
  const group=catalogGroup(p);
  const category={frutos:'FRUTOS SECOS',fruta:'FRUTA DESHIDRATADA',chuches:'CHOCOLATES Y GOLOSINAS',variados:'SNACKS Y VARIADOS'}[group]||'CATÁLOGO';
- return '<div class="product-placeholder" role="img" aria-label="'+escapeHTML(p.name)+'"><span class="placeholder-category">'+category+'</span><strong>'+escapeHTML(p.name)+'</strong></div>';
+ return '<div class="product-placeholder product-illustrated" role="img" aria-label="Ilustración orientativa de '+escapeHTML(p.name)+'"><div class="illustration-art">'+productIllustration(p)+'</div><span class="placeholder-category">'+category+'</span><strong>'+escapeHTML(p.name)+'</strong></div>';
 }
 function normalizeCatalogText(value){
  return String(value??'').toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim();
@@ -160,8 +166,7 @@ function renderProducts(){
  grid.querySelectorAll('[data-image-product]').forEach(img=>img.addEventListener('error',()=>{
   const p=products[img.dataset.imageProduct];if(!p)return;
   const placeholder=document.createElement('div');placeholder.className='product-placeholder';placeholder.setAttribute('role','img');placeholder.setAttribute('aria-label','Imagen no disponible: '+p.name);
-  const category=document.createElement('span');category.className='placeholder-category';category.textContent=({frutos:'FRUTOS SECOS',fruta:'FRUTA DESHIDRATADA',chuches:'CHOCOLATES Y GOLOSINAS',variados:'SNACKS Y VARIADOS'}[catalogGroup(p)]||'CATÁLOGO');
-  const name=document.createElement('strong');name.textContent=p.name;placeholder.append(category,name);img.replaceWith(placeholder);
+  placeholder.innerHTML=productIllustration(p)+'<span class="placeholder-category">'+escapeHTML(({frutos:'FRUTOS SECOS',fruta:'FRUTA DESHIDRATADA',chuches:'CHOCOLATES Y GOLOSINAS',variados:'SNACKS Y VARIADOS'}[catalogGroup(p)]||'CATÁLOGO'))+'</span><strong>'+escapeHTML(p.name)+'</strong>';placeholder.classList.add('product-illustrated');img.replaceWith(placeholder);
  }));
  const count=document.getElementById('catalogResultCount');if(count)count.textContent=entries.length+' productos'+(active==='todos'?' en el catálogo':' en esta categoría');
  grid.querySelectorAll('[data-product]').forEach(btn=>btn.addEventListener('click',()=>showProduct(btn.dataset.product)));
