@@ -65,7 +65,7 @@ function parseWeight(text){
 }
 function findProductForPhrase(phrase){
  const q=norm(phrase);
- const aliases={almendras:"almendra",pistachos:"pistacho",cacahuetes:"cacahuete",anacardos:"anacardo",nueces:"nuez",avellanas:"avellana",crudas:"cruda",tostadas:"tostada",fritas:"frita"}; const words=q.split(/\s+/).filter(w=>w.length>2&&!["quiero","para","poner","añade","agrega","comprar","pedido","medio","kilo","cuarto","gramos","gramo","bolsa","bolsas","de","del","una","un"].includes(w)).map(w=>aliases[w]||w);
+ const aliases={almendras:"almendra",pistachos:"pistacho",cacahuetes:"cacahuete",anacardos:"anacardo",nueces:"nuez",avellanas:"avellana",crudas:"cruda",tostadas:"tostada",fritas:"frita"}; const words=q.split(/\s+/).filter(w=>w.length>2&&!["quiero","para","poner","anade","agrega","mete","pon","ponga","ponme","comprar","pedido","medio","kilo","cuarto","gramos","gramo","bolsa","bolsas","de","del","una","un"].includes(w)).map(w=>aliases[w]||w);
  const scored=Object.entries(catalog()).map(([id,p])=>{
   const hay=norm([id,p.name,p.desc,p.tag,p.category].join(" "));
   let score=words.reduce((n,w)=>n+(hay.includes(w)?3:0),0);
@@ -81,8 +81,8 @@ function interpretLocal(text){
  if(pendingFormats.length){const grams=parseWeight(text);if(grams){try{const pending=[...pendingFormats];pendingFormats=[];pending.forEach(x=>addToCart(x.id,grams,x.quantity));const s=cartSummary();return {handled:true,reply:"He añadido las bolsas pendientes:\n"+pending.map(x=>"• "+x.name+" — "+x.quantity+" × "+grams+" g").join("\n")+"\n\n"+s.items.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g = "+x.subtotal.toFixed(2)+" €").join("\n")+"\n\n⚖️ Peso total: "+s.weightGrams+" g\n🧾 Subtotal: "+s.subtotal.toFixed(2)+" €\n🚚 Envío ("+s.shipping.label+"): "+s.shipping.price.toFixed(2)+" €\n💰 Total: "+s.total.toFixed(2)+" €.\n\nTarifas provisionales; disponibilidad y precio final pendientes de confirmación."}}catch(e){return {handled:true,reply:"No he podido añadir las bolsas: "+e.message}}}}
  if(/vaciar carrito|borra el pedido|elimina todo/.test(q)){clearCart();return {handled:true,reply:"He vaciado el carrito."}}
  // Modificación/eliminación explícita de líneas existentes del carrito.
- const isRemove=/\b(quita|quitar|elimina|eliminar|borra|borrar|saca|retira)\b/.test(q);
- const isModify=/\b(cambia|cambiar|modifica|modificar|ajusta|ajustar|deja|pon|poner|reduce|reducir)\b/.test(q);
+ const isRemove=/\\b(quita|quitar|elimina|eliminar|borra|borrar|saca|retira|sacame|quitame|borra|eliminame)\\b/.test(q);
+ const isModify=/\\b(cambia|cambiar|modifica|modificar|ajusta|ajustar|deja|pon|poner|reduce|reducir)\\b/.test(q);
  if(isRemove){
   const grams=parseWeight(text), cart=readCart();
   if(grams){
@@ -114,8 +114,8 @@ function interpretLocal(text){
    }
    const grams=parseWeight(text);
    if(grams){
-    const qtyMatch=q.match(/\b([1-9]|[1-5][0-9])\\s*(?:bolsas|paquetes|unidades)\b/);
-    const wordQty=q.match(/\b(una|un|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez)\\s*(?:bolsas|paquetes|unidades)\b/);
+    const qtyMatch=q.match(/\b([1-9]|[1-5][0-9])\s*(?:bolsas|paquetes|unidades)\b/);
+    const wordQty=q.match(/\b(una|un|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez)\s*(?:bolsas|paquetes|unidades)\b/);
     const quantity=qtyMatch?Number(qtyMatch[1]):wordQty?({una:1,un:1,dos:2,tres:3,cuatro:4,cinco:5,seis:6,siete:7,ocho:8,nueve:9,diez:10}[wordQty[1]]):1;
     existing.forEach(x=>removeCartItem(x.id,x.grams));
     try{splitWeight(grams).forEach(pack=>addToCart(product.id,pack,quantity));const s=cartSummary();return {handled:true,reply:"He actualizado "+product.p.name+" a "+quantity+" bolsa(s) de "+grams+" g (divididas en formatos disponibles).\\n\\n"+s.items.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g = "+x.subtotal.toFixed(2)+" €").join("\\n")+"\\n\\n⚖️ Peso total: "+s.weightGrams+" g\\n🧾 Subtotal: "+s.subtotal.toFixed(2)+" €\\n🚚 Envío ("+s.shipping.label+"): "+s.shipping.price.toFixed(2)+" €\\n💰 Total: "+s.total.toFixed(2)+" €.\\n\\nTarifas provisionales; disponibilidad y precio final pendientes de confirmación."}}catch(e){return {handled:true,reply:"No he podido modificar el carrito: "+e.message}}
@@ -124,7 +124,7 @@ function interpretLocal(text){
   }
  }
  if(/resumen|total del pedido|cuanto llevo/.test(q)){const s=cartSummary();return {handled:true,reply:"Resumen: "+s.items.length+" líneas, "+s.weightGrams+" g. Subtotal "+s.subtotal.toFixed(2)+" €, envío "+s.shipping.price.toFixed(2)+" € ("+s.shipping.label+"), total "+s.total.toFixed(2)+" €."}}
- const shopping=/\b(quiero|anade|agrega|mete|pon|comprar|compra|pedido|lleva|dame)\b/.test(q);
+ const shopping=/\\b(quiero|anade|agrega|mete|pon|ponga|ponme|añade|agregame|meteme|comprar|compra|pedido|lleva|dame|echame|sumame)\\b/.test(q);
  if(shopping){
   const chunks=String(text).replace(/[,;]+/g," y ").split(/\s+y\s+/i).map(x=>x.trim()).filter(Boolean);
   const parsed=[],needsFormat=[];
@@ -134,7 +134,7 @@ function interpretLocal(text){
    const qtyMatch=cq.match(/\b([1-9]|[1-5][0-9])\s*(?:bolsas|paquetes|unidades)\b/);
    const wordQty=cq.match(/\b(una|un|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez)\s*(?:bolsas|paquetes|unidades)\b/);
    const quantity=qtyMatch?Number(qtyMatch[1]):wordQty?({una:1,un:1,dos:2,tres:3,cuatro:4,cinco:5,seis:6,siete:7,ocho:8,nueve:9,diez:10}[wordQty[1]]):1;
-   const clean=cq.replace(/\b(quiero|anade|agrega|mete|pon|comprar|compra|pedido|lleva|dame|un|una|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|medio|media|cuarto|kilo|kilos|kg|gramos|gramo|g|bolsa|bolsas|paquete|paquetes|unidad|unidades|de|del|la|el|con|y)\b/g," ").replace(/\b\d+\b/g," ").trim();
+   const clean=cq.replace(/\b(quiero|anade|agrega|mete|pon|ponga|ponme|comprar|compra|pedido|lleva|dame|echame|sumame|un|una|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|medio|media|cuarto|kilo|kilos|kg|gramos|gramo|g|bolsa|bolsas|paquete|paquetes|unidad|unidades|de|del|la|el|con|y)\b/g," ").replace(/\b\d+\b/g," ").trim();
    const product=findProductForPhrase(clean)||findProductForPhrase(chunk);
    if(!product)continue;
    if(!grams){needsFormat.push({id:product.id,name:product.p.name,quantity});continue}
