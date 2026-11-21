@@ -357,3 +357,17 @@ body{background:#f7f4eb}.wrap{max-width:none;padding:0}.top{max-width:1280px;mar
 /* Mejora de compra: formatos visibles antes de abrir la ficha */
 .format-preview{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px;width:100%}.format-preview span{font-size:10px;font-weight:700;color:var(--pine2);background:#f1ecdf;border:1px solid #e4dccb;border-radius:20px;padding:5px 8px;white-space:nowrap}.details{margin-top:15px;background:var(--pine);color:white;text-decoration:none;border-radius:22px;padding:10px 14px;display:inline-flex;align-items:center;justify-content:center}.details:hover{background:var(--pine2)}
 @media(max-width:520px){.format-preview{gap:4px}.format-preview span{font-size:9px;padding:5px 6px}.product-body{padding:16px}.product h3{font-size:20px}.details{width:100%;}}
+
+
+/* Asistente comercial: acceso más visible, dinámico y elegante */
+.chat-fab{display:flex;align-items:center;gap:9px;padding:13px 19px 13px 15px;background:linear-gradient(135deg,#1f4933 0%,#2e6748 58%,#b68b4b 100%);border:1px solid rgba(255,255,255,.28);box-shadow:0 8px 24px rgba(31,73,51,.32),0 0 0 0 rgba(182,139,75,.35);font-size:14px;letter-spacing:.15px;transform-origin:center;animation:assistantFloat 3.2s ease-in-out infinite,assistantGlow 2.8s ease-out infinite;transition:transform .22s,box-shadow .22s,filter .22s}
+.chat-fab::before{content:"✦";display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:#f5e5c7;color:#31543b;font-size:15px;box-shadow:0 2px 8px #0002}
+.chat-fab::after{content:"¿Te ayudo?";position:absolute;right:calc(100% + 10px);white-space:nowrap;background:#fff;color:#243b2e;padding:7px 10px;border-radius:10px;font-size:11px;font-weight:700;box-shadow:0 4px 14px #0002;opacity:0;transform:translateX(6px);transition:opacity .2s,transform .2s;pointer-events:none}
+.chat-fab:hover{transform:translateY(-3px) scale(1.04);filter:brightness(1.08);box-shadow:0 12px 28px rgba(31,73,51,.4)}
+.chat-fab:hover::after{opacity:1;transform:translateX(0)}
+.chat-fab[aria-expanded="true"]{animation:none;background:#243b2e;box-shadow:0 8px 24px #0003}
+.chat-fab[aria-expanded="true"]::before{content:"×";font-size:19px;background:#fff;color:#243b2e}
+@keyframes assistantFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes assistantGlow{0%{box-shadow:0 8px 24px rgba(31,73,51,.32),0 0 0 0 rgba(182,139,75,.3)}70%{box-shadow:0 8px 24px rgba(31,73,51,.32),0 0 0 9px rgba(182,139,75,0)}100%{box-shadow:0 8px 24px rgba(31,73,51,.32),0 0 0 0 rgba(182,139,75,0)}}
+@media(max-width:560px){.chat-fab{right:15px;bottom:82px;padding:12px 16px 12px 13px;font-size:13px}.chat-fab::after{display:none}.chat-panel{right:12px;bottom:143px;width:min(370px,calc(100vw - 24px));height:min(520px,calc(100dvh - 170px))}}
+@media(prefers-reduced-motion:reduce){.chat-fab{animation:none;transition:none}.chat-fab::after{transition:none}}
