@@ -30,7 +30,7 @@ function saveCart(items){localStorage.setItem("almendrasCart",JSON.stringify(ite
 function addToCart(id,grams,quantity=1){const item=packPrice(id,grams,quantity),cart=readCart(),found=cart.find(x=>x.id===id&&x.grams===Number(grams));if(found){if(found.quantity+quantity>50)throw new Error("Máximo 50 unidades por producto y formato");found.quantity+=quantity}else cart.push({id,name:item.name,price:item.pricePerKg,grams:Number(grams),quantity:Number(quantity)});saveCart(cart);return cart}
 function setCartItem(id,grams,quantity){const cart=readCart(),found=cart.find(x=>x.id===id&&x.grams===Number(grams));if(!found)throw new Error("Artículo no encontrado");if(!Number.isInteger(Number(quantity))||quantity<0||quantity>50)throw new Error("Cantidad inválida");if(quantity===0)return saveCart(cart.filter(x=>x!==found));found.quantity=Number(quantity);return saveCart(cart)}
 function removeCartItem(id,grams){return saveCart(readCart().filter(x=>!(x.id===id&&x.grams===Number(grams))))}
-function clearCart(){return saveCart([])}
+function clearCart(){pendingFormats=[];return saveCart([])}
 function cartSummary(items=readCart()){
  const lines=items.map(x=>packPrice(x.id,x.grams,x.quantity));
  const weight=lines.reduce((n,x)=>n+x.weightGrams,0),subtotal=Number(lines.reduce((n,x)=>n+x.subtotal,0).toFixed(2)),shipping=calculateShipping(weight),total=Number((subtotal+shipping.price).toFixed(2));
