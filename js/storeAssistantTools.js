@@ -65,8 +65,10 @@ function findProductForPhrase(phrase){
  }).sort((a,b)=>b.score-a.score);
  return scored[0]&&scored[0].score>=3?scored[0]:null;
 }
+let pendingFormats=[];
 function interpretLocal(text){
  const q=norm(text);
+ if(pendingFormats.length){const grams=parseWeight(text);if(grams){try{const pending=[...pendingFormats];pendingFormats=[];pending.forEach(x=>addToCart(x.id,grams,x.quantity));const s=cartSummary();return {handled:true,reply:"He añadido las bolsas pendientes:\\n"+pending.map(x=>"• "+x.name+" — "+x.quantity+" × "+grams+" g").join("\\n")+"\\n\\n"+s.items.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g = "+x.subtotal.toFixed(2)+" €").join("\\n")+"\\n\\n⚖️ Peso total: "+s.weightGrams+" g\\n🧾 Subtotal: "+s.subtotal.toFixed(2)+" €\\n🚚 Envío ("+s.shipping.label+"): "+s.shipping.price.toFixed(2)+" €\\n💰 Total: "+s.total.toFixed(2)+" €.\\n\\nTarifas provisionales; disponibilidad y precio final pendientes de confirmación."}}catch(e){return {handled:true,reply:"No he podido añadir las bolsas: "+e.message}}}}
  if(/vaciar carrito|borra el pedido|elimina todo/.test(q)){clearCart();return {handled:true,reply:"He vaciado el carrito."}}
  if(/resumen|total del pedido|cuanto llevo/.test(q)){const s=cartSummary();return {handled:true,reply:"Resumen: "+s.items.length+" líneas, "+s.weightGrams+" g. Subtotal "+s.subtotal.toFixed(2)+" €, envío "+s.shipping.price.toFixed(2)+" € ("+s.shipping.label+"), total "+s.total.toFixed(2)+" €."}}
  const shopping=/\b(quiero|anade|agrega|mete|pon|comprar|compra|pedido|lleva|dame)\b/.test(q);
