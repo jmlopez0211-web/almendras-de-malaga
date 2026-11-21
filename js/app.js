@@ -325,7 +325,7 @@ document.getElementById('copyURL').onclick=async()=>{const value=document.getEle
 
 // Asistente local: responde usando las fichas de products, sin inventar stock.
 const chatPanel=document.getElementById('productChat'),chatFab=document.getElementById('chatFab'),chatMessages=document.getElementById('chatMessages');
-function chatSay(text,who){const node=document.createElement('div');node.className='chat-msg '+who;node.textContent=text;chatMessages.appendChild(node);chatMessages.scrollTop=chatMessages.scrollHeight}
+function chatSay(text,who){const node=document.createElement('div');node.className='chat-msg '+who;node.textContent=String(text).replace(/\\\\n/g,'\n');node.style.whiteSpace='pre-line';chatMessages.appendChild(node);chatMessages.scrollTop=chatMessages.scrollHeight}
 function answerProductQuestion(raw){
  const q=normalizeCatalogText(raw);
  const all=Object.entries(products);
