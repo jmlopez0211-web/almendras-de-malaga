@@ -56,7 +56,7 @@ for(const url of urls.filter(u=>u.includes("/blog/"))){
 }
 
 // Blog internal-link audit: every local href must resolve, and each article must link to a real product page.
-const blogFiles=fs.readdirSync("blog").filter(f=>f.endsWith(".html"));
+const blogFiles=fs.readdirSync("blog").filter(f=>f.endsWith(".html")&&fs.statSync(path.join("blog",f)).isFile());
 for(const file of blogFiles){
  const html=fs.readFileSync(path.join("blog",file),"utf8");
  for(const href of [...html.matchAll(/href=["']([^"']+)["']/g)].map(m=>m[1])){
