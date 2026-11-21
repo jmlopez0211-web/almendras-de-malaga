@@ -1,2 +1,1 @@
-// Backend seguro del asistente. Vacío = modo catálogo local.
-window.ALMENDRAS_ASSISTANT_API = "";
+// Backend seguro del asistente AI.\nwindow.ALMENDRAS_ASSISTANT_API = "https://almendras-de-malaga-assistant.onrender.com";\n
