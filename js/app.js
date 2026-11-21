@@ -1,4 +1,4 @@
-// TARIFAS DE ENVÍO EDITABLES. Importes provisionales: confirmar con el transportista.
+// Tarifas de envío editables: modifica únicamente los valores price. Importes provisionales; confirmar con el transportista.
 const SHIPPING_TIERS = [
  {maxGrams:100,label:"Hasta 100 g",price:2.50},
  {maxGrams:250,label:"101–250 g",price:3.50},
