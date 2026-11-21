@@ -143,7 +143,7 @@ function renderProducts(){
   const safeName=escapeHTML(p.name);
   const src=productImage(id,p);
   const photo=src?'<img class="product-photo" data-image-product="'+safeId+'" src="'+escapeHTML(src)+'" alt="'+safeName+'" loading="lazy" decoding="async">':'<div class="product-placeholder" role="img" aria-label="Fotografía pendiente para '+safeName+'"><span class="placeholder-category">'+({frutos:'FRUTOS SECOS',fruta:'FRUTA DESHIDRATADA',chuches:'GOLOSINAS',variados:'APERITIVOS'}[catalogGroup(p)]||'CATÁLOGO')+'</span><strong>'+safeName+'</strong></div>';
-  return '<article class="product">'+photo+'<div class="product-body"><h3>'+safeName+'</h3><p>'+escapeHTML(p.desc)+'</p><span class="price">'+euro(p.price)+' <span class="unit">/ kg</span></span><button class="details" data-product="'+safeId+'">Ver formatos · Añadir</button></div></article>';
+  return '<article class="product">'+photo+'<div class="product-body"><h3>'+safeName+'</h3><p>'+escapeHTML(p.desc)+'</p><span class="price">'+euro(p.price)+' <span class="unit">/ kg</span></span><div class="format-preview" aria-label="Formatos disponibles"><span>100 g</span><span>250 g</span><span>500 g</span><span>1 kg</span><span>5 kg</span><span>10 kg</span><span>20 kg</span><span>+20 kg</span></div><button class="details" data-product="'+safeId+'">Elegir formato y añadir</button></div></article>';
  };
  const grouped=active==='todos'&&activeSubfamily==='todos'&&words.length===0;
  if(grouped){
