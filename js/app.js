@@ -283,41 +283,22 @@ function buildCartOrderMessage(){
  const lines=cart.map(item=>{
   const subtotal=item.price*item.grams/1000*item.quantity;
   subtotalProducts+=subtotal;
-  return '• '+item.name+'
-  '+item.quantity+' × '+item.grams+' g · '+euro(subtotal);
+  return '• '+item.name+'\n  '+item.quantity+' × '+item.grams+' g · '+euro(subtotal);
  });
  const totalGrams=getCartWeightGrams(cart);
  const shippingTier=calculateShipping(totalGrams);
  const finalTotal=subtotalProducts+shippingTier.price;
  const notes=document.getElementById('cartNotes').value.trim();
- return '🛒 *NUEVO PEDIDO · ALMENDRAS DE MÁLAGA*
-
-'
-  +'👤 *Cliente:* '+buyer+'
-'
-  +'📱 *Teléfono:* '+phone+'
-
-'
-  +'📦 *PRODUCTOS*
-'+lines.join('
-
-')+'
-
-'
-  +'⚖️ *PESO TOTAL:* '+totalGrams.toLocaleString('es-ES')+' g ('+(totalGrams/1000).toLocaleString('es-ES',{maximumFractionDigits:3})+' kg)
-'
-  +'🚚 *ENVÍO:* '+shippingTier.label+' · '+euro(shippingTier.price)+'
-'
-  +'🧾 *SUBTOTAL PRODUCTOS:* '+euro(subtotalProducts)+'
-'
-  +'💰 *TOTAL FINAL:* '+euro(finalTotal)+'
-
-'
-  +'📝 *Observaciones:* '+(notes||'Ninguna')+'
-
-'
-  +'📍 Pedido realizado desde el catálogo web.
-'
+ return '🛒 *NUEVO PEDIDO · ALMENDRAS DE MÁLAGA*\n\n'
+  +'👤 *Cliente:* '+buyer+'\n'
+  +'📱 *Teléfono:* '+phone+'\n\n'
+  +'📦 *PRODUCTOS*\n'+lines.join('\n\n')+'\n\n'
+  +'⚖️ *PESO TOTAL:* '+totalGrams.toLocaleString('es-ES')+' g ('+(totalGrams/1000).toLocaleString('es-ES',{maximumFractionDigits:3})+' kg)\n'
+  +'🚚 *ENVÍO:* '+shippingTier.label+' · '+euro(shippingTier.price)+'\n'
+  +'🧾 *SUBTOTAL PRODUCTOS:* '+euro(subtotalProducts)+'\n'
+  +'💰 *TOTAL FINAL:* '+euro(finalTotal)+'\n\n'
+  +'📝 *Observaciones:* '+(notes||'Ninguna')+'\n\n'
+  +'📍 Pedido realizado desde el catálogo web.\n'
   +'El envío se calcula automáticamente por peso. Una vez recibido el pago, prepararemos y enviaremos el pedido.';
 }
 
