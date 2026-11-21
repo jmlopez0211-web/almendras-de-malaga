@@ -25,7 +25,12 @@ for(const url of urls){
  assert.ok(/<meta\s+name=["']description["']\s+content=["'][^"']{40,}["']/i.test(html),"Description ausente: "+file);
  assert.equal(canonical(html),url,"Canonical no coincide: "+file);
  if(rel.startsWith("productos/")){
-  const jsonLd=html.match(/<script\\s+type=["']application\\/ld\\+json["']>([\\s\\S]*?)<\\/script>/i)?.[1];
+  const marker='<script type="application/ld+json">';
+  const jsonLdStart=html.indexOf(marker);
+  assert.notEqual(jsonLdStart,-1,"JSON-LD ausente: "+file);
+  const jsonLdEnd=html.indexOf("</script>",jsonLdStart+marker.length);
+  assert.notEqual(jsonLdEnd,-1,"JSON-LD sin cierre: "+file);
+  const jsonLd=html.slice(jsonLdStart+marker.length,jsonLdEnd);
   assert.ok(jsonLd,"JSON-LD ausente: "+file);
   const schema=JSON.parse(jsonLd);
   assert.equal(schema["@type"],"Product","Schema Product incorrecto: "+file);
