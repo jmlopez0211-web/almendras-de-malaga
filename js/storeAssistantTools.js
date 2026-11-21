@@ -94,7 +94,7 @@ function interpretLocal(text){
     const added=parsed.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g").join("\n");
     const breakdown=s.items.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g = "+x.subtotal.toFixed(2)+" €").join("\n");
     let reply=parsed.length?"He añadido al carrito:\n"+added+"\n\n"+breakdown+"\n\n⚖️ Peso total: "+s.weightGrams+" g\n🧾 Subtotal: "+s.subtotal.toFixed(2)+" €\n🚚 Envío ("+s.shipping.label+"): "+s.shipping.price.toFixed(2)+" €\n💰 Total: "+s.total.toFixed(2)+" €.":"";
-    if(needsFormat.length)reply+=(reply?"\n\n":"")+"Para añadir "+needsFormat.map(x=>x.quantity+" bolsa(s) de "+x.name).join(" y ")+" necesito que me indiques el formato de cada bolsa (100 g, 250 g, 500 g, 1 kg, etc.).";
+    if(needsFormat.length){pendingFormats=needsFormat;reply+=(reply?"\n\n":"")+"Para añadir "+needsFormat.map(x=>x.quantity+" bolsa(s) de "+x.name).join(" y ")+" necesito que me indiques el formato de cada bolsa (100 g, 250 g, 500 g, 1 kg, etc.).";}
     reply+="\n\nTarifas de envío provisionales; disponibilidad y precio final pendientes de confirmación.";
     return {handled:true,reply};
    }catch(e){return {handled:true,reply:"No he podido completar el carrito: "+e.message}}
