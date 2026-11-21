@@ -68,6 +68,8 @@ test("SEO generator creates product/category pages and preserves existing landin
       assert.equal(schema["@type"], "Product");
       assert.equal(schema.offers["@type"], "Offer");
       assert.equal(schema.offers.url, home + "productos/" + file);
+      assert.equal(schema.offers.price, expectedPrices.get(schema.name));
+      assert.equal(schema.offers.priceCurrency, "EUR");
       const priceSpec = schema.offers.priceSpecification;
       assert.equal(priceSpec["@type"], "UnitPriceSpecification");
       assert.equal(priceSpec.price, expectedPrices.get(schema.name));
