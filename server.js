@@ -16,7 +16,8 @@ const CATALOG_PATH=path.join(process.cwd(),"data","catalog.js");
 const catalogSource=fs.readFileSync(CATALOG_PATH,"utf8");
 const catalogMatch=catalogSource.match(/window\.PRODUCTS\s*=\s*(\{[\s\S]*\})\s*;?\s*$/);
 if(!catalogMatch)throw new Error("No se pudo leer data/catalog.js");
-const PRODUCTS=JSON.parse(catalogMatch[1]);\nconst COMMERCIAL=JSON.parse(fs.readFileSync(path.join(process.cwd(),"data","commercial.json"),"utf8"));
+const PRODUCTS=JSON.parse(catalogMatch[1]);
+const COMMERCIAL=JSON.parse(fs.readFileSync(path.join(process.cwd(),"data","commercial.json"),"utf8"));
 
 const sessions=new Map();
 const rateLimits=new Map();
@@ -41,7 +42,7 @@ function readBody(req,max=100000){
 }
 function normalise(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim()}
 function productContext(query){
- const words=normalise(query).split(/\\s+/).filter(w=>w.length>2&&!["precio","precios","quiero","busco","necesito","cuanto","cuesta","formato","gramos","kilos","producto","productos"].includes(w));
+ const words=normalise(query).split(/\s+/).filter(w=>w.length>2&&!["precio","precios","quiero","busco","necesito","cuanto","cuesta","formato","gramos","kilos","producto","productos"].includes(w));
  const scored=Object.entries(PRODUCTS).map(([id,p])=>{
   const hay=normalise([id,p.name,p.desc,p.tag,p.category].join(" "));
   const score=words.reduce((n,w)=>n+(hay.includes(w)?2:0),0);
@@ -60,11 +61,14 @@ const SYSTEM="Eres el asistente comercial oficial de Almendras de Málaga. Atien
 async function aiReply(history,message){
  if(!OPENAI_API_KEY)throw new Error("IA no configurada");
  const context=productContext(message);
- const input=[...history.slice(-MAX_HISTORY),{role:"user",content:"Consulta del cliente: "+message+"\n\nCatálogo relevante (JSON): "+context}];
+ const input=[...history.slice(-MAX_HISTORY),{role:"user",content:"Consulta del cliente: "+message+"
+
+Catálogo relevante (JSON): "+context}];
  const r=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"Authorization":"Bearer "+OPENAI_API_KEY,"Content-Type":"application/json"},body:JSON.stringify({model:OPENAI_MODEL,instructions:SYSTEM,input,max_output_tokens:500})});
  const data=await r.json();
  if(!r.ok)throw new Error(data.error?.message||"Error en OpenAI API");
- const text=(data.output||[]).flatMap(o=>o.content||[]).filter(c=>c.type==="output_text").map(c=>c.text).join("\n").trim();
+ const text=(data.output||[]).flatMap(o=>o.content||[]).filter(c=>c.type==="output_text").map(c=>c.text).join("
+").trim();
  if(!text)throw new Error("Respuesta vacía de la IA");
  return text;
 }
