@@ -9,7 +9,7 @@ const SHIPPING_TIERS = [
  {maxGrams:20000,label:"10,001–20 kg",price:12.50},
  {maxGrams:Infinity,label:"Más de 20 kg",price:15.00}
 ];
-// Para actualizar tarifas, modifica únicamente los valores price.
+// Fuente común: data/commercial.json. Si no se puede cargar, se mantienen estos valores provisionales.\nfetch("data/commercial.json").then(r=>r.ok?r.json():Promise.reject()).then(config=>{const tiers=config?.shipping?.tiers;if(Array.isArray(tiers)&&tiers.length===SHIPPING_TIERS.length){tiers.forEach((t,i)=>{SHIPPING_TIERS[i].maxGrams=t.maxGrams??Infinity;SHIPPING_TIERS[i].label=t.label;SHIPPING_TIERS[i].price=Number(t.price)});}}).catch(()=>{});
 function calculateShipping(totalGrams){
  const grams=Math.max(0,Number(totalGrams)||0);
  if(grams===0)return {maxGrams:0,label:"Sin productos",price:0};
