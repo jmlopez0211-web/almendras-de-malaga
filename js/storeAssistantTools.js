@@ -41,6 +41,16 @@ function orderMessage(items=readCart(),notes=""){
  return "🛒 *PEDIDO · ALMENDRAS DE MÁLAGA*\n\n"+s.items.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g · "+x.subtotal.toFixed(2).replace(".",",")+" €").join("\n")+"\n\n⚖️ *PESO TOTAL:* "+s.weightGrams+" g\n🚚 *ENVÍO:* "+s.shipping.label+" · "+s.shipping.price.toFixed(2).replace(".",",")+" €\n🧾 *SUBTOTAL:* "+s.subtotal.toFixed(2).replace(".",",")+" €\n💰 *TOTAL:* "+s.total.toFixed(2).replace(".",",")+" €\n\n📝 *Observaciones:* "+(notes||"Ninguna")+"\n\nDisponibilidad, precio final y tarifa de envío provisionales pendientes de confirmación.";
 }
 function whatsappUrl(items,notes){return "https://wa.me/"+PHONE+"?text="+encodeURIComponent(orderMessage(items,notes))}
+function splitWeight(totalGrams){
+ totalGrams=Number(totalGrams);
+ if(!Number.isInteger(totalGrams)||totalGrams<1||totalGrams>500000)throw new Error("Peso total inválido (máximo 500 kg)");
+ const packs=[];let remaining=totalGrams;
+ for(const format of [...FORMATS].sort((a,b)=>b-a)){
+  while(remaining>=format){packs.push(format);remaining-=format;}
+ }
+ if(remaining)throw new Error("El peso solicitado no puede dividirse en formatos disponibles");
+ return packs;
+}
 function parseWeight(text){
  const q=norm(text);
  if(/medio kilo|media kilo|medio kg|500 gramos|500 g/.test(q))return 500;
@@ -130,5 +140,5 @@ function interpretLocal(text){
  }
  return {handled:false};
 }
-window.storeAssistantTools={searchProducts,getProduct,packPrice,calculateShipping,readCart,addToCart,setCartItem,removeCartItem,clearCart,cartSummary,orderMessage,whatsappUrl,interpretLocal,formats:FORMATS};
+window.storeAssistantTools={searchProducts,getProduct,packPrice,calculateShipping,readCart,addToCart,setCartItem,removeCartItem,clearCart,cartSummary,orderMessage,whatsappUrl,interpretLocal,splitWeight,formats:FORMATS};
 })();
