@@ -325,7 +325,7 @@ function answerProductQuestion(raw){
   return words.length>0&&words.every(w=>haystack.includes(w));
  });
  const euroPrice=value=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(value);
- const requestedGrams=(()=>{const m=q.match(/(100|250|500|1000)\s*(g|gr|gramos)?/);if(m)return Number(m[1]);if(/medio kilo|500 g|500gr/.test(q))return 500;if(/un kilo|1 kilo|1 kg|1000 g/.test(q))return 1000;return null})();
+ const requestedGrams=(()=>{const gramsMatch=q.match(/\b(100|250|500|1000|5000|10000|20000)\s*(g|gr|gramos)?\b/);if(gramsMatch)return Number(gramsMatch[1]);const kilosMatch=q.match(/\b(1|5|10|20)\s*(kg|kilo|kilos)\b/);if(kilosMatch)return Number(kilosMatch[1])*1000;if(/medio kilo|500 g|500gr/.test(q))return 500;if(/un kilo|1 kilo|1 kg|1000 g/.test(q))return 1000;return null})();;
  if(/disponib|stock|hay existencias|teneis|ten[eé]is|queda/.test(q)){
   if(matches.length)return 'En el catálogo aparece: '+matches.slice(0,8).map(([id,p])=>p.name).join(', ')+'. El stock real no está conectado a la web; Don Miguel y Fabián confirman disponibilidad por WhatsApp: +34 666 068 765.';
   return 'La web no consulta inventario en tiempo real. Dime el nombre del producto o pregunta directamente a Don Miguel y Fabián por WhatsApp: +34 666 068 765.';
@@ -336,8 +336,8 @@ function answerProductQuestion(raw){
  if(matches.length&&/precio|cu[aá]nto|coste|vale|format|gram|peso|kilo|kg|cantidad/.test(q)){
   return matches.slice(0,6).map(([id,p])=>p.name+': '+euroPrice(p.price)+' / kg orientativo. Formatos: 100 g ('+euroPrice(p.price*.1)+'), 250 g ('+euroPrice(p.price*.25)+'), 500 g ('+euroPrice(p.price*.5)+') y 1 kg ('+euroPrice(p.price)+').').join('\\n')+'\\nEl importe final y la disponibilidad deben confirmarse con Don Miguel y Fabián.';
  }
- if(matches.length)return 'He encontrado estas referencias en el catálogo:\\n'+matches.slice(0,8).map(([id,p])=>'• '+p.name+' — '+euroPrice(p.price)+' / kg orientativo').join('\\n')+'\\n\\nFormatos: 100 g, 250 g, 500 g y 1 kg. Disponibilidad y precio final pendientes de confirmación.';
- if(/formato|gram|peso|tamano|tamaño|kilo|kg|cantidad/.test(q))return 'Puedes solicitar los formatos de 100 g, 250 g, 500 g y 1 kg. Para cantidades mayores, consulta con Don Miguel y Fabián.';
+ if(matches.length)return 'He encontrado estas referencias en el catálogo:\\n'+matches.slice(0,8).map(([id,p])=>'• '+p.name+' — '+euroPrice(p.price)+' / kg orientativo').join('\\n')+'\\n\\nFormatos: 100 g, 250 g, 500 g, 1 kg, 5 kg, 10 kg y 20 kg. Disponibilidad y precio final pendientes de confirmación.';
+ if(/formato|gram|peso|tamano|tamaño|kilo|kg|cantidad/.test(q))return 'Puedes solicitar los formatos de 100 g, 250 g, 500 g, 1 kg, 5 kg, 10 kg y 20 kg. Para cantidades superiores, consulta con Don Miguel y Fabián.';
  if(/chocolate|golosin|caramel|snack|fruta|nuez|almendra|cacahuete|pistacho|anacardo|avellana|pipa|semilla/.test(q)){
   const group=all.filter(([id,p])=>catalogGroup(p)===(/chocolate|golosin|caramel/.test(q)?'chuches':/fruta/.test(q)?'fruta':/snack|pipa|semilla/.test(q)?'variados':'frutos'));
   return 'En esa familia aparecen, por ejemplo: '+group.slice(0,10).map(([id,p])=>p.name).join(', ')+'. Dime la variedad exacta y te indicaré su precio orientativo.';
