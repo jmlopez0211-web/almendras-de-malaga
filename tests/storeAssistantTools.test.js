@@ -29,3 +29,6 @@ test("pending bag format is remembered and follow-up adds the pending product",(
 
 
 test("natural-language removal deletes the actual cart line",()=>{tools.clearCart();tools.addToCart("almond",500,5);const result=tools.interpretLocal("Elimina la almendra cruda del carrito");assert.equal(result.handled,true);assert.match(result.reply,/He eliminado/i);assert.equal(tools.readCart().length,0);assert.equal(tools.cartSummary().total,0);});
+
+
+test("total requested weight over 20kg is split into valid package formats",()=>{tools.clearCart();const result=tools.interpretLocal("Agrega 25 kg de almendra cruda");assert.equal(result.handled,true);const s=tools.cartSummary();assert.equal(s.weightGrams,25000);assert.equal(s.subtotal,500);assert.equal(s.shipping.price,15);assert.equal(s.total,515);assert.deepEqual(Array.from(s.items,x=>x.grams),[20000,5000]);});
