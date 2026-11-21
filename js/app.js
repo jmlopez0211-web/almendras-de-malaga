@@ -366,9 +366,7 @@ async function sendAssistantMessage(q){
   typing.remove();
   if(!response.ok||!data.reply)throw new Error(data.error||'No se pudo responder');
   chatSay(data.reply,'bot');
- }catch(error){typing.remove();chatSay(answerProductQuestion(q)+'
-
-El asistente inteligente no está disponible ahora.','bot')}
+ }catch(error){typing.remove();chatSay(answerProductQuestion(q)+'\n\nEl asistente inteligente no está disponible ahora.','bot')}
 }
 document.getElementById('chatForm').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('chatInput'),q=input.value.trim();if(!q)return;chatSay(q,'user');input.value='';input.focus();sendAssistantMessage(q)});
 document.querySelectorAll('[data-assistant-prompt]').forEach(button=>button.addEventListener('click',()=>{const input=document.getElementById('chatInput');input.value=button.dataset.assistantPrompt;document.getElementById('chatForm').requestSubmit()}));
