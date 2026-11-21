@@ -71,8 +71,8 @@ function interpretLocal(text){
  if(pendingFormats.length){const grams=parseWeight(text);if(grams){try{const pending=[...pendingFormats];pendingFormats=[];pending.forEach(x=>addToCart(x.id,grams,x.quantity));const s=cartSummary();return {handled:true,reply:"He añadido las bolsas pendientes:\n"+pending.map(x=>"• "+x.name+" — "+x.quantity+" × "+grams+" g").join("\n")+"\n\n"+s.items.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g = "+x.subtotal.toFixed(2)+" €").join("\n")+"\n\n⚖️ Peso total: "+s.weightGrams+" g\n🧾 Subtotal: "+s.subtotal.toFixed(2)+" €\n🚚 Envío ("+s.shipping.label+"): "+s.shipping.price.toFixed(2)+" €\n💰 Total: "+s.total.toFixed(2)+" €.\n\nTarifas provisionales; disponibilidad y precio final pendientes de confirmación."}}catch(e){return {handled:true,reply:"No he podido añadir las bolsas: "+e.message}}}}
  if(/vaciar carrito|borra el pedido|elimina todo/.test(q)){clearCart();return {handled:true,reply:"He vaciado el carrito."}}
  // Modificación/eliminación explícita de líneas existentes del carrito.
- const isRemove=/\\b(quita|quitar|elimina|eliminar|borra|borrar|saca|retira)\\b/.test(q);
- const isModify=/\\b(cambia|cambiar|modifica|modificar|ajusta|ajustar|deja|pon|poner|reduce|reducir)\\b/.test(q);
+ const isRemove=/\b(quita|quitar|elimina|eliminar|borra|borrar|saca|retira)\b/.test(q);
+ const isModify=/\b(cambia|cambiar|modifica|modificar|ajusta|ajustar|deja|pon|poner|reduce|reducir)\b/.test(q);
  if(isRemove||isModify){
   const product=findProductForPhrase(text);
   if(product){
@@ -85,8 +85,8 @@ function interpretLocal(text){
    }
    const grams=parseWeight(text);
    if(grams){
-    const qtyMatch=q.match(/\\b([1-9]|[1-5][0-9])\\s*(?:bolsas|paquetes|unidades)\\b/);
-    const wordQty=q.match(/\\b(una|un|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez)\\s*(?:bolsas|paquetes|unidades)\\b/);
+    const qtyMatch=q.match(/\b([1-9]|[1-5][0-9])\\s*(?:bolsas|paquetes|unidades)\b/);
+    const wordQty=q.match(/\b(una|un|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez)\\s*(?:bolsas|paquetes|unidades)\b/);
     const quantity=qtyMatch?Number(qtyMatch[1]):wordQty?({una:1,un:1,dos:2,tres:3,cuatro:4,cinco:5,seis:6,siete:7,ocho:8,nueve:9,diez:10}[wordQty[1]]):1;
     existing.forEach(x=>removeCartItem(x.id,x.grams));
     try{addToCart(product.id,grams,quantity);const s=cartSummary();return {handled:true,reply:"He actualizado "+product.p.name+" a "+quantity+" × "+grams+" g.\\n\\n"+s.items.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g = "+x.subtotal.toFixed(2)+" €").join("\\n")+"\\n\\n⚖️ Peso total: "+s.weightGrams+" g\\n🧾 Subtotal: "+s.subtotal.toFixed(2)+" €\\n🚚 Envío ("+s.shipping.label+"): "+s.shipping.price.toFixed(2)+" €\\n💰 Total: "+s.total.toFixed(2)+" €.\\n\\nTarifas provisionales; disponibilidad y precio final pendientes de confirmación."}}catch(e){return {handled:true,reply:"No he podido modificar el carrito: "+e.message}}
