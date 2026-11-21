@@ -18,7 +18,7 @@ assert.ok(index.includes('"@type":"FAQPage"'),"Schema FAQ");
 assert.equal(canonical(index),baseUrl,"Canonical portada");
 for(const url of urls){
  assert.ok(url.startsWith(baseUrl),"URL externa o base incorrecta: "+url);
- const rel=url.slice(baseUrl.length); const file=rel||"index.html";
+ const rel=url.slice(baseUrl.length); const file=rel.endsWith("/")?rel+"index.html":(rel||"index.html");
  assert.ok(fs.existsSync(path.join(root,file)),"Archivo no existe: "+file);
  const html=fs.readFileSync(path.join(root,file),"utf8");
  assert.ok(/<title>[^<]{10,}<\/title>/i.test(html),"Title ausente: "+file);
