@@ -117,7 +117,7 @@ async function handleChat(req,res){
  if(!message||!sessionId)return send(res,400,{error:"message y session_id son obligatorios"});
  let history=sessions.get("web:"+sessionId)||[];
  try{
-  const answer=await aiReply(history,message);
+  const result=await aiReply(history,message);const answer=result.reply;
   history=[...history,{role:"user",content:message},{role:"assistant",content:answer}].slice(-MAX_HISTORY);
   sessions.set("web:"+sessionId,history);
   if(sessions.size>MAX_SESSIONS)sessions.delete(sessions.keys().next().value);
