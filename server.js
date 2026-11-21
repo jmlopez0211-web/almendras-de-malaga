@@ -61,14 +61,11 @@ const SYSTEM="Eres el asistente comercial oficial de Almendras de Málaga. Atien
 async function aiReply(history,message){
  if(!OPENAI_API_KEY)throw new Error("IA no configurada");
  const context=productContext(message);
- const input=[...history.slice(-MAX_HISTORY),{role:"user",content:"Consulta del cliente: "+message+"
-
-Catálogo relevante (JSON): "+context}];
+ const input=[...history.slice(-MAX_HISTORY),{role:"user",content:"Consulta del cliente: "+message+"\n\nCatálogo relevante (JSON): "+context}];
  const r=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"Authorization":"Bearer "+OPENAI_API_KEY,"Content-Type":"application/json"},body:JSON.stringify({model:OPENAI_MODEL,instructions:SYSTEM,input,max_output_tokens:500})});
  const data=await r.json();
  if(!r.ok)throw new Error(data.error?.message||"Error en OpenAI API");
- const text=(data.output||[]).flatMap(o=>o.content||[]).filter(c=>c.type==="output_text").map(c=>c.text).join("
-").trim();
+ const text=(data.output||[]).flatMap(o=>o.content||[]).filter(c=>c.type==="output_text").map(c=>c.text).join("\n").trim();
  if(!text)throw new Error("Respuesta vacía de la IA");
  return text;
 }
