@@ -99,7 +99,7 @@ function interpretLocal(text){
     const wordQty=q.match(/\b(una|un|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez)\\s*(?:bolsas|paquetes|unidades)\b/);
     const quantity=qtyMatch?Number(qtyMatch[1]):wordQty?({una:1,un:1,dos:2,tres:3,cuatro:4,cinco:5,seis:6,siete:7,ocho:8,nueve:9,diez:10}[wordQty[1]]):1;
     existing.forEach(x=>removeCartItem(x.id,x.grams));
-    try{addToCart(product.id,grams,quantity);const s=cartSummary();return {handled:true,reply:"He actualizado "+product.p.name+" a "+quantity+" × "+grams+" g.\\n\\n"+s.items.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g = "+x.subtotal.toFixed(2)+" €").join("\\n")+"\\n\\n⚖️ Peso total: "+s.weightGrams+" g\\n🧾 Subtotal: "+s.subtotal.toFixed(2)+" €\\n🚚 Envío ("+s.shipping.label+"): "+s.shipping.price.toFixed(2)+" €\\n💰 Total: "+s.total.toFixed(2)+" €.\\n\\nTarifas provisionales; disponibilidad y precio final pendientes de confirmación."}}catch(e){return {handled:true,reply:"No he podido modificar el carrito: "+e.message}}
+    try{splitWeight(grams).forEach(pack=>addToCart(product.id,pack,quantity));const s=cartSummary();return {handled:true,reply:"He actualizado "+product.p.name+" a "+quantity+" bolsa(s) de "+grams+" g (divididas en formatos disponibles).\\n\\n"+s.items.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g = "+x.subtotal.toFixed(2)+" €").join("\\n")+"\\n\\n⚖️ Peso total: "+s.weightGrams+" g\\n🧾 Subtotal: "+s.subtotal.toFixed(2)+" €\\n🚚 Envío ("+s.shipping.label+"): "+s.shipping.price.toFixed(2)+" €\\n💰 Total: "+s.total.toFixed(2)+" €.\\n\\nTarifas provisionales; disponibilidad y precio final pendientes de confirmación."}}catch(e){return {handled:true,reply:"No he podido modificar el carrito: "+e.message}}
    }
    return {handled:true,reply:"He localizado "+product.p.name+" en el carrito. Indícame el formato nuevo (100 g, 250 g, 500 g, 1 kg, 5 kg, 10 kg o 20 kg)."}
   }
@@ -123,9 +123,9 @@ function interpretLocal(text){
   }
   if(parsed.length||needsFormat.length){
    try{
-    parsed.forEach(x=>addToCart(x.id,x.grams,x.quantity));
+    parsed.forEach(x=>splitWeight(x.grams).forEach(pack=>addToCart(x.id,pack,x.quantity)));
     const s=cartSummary();
-    const added=parsed.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g").join("\n");
+    const added=parsed.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g (dividido en formatos disponibles)").join("\n");
     const breakdown=s.items.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g = "+x.subtotal.toFixed(2)+" €").join("\n");
     let reply=parsed.length?"He añadido al carrito:\n"+added+"\n\n"+breakdown+"\n\n⚖️ Peso total: "+s.weightGrams+" g\n🧾 Subtotal: "+s.subtotal.toFixed(2)+" €\n🚚 Envío ("+s.shipping.label+"): "+s.shipping.price.toFixed(2)+" €\n💰 Total: "+s.total.toFixed(2)+" €.":"";
     if(needsFormat.length){pendingFormats=needsFormat;reply+=(reply?"\n\n":"")+"Para añadir "+needsFormat.map(x=>x.quantity+" bolsa(s) de "+x.name).join(" y ")+" necesito que me indiques el formato de cada bolsa (100 g, 250 g, 500 g, 1 kg, etc.).";}
