@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "check": "node --check server.js",
-    "test": "node --test tests/storeAssistantTools.test.js"
+    "test": "node --test tests/*.test.js && node scripts/seo-check.js",
+    "seo:check": "node scripts/seo-check.js"
   },
   "engines": {
     "node": ">=20"
