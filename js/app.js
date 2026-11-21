@@ -357,6 +357,15 @@ function answerProductQuestion(raw){
  return 'Puedo ayudarte con variedades, precios orientativos y formatos. Prueba con el nombre de un producto, por ejemplo «almendra cruda pelada», «pistacho turco tostado» o «kiwi deshidratado». La disponibilidad real la confirman Don Miguel y Fabián.';
 }
 chatFab.addEventListener('click',()=>{const open=!chatPanel.classList.contains('open');chatPanel.classList.toggle('open',open);chatPanel.setAttribute('aria-hidden',String(!open));chatFab.setAttribute('aria-expanded',String(open));if(open)document.getElementById('chatInput').focus()});
+// Burbuja de bienvenida discreta: no abre el chat ni bloquea la navegación.
+(function(){
+ if(!chatFab||!chatPanel||sessionStorage.getItem('assistantBubbleSeen'))return;
+ const bubble=document.createElement('button');bubble.type='button';bubble.className='assistant-welcome-bubble';bubble.setAttribute('aria-label','Abrir asistente: ¿Buscas algo? Te ayudo a encontrarlo');bubble.textContent='¿Buscas algo? Te ayudo a encontrarlo ✨';
+ document.body.appendChild(bubble);
+ const timer=setTimeout(()=>{if(!chatPanel.classList.contains('open'))bubble.classList.add('visible')},6500);
+ bubble.addEventListener('click',()=>{bubble.remove();sessionStorage.setItem('assistantBubbleSeen','1');chatFab.click()});
+ chatFab.addEventListener('click',()=>{bubble.remove();sessionStorage.setItem('assistantBubbleSeen','1');clearTimeout(timer)},{once:false});
+})();
 function closeChatPanel(){chatPanel.classList.remove('open');chatPanel.setAttribute('aria-hidden','true');chatFab.setAttribute('aria-expanded','false');chatFab.focus()}
 document.getElementById('chatClose').addEventListener('click',closeChatPanel);
 const chatSessionId=(()=>{try{let id=sessionStorage.getItem('almendrasChatSession');if(!id){id=crypto.randomUUID?crypto.randomUUID():'s-'+Date.now()+'-'+Math.random().toString(36).slice(2);sessionStorage.setItem('almendrasChatSession',id)}return id}catch(e){return 's-'+Date.now()}})();
