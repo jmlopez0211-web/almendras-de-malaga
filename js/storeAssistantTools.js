@@ -3,10 +3,10 @@
 "use strict";
 const FORMATS=[100,250,500,1000,5000,10000,20000];
 const PHONE="34666068765";
-const norm=s=>String(s||"").toLocaleLowerCase("es").normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim();
+const norm=s=>String(s||"").toLocaleLowerCase("es").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim();
 function catalog(){return window.PRODUCTS||{}}
 function searchProducts(query,limit=12){
- const q=norm(query), words=q.split(/\\s+/).filter(w=>w.length>1);
+ const q=norm(query), words=q.split(/\s+/).filter(w=>w.length>1);
  return Object.entries(catalog()).map(([id,p])=>{
   const hay=norm([id,p.name,p.desc,p.tag,p.category].join(" "));
   const score=words.reduce((n,w)=>n+(hay.includes(w)?2:0),0);
@@ -38,15 +38,15 @@ function cartSummary(items=readCart()){
 }
 function orderMessage(items=readCart(),notes=""){
  const s=cartSummary(items);if(!s.items.length)throw new Error("El carrito está vacío");
- return "🛒 *PEDIDO · ALMENDRAS DE MÁLAGA*\\n\\n"+s.items.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g · "+x.subtotal.toFixed(2).replace(".",",")+" €").join("\\n")+"\\n\\n⚖️ *PESO TOTAL:* "+s.weightGrams+" g\\n🚚 *ENVÍO:* "+s.shipping.label+" · "+s.shipping.price.toFixed(2).replace(".",",")+" €\\n🧾 *SUBTOTAL:* "+s.subtotal.toFixed(2).replace(".",",")+" €\\n💰 *TOTAL:* "+s.total.toFixed(2).replace(".",",")+" €\\n\\n📝 *Observaciones:* "+(notes||"Ninguna")+"\\n\\nDisponibilidad, precio final y tarifa de envío provisionales pendientes de confirmación. No se solicita DNI ni CIF.";
+ return "🛒 *PEDIDO · ALMENDRAS DE MÁLAGA*\n\n"+s.items.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g · "+x.subtotal.toFixed(2).replace(".",",")+" €").join("\n")+"\n\n⚖️ *PESO TOTAL:* "+s.weightGrams+" g\n🚚 *ENVÍO:* "+s.shipping.label+" · "+s.shipping.price.toFixed(2).replace(".",",")+" €\n🧾 *SUBTOTAL:* "+s.subtotal.toFixed(2).replace(".",",")+" €\n💰 *TOTAL:* "+s.total.toFixed(2).replace(".",",")+" €\n\n📝 *Observaciones:* "+(notes||"Ninguna")+"\n\nDisponibilidad, precio final y tarifa de envío provisionales pendientes de confirmación. No se solicita DNI ni CIF.";
 }
 function whatsappUrl(items,notes){return "https://wa.me/"+PHONE+"?text="+encodeURIComponent(orderMessage(items,notes))}
 function interpretLocal(text){
  const q=norm(text);
- const gramsMatch=q.match(/\\b(100|250|500|1000|5000|10000|20000)\\s*(g|gr|gramos)?\\b/);
- const kgMatch=q.match(/\\b(1|5|10|20)\\s*(kg|kilo|kilos)\\b/);
+ const gramsMatch=q.match(/\b(100|250|500|1000|5000|10000|20000)\s*(g|gr|gramos)?\b/);
+ const kgMatch=q.match(/\b(1|5|10|20)\s*(kg|kilo|kilos)\b/);
  const grams=gramsMatch?Number(gramsMatch[1]):kgMatch?Number(kgMatch[1])*1000:null;
- const quantityMatch=q.match(/\\b([1-9][0-9]?)\\s*(?:unidades|bolsas|paquetes|formatos)\\b/);
+ const quantityMatch=q.match(/\b([1-9][0-9]?)\s*(?:unidades|bolsas|paquetes|formatos)\b/);
  const quantity=quantityMatch?Number(quantityMatch[1]):1;
  if(/vaciar carrito|borra el pedido|elimina todo/.test(q)){clearCart();return {handled:true,reply:"He vaciado el carrito."}}
  if(/resumen|total del pedido|cuanto llevo/.test(q)){const s=cartSummary();return {handled:true,reply:"Resumen: "+s.items.length+" líneas, "+s.weightGrams+" g. Subtotal "+s.subtotal.toFixed(2)+" €, envío "+s.shipping.price.toFixed(2)+" € ("+s.shipping.label+"), total "+s.total.toFixed(2)+" €."}}
@@ -55,7 +55,7 @@ function interpretLocal(text){
  if(product&&product.score>0&&/(añade|agrega|mete|pon|quiero|pedido|comprar|compra)/.test(q)&&grams){
   try{addToCart(product.id,grams,quantity);const s=cartSummary();return {handled:true,reply:"Añadido: "+product.name+", "+quantity+" × "+grams+" g. El carrito pesa "+s.weightGrams+" g; subtotal "+s.subtotal.toFixed(2)+" €, envío "+s.shipping.price.toFixed(2)+" €, total "+s.total.toFixed(2)+" €."}}catch(e){return {handled:true,reply:e.message}}
  }
- if(product&&product.score>0){return {handled:true,reply:candidates.slice(0,5).map(p=>p.name+" — "+Number(p.price).toLocaleString("es-ES",{style:"currency",currency:"EUR"})+" / kg orientativo").join("\\n")+"\\nDime formato (100 g, 250 g, 500 g, 1 kg, 5 kg, 10 kg o 20 kg) y cantidad para añadirlo."}}
+ if(product&&product.score>0){return {handled:true,reply:candidates.slice(0,5).map(p=>p.name+" — "+Number(p.price).toLocaleString("es-ES",{style:"currency",currency:"EUR"})+" / kg orientativo").join("\n")+"\nDime formato (100 g, 250 g, 500 g, 1 kg, 5 kg, 10 kg o 20 kg) y cantidad para añadirlo."}}
  return {handled:false};
 }
 window.storeAssistantTools={searchProducts,getProduct,packPrice,calculateShipping,readCart,addToCart,setCartItem,removeCartItem,clearCart,cartSummary,orderMessage,whatsappUrl,interpretLocal,formats:FORMATS};
