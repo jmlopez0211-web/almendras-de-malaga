@@ -37,3 +37,12 @@ git push origin main
 - No se incorporan fotografías automáticamente: deben pasar la revisión de imagen, fuente y licencia.
 - La generación usa los nombres, descripciones, etiquetas y precios existentes; revisa los resultados antes de publicar.
 - GitHub Pages publicará los archivos tras el push. La indexación por Google no es instantánea ni garantizada.
+
+
+## Datos estructurados de productos
+Cada página individual incluye JSON-LD `Product` con una `Offer` y una `UnitPriceSpecification`:
+- El precio procede del campo `price` de `data/catalog.js`.
+- La moneda es EUR.
+- La referencia de unidad es 1 kilogramo (`KGM`), ya que el catálogo publica los precios por kg.
+- No se declara disponibilidad, reseñas ni valoraciones porque no existe una fuente fiable para esos datos.
+- `npm run seo:check` valida automáticamente el marcado de todas las páginas de producto.
