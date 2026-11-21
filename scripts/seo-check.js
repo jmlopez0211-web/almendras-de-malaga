@@ -54,4 +54,23 @@ for(const url of urls.filter(u=>u.includes("/blog/"))){
  assert.ok(html.includes("BlogPosting")||html.includes('"@type":"Blog"'),"Schema Blog/BlogPosting ausente: "+rel);
  assert.ok(html.includes('property="og:type"'),"Open Graph type ausente: "+rel);
 }
+
+// Blog internal-link audit: every local href must resolve, and each article must link to a real product page.
+const blogFiles=fs.readdirSync("blog").filter(f=>f.endsWith(".html"));
+for(const file of blogFiles){
+ const html=fs.readFileSync(path.join("blog",file),"utf8");
+ for(const href of [...html.matchAll(/href=["']([^"']+)["']/g)].map(m=>m[1])){
+  if(href.startsWith("https://")||href.startsWith("http://")||href.startsWith("mailto:")||href.startsWith("#")) continue;
+  const clean=href.split("#")[0];
+  if(!clean) continue;
+  const target=path.resolve("blog",clean);
+  assert.ok(fs.existsSync(target),"Enlace interno de blog roto: "+file+" -> "+href);
+ }
+ if(file!=="index.html"){
+  assert.ok(html.includes("../productos/"),"Artículo sin enlace a producto real: "+file);
+  assert.ok(urls.includes(baseUrl+"blog/"+file),"Artículo no incluido en sitemap: "+file);
+ }
+}
+assert.ok(blogFiles.length>=14,"Blog: se esperan al menos 14 páginas incluyendo índice");
+
 console.log("SEO audit OK | URLs sitemap: "+urls.length+" | robots | canonicals | titles | descriptions | Open Graph | Schema Store/FAQ/Product/Blog");
