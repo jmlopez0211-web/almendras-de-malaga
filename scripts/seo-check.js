@@ -24,5 +24,21 @@ for(const url of urls){
  assert.ok(/<title>[^<]{10,}<\/title>/i.test(html),"Title ausente: "+file);
  assert.ok(/<meta\s+name=["']description["']\s+content=["'][^"']{40,}["']/i.test(html),"Description ausente: "+file);
  assert.equal(canonical(html),url,"Canonical no coincide: "+file);
+ if(rel.startsWith("productos/")){
+  const jsonLd=html.match(/<script\\s+type=["']application\\/ld\\+json["']>([\\s\\S]*?)<\\/script>/i)?.[1];
+  assert.ok(jsonLd,"JSON-LD ausente: "+file);
+  const schema=JSON.parse(jsonLd);
+  assert.equal(schema["@type"],"Product","Schema Product incorrecto: "+file);
+  assert.equal(schema.url,url,"URL del producto no coincide: "+file);
+  assert.equal(schema.offers?.["@type"],"Offer","Offer ausente: "+file);
+  assert.equal(schema.offers?.url,url,"URL de Offer no coincide: "+file);
+  const spec=schema.offers?.priceSpecification;
+  assert.equal(spec?.["@type"],"UnitPriceSpecification","Precio unitario ausente: "+file);
+  assert.ok(Number.isFinite(Number(spec?.price)) && Number(spec.price)>=0,"Precio no válido: "+file);
+  assert.equal(spec?.priceCurrency,"EUR","Moneda incorrecta: "+file);
+  assert.equal(spec?.referenceQuantity?.["@type"],"QuantitativeValue","Referencia de cantidad ausente: "+file);
+  assert.equal(Number(spec.referenceQuantity.value),1,"La referencia debe ser un kilogramo: "+file);
+  assert.equal(spec.referenceQuantity.unitCode,"KGM","La unidad debe ser kilogramo: "+file);
+ }
 }
-console.log("SEO audit OK | URLs sitemap: "+urls.length+" | robots | canonicals | titles | descriptions | Open Graph | Schema Store/FAQ");
+console.log("SEO audit OK | URLs sitemap: "+urls.length+" | robots | canonicals | titles | descriptions | Open Graph | Schema Store/FAQ | Product Offer por kg");
