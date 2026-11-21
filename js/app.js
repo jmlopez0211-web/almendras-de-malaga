@@ -268,6 +268,7 @@ document.getElementById('addToCart').onclick=()=>{
  openModal('cartModal');
 };
 renderCart();
+window.addEventListener('almendras:cart-updated',()=>renderCart());
 document.getElementById('cartFab').onclick=()=>{renderCart();openModal('cartModal')};
 document.getElementById('clearCart').onclick=()=>{cart.length=0;renderCart()};
 
@@ -378,6 +379,11 @@ function closeChatPanel(){chatPanel.classList.remove('open');chatPanel.setAttrib
 document.getElementById('chatClose').addEventListener('click',closeChatPanel);
 const chatSessionId=(()=>{try{let id=sessionStorage.getItem('almendrasChatSession');if(!id){id=crypto.randomUUID?crypto.randomUUID():'s-'+Date.now()+'-'+Math.random().toString(36).slice(2);sessionStorage.setItem('almendrasChatSession',id)}return id}catch(e){return 's-'+Date.now()}})();
 async function sendAssistantMessage(q){
+ const storeTools=window.storeAssistantTools;
+ if(storeTools){
+  const local=storeTools.interpretLocal(q);
+  if(local.handled){chatSay(local.reply,'bot');return}
+ }
  const base=String(window.ALMENDRAS_ASSISTANT_API||'').replace(/\/+$/,'');
  if(!base){chatSay(answerProductQuestion(q),'bot');return}
  const typing=document.createElement('div');typing.className='chat-msg bot chat-typing';typing.textContent='Pensando…';chatMessages.appendChild(typing);chatMessages.scrollTop=chatMessages.scrollHeight;
