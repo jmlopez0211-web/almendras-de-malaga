@@ -5,7 +5,7 @@ import path from "node:path";
 
 const PORT=Number(process.env.PORT||3000);
 const OPENAI_API_KEY=process.env.OPENAI_API_KEY;
-const OPENAI_MODEL=process.env.OPENAI_MODEL||"gpt-6.2-sol";
+const OPENAI_MODEL=process.env.OPENAI_MODEL||"gpt-4.1-mini";
 const WA_TOKEN=process.env.WHATSAPP_ACCESS_TOKEN;
 const WA_PHONE_ID=process.env.WHATSAPP_PHONE_NUMBER_ID;
 const WA_VERIFY=process.env.WHATSAPP_VERIFY_TOKEN;
