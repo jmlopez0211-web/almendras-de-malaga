@@ -366,6 +366,13 @@ async function sendAssistantMessage(q){
   typing.remove();
   if(!response.ok||!data.reply)throw new Error(data.error||'No se pudo responder');
   chatSay(data.reply,'bot');
+  if(Array.isArray(data.actions)&&data.actions.length&&storeTools){
+   try{
+    for(const action of data.actions){if(action.type==='add_to_cart')storeTools.addToCart(action.productId,action.grams,action.quantity)}
+    const summary=storeTools.cartSummary();
+    chatSay('\\n🛒 Carrito actualizado\\n'+summary.items.map(item=>'• '+item.name+' — '+item.quantity+' × '+item.grams+' g = '+item.subtotal.toFixed(2)+' €').join('\\n')+'\\n\\n⚖️ Peso total: '+summary.weightGrams+' g\\n🧾 Subtotal: '+summary.subtotal.toFixed(2)+' €\\n🚚 Envío ('+summary.shipping.label+'): '+summary.shipping.price.toFixed(2)+' €\\n💰 Total: '+summary.total.toFixed(2)+' €\\n\\nTarifas provisionales y pedido pendiente de confirmación.','bot');
+   }catch(actionError){chatSay('No he podido actualizar el carrito: '+actionError.message,'bot')}
+  }
  }catch(error){typing.remove();chatSay(answerProductQuestion(q)+'\n\nEl asistente inteligente no está disponible ahora.','bot')}
 }
 document.getElementById('chatForm').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('chatInput'),q=input.value.trim();if(!q)return;chatSay(q,'user');input.value='';input.focus();sendAssistantMessage(q)});
