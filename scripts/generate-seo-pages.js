@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const ROOT=process.cwd(), BASE="https://jmlopez0211-web.github.io/almendras-de-malaga/";
-const raw=fs.readFileSync("data/catalog.js","utf8");
+const m=raw.match(/window\.PRODUCTS\s*=\s*(\{[\s\S]*\})\s*;?\s*$/);
 const m=raw.match(/window\\.PRODUCTS\\s*=\\s*(\\{[\\s\\S]*\\})\\s*;?\\s*$/);
 if(!m)throw new Error("No se pudo leer data/catalog.js");
 const products=JSON.parse(m[1]);
