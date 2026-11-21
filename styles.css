@@ -464,3 +464,42 @@ body:has(#cartModal[aria-hidden=false]) .chat-fab,body:has(#cartModal[aria-hidde
  .chat-form button{min-height:42px!important;padding:0 13px!important}
  .assistant-welcome-bubble{right:12px!important;bottom:calc(172px + env(safe-area-inset-bottom,0px))!important}
 }
+
+
+/* Portada SEO comercial: selección estática de variedades de almendra */
+.home-featured{
+  margin:clamp(20px,3vw,32px) 0 0;
+  padding:clamp(22px,4vw,38px);
+  color:#28382b;
+  background:#f5efe3;
+  border:1px solid #e2d5bf;
+  border-radius:22px;
+}
+.home-featured-heading{max-width:760px;margin:0 auto 22px;text-align:center}
+.home-featured-kicker{margin:0 0 8px;color:#806b48;font-size:12px;font-weight:800;letter-spacing:.14em}
+.home-featured-heading h2{margin:0 0 10px;color:#243b2e;font:700 clamp(26px,4vw,38px)/1.16 "Playfair Display",Georgia,serif}
+.home-featured-heading>p:last-child{max-width:680px;margin:0 auto;color:#57594f;font-size:15px;line-height:1.7}
+.home-featured-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:12px}
+.home-featured-card{display:flex;min-width:0;flex-direction:column;gap:8px;padding:18px;background:#fffdf7;border:1px solid #e5dac7;border-radius:15px}
+.home-featured-type{color:#8a6e43;font-size:10px;font-weight:800;letter-spacing:.12em}
+.home-featured-card h3{margin:0;font:700 19px/1.25 "Playfair Display",Georgia,serif}
+.home-featured-link{color:#243b2e;text-decoration-thickness:1px;text-underline-offset:4px}
+.home-featured-link:hover{color:#8b5d2f}
+.home-featured-card p{margin:0;color:#5b5a50;font-size:14px;line-height:1.55}
+.home-featured-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin:22px 0 12px}
+.home-featured-actions .btn{min-height:46px}
+.home-featured-location{padding:10px 12px;color:#243b2e;font-size:14px;font-weight:700;text-underline-offset:4px}
+.home-featured-note{max-width:760px;margin:0 auto;color:#686457;font-size:13px;line-height:1.6;text-align:center}
+.home-featured a:focus-visible{outline:3px solid #b77a35;outline-offset:3px;border-radius:5px}
+@media(max-width:560px){
+  .home-featured{padding:21px 16px}
+  .home-featured-grid{grid-template-columns:1fr 1fr;gap:9px}
+  .home-featured-card{padding:14px 12px}
+  .home-featured-card h3{font-size:17px}
+  .home-featured-card p{font-size:13px}
+  .home-featured-actions{align-items:stretch;flex-direction:column}
+  .home-featured-actions .btn{text-align:center}
+}
+@media(max-width:360px){
+  .home-featured-grid{grid-template-columns:1fr}
+}
