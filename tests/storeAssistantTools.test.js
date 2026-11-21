@@ -32,3 +32,6 @@ test("natural-language removal deletes the actual cart line",()=>{tools.clearCar
 
 
 test("total requested weight over 20kg is split into valid package formats",()=>{tools.clearCart();const result=tools.interpretLocal("Agrega 25 kg de almendra cruda");assert.equal(result.handled,true);const s=tools.cartSummary();assert.equal(s.weightGrams,25000);assert.equal(s.subtotal,500);assert.equal(s.shipping.price,15);assert.equal(s.total,515);assert.deepEqual(Array.from(s.items,x=>x.grams),[20000,5000]);});
+
+
+test("natural-language removal by bag weight removes matching cart line",()=>{tools.clearCart();tools.addToCart("almond",500,1);const result=tools.interpretLocal("Quita la bolsa de 500 gramos");assert.equal(result.handled,true);assert.match(result.reply,/He eliminado/i);assert.equal(tools.readCart().length,0);});
