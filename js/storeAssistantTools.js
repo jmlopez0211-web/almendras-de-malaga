@@ -78,7 +78,8 @@ function interpretLocal(text){
    const product=findProductForPhrase(chunk);
    if(!product)continue;
    const qtyMatch=norm(chunk).match(/\b([1-9]|[1-5][0-9])\s*(?:bolsas|paquetes|unidades)\b/);
-   const quantity=qtyMatch?Number(qtyMatch[1]):1;
+   const wordQty=norm(chunk).match(/\b(una|un|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez)\s*(?:bolsas|paquetes|unidades)\b/);
+   const quantity=qtyMatch?Number(qtyMatch[1]):wordQty?({una:1,un:1,dos:2,tres:3,cuatro:4,cinco:5,seis:6,siete:7,ocho:8,nueve:9,diez:10}[wordQty[1]]):1;
    if(!grams){needsFormat.push({name:product.p.name,quantity});continue}
    parsed.push({id:product.id,name:product.p.name,grams,quantity});
   }
