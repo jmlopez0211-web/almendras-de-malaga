@@ -1,0 +1,75 @@
+{
+  "business": "Almendras de Málaga",
+  "contact": {
+    "primaryPhone": "+34 666 068 765",
+    "whatsapp": "+34 666 068 765",
+    "web": "https://jmlopez0211-web.github.io/almendras-de-malaga/",
+    "address": "Calle Santa María, 29, esquina con calle Molina Lario, Málaga, junto a la Catedral"
+  },
+  "formats": [
+    "100 g",
+    "250 g",
+    "500 g",
+    "1 kg",
+    "5 kg",
+    "10 kg",
+    "20 kg",
+    "más de 20 kg"
+  ],
+  "pricing": {
+    "basis": "Precio orientativo por kilogramo en catálogo; los formatos se calculan proporcionalmente",
+    "confirmation": "Confirmar precio final, disponibilidad y tarifa profesional con el negocio"
+  },
+  "shipping": {
+    "status": "provisional",
+    "note": "Tarifas de envío editables y pendientes de confirmación con el transportista",
+    "tiers": [
+      {
+        "maxGrams": 100,
+        "label": "Hasta 100 g",
+        "price": 2.5
+      },
+      {
+        "maxGrams": 250,
+        "label": "101–250 g",
+        "price": 3.5
+      },
+      {
+        "maxGrams": 500,
+        "label": "251–500 g",
+        "price": 4.5
+      },
+      {
+        "maxGrams": 1000,
+        "label": "501 g–1 kg",
+        "price": 5.5
+      },
+      {
+        "maxGrams": 5000,
+        "label": "1,001–5 kg",
+        "price": 7.5
+      },
+      {
+        "maxGrams": 10000,
+        "label": "5,001–10 kg",
+        "price": 9.5
+      },
+      {
+        "maxGrams": 20000,
+        "label": "10,001–20 kg",
+        "price": 12.5
+      },
+      {
+        "maxGrams": null,
+        "label": "Más de 20 kg",
+        "price": 15
+      }
+    ]
+  },
+  "policies": {
+    "allergens": "No garantizar ausencia de trazas. Confirmar ingredientes y alérgenos con la etiqueta o ficha técnica del lote.",
+    "orders": "No afirmar que un pedido está realizado, reservado o cobrado.",
+    "identity": "No solicitar DNI ni CIF.",
+    "payment": "No solicitar datos de pago por chat."
+  }
+}
