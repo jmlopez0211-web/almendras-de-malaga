@@ -58,16 +58,50 @@ const SYSTEM="Eres el asistente comercial oficial de Almendras de Málaga. Atien
  data.count++;rateLimits.set(key,data);
  return data.count<=RATE_LIMIT;
 }
+const AI_TOOLS=[
+ {type:"function",name:"search_products",description:"Busca productos reales en el catálogo. Usa antes de añadir productos.",parameters:{type:"object",properties:{query:{type:"string"}},required:["query"],additionalProperties:false}},
+ {type:"function",name:"price_pack",description:"Calcula el precio exacto orientativo de un formato a partir del precio/kg del catálogo.",parameters:{type:"object",properties:{product_id:{type:"string"},grams:{type:"integer",enum:[100,250,500,1000,5000,10000,20000]},quantity:{type:"integer",minimum:1,maximum:50}},required:["product_id","grams","quantity"],additionalProperties:false}},
+ {type:"function",name:"calculate_shipping",description:"Calcula envío por peso usando las tarifas configuradas, marcadas provisionales.",parameters:{type:"object",properties:{weight_grams:{type:"integer",minimum:0}},required:["weight_grams"],additionalProperties:false}},
+ {type:"function",name:"add_to_cart",description:"Solicita añadir una referencia real al carrito del navegador. No confirma compra.",parameters:{type:"object",properties:{product_id:{type:"string"},grams:{type:"integer",enum:[100,250,500,1000,5000,10000,20000]},quantity:{type:"integer",minimum:1,maximum:50}},required:["product_id","grams","quantity"],additionalProperties:false}}
+];
+function runStoreTool(name,args){
+ if(name==="search_products"){
+  const q=normalise(args.query);const aliases={almendras:"almendra",pistachos:"pistacho",cacahuetes:"cacahuete",anacardos:"anacardo",nueces:"nuez",avellanas:"avellana"};
+  const words=q.split(/\\s+/).map(w=>aliases[w]||w).filter(w=>w.length>2&&!["quiero","busco","necesito","precio","precios"].includes(w));
+  return Object.entries(PRODUCTS).map(([id,p])=>({id,name:p.name,category:p.category,description:p.desc,pricePerKg:Number(p.price),score:words.reduce((s,w)=>s+(normalise([id,p.name,p.desc,p.tag,p.category].join(" ")).includes(w)?1:0),0)})).filter(p=>p.score>0).sort((a,b)=>b.score-a.score).slice(0,12);
+ }
+ if(name==="price_pack"){
+  const p=PRODUCTS[args.product_id];if(!p)return {error:"Producto no encontrado"};
+  const grams=Number(args.grams),quantity=Number(args.quantity||1);
+  return {productId:args.product_id,name:p.name,grams,quantity,unitPrice:Number((Number(p.price)*grams/1000).toFixed(2)),subtotal:Number((Number(p.price)*grams/1000*quantity).toFixed(2)),weightGrams:grams*quantity,pricePerKg:Number(p.price),availability:"No conectada; confirmar con el comercio"};
+ }
+ if(name==="calculate_shipping"){
+  const grams=Math.max(0,Number(args.weight_grams)||0),tiers=COMMERCIAL.shipping.tiers||[];
+  const tier=tiers.find(t=>t.maxGrams===null||grams<=t.maxGrams)||tiers[tiers.length-1];
+  return {weightGrams:grams,label:tier?.label||"Pendiente de confirmar",price:Number(tier?.price||0),status:COMMERCIAL.shipping.status||"provisional",note:COMMERCIAL.shipping.note||"Tarifa pendiente de confirmar"};
+ }
+ if(name==="add_to_cart"){
+  const p=PRODUCTS[args.product_id];if(!p)return {error:"Producto no encontrado",action:null};
+  const grams=Number(args.grams),quantity=Number(args.quantity||1);
+  if(![100,250,500,1000,5000,10000,20000].includes(grams)||quantity<1||quantity>50)return {error:"Formato o cantidad no válida",action:null};
+  return {action:{type:"add_to_cart",productId:args.product_id,grams,quantity,name:p.name},message:"Añadido al carrito del navegador; aún no es un pedido confirmado."};
+ }
+ return {error:"Herramienta desconocida"};
+}
 async function aiReply(history,message){
  if(!OPENAI_API_KEY)throw new Error("IA no configurada");
  const context=productContext(message);
- const input=[...history.slice(-MAX_HISTORY),{role:"user",content:"Consulta del cliente: "+message+"\n\nCatálogo relevante (JSON): "+context}];
- const r=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"Authorization":"Bearer "+OPENAI_API_KEY,"Content-Type":"application/json"},body:JSON.stringify({model:OPENAI_MODEL,instructions:SYSTEM,input,max_output_tokens:500})});
- const data=await r.json();
- if(!r.ok)throw new Error(data.error?.message||"Error en OpenAI API");
- const text=(data.output||[]).flatMap(o=>o.content||[]).filter(c=>c.type==="output_text").map(c=>c.text).join("\n").trim();
- if(!text)throw new Error("Respuesta vacía de la IA");
- return text;
+ let input=[...history.slice(-MAX_HISTORY),{role:"user",content:"Consulta del cliente: "+message+"\\n\\nCatálogo y reglas comerciales (JSON): "+context}];
+ let actions=[];
+ for(let turn=0;turn<5;turn++){
+  const r=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"Authorization":"Bearer "+OPENAI_API_KEY,"Content-Type":"application/json"},body:JSON.stringify({model:OPENAI_MODEL,instructions:SYSTEM+"\\n\\nPuedes usar herramientas para buscar productos, calcular formatos, calcular envío y preparar acciones de carrito. Para pedidos, busca primero el producto exacto, calcula cada formato y el peso total, consulta el envío y solicita añadir al carrito. No afirmes que el carrito está actualizado hasta que el cliente lo reciba en la web. No inventes IDs: utiliza IDs devueltos por search_products. Si hay ambigüedad, pregunta.",input,tools:AI_TOOLS,max_output_tokens:700})});
+  const data=await r.json();if(!r.ok)throw new Error(data.error?.message||"Error en OpenAI API");
+  const calls=(data.output||[]).filter(o=>o.type==="function_call");
+  if(!calls.length){const text=(data.output||[]).flatMap(o=>o.content||[]).filter(c=>c.type==="output_text").map(c=>c.text).join("\\n").trim();if(!text)throw new Error("Respuesta vacía de la IA");return {reply:text,actions};}
+  input=[...input,...data.output];
+  for(const call of calls){let args;try{args=JSON.parse(call.arguments||"{}")}catch{args={}}const result=runStoreTool(call.name,args);if(call.name==="add_to_cart"&&result.action)actions.push(result.action);input.push({type:"function_call_output",call_id:call.call_id,output:JSON.stringify(result)});}
+ }
+ throw new Error("La IA ha excedido el límite de herramientas");
 }
 async function handleChat(req,res){
  const origin=req.headers.origin||"";
@@ -87,7 +121,7 @@ async function handleChat(req,res){
   history=[...history,{role:"user",content:message},{role:"assistant",content:answer}].slice(-MAX_HISTORY);
   sessions.set("web:"+sessionId,history);
   if(sessions.size>MAX_SESSIONS)sessions.delete(sessions.keys().next().value);
-  return send(res,200,{reply:answer,mode:"ai"});
+  return send(res,200,{reply:answer,mode:"ai",actions:result.actions||[]});
  }catch(error){
   console.error("Chat error:",error.message);
   return send(res,503,{error:"El asistente inteligente no está disponible ahora. Puedes consultar el catálogo o contactar por WhatsApp.",mode:"fallback"});
