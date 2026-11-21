@@ -47,15 +47,15 @@ function parseWeight(text){
  if(/un cuarto|cuarto de kilo|250 gramos|250 g/.test(q))return 250;
  if(/un kilo|1 kilo|1 kg|1000 gramos/.test(q))return 1000;
  if(/dos kilos|2 kilos|2 kg/.test(q))return 2000;
- const m=q.match(/\\b(100|250|500|1000|5000|10000|20000)\\s*(g|gr|gramos)?\\b/);
+ const m=q.match(/\b(100|250|500|1000|5000|10000|20000)\s*(g|gr|gramos)?\b/);
  if(m)return Number(m[1]);
- const kg=q.match(/\\b([1-9][0-9]?)\\s*(kg|kilo|kilos)\\b/);
+ const kg=q.match(/\b([1-9][0-9]?)\s*(kg|kilo|kilos)\b/);
  if(kg)return Number(kg[1])*1000;
  return null;
 }
 function findProductForPhrase(phrase){
  const q=norm(phrase);
- const aliases={almendras:"almendra",pistachos:"pistacho",cacahuetes:"cacahuete",anacardos:"anacardo",nueces:"nuez",avellanas:"avellana",crudas:"cruda",tostadas:"tostada",fritas:"frita"}; const words=q.split(/\\s+/).filter(w=>w.length>2&&!["quiero","para","poner","añade","agrega","comprar","pedido","medio","kilo","cuarto","gramos","gramo","bolsa","bolsas","de","del","una","un"].includes(w)).map(w=>aliases[w]||w);
+ const aliases={almendras:"almendra",pistachos:"pistacho",cacahuetes:"cacahuete",anacardos:"anacardo",nueces:"nuez",avellanas:"avellana",crudas:"cruda",tostadas:"tostada",fritas:"frita"}; const words=q.split(/\s+/).filter(w=>w.length>2&&!["quiero","para","poner","añade","agrega","comprar","pedido","medio","kilo","cuarto","gramos","gramo","bolsa","bolsas","de","del","una","un"].includes(w)).map(w=>aliases[w]||w);
  const scored=Object.entries(catalog()).map(([id,p])=>{
   const hay=norm([id,p.name,p.desc,p.tag,p.category].join(" "));
   let score=words.reduce((n,w)=>n+(hay.includes(w)?3:0),0);
@@ -69,16 +69,16 @@ function interpretLocal(text){
  const q=norm(text);
  if(/vaciar carrito|borra el pedido|elimina todo/.test(q)){clearCart();return {handled:true,reply:"He vaciado el carrito."}}
  if(/resumen|total del pedido|cuanto llevo/.test(q)){const s=cartSummary();return {handled:true,reply:"Resumen: "+s.items.length+" líneas, "+s.weightGrams+" g. Subtotal "+s.subtotal.toFixed(2)+" €, envío "+s.shipping.price.toFixed(2)+" € ("+s.shipping.label+"), total "+s.total.toFixed(2)+" €."}}
- const shopping=/\\b(quiero|añade|agrega|mete|pon|comprar|compra|pedido|lleva|dame)\\b/.test(q);
+ const shopping=/\b(quiero|añade|agrega|mete|pon|comprar|compra|pedido|lleva|dame)\b/.test(q);
  if(shopping){
-  const chunks=String(text).replace(/[,;]+/g," y ").split(/\\s+y\\s+/i).map(x=>x.trim()).filter(Boolean);
+  const chunks=String(text).replace(/[,;]+/g," y ").split(/\s+y\s+/i).map(x=>x.trim()).filter(Boolean);
   const parsed=[];
   for(const chunk of chunks){
    const grams=parseWeight(chunk);
    const product=findProductForPhrase(chunk);
    if(!product)continue;
    if(!grams)continue;
-   const qtyMatch=norm(chunk).match(/\\b([2-9]|[1-5][0-9])\\s*(?:bolsas|paquetes|unidades)\\b/);
+   const qtyMatch=norm(chunk).match(/\b([2-9]|[1-5][0-9])\s*(?:bolsas|paquetes|unidades)\b/);
    parsed.push({id:product.id,name:product.p.name,grams,quantity:qtyMatch?Number(qtyMatch[1]):1});
   }
   if(parsed.length){
