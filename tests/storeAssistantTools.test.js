@@ -26,3 +26,6 @@ test("partial natural-language order adds specified weight and asks bag format",
 
 
 test("pending bag format is remembered and follow-up adds the pending product",()=>{tools.clearCart();const first=tools.interpretLocal("Añade un kilo de almendras y dos bolsas de pistachos");assert.equal(first.handled,true);assert.equal(tools.cartSummary().items.length,1);const second=tools.interpretLocal("250 gramos cada una");assert.equal(second.handled,true);const s=tools.cartSummary();assert.equal(s.items.length,2);assert.equal(s.weightGrams,1500);assert.match(second.reply,/Pistacho/);});
+
+
+test("natural-language removal deletes the actual cart line",()=>{tools.clearCart();tools.addToCart("almond",500,5);const result=tools.interpretLocal("Elimina la almendra cruda del carrito");assert.equal(result.handled,true);assert.match(result.reply,/He eliminado/i);assert.equal(tools.readCart().length,0);assert.equal(tools.cartSummary().total,0);});
