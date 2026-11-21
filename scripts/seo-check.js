@@ -48,4 +48,9 @@ for(const url of urls){
   assert.equal(spec.referenceQuantity.unitCode,"KGM","La unidad debe ser kilogramo: "+file);
  }
 }
-for(const url of urls.filter(u=>u.includes("/blog/"))){\n const rel=url.slice(baseUrl.length);\n const html=fs.readFileSync(path.join(root,rel),"utf8");\n assert.ok(html.includes("BlogPosting")||html.includes("\\\"@type\\\":\\\"Blog\\\""),"Schema Blog/BlogPosting ausente: "+rel);\n assert.ok(html.includes("property=\\\"og:type\\\""),"Open Graph type ausente: "+rel);\n}\nconsole.log("SEO audit OK | URLs sitemap: "+urls.length+" | robots | canonicals | titles | descriptions | Open Graph | Schema Store/FAQ/Product/Blog");
+for(const url of urls.filter(u=>u.includes("/blog/"))){
+ const rel=url.slice(baseUrl.length);
+ const html=fs.readFileSync(path.join(root,rel),"utf8");
+ assert.ok(html.includes("BlogPosting")||html.includes("\\\"@type\\\":\\\"Blog\\\""),"Schema Blog/BlogPosting ausente: "+rel);
+ assert.ok(html.includes("property=\\\"og:type\\\""),"Open Graph type ausente: "+rel);
+}\nconsole.log("SEO audit OK | URLs sitemap: "+urls.length+" | robots | canonicals | titles | descriptions | Open Graph | Schema Store/FAQ/Product/Blog");
