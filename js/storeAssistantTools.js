@@ -69,7 +69,7 @@ function interpretLocal(text){
  const q=norm(text);
  if(/vaciar carrito|borra el pedido|elimina todo/.test(q)){clearCart();return {handled:true,reply:"He vaciado el carrito."}}
  if(/resumen|total del pedido|cuanto llevo/.test(q)){const s=cartSummary();return {handled:true,reply:"Resumen: "+s.items.length+" líneas, "+s.weightGrams+" g. Subtotal "+s.subtotal.toFixed(2)+" €, envío "+s.shipping.price.toFixed(2)+" € ("+s.shipping.label+"), total "+s.total.toFixed(2)+" €."}}
- const shopping=/\b(quiero|añade|agrega|mete|pon|comprar|compra|pedido|lleva|dame)\b/.test(q);
+ const shopping=/\b(quiero|anade|agrega|mete|pon|comprar|compra|pedido|lleva|dame)\b/.test(q);
  if(shopping){
   const chunks=String(text).replace(/[,;]+/g," y ").split(/\s+y\s+/i).map(x=>x.trim()).filter(Boolean);
   const parsed=[],needsFormat=[];
@@ -79,7 +79,7 @@ function interpretLocal(text){
    const qtyMatch=cq.match(/\b([1-9]|[1-5][0-9])\s*(?:bolsas|paquetes|unidades)\b/);
    const wordQty=cq.match(/\b(una|un|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez)\s*(?:bolsas|paquetes|unidades)\b/);
    const quantity=qtyMatch?Number(qtyMatch[1]):wordQty?({una:1,un:1,dos:2,tres:3,cuatro:4,cinco:5,seis:6,siete:7,ocho:8,nueve:9,diez:10}[wordQty[1]]):1;
-   const clean=cq.replace(/\b(quiero|añade|agrega|mete|pon|comprar|compra|pedido|lleva|dame|un|una|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|medio|media|cuarto|kilo|kilos|kg|gramos|gramo|g|bolsa|bolsas|paquete|paquetes|unidad|unidades|de|del|la|el|con|y)\b/g," ").replace(/\b\d+\b/g," ").trim();
+   const clean=cq.replace(/\b(quiero|anade|agrega|mete|pon|comprar|compra|pedido|lleva|dame|un|una|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|medio|media|cuarto|kilo|kilos|kg|gramos|gramo|g|bolsa|bolsas|paquete|paquetes|unidad|unidades|de|del|la|el|con|y)\b/g," ").replace(/\b\d+\b/g," ").trim();
    const product=findProductForPhrase(clean)||findProductForPhrase(chunk);
    if(!product)continue;
    if(!grams){needsFormat.push({id:product.id,name:product.p.name,quantity});continue}
