@@ -37,6 +37,8 @@ for(const url of urls){
   assert.equal(schema.url,url,"URL del producto no coincide: "+file);
   assert.equal(schema.offers?.["@type"],"Offer","Offer ausente: "+file);
   assert.equal(schema.offers?.url,url,"URL de Offer no coincide: "+file);
+  assert.ok(Number.isFinite(Number(schema.offers?.price)) && Number(schema.offers.price)>=0,"Precio directo Offer ausente o inválido: "+file);
+  assert.equal(schema.offers?.priceCurrency,"EUR","Moneda directa Offer incorrecta: "+file);
   const spec=schema.offers?.priceSpecification;
   assert.equal(spec?.["@type"],"UnitPriceSpecification","Precio unitario ausente: "+file);
   assert.ok(Number.isFinite(Number(spec?.price)) && Number(spec.price)>=0,"Precio no válido: "+file);
