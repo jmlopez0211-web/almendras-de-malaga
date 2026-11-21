@@ -83,6 +83,14 @@ function interpretLocal(text){
  // Modificación/eliminación explícita de líneas existentes del carrito.
  const isRemove=/\b(quita|quitar|elimina|eliminar|borra|borrar|saca|retira)\b/.test(q);
  const isModify=/\b(cambia|cambiar|modifica|modificar|ajusta|ajustar|deja|pon|poner|reduce|reducir)\b/.test(q);
+ if(isRemove){
+  const grams=parseWeight(text), cart=readCart();
+  if(grams){const matches=cart.filter(x=>x.grams===grams);
+   if(matches.length===1){removeCartItem(matches[0].id,matches[0].grams);const s=cartSummary();return {handled:true,reply:"He eliminado "+matches[0].name+" — "+matches[0].quantity+" × "+matches[0].grams+" g del carrito.\n\n"+(s.items.length?s.items.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g = "+x.subtotal.toFixed(2)+" €").join("\\n")+"\\n\\n⚖️ Peso total: "+s.weightGrams+" g\\n🧾 Subtotal: "+s.subtotal.toFixed(2)+" €\\n🚚 Envío ("+s.shipping.label+"): "+s.shipping.price.toFixed(2)+" €\\n💰 Total: "+s.total.toFixed(2)+" €.":"El carrito está vacío.")};}
+   if(matches.length>1)return {handled:true,reply:"Hay varias bolsas de "+grams+" g en el carrito. Dime cuál producto quieres quitar: "+matches.map(x=>x.name).join(", ")+".");
+   return {handled:true,reply:"No hay ninguna bolsa de "+grams+" g en el carrito."};
+  }
+ }
  if(isRemove||isModify){
   const product=findProductForPhrase(text);
   if(product){
