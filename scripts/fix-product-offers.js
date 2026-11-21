@@ -36,5 +36,5 @@ for (const url of urls) {
     errors.push("No se puede corregir automáticamente sin inventar datos: " + file);
   }
 }
-console.log("\\nAUDITORÍA: " + checked + " páginas revisadas | " + fixed + " corregidas | " + valid + " ya válidas | " + errors.length + " incidencias.");
+console.log("\nAUDITORÍA: " + checked + " páginas revisadas | " + fixed + " corregidas | " + valid + " ya válidas | " + errors.length + " incidencias.");
 if (errors.length) { errors.forEach(e => console.error(e)); process.exitCode = 1; }
