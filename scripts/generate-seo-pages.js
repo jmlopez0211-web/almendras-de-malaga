@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const BASE = "https://jmlopez0211-web.github.io/almendras-de-malaga/";
-const catalogSource = fs.readFileSync("data/catalog.js", "utf8");
+const match = catalogSource.match(/window\.PRODUCTS\s*=\s*(\{[\s\S]*\})\s*;?\s*$/);
 const match = catalogSource.match(/window\\.PRODUCTS\\s*=\\s*(\\{[\\s\\S]*\\})\\s*;?\\s*$/);
 if (!match) throw new Error("No se pudo extraer window.PRODUCTS de data/catalog.js");
 const products = JSON.parse(match[1]);
