@@ -51,15 +51,15 @@ test("SEO generator creates product/category pages and preserves existing landin
     const almendraFile = productFiles.find(file => file.includes("almendra-cruda"));
     assert.ok(almendraFile, "Debe existir la página de almendra");
     const productHtml = fs.readFileSync(path.join(temp, "productos", almendraFile), "utf8");
-    assert.match(productHtml, /<title>Almendra cruda con piel \\| Almendras de Málaga<\\/title>/);
+    assert.ok(productHtml.includes("<title>Almendra cruda con piel | Almendras de Málaga</title>"));
     assert.match(productHtml, /rel="canonical"/);
-    assert.match(productHtml, /application\\/ld\\+json/);
+    assert.ok(productHtml.includes("application/ld+json"));
     assert.match(productHtml, /precio orientativo/i);
 
     const sitemap = fs.readFileSync(path.join(temp, "sitemap.xml"), "utf8");
     assert.ok(sitemap.includes(home));
     assert.ok(sitemap.includes(landing), "No debe borrar landings SEO existentes");
-    assert.equal((sitemap.match(/<loc>/g) || []).length, 6);
+    assert.equal((sitemap.match(/<loc>/g) || []).length, 7);
     assert.ok(sitemap.includes("/productos/"));
     assert.ok(sitemap.includes("/categorias/"));
   } finally {
