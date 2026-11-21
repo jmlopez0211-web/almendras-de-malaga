@@ -59,9 +59,12 @@ test("SEO generator creates product/category pages and preserves existing landin
     const expectedPrices = new Map(Object.values(catalog).map(product => [product.name, product.price]));
     for (const file of productFiles) {
       const html = fs.readFileSync(path.join(temp, "productos", file), "utf8");
-      const jsonLdMatch = html.match(/<script type="application\\/ld\\+json">([\\s\\S]*?)<\\/script>/i);
-      assert.ok(jsonLdMatch, "Cada página de producto debe incluir JSON-LD: " + file);
-      const schema = JSON.parse(jsonLdMatch[1]);
+      const marker = '<script type="application/ld+json">';
+      const jsonLdStart = html.indexOf(marker);
+      assert.notEqual(jsonLdStart, -1, "Cada página de producto debe incluir JSON-LD: " + file);
+      const jsonLdEnd = html.indexOf("</script>", jsonLdStart + marker.length);
+      assert.notEqual(jsonLdEnd, -1, "El JSON-LD debe cerrarse correctamente: " + file);
+      const schema = JSON.parse(html.slice(jsonLdStart + marker.length, jsonLdEnd));
       assert.equal(schema["@type"], "Product");
       assert.equal(schema.offers["@type"], "Offer");
       assert.equal(schema.offers.url, home + "productos/" + file);
