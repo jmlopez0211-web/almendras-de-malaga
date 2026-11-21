@@ -325,7 +325,7 @@ function answerProductQuestion(raw){
   return words.length>0&&words.every(w=>haystack.includes(w));
  });
  const euroPrice=value=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(value);
- const requestedGrams=(()=>{const gramsMatch=q.match(/\b(100|250|500|1000|5000|10000|20000)\s*(g|gr|gramos)?\b/);if(gramsMatch)return Number(gramsMatch[1]);const kilosMatch=q.match(/\b(1|5|10|20)\s*(kg|kilo|kilos)\b/);if(kilosMatch)return Number(kilosMatch[1])*1000;if(/medio kilo|500 g|500gr/.test(q))return 500;if(/un kilo|1 kilo|1 kg|1000 g/.test(q))return 1000;return null})();;
+ const requestedGrams=(()=>{const gramsMatch=q.match(/\b(100|250|500|1000|5000|10000|20000)\s*(g|gr|gramos)?\b/);if(gramsMatch)return Number(gramsMatch[1]);const kilosMatch=q.match(/\b(1|5|10|20)\s*(kg|kilo|kilos)\b/);if(kilosMatch)return Number(kilosMatch[1])*1000;if(/medio kilo|500 g|500gr/.test(q))return 500;if(/un kilo|1 kilo|1 kg|1000 g/.test(q))return 1000;return null})();
  if(/disponib|stock|hay existencias|teneis|ten[eé]is|queda/.test(q)){
   if(matches.length)return 'En el catálogo aparece: '+matches.slice(0,8).map(([id,p])=>p.name).join(', ')+'. El stock real no está conectado a la web; Don Miguel y Fabián confirman disponibilidad por WhatsApp: +34 666 068 765.';
   return 'La web no consulta inventario en tiempo real. Dime el nombre del producto o pregunta directamente a Don Miguel y Fabián por WhatsApp: +34 666 068 765.';
