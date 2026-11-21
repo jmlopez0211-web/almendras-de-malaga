@@ -50,7 +50,8 @@ for(const url of urls){
 }
 for(const url of urls.filter(u=>u.includes("/blog/"))){
  const rel=url.slice(baseUrl.length);
- const html=fs.readFileSync(path.join(root,rel),"utf8");
+ const file=rel.endsWith("/")?rel+"index.html":rel;
+ const html=fs.readFileSync(path.join(root,file),"utf8");
  assert.ok(html.includes("BlogPosting")||html.includes('"@type":"Blog"'),"Schema Blog/BlogPosting ausente: "+rel);
  assert.ok(html.includes('property="og:type"'),"Open Graph type ausente: "+rel);
 }
