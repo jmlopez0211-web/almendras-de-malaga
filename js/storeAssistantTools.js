@@ -77,7 +77,7 @@ function interpretLocal(text){
    const grams=parseWeight(chunk);
    const product=findProductForPhrase(chunk);
    if(!product)continue;
-   const qtyMatch=norm(chunk).match(/\\b([1-9]|[1-5][0-9])\\s*(?:bolsas|paquetes|unidades)\\b/);
+   const qtyMatch=norm(chunk).match(/\b([1-9]|[1-5][0-9])\s*(?:bolsas|paquetes|unidades)\b/);
    const quantity=qtyMatch?Number(qtyMatch[1]):1;
    if(!grams){needsFormat.push({name:product.p.name,quantity});continue}
    parsed.push({id:product.id,name:product.p.name,grams,quantity});
