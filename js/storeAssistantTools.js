@@ -85,15 +85,15 @@ function interpretLocal(text){
    try{
     parsed.forEach(x=>addToCart(x.id,x.grams,x.quantity));
     const s=cartSummary();
-    const added=parsed.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g").join("\\n");
-    const breakdown=s.items.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g = "+x.subtotal.toFixed(2)+" €").join("\\n");
-    return {handled:true,reply:"He añadido al carrito:\\n"+added+"\\n\\n"+breakdown+"\\n\\n⚖️ Peso total: "+s.weightGrams+" g\\n🧾 Subtotal: "+s.subtotal.toFixed(2)+" €\\n🚚 Envío ("+s.shipping.label+"): "+s.shipping.price.toFixed(2)+" €\\n💰 Total: "+s.total.toFixed(2)+" €.\\n\\nTarifas de envío provisionales; disponibilidad y precio final pendientes de confirmación."};
+    const added=parsed.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g").join("\n");
+    const breakdown=s.items.map(x=>"• "+x.name+" — "+x.quantity+" × "+x.grams+" g = "+x.subtotal.toFixed(2)+" €").join("\n");
+    return {handled:true,reply:"He añadido al carrito:\n"+added+"\n\n"+breakdown+"\n\n⚖️ Peso total: "+s.weightGrams+" g\n🧾 Subtotal: "+s.subtotal.toFixed(2)+" €\n🚚 Envío ("+s.shipping.label+"): "+s.shipping.price.toFixed(2)+" €\n💰 Total: "+s.total.toFixed(2)+" €.\n\nTarifas de envío provisionales; disponibilidad y precio final pendientes de confirmación."};
    }catch(e){return {handled:true,reply:"No he podido completar el carrito: "+e.message}}
   }
  }
  const candidates=searchProducts(text,5),product=candidates[0];
  if(product&&product.score>0){
-  return {handled:true,reply:candidates.slice(0,5).map(p=>p.name+" — "+Number(p.price).toLocaleString("es-ES",{style:"currency",currency:"EUR"})+" / kg orientativo").join("\\n")+"\\nDime el formato (100 g, 250 g, 500 g, 1 kg, 5 kg, 10 kg o 20 kg) para añadirlo."}
+  return {handled:true,reply:candidates.slice(0,5).map(p=>p.name+" — "+Number(p.price).toLocaleString("es-ES",{style:"currency",currency:"EUR"})+" / kg orientativo").join("\n")+"\nDime el formato (100 g, 250 g, 500 g, 1 kg, 5 kg, 10 kg o 20 kg) para añadirlo."}
  }
  return {handled:false};
 }
