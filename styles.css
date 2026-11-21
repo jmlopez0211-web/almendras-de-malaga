@@ -353,3 +353,7 @@ body{background:#f7f4eb}.wrap{max-width:none;padding:0}.top{max-width:1280px;mar
 .chat-prompts button{border:1px solid #d8dfd7;background:#fff;color:#243b2e;border-radius:999px;padding:6px 9px;font-size:11px;cursor:pointer}
 .chat-prompts button:hover,.chat-prompts button:focus{background:#e5eee6}
 .chat-typing{opacity:.7;font-style:italic}
+
+/* Mejora de compra: formatos visibles antes de abrir la ficha */
+.format-preview{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px;width:100%}.format-preview span{font-size:10px;font-weight:700;color:var(--pine2);background:#f1ecdf;border:1px solid #e4dccb;border-radius:20px;padding:5px 8px;white-space:nowrap}.details{margin-top:15px;background:var(--pine);color:white;text-decoration:none;border-radius:22px;padding:10px 14px;display:inline-flex;align-items:center;justify-content:center}.details:hover{background:var(--pine2)}
+@media(max-width:520px){.format-preview{gap:4px}.format-preview span{font-size:9px;padding:5px 6px}.product-body{padding:16px}.product h3{font-size:20px}.details{width:100%;}}
