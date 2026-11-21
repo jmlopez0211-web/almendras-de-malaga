@@ -16,7 +16,7 @@ const CATALOG_PATH=path.join(process.cwd(),"data","catalog.js");
 const catalogSource=fs.readFileSync(CATALOG_PATH,"utf8");
 const catalogMatch=catalogSource.match(/window\.PRODUCTS\s*=\s*(\{[\s\S]*\})\s*;?\s*$/);
 if(!catalogMatch)throw new Error("No se pudo leer data/catalog.js");
-const PRODUCTS=JSON.parse(catalogMatch[1]);
+const PRODUCTS=JSON.parse(catalogMatch[1]);\nconst COMMERCIAL=JSON.parse(fs.readFileSync(path.join(process.cwd(),"data","commercial.json"),"utf8"));
 
 const sessions=new Map();
 const rateLimits=new Map();
@@ -41,18 +41,17 @@ function readBody(req,max=100000){
 }
 function normalise(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim()}
 function productContext(query){
- const words=normalise(query).split(/\s+/).filter(w=>w.length>2&&!["precio","precios","quiero","busco","necesito","cuanto","cuesta","formato","gramos","kilos","producto","productos"].includes(w));
+ const words=normalise(query).split(/\\s+/).filter(w=>w.length>2&&!["precio","precios","quiero","busco","necesito","cuanto","cuesta","formato","gramos","kilos","producto","productos"].includes(w));
  const scored=Object.entries(PRODUCTS).map(([id,p])=>{
-  const hay=normalise([p.name,p.desc,p.tag,p.category].join(" "));
-  const score=words.reduce((n,w)=>n+(hay.includes(w)?1:0),0);
+  const hay=normalise([id,p.name,p.desc,p.tag,p.category].join(" "));
+  const score=words.reduce((n,w)=>n+(hay.includes(w)?2:0),0);
   return {id,p,score};
  }).sort((a,b)=>b.score-a.score);
- const selected=scored.filter(x=>x.score>0).slice(0,16);
- const list=(selected.length?selected:scored.slice(0,30)).map(({id,p})=>({id,name:p.name,category:p.category,description:p.desc,pricePerKg:Number(p.price),image:p.imageVerified===true?p.image:null}));
- return JSON.stringify({products:list,formats:["100 g","250 g","500 g","1 kg","5 kg","10 kg","20 kg","más de 20 kg"],shipping:"El cálculo de envío de la web usa tramos editables y tarifas provisionales. No inventes el importe: si no se proporciona un cálculo exacto, indica que se confirmará."});
+ const selected=scored.filter(x=>x.score>0).slice(0,20);
+ const list=(selected.length?selected:scored.slice(0,40)).map(({id,p})=>({id,name:p.name,category:p.category,description:p.desc,pricePerKg:Number(p.price),image:p.imageVerified===true?p.image:null}));
+ return JSON.stringify({products:list,commercial:COMMERCIAL});
 }
-const SYSTEM="Eres el asistente comercial oficial de Almendras de Málaga, un negocio de frutos secos, almendras, aperitivos, semillas, frutas deshidratadas, caramelos y productos relacionados situado junto a la Catedral de Málaga. Tu misión es atender, recomendar y ayudar a comprar con una conversación natural, profesional, amable y breve. Habla siempre en español salvo que el cliente escriba en otro idioma. Usa únicamente la información del catálogo y contexto que se te proporciona. Los precios del catálogo son orientativos por kilogramo; calcula formatos multiplicando precio/kg por gramos/1000 y redondea a 2 decimales. No inventes stock, ingredientes, certificaciones, alérgenos, origen, descuentos, tarifas de envío ni fechas de entrega. Formatos habituales: 100 g, 250 g, 500 g, 1 kg, 5 kg, 10 kg, 20 kg y cantidades superiores a 20 kg bajo consulta. Para alérgenos e intolerancias, advierte que la confirmación debe hacerse con la etiqueta/ficha técnica del lote; nunca garantices ausencia de trazas. Puedes recomendar productos para recetas, aperitivos, repostería, regalos, hostelería y compras al por mayor. Pregunta solo lo necesario para avanzar. Cuando el cliente quiera comprar, confirma productos, formatos y cantidades. No solicites DNI ni CIF. No pidas datos de pago. Para cerrar, ofrece generar un resumen para WhatsApp o contactar con el negocio. Contacto: +34 666 068 765. Web: https://jmlopez0211-web.github.io/almendras-de-malaga/ Si una consulta requiere información que no tienes, dilo con claridad y ofrece contacto humano. No afirmes que has realizado pedidos, reservado stock o cobrado.";
-function rateLimit(key){
+const SYSTEM="Eres el asistente comercial oficial de Almendras de Málaga. Atiendes tanto la web como WhatsApp con el mismo criterio, catálogo y reglas. Tu misión es recomendar, informar y ayudar a preparar pedidos de frutos secos, almendras, aperitivos, semillas, frutas deshidratadas, caramelos y productos relacionados. Habla en español salvo que el cliente escriba en otro idioma. Usa únicamente los datos del catálogo y la información comercial JSON proporcionados en cada consulta. Los precios son orientativos por kilogramo; calcula formatos proporcionalmente y redondea a 2 decimales. Respeta los formatos y tarifas de envío que aparecen en el contexto; si las tarifas figuran como provisionales, comunícalo claramente y no las presentes como confirmadas. No inventes stock, ingredientes, certificaciones, alérgenos, origen, descuentos, tarifas, plazos ni fechas de entrega. Para alérgenos, remite a etiqueta o ficha técnica del lote; nunca garantices ausencia de trazas. Puedes recomendar productos para recetas, aperitivos, repostería, regalos, hostelería y compras al por mayor. Pregunta solo lo necesario para avanzar. Cuando quieran comprar, confirma productos, formatos y cantidades, y ofrece preparar un resumen de pedido. No solicites DNI ni CIF, no pidas datos de pago y no afirmes que has realizado pedidos, reservado stock o cobrado. Contacto: "+COMMERCIAL.contact.primaryPhone+". Web: "+COMMERCIAL.contact.web+". Si necesitas información que no tienes, dilo claramente y ofrece contacto humano.";function rateLimit(key){
  const now=Date.now();const data=rateLimits.get(key)||{count:0,start:now};
  if(now-data.start>RATE_WINDOW_MS){data.count=0;data.start=now}
  data.count++;rateLimits.set(key,data);
