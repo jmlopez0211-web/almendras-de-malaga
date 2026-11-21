@@ -371,3 +371,12 @@ body{background:#f7f4eb}.wrap{max-width:none;padding:0}.top{max-width:1280px;mar
 @keyframes assistantGlow{0%{box-shadow:0 8px 24px rgba(31,73,51,.32),0 0 0 0 rgba(182,139,75,.3)}70%{box-shadow:0 8px 24px rgba(31,73,51,.32),0 0 0 9px rgba(182,139,75,0)}100%{box-shadow:0 8px 24px rgba(31,73,51,.32),0 0 0 0 rgba(182,139,75,0)}}
 @media(max-width:560px){.chat-fab{right:15px;bottom:82px;padding:12px 16px 12px 13px;font-size:13px}.chat-fab::after{display:none}.chat-panel{right:12px;bottom:143px;width:min(370px,calc(100vw - 24px));height:min(520px,calc(100dvh - 170px))}}
 @media(prefers-reduced-motion:reduce){.chat-fab{animation:none;transition:none}.chat-fab::after{transition:none}}
+
+/* Burbuja inteligente de bienvenida */
+.assistant-welcome-bubble{position:fixed;right:24px;bottom:145px;z-index:79;max-width:min(270px,calc(100vw - 40px));border:1px solid #d8c39b;border-radius:18px 18px 5px 18px;padding:13px 16px;background:#fffaf0;color:#244331;font:600 13px/1.4 'DM Sans',sans-serif;box-shadow:0 8px 26px #1b392b30;cursor:pointer;opacity:0;transform:translateY(8px) scale(.96);transition:opacity .35s,transform .35s;}
+.assistant-welcome-bubble::after{content:'';position:absolute;right:18px;bottom:-7px;width:13px;height:13px;background:#fffaf0;border-right:1px solid #d8c39b;border-bottom:1px solid #d8c39b;transform:rotate(45deg)}
+.assistant-welcome-bubble.visible{opacity:1;transform:translateY(0) scale(1);animation:welcomeBubblePulse 3.8s ease-in-out 1}
+.assistant-welcome-bubble:hover{background:#f5e8ce;transform:translateY(-2px)}
+@keyframes welcomeBubblePulse{0%,100%{transform:translateY(0) scale(1)}15%{transform:translateY(-3px) scale(1.02)}30%{transform:translateY(0) scale(1)}}
+@media(max-width:560px){.assistant-welcome-bubble{right:16px;bottom:140px;max-width:calc(100vw - 75px);font-size:12px;padding:11px 13px}}
+@media(prefers-reduced-motion:reduce){.assistant-welcome-bubble,.assistant-welcome-bubble.visible{transition:none;animation:none;transform:none}}
