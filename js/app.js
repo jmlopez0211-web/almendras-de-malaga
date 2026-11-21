@@ -319,7 +319,7 @@ function answerProductQuestion(raw){
  const q=normalizeCatalogText(raw);
  const all=Object.entries(products);
  const ignored=['100','250','500','1000','g','gr','kg','precio','precios','cuanto','cuantos','cuanta','cuantas','cuesta','vale','coste','tenei','teneis','tiene','tienen','hay','disponibilidad','disponible','stock','formato','formatos','gramo','gramos','peso','kilo','kilos','quiero','busco','necesito','producto','productos','favor','por','de','del','la','el','los','las','un','una','con','sin','para','que','es','son','me','dime','consulta','consultar'];
- const words=catalogSearchWords(q).filter(w=>!ignored.includes(w));
+ const searchQuery=q.replace(/\\b(?:100|250|500|1000|5000|10000|20000)\\s*(?:g|gr|gramos)?\\b|\\b(?:1|5|10|20)\\s*(?:kg|kilo|kilos)\\b/g,' ');\n const words=catalogSearchWords(searchQuery).filter(w=>!ignored.includes(w));
  const matches=all.filter(([id,p])=>{
   const haystack=normalizeCatalogText([p.name,p.desc,p.tag,p.category,catalogGroup(p)].join(' '));
   return words.length>0&&words.every(w=>haystack.includes(w));
@@ -334,7 +334,7 @@ function answerProductQuestion(raw){
   return matches.slice(0,6).map(([id,p])=>p.name+': '+euroPrice(p.price*requestedGrams/1000)+' por '+requestedGrams+' g ('+euroPrice(p.price)+' / kg orientativo).').join('\\n')+'\\nEl precio final y la disponibilidad deben confirmarse.';
  }
  if(matches.length&&/precio|cu[aá]nto|coste|vale|format|gram|peso|kilo|kg|cantidad/.test(q)){
-  return matches.slice(0,6).map(([id,p])=>p.name+': '+euroPrice(p.price)+' / kg orientativo. Formatos: 100 g ('+euroPrice(p.price*.1)+'), 250 g ('+euroPrice(p.price*.25)+'), 500 g ('+euroPrice(p.price*.5)+') y 1 kg ('+euroPrice(p.price)+').').join('\\n')+'\\nEl importe final y la disponibilidad deben confirmarse con Don Miguel y Fabián.';
+  return matches.slice(0,6).map(([id,p])=>p.name+': '+euroPrice(p.price)+' / kg orientativo. Formatos: 100 g ('+euroPrice(p.price*.1)+'), 250 g ('+euroPrice(p.price*.25)+'), 500 g ('+euroPrice(p.price*.5)+'), 1 kg ('+euroPrice(p.price)+'), 5 kg ('+euroPrice(p.price*5)+'), 10 kg ('+euroPrice(p.price*10)+') y 20 kg ('+euroPrice(p.price*20)+').').join('\\n')+'\\nEl importe final y la disponibilidad deben confirmarse con Don Miguel y Fabián.';
  }
  if(matches.length)return 'He encontrado estas referencias en el catálogo:\\n'+matches.slice(0,8).map(([id,p])=>'• '+p.name+' — '+euroPrice(p.price)+' / kg orientativo').join('\\n')+'\\n\\nFormatos: 100 g, 250 g, 500 g, 1 kg, 5 kg, 10 kg y 20 kg. Disponibilidad y precio final pendientes de confirmación.';
  if(/formato|gram|peso|tamano|tamaño|kilo|kg|cantidad/.test(q))return 'Puedes solicitar los formatos de 100 g, 250 g, 500 g, 1 kg, 5 kg, 10 kg y 20 kg. Para cantidades superiores, consulta con Don Miguel y Fabián.';
