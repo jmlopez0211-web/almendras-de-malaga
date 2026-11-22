@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Almendras de Málaga — image candidate batch pipeline v6.
+Almendras de Málaga — image candidate batch pipeline v12.
 
 Reads data/catalog.js; searches Wikimedia Commons and Openverse; filters obvious
 irrelevant search results; tries original image URL first, then thumbnail; saves
@@ -46,7 +46,7 @@ PRODUCT_SEARCH = {
     "revueloEspecial": ["mixed nuts and dried fruit assortment","special mixed nuts snack","revuelto frutos secos especial"],
     "revueloTresPasas": ["mixed nuts with three types raisins","nuts raisins mix","revuelto tres pasas"],
     "revueloPacoJose": ["Paco Jose mixed nuts","Paco José frutos secos mix","mixed nuts assortment"],
-    "revueloDulceMCarmen": ["sweet nut mix candied nuts","sweet mixed nuts dried fruit","revuelto dulce"],
+    "revueloDulceMCarmen": ["sweet mix assortment","sweet confectionery mix","mezcla dulce frutos secos"],
     "revueloDeliciasVirginia": ["Virginia nut mix","mixed nuts Virginia","Delicias Virginia frutos secos"],
     "melonDeshidratado": ["dried melon slices","dehydrated melon pieces","melon deshidratado"],
     "aloeDeshidratada": ["candied dried aloe vera pieces","dried aloe vera snack","aloe vera deshidratada"],
@@ -330,10 +330,17 @@ PRODUCT_IDENTITY_GROUPS = {
                           ["covered", "coated", "chocolate covered", "chocolate-coated"]],
 }
 PRODUCT_FORBIDDEN_TERMS = {
+    "almendraFritaGirasol": ["olive oil", "aceite de oliva", "peanut oil", "aceite de cacahuete"],
+    "almendraFritaSinSal": ["salted", "with salt", "salty", "con sal"],
+    "cacahueteFritoRepeladoSinSal": ["salted", "with salt", "salty", "con sal", "in shell", "with shell", "con cáscara", "con cascara"],
     "cacahueteTostadoRepeladoSinSal": [
         "salted", "with salt", "salty", "con sal", "in shell", "with shell",
         "con cáscara", "con cascara", "cáscara y sal", "cascara y sal"
     ],
+    "anacardoFritoSinSal": ["salted", "with salt", "salty", "con sal"],
+    "macadamiaFritaSal": ["unsalted", "no salt", "without salt", "sin sal"],
+    "macadamiaFritaSinSal": ["salted", "with salt", "salty", "con sal"],
+    "macadamiaTostadaSinSal": ["salted", "with salt", "salty", "con sal"],
     "melonDeshidratado": ["bitter melon", "melón amargo", "melon amargo", "momordica", "goya"],
     "nuezCaramelizada": ["pain au chocolat", "pain au choc", "pastry", "croissant", "bakery"],
     "revueloEspecial": ["space food", "comida espacial"],
