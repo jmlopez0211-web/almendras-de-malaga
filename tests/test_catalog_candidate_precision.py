@@ -103,6 +103,22 @@ class TestCatalogCandidatePrecision(unittest.TestCase):
         )
         self.assertLess(score, 0)
 
+    def test_accepts_core_food_when_visual_variant_metadata_is_missing(self):
+        score, reasons = self.score(
+            "almendraFritaSinSal",
+            "Almonds close-up"
+        )
+        self.assertGreaterEqual(score, 4)
+        self.assertIn("variant_metadata_unverified", reasons)
+
+    def test_accepts_macadamia_without_salt_metadata_for_visual_review(self):
+        score, reasons = self.score(
+            "macadamiaFritaSinSal",
+            "Macadamia nuts"
+        )
+        self.assertGreaterEqual(score, 4)
+        self.assertIn("variant_metadata_unverified", reasons)
+
     def test_accepts_only_explicit_taco_miel_candy_evidence(self):
         score, reasons = self.score("tacoMiel", "Honey candy confection")
         self.assertGreater(score, 0)
