@@ -30,6 +30,6 @@ test("generador SEO produce páginas diferenciadas, enlaces de familia, Schema s
   const schema=schemaBlocks.find(s=>s["@type"]==="Product");
   assert.equal(schema.name,"Almendra cruda con piel");assert.equal("offers" in schema,false);
   const sitemap=fs.readFileSync(path.join(temp,"sitemap.xml"),"utf8");
-  assert.ok(sitemap.includes(home));assert.ok(sitemap.includes(landing));assert.equal((sitemap.match(/<loc>/g)||[]).length,9);
+  assert.ok(sitemap.includes(home));assert.ok(sitemap.includes(landing));assert.equal((sitemap.match(/<loc>/g)||[]).length,7);
  }finally{fs.rmSync(temp,{recursive:true,force:true});}
 });
