@@ -30,7 +30,7 @@ for node in TREE.body:
         if names & NEEDED:
             selected.append(node)
 
-namespace = {}
+namespace = {"re": re}
 module = ast.Module(body=selected, type_ignores=[])
 exec(compile(module, str(SCRIPT), "exec"), namespace)
 candidate_score = namespace["candidate_score"]
