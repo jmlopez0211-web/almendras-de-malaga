@@ -51,7 +51,7 @@ for(const url of urls){
   relatedLinkCount+=related;
   const text=html.replace(/<script[\s\S]*?<\/script>/g," ").replace(/<style[\s\S]*?<\/style>/g," ").replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim();
   assert.ok(text.length>=900,"Contenido demasiado corto: "+file+" ("+text.length+" caracteres)");
-  assert.ok(html.includes("Cómo identificar y elegir esta presentación"),"Falta guía de elección: "+file);
+  assert.ok(html.includes("Diferencias dentro de su familia"),"Falta contenido específico de familia: "+file);\n  assert.ok(html.includes("Cómo identificar y elegir esta presentación"),"Falta guía de elección: "+file);
   assert.ok(html.includes("Ideas de uso"),"Falta contenido de usos: "+file);
   assert.ok(html.includes("Preguntas frecuentes sobre"),"FAQ visible ausente: "+file);
   const contentFingerprint=html.match(/<section aria-labelledby="about-title">([\s\S]*?)<\/section>/)?.[1]||"";
