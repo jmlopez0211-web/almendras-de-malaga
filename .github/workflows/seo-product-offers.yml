@@ -1,4 +1,4 @@
-name: Auditoría y reparación SEO de productos
+name: Auditoría Schema SEO
 
 on:
   workflow_dispatch:
@@ -7,13 +7,13 @@ on:
   push:
     branches: [main]
     paths:
-      - "scripts/fix-product-offers.js"
       - "scripts/generate-seo-pages.js"
       - "scripts/seo-check.js"
       - "sitemap.xml"
+      - "productos/**"
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   audit:
@@ -23,18 +23,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Reparar únicamente Product Offer incompletos
-        run: node scripts/fix-product-offers.js
-      - name: Validar sitemap y datos estructurados
-        run: node scripts/seo-check.js
-      - name: Publicar correcciones automáticas
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add productos/
-          if git diff --cached --quiet; then
-            echo "No hay páginas que corregir."
-          else
-            git commit -m "Corrige datos estructurados Product Offer"
-            git push
-          fi
+      - name: Validar datos estructurados y páginas SEO
+        run: npm run seo:check
