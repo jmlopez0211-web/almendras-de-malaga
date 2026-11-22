@@ -611,7 +611,9 @@ def main():
     if args.resume:
         retry = {"SOURCE_ERROR", "INCOMPLETE_SEARCH", "DOWNLOAD_FAILED",
                  "CANDIDATES_FOUND_DOWNLOAD_FAILED", "RATE_LIMITED", "NO_CANDIDATES",
-                 "NO_RESULTS_RELEVANT", "CANDIDATES_FOUND_DOWNLOAD_FAILED"}
+                 "PARTIAL_SOURCE_FAILURE"}
+        if args.retry_no_candidates:
+            retry.add("NO_RESULTS_RELEVANT")
         products = [(k, n) for k, n in products
                     if k not in processed or processed[k].get("status") in retry
                     or (args.recheck_downloaded and processed[k].get("status") == "DOWNLOADED_UNVERIFIED")]
