@@ -71,7 +71,7 @@ function faqFor(t, related, id) {
 }
 export function buildProductContent(product, id, category, related) {
   const t = traits(product), v = variant(id, 4);
-  const intro = introTemplates[v](t);
+  const intro = `${t.name}: ${introTemplates[v](t)}`;
   const selection = selectionTemplates[v % selectionTemplates.length](t);
   const use = useTemplates[(v + 1) % useTemplates.length](t);
   const comparison = compareTemplates[v % compareTemplates.length](t, related);
