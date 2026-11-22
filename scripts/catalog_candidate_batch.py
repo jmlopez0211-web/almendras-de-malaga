@@ -111,7 +111,7 @@ CORE_TERMS = {
     "revueloEspecial": ["mixed nuts","nut mix","nuts","frutos secos","revuelto"],
     "revueloTresPasas": ["mixed nuts","nut mix","raisins","pasas","revuelto"],
     "revueloPacoJose": ["mixed nuts","nut mix","nuts","frutos secos","revuelto"],
-    "revueloDulceMCarmen": ["mixed nuts","nut mix","candied nuts","frutos secos","revuelto"],
+    "revueloDulceMCarmen": ["sweet mix","sweet assortment","candy mix","mezcla dulce","mixed sweets","sweet snack mix"],
     "revueloDeliciasVirginia": ["mixed nuts","nut mix","nuts","frutos secos","revuelto"],
     "melonDeshidratado": ["melon","melón"],
     "aloeDeshidratada": ["aloe","aloe vera"],
@@ -296,8 +296,7 @@ PRODUCT_IDENTITY_GROUPS = {
     "revueloTresPasas": [["mixed nuts", "nuts mix", "nut mix", "assorted nuts", "trail mix"],
                          ["raisins", "raisin", "pasas"]],
     "revueloPacoJose": [["mixed nuts", "nuts mix", "nut mix", "assorted nuts", "trail mix"]],
-    "revueloDulceMCarmen": [["mixed nuts", "nuts mix", "nut mix", "assorted nuts", "trail mix"],
-                            ["sweet", "candied", "caramelized", "caramelised", "garrapiñada"]],
+    "revueloDulceMCarmen": [["sweet mix", "sweet assortment", "candy mix", "mezcla dulce", "mixed sweets", "sweet snack mix"]],
     "revueloDeliciasVirginia": [["mixed nuts", "nuts mix", "nut mix", "assorted nuts", "trail mix"]],
     "revueltoChocolates": [["mixed chocolate", "chocolate assortment", "assorted chocolates"],
                           ["nuts", "nut", "fruit", "fruits"]],
@@ -335,7 +334,7 @@ PRODUCT_FORBIDDEN_TERMS = {
         "salted", "with salt", "salty", "con sal", "in shell", "with shell",
         "con cáscara", "con cascara", "cáscara y sal", "cascara y sal"
     ],
-    "melonDeshidratado": ["bitter melon", "momordica", "goya"],
+    "melonDeshidratado": ["bitter melon", "melón amargo", "melon amargo", "momordica", "goya"],
     "nuezCaramelizada": ["pain au chocolat", "pain au choc", "pastry", "croissant", "bakery"],
     "revueloEspecial": ["space food", "comida espacial"],
     "revueloDulceMCarmen": ["stew", "guiso", "porotos", "chorizo", "soup"],
@@ -519,6 +518,11 @@ def candidate_score(key, candidate):
     if missing_identity:
         return -100, ["missing_product_family_identity"]
 
+    BLEND_COMPOSITION_KEYS = {
+        "revueloEspecial", "revueloTresPasas", "revueloPacoJose",
+        "revueloDulceMCarmen", "revueloDeliciasVirginia", "revueltoChocolates"
+    }
+
     SOFT_VARIANT_KEYS = {
         "almendraFritaGirasol", "almendraFritaSinSal",
         "cacahueteFritoRepeladoSinSal", "cacahueteTostadoRepeladoSinSal",
@@ -532,6 +536,8 @@ def candidate_score(key, candidate):
 
     score = 6
     reasons = ["product_identity_in_title_or_tags"]
+    if key in BLEND_COMPOSITION_KEYS:
+        reasons.append("blend_composition_unverified")
     groups = MATCH_GROUPS.get(key, [])
     missing_groups = []
     for group in groups:
