@@ -5,7 +5,8 @@ on:
     branches: [main]
     paths:
       - "data/catalog.js"
-      - "scripts/generate-seo-pages.js"\n      - "scripts/product-content-seo.js"
+      - "scripts/generate-seo-pages.js"
+      - "scripts/product-content-seo.js"
       - "scripts/seo-check.js"
       - "tests/seo-generator.test.js"
   workflow_dispatch:
