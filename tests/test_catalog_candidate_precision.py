@@ -166,6 +166,33 @@ class TestCatalogCandidatePrecision(unittest.TestCase):
         score, reasons = self.score("revueloEspecial", "Mixed nuts assortment")
         self.assertGreaterEqual(score, 4)
         self.assertIn("product_identity_in_title_or_tags", reasons)
+        self.assertIn("blend_composition_unverified", reasons)
+
+    def test_rejects_pastry_as_caramelized_walnuts(self):
+        score, _ = self.score(
+            "nuezCaramelizada",
+            "Roasted walnut and honey caramel pain au chocolat"
+        )
+        self.assertLess(score, 0)
+
+    def test_rejects_product_word_only_in_description(self):
+        score, _ = self.score(
+            "chocolateNuezLeche",
+            "Dessert plate",
+            "Walnuts and milk chocolate"
+        )
+        self.assertLess(score, 0)
+
+    def test_rejects_unsalted_macadamia_for_salted_product(self):
+        score, _ = self.score("macadamiaFritaSal", "Unsalted macadamia nuts")
+        self.assertLess(score, 0)
+
+    def test_sweet_mix_requires_sweet_mix_identity(self):
+        score, _ = self.score(
+            "revueloDulceMCarmen",
+            "Guiso de porotos con chorizo y vegetales"
+        )
+        self.assertLess(score, 0)
 
     def test_accepts_only_explicit_taco_miel_candy_evidence(self):
         score, reasons = self.score("tacoMiel", "Honey candy confection")
