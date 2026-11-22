@@ -154,6 +154,37 @@ def main() -> int:
             if diagnostic:
                 ok = fail(diagnostic) and ok
 
+    # Scan nested HTML pages as well (blog, products, categories and local landing pages).
+    # The release validator previously checked only root-level HTML; this missed
+    # relative links such as ../../#catalogo escaping a GitHub Pages project site.
+    excluded_dirs = {".git", "node_modules", "auditoria", "__pycache__", ".venv", "venv"}
+    nested_html_files = sorted(
+        page for page in ROOT.rglob("*.html")
+        if page.parent != ROOT and not any(part in excluded_dirs for part in page.parts)
+    )
+    project_origin = "https://jmlopez0211-web.github.io/"
+    project_base = project_origin + "almendras-de-malaga/"
+
+    for page in nested_html_files:
+        content = page.read_text(encoding="utf-8")
+        parser = AuditHTML()
+        parser.feed(content)
+
+        for reference in parser.hrefs:
+            if reference.startswith(project_origin) and not reference.startswith(project_base):
+                ok = fail(
+                    f"{page.relative_to(ROOT)} links outside the GitHub Pages project: {reference}"
+                ) and ok
+                continue
+            diagnostic = check_local_reference(page, reference)
+            if diagnostic:
+                ok = fail(diagnostic) and ok
+
+        for reference in parser.srcs:
+            diagnostic = check_local_reference(page, reference)
+            if diagnostic:
+                ok = fail(diagnostic) and ok
+
     index_html = INDEX.read_text(encoding="utf-8")
     app_js = APP.read_text(encoding="utf-8")
     css = CSS.read_text(encoding="utf-8")
@@ -209,7 +240,7 @@ def main() -> int:
     if ok:
         print(
             f"PASS: {len(products)} products; local assets; all {len(html_files)} HTML pages; "
-            "internal links; accessibility; primary/secondary phone routing; sitemap and script order."
+            "root and nested internal links; GitHub Pages project-boundary safety; accessibility; primary/secondary phone routing; sitemap and script order."
         )
         return 0
     return 1
