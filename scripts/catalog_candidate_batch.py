@@ -24,7 +24,8 @@ REPORT = ROOT / "docs/candidate_batch_report.json"
 MANIFEST = ROOT / "photo_candidates_next.json"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 OPENVERSE_API = "https://api.openverse.org/v1/images/"
-UA = "AlmendrasDeMalagaCatalogPhotoAudit/8.0"
+UA = "AlmendrasDeMalagaCatalogPhotoAudit/9.1"
+ENGINE_VERSION = "9.1"
 TIMEOUT = (8, 22)
 ALLOWED = {"image/jpeg", "image/png", "image/webp"}
 MIN_W, MIN_H, MAX_BYTES = 900, 700, 25 * 1024 * 1024
@@ -682,6 +683,36 @@ def download_candidate(key, candidate):
             continue
     return {"status": "DOWNLOAD_FAILED", "url_errors": errors}
 
+def select_resume_products(products, processed, retry_no_candidates=False,
+                           recheck_downloaded=False, force_retry=False):
+    """Select each retryable product once per engine version unless forced.
+
+    This prevents --resume from repeatedly selecting the same failed/no-result
+    products and starving later entries in the missing-image list.
+    """
+    retry_statuses = {
+        "SOURCE_ERROR", "INCOMPLETE_SEARCH", "DOWNLOAD_FAILED",
+        "CANDIDATES_FOUND_DOWNLOAD_FAILED", "RATE_LIMITED",
+        "NO_CANDIDATES", "PARTIAL_SOURCE_FAILURE"
+    }
+    selected = []
+    for key, name in products:
+        previous = processed.get(key)
+        if previous is None:
+            selected.append((key, name))
+            continue
+        status = previous.get("status")
+        already_retried_this_version = (
+            previous.get("last_resume_engine_version") == ENGINE_VERSION
+        )
+        retryable = status in retry_statuses
+        retryable = retryable or (retry_no_candidates and status == "NO_RESULTS_RELEVANT")
+        retryable = retryable or (recheck_downloaded and status == "DOWNLOADED_UNVERIFIED")
+        if retryable and (force_retry or not already_retried_this_version):
+            selected.append((key, name))
+    return selected
+
+
 def main():
     ap = argparse.ArgumentParser(description="Search and download unapproved product-image candidates")
     ap.add_argument("--limit", type=int, default=5)
@@ -692,6 +723,8 @@ def main():
     ap.add_argument("--include-mango", action="store_true")
     ap.add_argument("--recheck-downloaded", action="store_true",
                     help="Volver a buscar y revisar productos ya descargados por versiones anteriores")
+    ap.add_argument("--force-retry", action="store_true",
+                    help="Ignorar la marca de reintento de esta versión y volver a intentar estados fallidos")
     ap.add_argument("--diagnose", action="store_true")
     args = ap.parse_args()
     if args.diagnose:
@@ -721,14 +754,13 @@ def main():
         mango = ("mangoDeshidratado", cat.get("mangoDeshidratado", {}).get("name", "Mango deshidratado"))
         products = [mango] + [x for x in products if x[0] != mango[0]]
     if args.resume:
-        retry = {"SOURCE_ERROR", "INCOMPLETE_SEARCH", "DOWNLOAD_FAILED",
-                 "CANDIDATES_FOUND_DOWNLOAD_FAILED", "RATE_LIMITED", "NO_CANDIDATES",
-                 "PARTIAL_SOURCE_FAILURE"}
-        if args.retry_no_candidates:
-            retry.add("NO_RESULTS_RELEVANT")
-        products = [(k, n) for k, n in products
-                    if k not in processed or processed[k].get("status") in retry
-                    or (args.recheck_downloaded and processed[k].get("status") == "DOWNLOADED_UNVERIFIED")]
+        products = select_resume_products(
+            products,
+            processed,
+            retry_no_candidates=args.retry_no_candidates,
+            recheck_downloaded=args.recheck_downloaded,
+            force_retry=args.force_retry
+        )
     else:
         products = products[max(0, args.start):]
     batch = products[:max(1, args.limit)]
@@ -789,8 +821,17 @@ def main():
                     "candidates": candidates[:12], "download": download_result,
                     "status": record["status"]}
 
-        processed[key] = {"status": record["status"], "timestamp": time.time(),
-                          "candidate_count": len(candidates)}
+        previous_progress = processed.get(key, {})
+        processed[key] = {
+            "status": record["status"],
+            "timestamp": time.time(),
+            "candidate_count": len(candidates),
+            "search_engine_version": ENGINE_VERSION,
+            "last_resume_engine_version": (
+                ENGINE_VERSION if args.resume
+                else previous_progress.get("last_resume_engine_version")
+            )
+        }
         if any(e.get("status") == "RATE_LIMITED" and e.get("source") == "Wikimedia Commons" for e in errors):
             state["commons_blocked_until"] = time.time() + 900
         elif not commons_blocked:
