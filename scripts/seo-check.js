@@ -11,9 +11,8 @@ assert.equal(new Set(urls).size,urls.length,"Sitemap contiene URLs duplicadas");
 assert.ok(robots.includes("Sitemap: "+baseUrl+"sitemap.xml"),"robots.txt debe declarar sitemap");
 
 const canonical=html=>html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i)?.[1]||null;
-const getMeta=(html,name)=>html.match(new RegExp('<meta\\s+(?:name|property)=["\\']'+name+'["\\']\\s+content=["\\']([^"\\']+)["\\']','i'))?.[1]||"";
 const productTitles=new Set(),productDescriptions=new Set(),contentHashes=new Set();
-let products=0,categories=0,shortContent=0,faqCount=0,relatedLinkCount=0;
+let products=0,categories=0,faqCount=0,relatedLinkCount=0;
 
 for(const url of urls){
  assert.ok(url.startsWith(baseUrl),"URL fuera del dominio: "+url);
@@ -47,7 +46,7 @@ for(const url of urls){
   assert.ok(breadcrumb&&breadcrumb.itemListElement.length>=3,"BreadcrumbList incompleto: "+file);
   assert.ok(faq&&faq.mainEntity.length>=3,"FAQPage Schema ausente o incompleto: "+file);
   assert.ok(html.includes("Productos relacionados para comparar"),"Falta sección de enlaces relacionados: "+file);
-  const related=[...html.matchAll(/href=["']([^"']+)["'][^>]*>([^<]+)<\/a>/g)].filter(m=>m[1].endsWith(".html")&&m[1].startsWith("")).length;
+  const related=[...html.matchAll(/href=["']([^"']+)["'][^>]*>([^<]+)<\/a>/g)].filter(m=>m[1].endsWith(".html")).length;
   relatedLinkCount+=related;
   const text=html.replace(/<script[\s\S]*?<\/script>/g," ").replace(/<style[\s\S]*?<\/style>/g," ").replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim();
   assert.ok(text.length>=900,"Contenido demasiado corto: "+file+" ("+text.length+" caracteres)");
