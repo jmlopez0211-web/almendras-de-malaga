@@ -10,7 +10,7 @@ const SHIPPING_TIERS = [
  {maxGrams:Infinity,label:"Más de 20 kg",price:15.00}
 ];
 // Fuente común: data/commercial.json. Si no se puede cargar, se mantienen estos valores provisionales.
-fetch("data/commercial.json").then(r=>r.ok?r.json():Promise.reject()).then(config=>{const tiers=config?.shipping?.tiers;if(Array.isArray(tiers)&&tiers.length===SHIPPING_TIERS.length){tiers.forEach((t,i)=>{SHIPPING_TIERS[i].maxGrams=t.maxGrams??Infinity;SHIPPING_TIERS[i].label=t.label;SHIPPING_TIERS[i].price=Number(t.price)});}}).catch(()=>{});
+fetch("data/commercial.json").then(r=>r.ok?r.json():Promise.reject()).then(config=>{const tiers=config?.shipping?.tiers;if(Array.isArray(tiers)&&tiers.length===SHIPPING_TIERS.length){tiers.forEach((t,i)=>{SHIPPING_TIERS[i].maxGrams=t.maxGrams??Infinity;SHIPPING_TIERS[i].label=t.label;SHIPPING_TIERS[i].price=Number(t.price)});window.dispatchEvent(new Event("almendras:shipping-updated"));}}).catch(()=>{});
 function calculateShipping(totalGrams){
  const grams=Math.max(0,Number(totalGrams)||0);
  if(grams===0)return {maxGrams:0,label:"Sin productos",price:0};
@@ -273,6 +273,7 @@ document.getElementById('addToCart').onclick=()=>{
  openModal('cartModal');
 };
 renderCart();
+window.addEventListener('almendras:shipping-updated',renderCart);
 window.addEventListener('almendras:cart-updated',event=>{
  cart.length=0;
  const incoming=Array.isArray(event.detail)?event.detail:[];
@@ -310,10 +311,10 @@ function buildCartOrderMessage(){
   +'⚖️ *PESO TOTAL:* '+totalGrams.toLocaleString('es-ES')+' g ('+(totalGrams/1000).toLocaleString('es-ES',{maximumFractionDigits:3})+' kg)\n'
   +'🚚 *ENVÍO:* '+shippingTier.label+' · '+euro(shippingTier.price)+'\n'
   +'🧾 *SUBTOTAL PRODUCTOS:* '+euro(subtotalProducts)+'\n'
-  +'💰 *TOTAL FINAL:* '+euro(finalTotal)+'\n\n'
+  +'💰 *TOTAL ORIENTATIVO:* '+euro(finalTotal)+'\n\n'
   +'📝 *Observaciones:* '+(notes||'Ninguna')+'\n\n'
   +'📍 Pedido realizado desde el catálogo web.\n'
-  +'El envío se calcula automáticamente por peso. Una vez recibido el pago, prepararemos y enviaremos el pedido.';
+  +'El envío mostrado es provisional. Esta solicitud no confirma pedido, disponibilidad, precio final ni pago; el negocio lo confirmará por WhatsApp.';
 }
 
 document.getElementById('sendCartWhatsApp666').onclick=()=>{const message=buildCartOrderMessage();if(message)window.location.href='https://wa.me/34666068765?text='+encodeURIComponent(message)};
