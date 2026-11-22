@@ -69,8 +69,11 @@ test("generador SEO diferencia fichas, conserva el sitemap y mantiene lastmod so
   const almendraUrl=home+"productos/"+almendraFile;
   const pistachoFile=productFiles.find(file=>file.includes("pistacho"));
   const pistachoUrl=home+"productos/"+pistachoFile;
+  const mangoFile=productFiles.find(file=>file.includes("mango"));
+  const mangoUrl=home+"productos/"+mangoFile;
   assert.equal(lastmodFor(stableSitemap,almendraUrl),"2020-01-01");
   assert.equal(lastmodFor(stableSitemap,pistachoUrl),"2020-01-01");
+  assert.equal(lastmodFor(stableSitemap,mangoUrl),"2020-01-01");
   assert.equal(lastmodFor(stableSitemap,home),"2021-02-03");
   assert.equal(lastmodFor(stableSitemap,landing),"2020-04-05");
 
@@ -80,7 +83,8 @@ test("generador SEO diferencia fichas, conserva el sitemap y mantiene lastmod so
   runGenerator();
   const changedSitemap=fs.readFileSync(path.join(temp,"sitemap.xml"),"utf8");
   assert.notEqual(lastmodFor(changedSitemap,almendraUrl),"2020-01-01");
-  assert.equal(lastmodFor(changedSitemap,pistachoUrl),"2020-01-01");
+  assert.notEqual(lastmodFor(changedSitemap,pistachoUrl),"2020-01-01");
+  assert.equal(lastmodFor(changedSitemap,mangoUrl),"2020-01-01");
   assert.equal(lastmodFor(changedSitemap,home),"2021-02-03");
   assert.equal(lastmodFor(changedSitemap,landing),"2020-04-05");
  }finally{
