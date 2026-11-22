@@ -164,13 +164,23 @@ def load_manifest(path: Path) -> list[dict]:
     return data
 
 def download_manifest(manifest=DEFAULT_MANIFEST, out_dir=DEFAULT_OUT, **kwargs) -> dict:
+    # Normalize relative paths against repository root, not the caller's current
+    # working directory. This avoids Path.relative_to failures when invoked from
+    # Termux/proot or a workflow with a different cwd.
+    manifest = Path(manifest)
+    if not manifest.is_absolute():
+        manifest = ROOT / manifest
+    out_dir = Path(out_dir)
+    if not out_dir.is_absolute():
+        out_dir = ROOT / out_dir
+    out_dir = out_dir.resolve()
     results = []
     request_delay = kwargs.pop("request_delay", 3.0)
-    for index, item in enumerate(load_manifest(Path(manifest))):
+    for index, item in enumerate(load_manifest(manifest)):
         if index:
             time.sleep(request_delay)
         results.append(download_one(item, out_dir, **kwargs))
-    report={"download_results":results,"inspection":inspect_directory(Path(out_dir)),
+    report={"download_results":results,"inspection":inspect_directory(out_dir),
             "note":"All downloads are candidates. This report does not approve or verify catalog products."}
     REPORT.parent.mkdir(parents=True,exist_ok=True)
     REPORT.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding="utf-8")

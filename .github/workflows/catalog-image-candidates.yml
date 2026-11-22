@@ -1,0 +1,50 @@
+name: Catalog image candidate search
+
+on:
+  workflow_dispatch:
+    inputs:
+      start:
+        description: "Start index in missing-image product list (0-based)"
+        required: true
+        default: "0"
+      limit:
+        description: "Number of products in this batch (keep batches small)"
+        required: true
+        default: "8"
+      delay:
+        description: "Delay between source queries in seconds"
+        required: true
+        default: "2.5"
+
+permissions:
+  contents: read
+
+jobs:
+  search-candidates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install search and image validation dependencies
+        run: python -m pip install --upgrade requests pillow
+      - name: Search exact product variants and download unapproved candidates
+        run: |
+          python scripts/catalog_candidate_batch.py \
+            --start "${{ inputs.start }}" \
+            --limit "${{ inputs.limit }}" \
+            --delay "${{ inputs.delay }}"
+      - name: Upload candidate images and search reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: catalog-image-candidates-start-${{ inputs.start }}
+          path: |
+            assets/images/candidates/
+            docs/candidate_batch_report.json
+            docs/photo_candidates_next.json
+            docs/candidate_batch_state.json
+          if-no-files-found: warn
+          retention-days: 14
