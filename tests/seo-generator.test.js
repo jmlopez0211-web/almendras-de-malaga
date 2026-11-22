@@ -31,5 +31,39 @@ test("generador SEO produce páginas diferenciadas, enlaces de familia, Schema s
   assert.equal(schema.name,"Almendra cruda con piel");assert.equal("offers" in schema,false);
   const sitemap=fs.readFileSync(path.join(temp,"sitemap.xml"),"utf8");
   assert.ok(sitemap.includes(home));assert.ok(sitemap.includes(landing));assert.equal((sitemap.match(/<loc>/g)||[]).length,7);
+
+  // Dates for static landing pages are retained rather than refreshed by the generator.
+  const lastmodFor=(xml,url)=>{
+   const entry=[...xml.matchAll(/<url><loc>([^<]+)<\\/loc>(?:<lastmod>([^<]+)<\\/lastmod>)?<\\/url>/g)].find(match=>match[1]===url);
+   return entry?.[2]||null;
+  };
+  const withStaticDates=sitemap
+   .replace('<url><loc>'+home+'</loc><lastmod>'+lastmodFor(sitemap,home)+'</lastmod></url>','<url><loc>'+home+'</loc><lastmod>2021-02-03</lastmod></url>')
+   .replace('<url><loc>'+landing+'</loc></url>','<url><loc>'+landing+'</loc><lastmod>2020-04-05</lastmod></url>');
+  const oldGeneratedDates=withStaticDates.replace(/<url><loc>([^<]+)<\\/loc>(?:<lastmod>[^<]+<\\/lastmod>)?<\\/url>/g,(entry,url)=>{
+   return url.startsWith(home+'productos/')||url.startsWith(home+'categorias/')
+    ? '<url><loc>'+url+'</loc><lastmod>2020-01-01</lastmod></url>'
+    : entry;
+  });
+  fs.writeFileSync(path.join(temp,"sitemap.xml"),oldGeneratedDates);
+  execFileSync(process.execPath,[generator],{cwd:temp,encoding:"utf8"});
+  let stableSitemap=fs.readFileSync(path.join(temp,"sitemap.xml"),"utf8");
+  assert.equal(lastmodFor(stableSitemap,home),"2021-02-03");
+  assert.equal(lastmodFor(stableSitemap,landing),"2020-04-05");
+  const almendraUrl=home+"productos/"+almendraFile;
+  const pistachoFile=productFiles.find(file=>file.includes("pistacho"));
+  const pistachoUrl=home+"productos/"+pistachoFile;
+  assert.equal(lastmodFor(stableSitemap,almendraUrl),"2020-01-01");
+  assert.equal(lastmodFor(stableSitemap,pistachoUrl),"2020-01-01");
+
+  // Updating one product's source description changes only pages whose generated HTML changes.
+  catalog.almendraCruda.desc="Almendra cruda con piel; descripción revisada para la prueba de lastmod.";
+  fs.writeFileSync(path.join(temp,"data","catalog.js"),"window.PRODUCTS = "+JSON.stringify(catalog)+";\\n");
+  execFileSync(process.execPath,[generator],{cwd:temp,encoding:"utf8"});
+  const changedSitemap=fs.readFileSync(path.join(temp,"sitemap.xml"),"utf8");
+  assert.notEqual(lastmodFor(changedSitemap,almendraUrl),"2020-01-01");
+  assert.equal(lastmodFor(changedSitemap,pistachoUrl),"2020-01-01");
+  assert.equal(lastmodFor(changedSitemap,home),"2021-02-03");
+  assert.equal(lastmodFor(changedSitemap,landing),"2020-04-05");
  }finally{fs.rmSync(temp,{recursive:true,force:true});}
 });
