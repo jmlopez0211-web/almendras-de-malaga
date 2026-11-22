@@ -1,0 +1,14 @@
+/* Original, scoped holiday section */
+.calle-larios{position:relative;isolation:isolate;overflow:hidden;min-height:360px;margin:28px 0 34px;border:1px solid #d8c6a7;border-radius:24px;background:#203a2b;color:#fff;box-shadow:0 18px 48px #243b2e18}
+.calle-larios-scene{position:absolute;inset:0;z-index:-2;background-image:url("assets/calle-larios-luces-original.svg");background-size:cover;background-position:center 48%;transform:scale(1.005)}
+.calle-larios:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#14271feF 0%,#14271fdd 36%,#14271f83 65%,#14271f36 100%)}
+.calle-larios-content{position:relative;max-width:660px;padding:46px clamp(22px,6vw,68px)}
+.calle-larios-eyebrow{margin:0 0 13px;color:#e7c98f;font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase}
+.calle-larios-eyebrow span{margin-right:8px}
+.calle-larios h2{margin:0 0 14px;color:#fff;font:700 clamp(30px,4.8vw,48px)/1.08 'Playfair Display',serif;letter-spacing:-.025em;text-wrap:balance}
+.calle-larios-content>p:not(.calle-larios-eyebrow){max-width:500px;margin:0 0 22px;color:#f5eee1;font-size:14px;line-height:1.75}
+.calle-larios-cta{display:inline-flex;align-items:center;gap:12px;border-radius:28px;padding:13px 19px;background:#e7c98f;color:#243b2e;text-decoration:none;font-size:12px;font-weight:800;box-shadow:0 5px 18px #0002;transition:transform .2s,filter .2s}
+.calle-larios-cta:hover{transform:translateY(-2px);filter:brightness(1.04)}
+.calle-larios-note{position:absolute;right:14px;bottom:10px;color:#fff9;font-size:9px;letter-spacing:.03em;text-align:right}
+@media(max-width:760px){.calle-larios{min-height:330px;margin:22px 0 28px;border-radius:20px}.calle-larios-scene{background-position:center}.calle-larios:before{background:linear-gradient(90deg,#14271feF 0%,#14271fd8 58%,#14271f7a 100%)}.calle-larios-content{padding:35px 25px}.calle-larios h2{font-size:clamp(30px,8vw,40px)}.calle-larios-content>p:not(.calle-larios-eyebrow){font-size:13px;max-width:360px}.calle-larios-note{max-width:180px}}
+@media(prefers-reduced-motion:reduce){.calle-larios-cta{transition:none}}
