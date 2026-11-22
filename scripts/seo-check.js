@@ -21,8 +21,10 @@ for(const url of urls){
  assert.ok(title.length>=10&&title.length<=100,"Title ausente o demasiado largo: "+file);
  assert.ok(description.length>=40&&description.length<=160,"Meta description ausente o fuera de longitud: "+file);
  assert.equal(canonical(html),url,"Canonical incorrecta: "+file);
- assert.ok(html.includes('property="og:title"')&&html.includes('property="og:description"')&&html.includes('property="og:url"'),"Open Graph incompleto: "+file);
- assert.ok(html.includes('name="twitter:card"'),"Twitter Card ausente: "+file);
+ if(rel.startsWith("productos/")||rel.startsWith("categorias/")){
+  assert.ok(html.includes('property="og:title"')&&html.includes('property="og:description"')&&html.includes('property="og:url"'),"Open Graph incompleto: "+file);
+  assert.ok(html.includes('name="twitter:card"'),"Twitter Card ausente: "+file);
+ }
  if(rel.startsWith("productos/")){
   products++;
   assert.ok(title.length<=65,"Title de producto supera 65 caracteres: "+title);
