@@ -24,8 +24,8 @@ REPORT = ROOT / "docs/candidate_batch_report.json"
 MANIFEST = ROOT / "photo_candidates_next.json"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 OPENVERSE_API = "https://api.openverse.org/v1/images/"
-UA = "AlmendrasDeMalagaCatalogPhotoAudit/12.0"
-ENGINE_VERSION = "12.0"
+UA = "AlmendrasDeMalagaCatalogPhotoAudit/13.0"
+ENGINE_VERSION = "13.0"
 TIMEOUT = (8, 22)
 ALLOWED = {"image/jpeg", "image/png", "image/webp"}
 MIN_W, MIN_H, MAX_BYTES = 900, 700, 25 * 1024 * 1024
@@ -44,7 +44,7 @@ PRODUCT_SEARCH = {
     "nuezCaramelizada": ["caramelized walnuts","candied walnut halves","nuez caramelizada"],
     "revueloTostadoSinSal": ["unsalted roasted mixed nuts","dry roasted nut mix","revuelto tostado sin sal"],
     "revueloEspecial": ["mixed nuts and dried fruit assortment","special mixed nuts snack","revuelto frutos secos especial"],
-    "revueloTresPasas": ["mixed nuts with three types raisins","nuts raisins mix","revuelto tres pasas"],
+    "revueloTresPasas": ["three varieties of raisins","three types of raisins mix","mixed raisin varieties","mezcla de pasas de tres variedades"],
     "revueloPacoJose": ["Paco Jose mixed nuts","Paco José frutos secos mix","mixed nuts assortment"],
     "revueloDulceMCarmen": ["sweet mix assortment","sweet confectionery mix","mezcla dulce frutos secos"],
     "revueloDeliciasVirginia": ["Virginia nut mix","mixed nuts Virginia","Delicias Virginia frutos secos"],
@@ -109,7 +109,7 @@ CORE_TERMS = {
     "nuezCaramelizada": ["walnut","walnuts","nuez","nueces"],
     "revueloTostadoSinSal": ["mixed nuts","nut mix","nuts","frutos secos","revuelto"],
     "revueloEspecial": ["mixed nuts","nut mix","nuts","frutos secos","revuelto"],
-    "revueloTresPasas": ["mixed nuts","nut mix","raisins","pasas","revuelto"],
+    "revueloTresPasas": ["raisin","raisins","pasas"],
     "revueloPacoJose": ["mixed nuts","nut mix","nuts","frutos secos","revuelto"],
     "revueloDulceMCarmen": ["sweet mix","sweet assortment","candy mix","mezcla dulce","mixed sweets","sweet snack mix"],
     "revueloDeliciasVirginia": ["mixed nuts","nut mix","nuts","frutos secos","revuelto"],
@@ -171,6 +171,7 @@ MATCH_GROUPS = {
     "macadamiaTostadaSinSal": [["macadamia"],["roasted","tostada","tostado"]],
     "avellanaAmericanaCruda": [["hazelnut","hazelnuts","avellana","avellanas"],["raw","cruda","crudas"]],
     "nuezCaramelizada": [["walnut","walnuts","nuez","nueces"],["caramelized","candied","caramelizada","garrapiñada"]],
+    "revueloTresPasas": [["three varieties", "three types", "varieties", "variety", "tres variedades", "tres tipos"]],
     "melonDeshidratado": [["melon","melón"],["dried","dehydrated","deshidratado"]],
     "aloeDeshidratada": [["aloe","aloe vera"],["dried","dehydrated","deshidratada"]],
     "cocoDado": [["coconut","coco"],["dried","dehydrated","deshidratado"]],
@@ -293,8 +294,7 @@ PRODUCT_IDENTITY_GROUPS = {
     # Product families that were false-positive in the v11 Termux audit.
     "revueloTostadoSinSal": [["mixed nuts", "nuts mix", "nut mix", "assorted nuts", "trail mix"]],
     "revueloEspecial": [["mixed nuts", "nuts mix", "nut mix", "assorted nuts", "trail mix"]],
-    "revueloTresPasas": [["mixed nuts", "nuts mix", "nut mix", "assorted nuts", "trail mix"],
-                         ["raisins", "raisin", "pasas"]],
+    "revueloTresPasas": [["raisins", "raisin", "pasas"]],
     "revueloPacoJose": [["mixed nuts", "nuts mix", "nut mix", "assorted nuts", "trail mix"]],
     "revueloDulceMCarmen": [["sweet mix", "sweet assortment", "candy mix", "mezcla dulce", "mixed sweets", "sweet snack mix"]],
     "revueloDeliciasVirginia": [["mixed nuts", "nuts mix", "nut mix", "assorted nuts", "trail mix"]],
@@ -331,20 +331,21 @@ PRODUCT_IDENTITY_GROUPS = {
 }
 PRODUCT_FORBIDDEN_TERMS = {
     "almendraFritaGirasol": ["olive oil", "aceite de oliva", "peanut oil", "aceite de cacahuete"],
-    "almendraFritaSinSal": ["salted", "with salt", "salty", "con sal"],
-    "cacahueteFritoRepeladoSinSal": ["salted", "with salt", "salty", "con sal", "in shell", "with shell", "con cáscara", "con cascara"],
+    "almendraFritaSinSal": ["salt", "salted", "with salt", "salty", "con sal", "salado", "salada"],
+    "cacahueteFritoRepeladoSinSal": ["salt", "salted", "with salt", "salty", "con sal", "salado", "salada", "in shell", "with shell", "con cáscara", "con cascara"],
     "cacahueteTostadoRepeladoSinSal": [
-        "salted", "with salt", "salty", "con sal", "in shell", "with shell",
+        "salt", "salted", "salt-roasted", "salt roasted", "with salt", "salty", "con sal", "salado", "salada", "in shell", "with shell",
         "con cáscara", "con cascara", "cáscara y sal", "cascara y sal"
     ],
-    "anacardoFritoSinSal": ["salted", "with salt", "salty", "con sal"],
+    "anacardoFritoSinSal": ["salt", "salted", "with salt", "salty", "con sal", "salado", "salada"],
     "macadamiaFritaSal": ["unsalted", "no salt", "without salt", "sin sal"],
-    "macadamiaFritaSinSal": ["salted", "with salt", "salty", "con sal"],
-    "macadamiaTostadaSinSal": ["salted", "with salt", "salty", "con sal"],
+    "macadamiaFritaSinSal": ["salt", "salted", "with salt", "salty", "con sal", "salado", "salada"],
+    "macadamiaTostadaSinSal": ["salt", "salted", "with salt", "salty", "con sal", "salado", "salada"],
     "melonDeshidratado": ["bitter melon", "melón amargo", "melon amargo", "momordica", "goya"],
     "nuezCaramelizada": ["pain au chocolat", "pain au choc", "pastry", "croissant", "bakery"],
     "revueloEspecial": ["space food", "comida espacial"],
     "revueloDulceMCarmen": ["stew", "guiso", "porotos", "chorizo", "soup"],
+    "revueloTresPasas": ["trail mix", "nut mix", "mixed nuts", "peanuts", "walnuts", "almonds", "sunflower seeds", "pumpkin seeds", "cranberries", "cranberry"],
     "revueloDeliciasVirginia": ["granola bar", "cereal bar", "chewy bar", "nature valley", "barrita", "granola"],
     "chocolateNuezLeche": ["rice pudding", "arroz con leche", "arroz"],
     "chocolateAvellanaNegro": ["chocolate bar", "suklaapatukka", "barrita", "bar of chocolate", "chocolate tablet"],
@@ -888,6 +889,7 @@ def main():
     report_map = {x.get("product_key"): x for x in report if isinstance(x, dict)}
 
     print(f"Pendientes en este bloque: {len(batch)}", flush=True)
+    batch_records = []
     for index, (key, name) in enumerate(batch, 1):
         print(f"[{index}/{len(batch)}] {name} ({key})", flush=True)
         # Reuse previously found candidates when retrying a failed download.
@@ -909,7 +911,8 @@ def main():
             )
 
         record = {"product_key": key, "product": name, "status": status,
-                  "search_status": status, "candidates": candidates[:12], "errors": errors}
+                  "search_status": status, "engine_version": ENGINE_VERSION,
+                  "processed_at": time.time(), "candidates": candidates[:12], "errors": errors}
         prior_download = old_record.get("download") or {}
         if prior_download.get("path"):
             record["previous_unverified_download"] = prior_download
@@ -952,6 +955,7 @@ def main():
         state["last_run"] = time.time()
         state["last_product"] = key
         report_map[key] = record
+        batch_records.append(record)
         save_json(STATE, state)
         save_json(REPORT, list(report_map.values()))
         save_json(MANIFEST, list(manifest_map.values()))
@@ -963,7 +967,15 @@ def main():
             time.sleep(max(0, args.delay))
 
     print("\nLote terminado.")
-    print(f"Informe: {REPORT.relative_to(ROOT)}")
+    print(f"\nResumen de este lote — motor {ENGINE_VERSION}:")
+    status_counts = {}
+    for item in batch_records:
+        status_key = item.get("status", "UNKNOWN")
+        status_counts[status_key] = status_counts.get(status_key, 0) + 1
+    for status_key, count in sorted(status_counts.items()):
+        print(f"  {status_key}: {count}")
+    print(f"\nInforme acumulado: {REPORT.relative_to(ROOT)}")
+    print(f"Informe del lote actual: {len(batch_records)} productos")
     print(f"Manifiesto: {MANIFEST.relative_to(ROOT)}")
     print(f"Estado: {STATE.relative_to(ROOT)}")
     print("Ninguna imagen ha sido aprobada; data/catalog.js permanece intacto.")
