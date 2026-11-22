@@ -4,6 +4,7 @@ The scoring function and its declarative dictionaries are extracted from the
 production script's AST so tests do not need network access, requests or Pillow.
 """
 import ast
+import re
 import unittest
 from pathlib import Path
 
