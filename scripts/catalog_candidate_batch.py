@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Almendras de Málaga — image candidate batch pipeline v6.
+Almendras de Málaga — image candidate batch pipeline v12.
 
 Reads data/catalog.js; searches Wikimedia Commons and Openverse; filters obvious
 irrelevant search results; tries original image URL first, then thumbnail; saves
@@ -24,8 +24,8 @@ REPORT = ROOT / "docs/candidate_batch_report.json"
 MANIFEST = ROOT / "photo_candidates_next.json"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 OPENVERSE_API = "https://api.openverse.org/v1/images/"
-UA = "AlmendrasDeMalagaCatalogPhotoAudit/11.0"
-ENGINE_VERSION = "11.0"
+UA = "AlmendrasDeMalagaCatalogPhotoAudit/12.0"
+ENGINE_VERSION = "12.0"
 TIMEOUT = (8, 22)
 ALLOWED = {"image/jpeg", "image/png", "image/webp"}
 MIN_W, MIN_H, MAX_BYTES = 900, 700, 25 * 1024 * 1024
@@ -46,7 +46,7 @@ PRODUCT_SEARCH = {
     "revueloEspecial": ["mixed nuts and dried fruit assortment","special mixed nuts snack","revuelto frutos secos especial"],
     "revueloTresPasas": ["mixed nuts with three types raisins","nuts raisins mix","revuelto tres pasas"],
     "revueloPacoJose": ["Paco Jose mixed nuts","Paco José frutos secos mix","mixed nuts assortment"],
-    "revueloDulceMCarmen": ["sweet nut mix candied nuts","sweet mixed nuts dried fruit","revuelto dulce"],
+    "revueloDulceMCarmen": ["sweet mix assortment","sweet confectionery mix","mezcla dulce frutos secos"],
     "revueloDeliciasVirginia": ["Virginia nut mix","mixed nuts Virginia","Delicias Virginia frutos secos"],
     "melonDeshidratado": ["dried melon slices","dehydrated melon pieces","melon deshidratado"],
     "aloeDeshidratada": ["candied dried aloe vera pieces","dried aloe vera snack","aloe vera deshidratada"],
@@ -111,7 +111,7 @@ CORE_TERMS = {
     "revueloEspecial": ["mixed nuts","nut mix","nuts","frutos secos","revuelto"],
     "revueloTresPasas": ["mixed nuts","nut mix","raisins","pasas","revuelto"],
     "revueloPacoJose": ["mixed nuts","nut mix","nuts","frutos secos","revuelto"],
-    "revueloDulceMCarmen": ["mixed nuts","nut mix","candied nuts","frutos secos","revuelto"],
+    "revueloDulceMCarmen": ["sweet mix","sweet assortment","candy mix","mezcla dulce","mixed sweets","sweet snack mix"],
     "revueloDeliciasVirginia": ["mixed nuts","nut mix","nuts","frutos secos","revuelto"],
     "melonDeshidratado": ["melon","melón"],
     "aloeDeshidratada": ["aloe","aloe vera"],
@@ -289,6 +289,67 @@ STRICT_MATCH_GROUPS = {
     "pictolinFruta": [["pictolin"], ["fruit", "fruta"], ["sugar free", "sugar-free", "sugarfree", "sin azúcar"]],
 }
 
+PRODUCT_IDENTITY_GROUPS = {
+    # Product families that were false-positive in the v11 Termux audit.
+    "revueloTostadoSinSal": [["mixed nuts", "nuts mix", "nut mix", "assorted nuts", "trail mix"]],
+    "revueloEspecial": [["mixed nuts", "nuts mix", "nut mix", "assorted nuts", "trail mix"]],
+    "revueloTresPasas": [["mixed nuts", "nuts mix", "nut mix", "assorted nuts", "trail mix"],
+                         ["raisins", "raisin", "pasas"]],
+    "revueloPacoJose": [["mixed nuts", "nuts mix", "nut mix", "assorted nuts", "trail mix"]],
+    "revueloDulceMCarmen": [["sweet mix", "sweet assortment", "candy mix", "mezcla dulce", "mixed sweets", "sweet snack mix"]],
+    "revueloDeliciasVirginia": [["mixed nuts", "nuts mix", "nut mix", "assorted nuts", "trail mix"]],
+    "revueltoChocolates": [["mixed chocolate", "chocolate assortment", "assorted chocolates"],
+                          ["nuts", "nut", "fruit", "fruits"]],
+    "nuezCaramelizada": [["walnut", "walnuts", "nuez", "nueces"],
+                         ["caramelized", "caramelised", "candied", "caramel", "garrapiñada"]],
+    "melonDeshidratado": [["melon", "melón"], ["dried", "dehydrated", "deshidratado"]],
+    "chocolateNuezLeche": [["walnut", "walnuts", "nuez", "nueces"],
+                           ["chocolate"], ["milk chocolate", "chocolate con leche", "chocolate with milk"]],
+    "chocolatePistachoLeche": [["pistachio", "pistachios", "pistacho", "pistachos"],
+                               ["chocolate"], ["milk chocolate", "chocolate con leche", "chocolate with milk"]],
+    "chocolateAvellanaNegro": [["hazelnut", "hazelnuts", "avellana", "avellanas"],
+                               ["chocolate"], ["dark chocolate", "chocolate negro", "chocolate amargo"]],
+    "arandanoChocolateNegro": [["cranberry", "cranberries", "arándano", "arándanos"],
+                               ["chocolate"], ["dark chocolate", "chocolate negro", "chocolate amargo"]],
+    "almendraChocolateLeche": [["almond", "almonds", "almendra", "almendras"],
+                               ["chocolate"], ["milk chocolate", "chocolate con leche", "chocolate with milk"]],
+    "almendraChocolateBlanco": [["almond", "almonds", "almendra", "almendras"],
+                                ["white chocolate", "chocolate blanco"]],
+    "mangoChocolateNegro": [["mango", "mangos"], ["chocolate"],
+                            ["dark chocolate", "chocolate negro", "chocolate amargo"]],
+    "platanoChocolateLeche": [["banana", "bananas", "plantain", "plátano", "plátanos"],
+                              ["chocolate"], ["milk chocolate", "chocolate con leche", "chocolate with milk"]],
+    "cacahueteChocolateNegro": [["peanut", "peanuts", "cacahuete", "cacahuetes"],
+                                ["chocolate"], ["dark chocolate", "chocolate negro", "chocolate amargo"]],
+    "cacahueteChocolateLeche": [["peanut", "peanuts", "cacahuete", "cacahuetes"],
+                                ["chocolate"], ["milk chocolate", "chocolate con leche", "chocolate with milk"]],
+    "cacahueteChocolateBlanco": [["peanut", "peanuts", "cacahuete", "cacahuetes"],
+                                 ["white chocolate", "chocolate blanco"]],
+    "mixChocolatesPipa": [["sunflower seeds", "sunflower seed", "pipas"],
+                          ["chocolate"], ["mixed", "mix", "assorted", "assortment"],
+                          ["covered", "coated", "chocolate covered", "chocolate-coated"]],
+}
+PRODUCT_FORBIDDEN_TERMS = {
+    "almendraFritaGirasol": ["olive oil", "aceite de oliva", "peanut oil", "aceite de cacahuete"],
+    "almendraFritaSinSal": ["salted", "with salt", "salty", "con sal"],
+    "cacahueteFritoRepeladoSinSal": ["salted", "with salt", "salty", "con sal", "in shell", "with shell", "con cáscara", "con cascara"],
+    "cacahueteTostadoRepeladoSinSal": [
+        "salted", "with salt", "salty", "con sal", "in shell", "with shell",
+        "con cáscara", "con cascara", "cáscara y sal", "cascara y sal"
+    ],
+    "anacardoFritoSinSal": ["salted", "with salt", "salty", "con sal"],
+    "macadamiaFritaSal": ["unsalted", "no salt", "without salt", "sin sal"],
+    "macadamiaFritaSinSal": ["salted", "with salt", "salty", "con sal"],
+    "macadamiaTostadaSinSal": ["salted", "with salt", "salty", "con sal"],
+    "melonDeshidratado": ["bitter melon", "melón amargo", "melon amargo", "momordica", "goya"],
+    "nuezCaramelizada": ["pain au chocolat", "pain au choc", "pastry", "croissant", "bakery"],
+    "revueloEspecial": ["space food", "comida espacial"],
+    "revueloDulceMCarmen": ["stew", "guiso", "porotos", "chorizo", "soup"],
+    "revueloDeliciasVirginia": ["granola bar", "cereal bar", "chewy bar", "nature valley", "barrita", "granola"],
+    "chocolateNuezLeche": ["rice pudding", "arroz con leche", "arroz"],
+    "chocolateAvellanaNegro": ["chocolate bar", "suklaapatukka", "barrita", "bar of chocolate", "chocolate tablet"],
+}
+
 STRICT_FORBIDDEN_TERMS = {
     "cafeDryCA": ["sugar free", "sugar-free", "sugarfree", "sin azúcar", "sans sucre"],
     "pictolinEucaliptoCA": ["sugar free", "sugar-free", "sugarfree", "sin azúcar"],
@@ -432,25 +493,43 @@ def openverse_search(query):
     return found, None
 
 def candidate_score(key, candidate):
-    """Score candidates with hard product/context checks and soft visual-unverifiable variants."""
-    text = " ".join([
-        str(candidate.get("title") or ""),
-        str(candidate.get("description") or ""),
-        " ".join(candidate.get("tags") or []),
-        str(candidate.get("commons_title") or "")
-    ]).lower()
+    """Require product identity in title/tags; keep unseen preparation details as warnings."""
+    title = str(candidate.get("title") or "")
+    tags = " ".join(str(x) for x in (candidate.get("tags") or []))
+    description = str(candidate.get("description") or "")
+    # Descriptions can mention incidental ingredients or unrelated scene context.
+    # They may help reject a recipe, but cannot independently prove product identity.
+    identity_text = " ".join([title, tags]).lower()
+    full_text = " ".join([identity_text, description.lower()])
+
+    def has_term(haystack, term):
+        pattern = r"(?<!\w)" + re.escape(str(term).lower()).replace(r"\ ", r"\s+") + r"(?!\w)"
+        return re.search(pattern, haystack, flags=re.IGNORECASE) is not None
 
     core = CORE_TERMS.get(key, [])
-    if not any(term in text for term in core):
-        return -100, ["missing_product_keyword"]
+    if not any(has_term(identity_text, term) for term in core):
+        return -100, ["missing_product_identity_in_title_or_tags"]
 
-    negatives = [phrase for phrase in NEGATIVE_PHRASES if phrase in text]
+    negatives = [phrase for phrase in NEGATIVE_PHRASES if has_term(full_text, phrase)]
     if negatives:
         return -100, ["irrelevant_or_commercial_context:" + ",".join(negatives)]
 
-    # Nut preparation/salt/oil variants are not reliably verifiable from metadata.
-    # The image can be shortlisted when the food itself matches; the variant remains
-    # explicitly unverified and must never be inferred from the photograph.
+    product_forbidden = [term for term in PRODUCT_FORBIDDEN_TERMS.get(key, [])
+                         if has_term(full_text, term)]
+    if product_forbidden:
+        return -100, ["wrong_product_or_preparation:" + ",".join(product_forbidden)]
+
+    identity_groups = PRODUCT_IDENTITY_GROUPS.get(key, [])
+    missing_identity = [group for group in identity_groups
+                        if not any(has_term(identity_text, term) for term in group)]
+    if missing_identity:
+        return -100, ["missing_product_family_identity"]
+
+    BLEND_COMPOSITION_KEYS = {
+        "revueloEspecial", "revueloTresPasas", "revueloPacoJose",
+        "revueloDulceMCarmen", "revueloDeliciasVirginia", "revueltoChocolates"
+    }
+
     SOFT_VARIANT_KEYS = {
         "almendraFritaGirasol", "almendraFritaSinSal",
         "cacahueteFritoRepeladoSinSal", "cacahueteTostadoRepeladoSinSal",
@@ -463,11 +542,13 @@ def candidate_score(key, candidate):
     }
 
     score = 6
-    reasons = ["product_keyword_match"]
+    reasons = ["product_identity_in_title_or_tags"]
+    if key in BLEND_COMPOSITION_KEYS:
+        reasons.append("blend_composition_unverified")
     groups = MATCH_GROUPS.get(key, [])
     missing_groups = []
     for group in groups:
-        if any(term in text for term in group):
+        if any(has_term(identity_text, term) for term in group):
             score += 2
             reasons.append("variant_keyword_match")
         else:
@@ -480,7 +561,7 @@ def candidate_score(key, candidate):
     strict_groups = STRICT_MATCH_GROUPS.get(key, [])
     missing_strict = []
     for group in strict_groups:
-        if any(term in text for term in group):
+        if any(has_term(identity_text, term) for term in group):
             score += 2
             reasons.append("strict_variant_evidence")
         else:
@@ -490,33 +571,35 @@ def candidate_score(key, candidate):
             else:
                 return -100, ["missing_exact_variant_evidence"]
 
-    forbidden_variants = [term for term in STRICT_FORBIDDEN_TERMS.get(key, []) if term in text]
+    forbidden_variants = [term for term in STRICT_FORBIDDEN_TERMS.get(key, [])
+                          if has_term(full_text, term)]
     if forbidden_variants:
         return -100, ["contradictory_product_variant:" + ",".join(forbidden_variants)]
 
     if missing_groups or missing_strict:
         reasons.append("variant_metadata_unverified")
-    if any(x in text for x in ("close up", "close-up", "isolated", "kernels", "nuts")):
+    if any(has_term(identity_text, x) for x in ("close up", "close-up", "isolated", "kernels", "nuts")):
         score += 1
         reasons.append("product_focus_term")
-    if key == "mangoDeshidratado" and any(x in text for x in ("dried", "dehydrated", "sun-dried")):
+    if key == "mangoDeshidratado" and any(has_term(identity_text, x) for x in ("dried", "dehydrated", "sun-dried")):
         score += 2
         reasons.append("dried_match")
     if any(token in key.lower() for token in ("frita", "frito")):
-        if any(x in text for x in ("fried", "frying", "fritas", "fritos")):
+        if any(has_term(identity_text, x) for x in ("fried", "frying", "fritas", "fritos")):
             score += 1
             reasons.append("fried_match")
         elif key not in SOFT_VARIANT_KEYS:
             score -= 1
             reasons.append("preparation_not_confirmed")
     if "tostado" in key.lower():
-        if any(x in text for x in ("roasted", "tostado", "tostada")):
+        if any(has_term(identity_text, x) for x in ("roasted", "tostado", "tostada")):
             score += 1
             reasons.append("roasted_match")
         elif key not in SOFT_VARIANT_KEYS:
             score -= 1
             reasons.append("preparation_not_confirmed")
     return score, reasons
+
 
 def build_queries(key, name):
     terms = [name]
