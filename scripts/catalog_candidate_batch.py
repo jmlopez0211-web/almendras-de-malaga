@@ -30,6 +30,7 @@ ALLOWED = {"image/jpeg", "image/png", "image/webp"}
 MIN_W, MIN_H, MAX_BYTES = 900, 700, 25 * 1024 * 1024
 
 PRODUCT_SEARCH = {
+    "mangoDeshidratado": ["dried mango slices", "dried mango pieces", "dehydrated mango fruit"],
     "almendraFritaGirasol": ["fried almonds sunflower oil","almonds fried in sunflower oil","almendras fritas aceite girasol"],
     "almendraFritaSinSal": ["unsalted fried almonds","fried almonds no salt","almendras fritas sin sal"],
     "cacahueteFritoRepeladoSinSal": ["fried blanched peanuts unsalted","unsalted fried shelled peanuts","cacahuete frito repelado sin sal"],
@@ -94,6 +95,7 @@ PRODUCT_SEARCH = {
 }
 
 CORE_TERMS = {
+    "mangoDeshidratado": ["mango", "mangos"],
     "almendraFritaGirasol": ["almond","almonds","almendra","almendras"],
     "almendraFritaSinSal": ["almond","almonds","almendra","almendras"],
     "cacahueteFritoRepeladoSinSal": ["peanut","peanuts","cacahuete","cacahuetes","groundnut"],
