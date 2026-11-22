@@ -190,13 +190,111 @@ MATCH_GROUPS = {
     "chocobolaBlanca": [["chocolate","chocobola"],["ball","balls","bola","bolas"]],
     "chocobolaLeche": [["chocolate","chocobola"],["ball","balls","bola","bolas"]],
 }
+# Reject food scenes, recipes, retail contexts and packaging: the catalog requires
+# clean photographs of the actual food, not a dish, shop or commercial pack.
 NEGATIVE_PHRASES = [
     "menu", "banquet", "breakfast", "restaurant", "chicken", "trout", "rice",
     "noodles", "eggplant", "shrimp", "prawn", "salad", "stir fry", "curry",
     "tart", "cake", "dessert", "ice cream", "yogurt", "tofu", "recipe",
     "cooking class", "food blogger", "man frying", "woman frying",
-    "person cooking", "chef preparing"
+    "person cooking", "chef preparing", "farmers market", "farmer's market",
+    "market", "market stall", "market stand", "grocery store", "shop window", "storefront", "shop", "store", "retail", "panoramio", "arahova",
+    "restaurant dish", "served with", "plated", "main course", "lunch", "dinner",
+    "anchovy", "shishito", "donut", "doughnut", "candy apple", "caramel apple",
+    "bottle", "bouteille", "jar", "packaging", "package", "wrapper", "wrappers",
+    "label", "brand logo", "retail box", "sealed bag", "trader joe", "russell stover", "milkaut", "les anis de flavigny", "north charleston"
 ]
+
+# High-risk variants require their distinguishing words in title, tags or description.
+# If a source does not document those details, no candidate is preferred over a wrong photo.
+STRICT_MATCH_GROUPS = {
+    "ligeroPinones": [["pine nut", "pine nuts", "piñon", "piñones"],
+                      ["candy", "confection", "praline", "praliné", "nougat", "sweet"]],
+    "tacoMiel": [["honey", "miel"],
+                 ["candy", "confection", "sweet", "caramel"]],
+    "carachoco": [["carachoco"], ["candy", "confection", "sweet"]],
+    "toffinoChocolate": [["toffino"], ["chocolate"], ["candy", "confection", "toffee"]],
+    "toffeeNata": [["toffee"], ["cream", "nata", "milk"],
+                   ["candy", "confection", "sweet"]],
+    "cafeDrySA": [["coffee", "café"], ["candy", "sweet", "confection"],
+                  ["sugar free", "sugar-free", "sugarfree", "sin azúcar", "sans sucre"]],
+    "cafeDryCA": [["coffee", "café"], ["candy", "sweet", "confection"]],
+    "werthersSA": [["werther"], ["sugar free", "sugar-free", "sugarfree", "sin azúcar"]],
+    "dulceLeche": [["dulce de leche", "milk caramel"], ["candy", "confection", "caramel"]],
+    "revueltoChocolates": [["chocolate"], ["mixed", "mix", "assorted", "assortment"],
+                           ["nuts", "nut", "fruits", "fruit"]],
+    "cacahueteChocolateNegro": [["peanut", "peanuts", "cacahuete"],
+                                ["chocolate"], ["dark", "negro"]],
+    "cacahueteChocolateLeche": [["peanut", "peanuts", "cacahuete"],
+                                ["chocolate"], ["milk", "leche"]],
+    "cacahueteChocolateBlanco": [["peanut", "peanuts", "cacahuete"],
+                                 ["white chocolate", "chocolate blanco"]],
+    "chocolateNuezLeche": [["walnut", "walnuts", "nuez"], ["chocolate"],
+                           ["milk", "leche"]],
+    "chocolatePistachoLeche": [["pistachio", "pistachos"], ["chocolate"],
+                               ["milk", "leche"]],
+    "chocolateAvellanaNegro": [["hazelnut", "avellana"], ["chocolate"],
+                               ["dark", "negro"]],
+    "arandanoChocolateNegro": [["cranberry", "arándano"], ["chocolate"],
+                               ["dark", "negro"]],
+    "almendraChocolateLeche": [["almond", "almendra"], ["chocolate"],
+                               ["milk", "leche"]],
+    "almendraChocolateBlanco": [["almond", "almendra"],
+                                ["white chocolate", "chocolate blanco"]],
+    "mangoChocolateNegro": [["mango"], ["chocolate"], ["dark", "negro"]],
+    "platanoChocolateLeche": [["banana", "plantain", "plátano"], ["chocolate"],
+                              ["milk", "leche"]],
+    "mixChocolatesPipa": [["sunflower", "sunflower seeds", "pipas"],
+                          ["chocolate"], ["mixed", "mix", "assorted", "assortment"],
+                          ["covered", "coated", "chocolate covered", "chocolate-coated"]],
+    "cacahueteTostadoRepeladoSinSal": [["peanut", "peanuts", "cacahuete"],
+                                       ["roasted", "tostado", "tostada"],
+                                       ["unsalted", "no salt", "without salt", "sin sal"]],
+    "cacahueteFritoRepeladoSinSal": [["peanut", "peanuts", "cacahuete"],
+                                     ["fried", "frit", "frita", "fritas"],
+                                     ["unsalted", "no salt", "without salt", "sin sal"]],
+    "almendraFritaGirasol": [["almond", "almonds", "almendra"],
+                             ["fried", "frit", "frita", "fritas"],
+                             ["sunflower oil", "aceite de girasol"]],
+    "almendraFritaSinSal": [["almond", "almonds", "almendra"],
+                            ["fried", "frit", "frita", "fritas"],
+                            ["unsalted", "no salt", "without salt", "sin sal"]],
+    "anacardoFritoSinSal": [["cashew", "cashews", "anacardo"],
+                            ["fried", "frit", "frita", "fritas"],
+                            ["unsalted", "no salt", "without salt", "sin sal"]],
+    "macadamiaFritaSal": [["macadamia"], ["fried", "frit", "frita", "fritas"],
+                          ["salted", "with salt", "salada", "con sal"]],
+    "macadamiaFritaSinSal": [["macadamia"], ["fried", "frit", "frita", "fritas"],
+                             ["unsalted", "no salt", "without salt", "sin sal"]],
+    "macadamiaTostadaSinSal": [["macadamia"], ["roasted", "tostada", "tostado"],
+                               ["unsalted", "no salt", "without salt", "sin sal"]],
+    "avellanaAmericanaCruda": [["hazelnut", "hazelnuts", "avellana"],
+                               ["raw", "cruda", "crudas"]],
+    "nuezCaramelizada": [["walnut", "walnuts", "nuez"],
+                         ["caramelized", "candied", "caramelizada", "garrapiñada"]],
+    "melonDeshidratado": [["melon", "melón"], ["dried", "dehydrated", "deshidratado"]],
+    "aloeDeshidratada": [["aloe", "aloe vera"], ["dried", "dehydrated", "deshidratada"]],
+    "cocoDado": [["coconut", "coco"], ["dried", "dehydrated", "deshidratado"]],
+    "pipaGarrapinada": [["sunflower", "pipa", "pipas"],
+                        ["candied", "caramelized", "garrapiñada"]],
+    "pictolinEucaliptoSA": [["pictolin"], ["eucalyptus", "eucalipto"], ["sugar free", "sugar-free", "sugarfree", "sin azúcar"]],
+    "pictolinEucaliptoCA": [["pictolin"], ["eucalyptus", "eucalipto"], ["with sugar", "sugared", "con azúcar", "con azucar"]],
+    "pictolinFullmintSA": [["pictolin"], ["fullmint", "mint", "menta"], ["sugar free", "sugar-free", "sugarfree", "sin azúcar"]],
+    "pictolinFullmintCA": [["pictolin"], ["fullmint", "mint", "menta"], ["with sugar", "sugared", "con azúcar", "con azucar"]],
+    "pictolinMielLimonSA": [["pictolin"], ["honey lemon", "miel limón", "miel limon"], ["sugar free", "sugar-free", "sugarfree", "sin azúcar"]],
+    "pictolinMielLimonCA": [["pictolin"], ["honey lemon", "miel limón", "miel limon"], ["with sugar", "sugared", "con azúcar", "con azucar"]],
+    "pictolinAnisSA": [["pictolin"], ["anise", "anis", "anís"], ["sugar free", "sugar-free", "sugarfree", "sin azúcar"]],
+    "pictolinAnisCA": [["pictolin"], ["anise", "anis", "anís"], ["with sugar", "sugared", "con azúcar", "con azucar"]],
+    "pictolinFruta": [["pictolin"], ["fruit", "fruta"], ["sugar free", "sugar-free", "sugarfree", "sin azúcar"]],
+}
+
+STRICT_FORBIDDEN_TERMS = {
+    "cafeDryCA": ["sugar free", "sugar-free", "sugarfree", "sin azúcar", "sans sucre"],
+    "pictolinEucaliptoCA": ["sugar free", "sugar-free", "sugarfree", "sin azúcar"],
+    "pictolinFullmintCA": ["sugar free", "sugar-free", "sugarfree", "sin azúcar"],
+    "pictolinMielLimonCA": ["sugar free", "sugar-free", "sugarfree", "sin azúcar"],
+    "pictolinAnisCA": ["sugar free", "sugar-free", "sugarfree", "sin azúcar"],
+}
 
 class RateLimited(Exception):
     def __init__(self, source):
@@ -300,6 +398,7 @@ def commons_search(query):
         title = page.get("title", "").replace("File:", "")
         found.append({
             "source": "Wikimedia Commons", "title": title,
+            "description": re.sub(r"<[^>]+>", " ", (meta.get("ImageDescription") or {}).get("value", "")),
             "url": ii.get("url"), "thumbnail": ii.get("thumburl"),
             "mime": mime, "width": ii.get("width"), "height": ii.get("height"),
             "license": (meta.get("LicenseShortName") or {}).get("value", ""),
@@ -320,6 +419,7 @@ def openverse_search(query):
     for item in data.get("results", []):
         found.append({
             "source": "Openverse", "title": item.get("title", ""),
+            "description": item.get("description") or "",
             "url": item.get("url"), "thumbnail": item.get("thumbnail"),
             "mime": item.get("mimetype") or item.get("mime_type"),
             "width": item.get("width"), "height": item.get("height"),
@@ -333,26 +433,38 @@ def openverse_search(query):
 def candidate_score(key, candidate):
     text = " ".join([
         str(candidate.get("title") or ""),
+        str(candidate.get("description") or ""),
         " ".join(candidate.get("tags") or []),
         str(candidate.get("commons_title") or "")
     ]).lower()
     core = CORE_TERMS.get(key, [])
     if not any(term in text for term in core):
         return -100, ["missing_product_keyword"]
+
+    negatives = [phrase for phrase in NEGATIVE_PHRASES if phrase in text]
+    if negatives:
+        return -100, ["irrelevant_or_commercial_context:" + ",".join(negatives)]
+
     groups = MATCH_GROUPS.get(key, [])
     if any(not any(term in text for term in group) for group in groups):
         return -100, ["missing_variant_keyword_group"]
-    score = 4
+
+    strict_groups = STRICT_MATCH_GROUPS.get(key, [])
+    missing_strict = [group for group in strict_groups if not any(term in text for term in group)]
+    if missing_strict:
+        return -100, ["missing_exact_variant_evidence"]
+    forbidden_variants = [term for term in STRICT_FORBIDDEN_TERMS.get(key, []) if term in text]
+    if forbidden_variants:
+        return -100, ["contradictory_product_variant:" + ",".join(forbidden_variants)]
+
+    score = 8
     reasons = ["product_keyword_match"]
     if groups:
         score += min(3, len(groups))
         reasons.append("variant_keywords_match")
-    negatives = [phrase for phrase in NEGATIVE_PHRASES if phrase in text]
-    if negatives:
-        score -= 8
-        reasons.append("irrelevant_context:" + ",".join(negatives))
-    # Reward close-up/isolated product wording and exact preparation terms, but never
-    # infer salt/oil from a generic nut photo.
+    if strict_groups:
+        score += min(6, len(strict_groups))
+        reasons.append("strict_variant_evidence")
     if any(x in text for x in ("close up", "close-up", "isolated", "kernels", "nuts")):
         score += 1
         reasons.append("product_focus_term")
@@ -367,7 +479,7 @@ def candidate_score(key, candidate):
             score -= 2
             reasons.append("preparation_not_confirmed")
     if "tostado" in key.lower():
-        if "roasted" in text or "tostado" in text or "tostada" in text:
+        if any(x in text for x in ("roasted", "tostado", "tostada")):
             score += 2
             reasons.append("roasted_match")
         else:
