@@ -503,3 +503,24 @@ body:has(#cartModal[aria-hidden=false]) .chat-fab,body:has(#cartModal[aria-hidde
 @media(max-width:360px){
   .home-featured-grid{grid-template-columns:1fr}
 }
+
+/* SEO landing page: Almendras de Málaga */
+.catalog-seo-intro{margin:22px 0;padding:clamp(22px,4vw,42px);border:1px solid #e5d7b8;border-radius:22px;background:linear-gradient(135deg,#f8f1e5,#eee4d2);color:#243b2e}
+.catalog-seo-intro-copy{max-width:900px;margin:0 auto}
+.catalog-seo-intro h2{font-family:"Playfair Display",Georgia,serif;font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.18;margin:10px 0 16px;color:#243b2e}
+.catalog-seo-intro p{line-height:1.7;color:#53594f}
+.catalog-seo-intro .btn{display:inline-flex;margin-top:10px}
+.almendras-page{max-width:980px;margin:32px auto;padding:clamp(20px,5vw,48px);background:#fffdf7;border:1px solid #e5d7b8;border-radius:24px;color:#243b2e;line-height:1.75}
+.almendras-page h1,.almendras-page h2,.almendras-page h3{color:#243b2e;font-family:"Playfair Display",Georgia,serif}
+.almendras-page h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.12;margin:20px 0}
+.almendras-page h2{font-size:clamp(1.5rem,4vw,2.2rem);margin-top:44px;margin-bottom:18px}
+.almendras-page h3{font-size:clamp(1.15rem,3vw,1.5rem);margin-top:30px;margin-bottom:12px}
+.almendras-page p{color:#53594f;margin-bottom:18px}
+.almendras-page .lead{font-size:1.2rem;color:#344c38;font-weight:600}
+.almendras-page nav{font-size:.9rem;margin-bottom:20px}
+.almendras-page nav a,.almendras-page a{color:#315c43;font-weight:600}
+.almendras-page address{padding:20px;margin:20px 0;border-left:4px solid #b68b50;background:#f8f1e5;border-radius:0 12px 12px 0;font-style:normal}
+.almendras-page .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin:8px 8px 8px 0;padding:13px 22px;border-radius:999px;background:#244632;color:#fff;text-decoration:none;font-weight:700}
+.almendras-page .btn.light{background:#eadbb9;color:#243b2e}
+.almendras-page a:focus-visible{outline:3px solid #b77a35;outline-offset:4px}
+@media(max-width:640px){.catalog-seo-intro{padding:20px}.almendras-page{margin:14px;padding:20px;border-radius:18px}.almendras-page h1{font-size:2rem}.almendras-page .btn{width:100%;box-sizing:border-box;margin:8px 0}}
