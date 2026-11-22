@@ -13,7 +13,7 @@ let products=0,categories=0;
 for(const url of urls){
  assert.ok(url.startsWith(baseUrl),"URL fuera del dominio: "+url);
  const rel=url.slice(baseUrl.length);
- const file=rel.endsWith("/")?rel+"index.html":rel;
+ const file=rel.endsWith("/")?rel+"index.html":(rel||"index.html");
  assert.ok(fs.existsSync(file),"Archivo del sitemap no existe: "+file);
  const html=fs.readFileSync(file,"utf8");
  const title=html.match(/<title>([^<]+)<\/title>/i)?.[1]||"";
