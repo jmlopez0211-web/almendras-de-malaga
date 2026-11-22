@@ -30,7 +30,7 @@ class ShippingTests(unittest.TestCase):
 
     def test_whatsapp_uses_primary_phone_and_includes_shipping_breakdown(self):
         source = APP.read_text(encoding="utf-8")
-        for required in ("wa.me/34666068765", "🚚 *ENVÍO:*", "🧾 *SUBTOTAL PRODUCTOS:*", "💰 *TOTAL FINAL:*", "encodeURIComponent(message)"):
+        for required in ("wa.me/34666068765", "🚚 *ENVÍO:*", "🧾 *SUBTOTAL PRODUCTOS:*", "💰 *TOTAL ORIENTATIVO:*", "encodeURIComponent(message)"):
             self.assertIn(required, source)
 
     def test_no_dni_or_cif_fields_added(self):
