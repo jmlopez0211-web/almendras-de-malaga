@@ -111,7 +111,8 @@ function similarity(a,b){
   const common=nameA.filter(x=>nameB.includes(x)).length;
   const prepA=/cruda|tostada|frita|garrapiñada|pelada|cáscara|piel|sin sal|con sal/.exec(nameA.join(" "));
   const prepB=/cruda|tostada|frita|garrapiñada|pelada|cáscara|piel|sin sal|con sal/.exec(nameB.join(" "));
-  const sameCategory=a.product.tag&&b.product.tag&&a.product.tag===b.product.tag?6:0;\n  return common*10+sameCategory+(prepA&&prepB&&prepA[0]!==prepB[0]?2:0);
+  const sameCategory=a.product.tag&&b.product.tag&&a.product.tag===b.product.tag?6:0;
+  return common*10+sameCategory+(prepA&&prepB&&prepA[0]!==prepB[0]?2:0);
 }
 function selectRelated(entry,items){
   return items.filter(item=>item.id!==entry.id).sort((a,b)=>similarity(entry,b)-similarity(entry,a)||a.product.name.localeCompare(b.product.name,"es")).slice(0,8);
