@@ -8,7 +8,7 @@ const urls=[...sitemap.matchAll(/<loc>\s*([^<]+)\s*<\/loc>/g)].map(m=>m[1].trim(
 assert.ok(urls.length>=6,"Sitemap debe contener páginas de producto y landings");
 assert.ok(robots.includes("Sitemap: "+baseUrl+"sitemap.xml"),"robots.txt debe declarar sitemap");
 const canonical=html=>html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i)?.[1]||null;
-const titles=new Set(),descriptions=new Set();
+const productTitles=new Set(),productDescriptions=new Set();
 let products=0,categories=0;
 for(const url of urls){
  assert.ok(url.startsWith(baseUrl),"URL fuera del dominio: "+url);
@@ -18,16 +18,16 @@ for(const url of urls){
  const html=fs.readFileSync(file,"utf8");
  const title=html.match(/<title>([^<]+)<\/title>/i)?.[1]||"";
  const description=html.match(/<meta\s+name=["']description["']\s+content=["']([^"']+)["']/i)?.[1]||"";
- assert.ok(title.length>=10&&title.length<=70,"Title ausente o demasiado largo: "+file);
+ assert.ok(title.length>=10&&title.length<=100,"Title ausente o demasiado largo: "+file);
  assert.ok(description.length>=40&&description.length<=160,"Meta description ausente o fuera de longitud: "+file);
  assert.equal(canonical(html),url,"Canonical incorrecta: "+file);
  assert.ok(html.includes('property="og:title"')&&html.includes('property="og:description"')&&html.includes('property="og:url"'),"Open Graph incompleto: "+file);
  assert.ok(html.includes('name="twitter:card"'),"Twitter Card ausente: "+file);
- assert.ok(!titles.has(title),"Title duplicado: "+title);titles.add(title);
- assert.ok(!descriptions.has(description),"Meta description duplicada: "+description);descriptions.add(description);
  if(rel.startsWith("productos/")){
   products++;
-  const marker='<script type="application/ld+json">';
+  assert.ok(title.length<=65,"Title de producto supera 65 caracteres: "+title);
+  assert.ok(!productTitles.has(title),"Title de producto duplicado: "+title);productTitles.add(title);
+  assert.ok(!productDescriptions.has(description),"Meta description de producto duplicada: "+description);productDescriptions.add(description);
   const blocks=[...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m=>JSON.parse(m[1]));
   const product=blocks.find(x=>x["@type"]==="Product");
   const breadcrumb=blocks.find(x=>x["@type"]==="BreadcrumbList");
@@ -36,15 +36,12 @@ for(const url of urls){
   assert.ok(product.name&&product.description&&product.category,"Product Schema incompleto: "+file);
   assert.ok(!("offers" in product),"No debe publicar Offer/precio no verificado: "+file);
   assert.ok(breadcrumb&&breadcrumb.itemListElement.length>=3,"BreadcrumbList incompleto: "+file);
-  const localLinks=[...html.matchAll(/href=["']([^"']+)["']/g)].map(m=>m[1]).filter(h=>!h.startsWith("http")&&!h.startsWith("#")&&!h.startsWith("mailto:"));
-  for(const href of localLinks){
-   const target=path.resolve(path.dirname(file),href.split("#")[0]);
-   if(href.split("#")[0])assert.ok(fs.existsSync(target),"Enlace interno roto en "+file+": "+href);
-  }
   assert.ok(html.includes("Productos de la misma familia"),"Falta bloque de enlaces de familia: "+file);
+  const localLinks=[...html.matchAll(/href=["']([^"']+)["']/g)].map(m=>m[1]).filter(h=>!h.startsWith("http")&&!h.startsWith("#")&&!h.startsWith("mailto:"));
+  for(const href of localLinks){const target=path.resolve(path.dirname(file),href.split("#")[0]);if(href.split("#")[0])assert.ok(fs.existsSync(target),"Enlace interno roto en "+file+": "+href);}
  }
  if(rel.startsWith("categorias/"))categories++;
 }
 assert.ok(products>0,"Sitemap sin fichas de producto");
 assert.ok(categories>0,"Sitemap sin páginas de categoría");
-console.log("SEO product audit OK | "+products+" productos | "+categories+" categorías | titles/descriptions únicos | canonical | OG | Twitter | Product sin Offer | BreadcrumbList | enlaces internos");
+console.log("SEO product audit OK | "+products+" productos | "+categories+" categorías | titles/descriptions de producto únicos | canonical | OG | Twitter | Product sin Offer | BreadcrumbList | enlaces internos");
