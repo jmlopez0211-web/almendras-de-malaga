@@ -497,7 +497,7 @@ def candidate_score(key, candidate):
     full_text = " ".join([identity_text, description.lower()])
 
     def has_term(haystack, term):
-        pattern = r"(?<!\\w)" + re.escape(str(term).lower()).replace(r"\\ ", r"\\s+") + r"(?!\\w)"
+        pattern = r"(?<!\w)" + re.escape(str(term).lower()).replace(r"\\ ", r"\\s+") + r"(?!\w)"
         return re.search(pattern, haystack, flags=re.IGNORECASE) is not None
 
     core = CORE_TERMS.get(key, [])
