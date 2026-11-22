@@ -9,8 +9,9 @@
     "test": "node --test tests/*.test.js && node scripts/seo-check.js",
     "seo:check": "node scripts/seo-check.js",
     "seo:live": "node scripts/live-url-check.js",
-    "seo:build": "node scripts/generate-seo-pages.js",
-    "seo:repair": "node scripts/fix-product-offers.js"
+    "seo:build": "node scripts/generate-seo-pages.js && node scripts/seo-check.js",
+    "seo:repair": "node scripts/fix-product-offers.js",
+    "seo:content": "node scripts/seo-check.js"
   },
   "engines": {
     "node": ">=20"
