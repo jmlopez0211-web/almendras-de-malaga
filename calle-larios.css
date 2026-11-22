@@ -1,6 +1,6 @@
 /* Original, scoped holiday section */
 .calle-larios{position:relative;isolation:isolate;overflow:hidden;min-height:360px;margin:28px 0 34px;border:1px solid #d8c6a7;border-radius:24px;background:#203a2b;color:#fff;box-shadow:0 18px 48px #243b2e18}
-.calle-larios-scene{position:absolute;inset:0;z-index:-2;background-image:url("assets/calle-larios-luces-original.svg");background-size:cover;background-position:center 48%;transform:scale(1.005)}
+.calle-larios-scene{position:absolute;inset:0;z-index:-2;background-image:url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Calle_Larios_Christmas.jpeg/1280px-Calle_Larios_Christmas.jpeg");background-size:cover;background-position:center 48%;transform:scale(1.005)}
 .calle-larios:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#14271feF 0%,#14271fdd 36%,#14271f83 65%,#14271f36 100%)}
 .calle-larios-content{position:relative;max-width:660px;padding:46px clamp(22px,6vw,68px)}
 .calle-larios-eyebrow{margin:0 0 13px;color:#e7c98f;font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase}
