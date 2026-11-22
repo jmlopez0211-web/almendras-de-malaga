@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { buildProductContent, productTitle as seoProductTitle, productMetaDescription, escapeHtml, slug, clean, truncate } from "./product-content-seo.js";
+import { buildProductContent, productTitle as seoProductTitle, productMetaDescription } from "./product-content-seo.js";
 
 const BASE = "https://jmlopez0211-web.github.io/almendras-de-malaga/";
 const CATALOG_PATH = path.join(process.cwd(), "data", "catalog.js");
