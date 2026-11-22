@@ -1,0 +1,38 @@
+name: Build SEO product pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/catalog.js"
+      - "scripts/generate-seo-pages.js"
+      - "scripts/seo-check.js"
+      - "tests/seo-generator.test.js"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Generate product and category pages
+        run: npm run seo:build
+      - name: Run tests and SEO validation
+        run: npm test
+      - name: Commit generated pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add productos/ categorias/ sitemap.xml
+          if git diff --cached --quiet; then
+            echo "No generated SEO changes."
+          else
+            git commit -m "Regenera fichas SEO de productos y categorías"
+            git push
+          fi

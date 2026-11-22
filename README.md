@@ -19,7 +19,8 @@ La implementación, sus módulos, reglas de negocio, límites y procedimientos d
 - Diálogos con gestión de foco y cierre mediante Escape.
 - Escape de contenido dinámico del catálogo y validación de URLs de imagen.
 - Protección de los límites de cantidad al restaurar y modificar el carrito.
-- Validación automatizada de las cinco páginas SEO y sus teléfonos.
+- Auditoría SEO automatizada de las fichas de producto y páginas de categoría.
+- Titles y meta descriptions diferenciados, enlaces de familia, breadcrumbs y Schema conservador.
 - Páginas informativas y metadatos SEO.
 
 ## Arquitectura
@@ -65,3 +66,26 @@ python3 -m unittest discover -s tests -v
 - Revisión fotográfica y documental de las imágenes pendientes.
 - Traducción completa de la experiencia si se anuncian EN, FR o DE como idiomas disponibles.
 - Pruebas manuales de compra/solicitud en móvil y escritorio.
+
+## Fichas SEO de productos
+
+Las fichas y categorías se generan desde `data/catalog.js`:
+
+```bash
+npm run seo:build
+npm run seo:check
+npm test
+```
+
+La generación:
+- crea títulos y descripciones diferenciados por producto y categoría;
+- incorpora contenido basado en el nombre y descripción real del catálogo;
+- enlaza productos de la misma familia y páginas de categoría;
+- incluye navegación semántica y breadcrumbs;
+- publica Schema Product sin Offer, precio ni disponibilidad;
+- añade ItemList a páginas de categoría;
+- conserva las URLs de las landings existentes al regenerar el sitemap.
+
+**Regla de datos comerciales:** las fichas SEO no publican precios, formatos, existencias, ingredientes, alérgenos, certificaciones ni condiciones de entrega si no están confirmados para el producto. La consulta por WhatsApp permite confirmar la información vigente.
+
+El workflow `.github/workflows/seo-product-pages-build.yml` regenera las páginas al cambiar el catálogo o el generador y publica los archivos derivados después de validar las pruebas.

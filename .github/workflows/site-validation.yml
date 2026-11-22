@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Generate SEO product and category pages
+        run: npm run seo:build
       - name: Check JavaScript syntax
         run: node --check js/app.js
       - name: Validate catalogue, pages and release rules
