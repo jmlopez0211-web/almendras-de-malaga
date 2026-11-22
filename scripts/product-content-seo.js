@@ -24,6 +24,20 @@ function traits(product) {
   return {name, desc, all, preparation, salt, shell, format, sweet, oil};
 }
 
+function familyContext(t) {
+  const n=t.all;
+  if(n.includes("almendra")) return "En las referencias de almendra, el catálogo reúne distintas formas de presentación: con piel o pelada, cruda, tostada, frita, Marcona y derivados como harina, filete, granillo o bastón. Esta ficha debe compararse con esas variantes según la preparación y el corte que necesites.";
+  if(n.includes("cacahuete")||n.includes("maní")||n.includes("mani")) return "Las referencias de cacahuete del catálogo permiten comparar la presentación con o sin piel o cáscara y distintas preparaciones, como crudo, tostado, frito o garrapiñado. La denominación de cada ficha es la guía para distinguirlas.";
+  if(n.includes("anacardo")) return "Dentro de las referencias de anacardo se pueden revisar las preparaciones crudas, fritas y tostadas, además de la presencia o ausencia de sal cuando aparece expresamente en el nombre. Consulta las fichas relacionadas para comparar las denominaciones.";
+  if(n.includes("macadamia")) return "El catálogo incluye distintas preparaciones de macadamia. Comparar las fichas permite distinguir las referencias crudas, fritas, tostadas o garrapiñadas y las variantes con o sin sal que estén expresamente indicadas.";
+  if(n.includes("avellana")) return "Las fichas de avellana permiten comparar referencias crudas y tostadas. La denominación y la descripción disponible son la base para distinguir la preparación de cada producto.";
+  if(n.includes("nuez")||n.includes("pecana")) return "La familia de nueces reúne presentaciones diferentes, como nuez con cáscara, mitades, nuez pecana pelada o tostada y otras referencias identificadas por su nombre. Comprueba la ficha concreta para evitar confundir formatos.";
+  if(n.includes("pistacho")) return "Las referencias de pistacho pueden diferenciarse por su presentación —con cáscara, pelado o mondado— y por la preparación indicada. Utiliza el nombre de cada ficha para comparar las opciones del catálogo.";
+  if(n.includes("pipa")||n.includes("semilla")||n.includes("girasol")||n.includes("calabaza")) return "En las referencias de semillas y pipas, la denominación puede indicar tipo de semilla, preparación y condimento. Compara esos elementos expresamente indicados antes de elegir.";
+  if(n.includes("garrapiñ")||n.includes("caramel")||n.includes("miel")||n.includes("chocolate")) return "Las especialidades dulces se agrupan por producto y cobertura o preparación indicada en su denominación. Consulta las referencias relacionadas y confirma ingredientes, alérgenos y detalles de elaboración con el establecimiento.";
+  if(n.includes("deshidrat")||n.includes("fruta")) return "Las referencias de fruta deshidratada se distinguen por el tipo de fruta y la presentación recogida en el nombre. Para comparar ingredientes, tratamientos o posibles azúcares añadidos, consulta la etiqueta o al establecimiento.";
+  return "La categoría agrupa referencias con nombres y descripciones diferentes. La comparación debe basarse en los datos que aparecen en cada ficha y en la confirmación del establecimiento cuando se necesiten características adicionales.";
+}
 const introTemplates = [
   t => `La referencia ${t.name} se identifica en el catálogo por su denominación y por la descripción disponible: ${t.desc}. Esta ficha ayuda a localizarla y a distinguirla de otras presentaciones de la misma familia.`,
   t => `Si buscas ${t.name.toLowerCase()}, aquí encontrarás la información que consta en el catálogo. La descripción comercial disponible es: ${t.desc}. Consulta las referencias relacionadas para comparar otras preparaciones o presentaciones.`,
