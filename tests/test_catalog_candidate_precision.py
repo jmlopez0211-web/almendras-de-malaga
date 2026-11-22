@@ -13,6 +13,9 @@ TREE = ast.parse(SCRIPT.read_text(encoding="utf-8"))
 
 NEEDED = {
     "CORE_TERMS",
+    "PRODUCT_SEARCH",
+    "SEARCH_RECOVERY_TERMS",
+    "build_queries",
     "MATCH_GROUPS",
     "STRICT_MATCH_GROUPS",
     "STRICT_FORBIDDEN_TERMS",
@@ -39,6 +42,29 @@ candidate_score = namespace["candidate_score"]
 class TestCatalogCandidatePrecision(unittest.TestCase):
     def score(self, key, title, description=""):
         return candidate_score(key, {"title": title, "description": description, "tags": []})
+
+    def test_recovery_queries_start_with_broad_almond_terms(self):
+        from_main = namespace["build_queries"]("almendraFritaSinSal", "Almendra frita sin sal")
+        self.assertEqual(from_main[0], "almonds")
+        self.assertIn("almond kernels", from_main)
+        self.assertIn("fried almonds no salt", from_main)
+
+    def test_recovery_queries_cover_shelled_peanuts(self):
+        queries = namespace["build_queries"](
+            "cacahueteTostadoRepeladoSinSal",
+            "Cacahuete tostado repelado sin sal"
+        )
+        self.assertIn("roasted peanuts", queries)
+        self.assertIn("shelled peanuts", queries)
+        self.assertLessEqual(len(queries), 6)
+
+    def test_recovery_queries_cover_macadamia_kernel_synonyms(self):
+        queries = namespace["build_queries"](
+            "macadamiaFritaSinSal",
+            "Macadamia frita sin sal"
+        )
+        self.assertEqual(queries[0], "macadamia nuts")
+        self.assertIn("macadamia kernels", queries)
 
     def test_rejects_savory_pine_nut_dish(self):
         score, reasons = self.score(
