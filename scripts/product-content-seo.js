@@ -1,12 +1,12 @@
 import crypto from "node:crypto";
 
-export const clean = value => String(value ?? "").replace(/\\s+/g, " ").trim();
-export const slug = value => clean(value).normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase().replace(/ñ/g, "n").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+export const clean = value => String(value ?? "").replace(/\s+/g, " ").trim();
+export const slug = value => clean(value).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/ñ/g, "n").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 export const escapeHtml = value => String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#39;");
 export const truncate = (value, max) => {
   const text = clean(value);
   if (text.length <= max) return text;
-  const cut = text.slice(0, max - 1).replace(/\\s+\\S*$/, "").trim();
+  const cut = text.slice(0, max - 1).replace(/\s+\S*$/, "").trim();
   return cut + "…";
 };
 const variant = (id, count) => parseInt(crypto.createHash("sha256").update(String(id)).digest("hex").slice(0, 8), 16) % count;
