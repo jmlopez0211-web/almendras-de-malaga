@@ -24,8 +24,8 @@ REPORT = ROOT / "docs/candidate_batch_report.json"
 MANIFEST = ROOT / "photo_candidates_next.json"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 OPENVERSE_API = "https://api.openverse.org/v1/images/"
-UA = "AlmendrasDeMalagaCatalogPhotoAudit/13.0"
-ENGINE_VERSION = "13.0"
+UA = "AlmendrasDeMalagaCatalogPhotoAudit/14.0"
+ENGINE_VERSION = "14.0"
 TIMEOUT = (8, 22)
 ALLOWED = {"image/jpeg", "image/png", "image/webp"}
 MIN_W, MIN_H, MAX_BYTES = 900, 700, 25 * 1024 * 1024
@@ -93,6 +93,20 @@ PRODUCT_SEARCH = {
     "pictolinAnisSA": ["Pictolin anise sugar free","anise sugar free candy","pictolin anis sin azúcar"],
     "pictolinAnisCA": ["Pictolin anise candy","anise hard sweets","pictolin anis con azúcar"],
     "pictolinFruta": ["Pictolin fruit chewy candy sugar free","fruit sugar free chewy sweets","pictolin fruta sin azúcar"],
+}
+
+SEARCH_RECOVERY_TERMS = {
+    # Broad ingredient-first queries run only after the exact catalog phrases.
+    # They widen retrieval; candidate_score still enforces product identity
+    # and rejects contradictory evidence before a file can be downloaded.
+    "almendraFritaGirasol": ["almonds", "almond kernels", "almendras"],
+    "almendraFritaSinSal": ["almonds", "almond kernels", "almendras"],
+    "cacahueteFritoRepeladoSinSal": ["blanched peanuts", "shelled peanuts", "peanut kernels", "cacahuetes pelados"],
+    "cacahueteTostadoRepeladoSinSal": ["roasted peanuts", "shelled peanuts", "peanut kernels", "cacahuetes pelados"],
+    "anacardoFritoSinSal": ["cashew nuts", "cashew kernels", "cashews", "anacardos"],
+    "macadamiaFritaSal": ["macadamia nuts", "macadamia kernels", "macadamia"],
+    "macadamiaFritaSinSal": ["macadamia nuts", "macadamia kernels", "macadamia"],
+    "macadamiaTostadaSinSal": ["roasted macadamia nuts", "macadamia nuts", "macadamia kernels"],
 }
 
 CORE_TERMS = {
@@ -438,7 +452,7 @@ def request_json(url, params, source):
 def commons_search(query):
     data, err = request_json(COMMONS_API, {
         "action": "query", "format": "json", "list": "search",
-        "srsearch": query, "srnamespace": 6, "srlimit": 10
+        "srsearch": query, "srnamespace": 6, "srlimit": 30
     }, "Wikimedia Commons")
     if err:
         return [], err
@@ -473,7 +487,7 @@ def commons_search(query):
 
 def openverse_search(query):
     data, err = request_json(OPENVERSE_API, {
-        "q": query, "page_size": 20, "mature": "false",
+        "q": query, "page_size": 30, "mature": "false",
         "license": "cc0,by,by-sa"
     }, "Openverse")
     if err:
@@ -603,15 +617,21 @@ def candidate_score(key, candidate):
 
 
 def build_queries(key, name):
-    terms = [name]
+    # Phase order: broad visual identity first, then precise variant phrases,
+    # then the original catalog label. Some APIs interpret multiword queries
+    # as AND, so long exact strings alone often produce empty result sets.
+    terms = []
+    terms.extend(SEARCH_RECOVERY_TERMS.get(key, []))
     terms.extend(PRODUCT_SEARCH.get(key, []))
+    terms.append(name)
     seen, result = set(), []
     for term in terms:
         term = term.strip()
-        if term and term.lower() not in seen:
+        normalized = re.sub(r"\\s+", " ", term.lower())
+        if normalized and normalized not in seen:
             result.append(term)
-            seen.add(term.lower())
-    return result[:4]
+            seen.add(normalized)
+    return result[:7]
 
 def normalize_legacy_candidate(candidate):
     """Adapt candidates saved by v4 (where `url` was often the thumbnail)."""
@@ -626,8 +646,14 @@ def normalize_legacy_candidate(candidate):
             item["url"] = item.get("original_url")
     return item
 
-def filter_and_rank(key, candidates):
+def filter_and_rank(key, candidates, audit=None):
     ranked, seen = [], set()
+    if audit is not None:
+        audit.setdefault("raw_candidates", 0)
+        audit.setdefault("accepted_candidates", 0)
+        audit.setdefault("rejection_reasons", {})
+        audit.setdefault("rejected_samples", [])
+        audit["raw_candidates"] += len(candidates)
     for raw in candidates:
         candidate = normalize_legacy_candidate(raw)
         unique_key = candidate.get("url") or candidate.get("thumbnail")
@@ -639,6 +665,17 @@ def filter_and_rank(key, candidates):
         candidate["relevance_reasons"] = reasons
         if score >= 4:
             ranked.append(candidate)
+            if audit is not None:
+                audit["accepted_candidates"] += 1
+        elif audit is not None:
+            for reason in reasons:
+                audit["rejection_reasons"][reason] = audit["rejection_reasons"].get(reason, 0) + 1
+            if len(audit["rejected_samples"]) < 20:
+                audit["rejected_samples"].append({
+                    "source": candidate.get("source"),
+                    "title": candidate.get("title"),
+                    "reasons": reasons
+                })
     ranked.sort(key=lambda x: x.get("relevance_score", -100), reverse=True)
     return ranked
 
@@ -646,14 +683,22 @@ def search_product(key, name, delay, commons_blocked):
     all_candidates, errors = [], []
     commons_available = False
     openverse_available = False
+    queries = build_queries(key, name)
+    audit = {
+        "engine_version": ENGINE_VERSION,
+        "queries": [],
+        "raw_candidates": 0,
+        "accepted_candidates": 0,
+        "rejection_reasons": {},
+        "rejected_samples": []
+    }
     if commons_blocked:
         errors.append({"source": "Wikimedia Commons", "status": "COOLDOWN",
                        "error": "Commons se omite temporalmente tras HTTP 429 previo"})
 
-    # Search Commons with multiple focused terms. A 429 disables Commons for
-    # the remainder of this run; it does not prevent Openverse fallback.
+    # Ingredient-first fallback expands recall without weakening candidate checks.
     if not commons_blocked:
-        for query in build_queries(key, name):
+        for query in queries:
             found, err = [], None
             try:
                 found, err = commons_search(query)
@@ -661,28 +706,34 @@ def search_product(key, name, delay, commons_blocked):
                 errors.append({"source": "Wikimedia Commons", "status": "RATE_LIMITED", "error": str(exc)})
                 commons_blocked = True
                 break
+            query_record = {"source": "Wikimedia Commons", "query": query,
+                            "raw_count": len(found), "error": err}
+            audit["queries"].append(query_record)
             if err:
                 errors.append(err)
                 if err.get("status") in ("NETWORK_ERROR", "SOURCE_BLOCKED"):
                     break
             else:
-                # Successful API response is source availability even if no files matched.
                 commons_available = True
                 all_candidates.extend(found)
             if delay:
                 time.sleep(delay)
-            # Stop early only when this query supplies a relevant result.
-            if filter_and_rank(key, all_candidates):
+            # Do not stop at a single marginal hit; gather a few independent choices.
+            if len(filter_and_rank(key, all_candidates)) >= 4:
                 break
 
-    # Query Openverse if Commons was unavailable or its results were irrelevant.
-    if not filter_and_rank(key, all_candidates):
-        for query in build_queries(key, name):
+    # Always give Openverse a chance unless Commons already yielded enough candidates.
+    if len(filter_and_rank(key, all_candidates)) < 4:
+        for query in queries:
             try:
                 found, err = openverse_search(query)
             except RateLimited as exc:
                 errors.append({"source": "Openverse", "status": "RATE_LIMITED", "error": str(exc)})
                 break
+            audit["queries"].append({
+                "source": "Openverse", "query": query,
+                "raw_count": len(found), "error": err
+            })
             if err:
                 errors.append(err)
                 if err.get("status") in ("NETWORK_ERROR", "SOURCE_BLOCKED"):
@@ -692,10 +743,10 @@ def search_product(key, name, delay, commons_blocked):
                 all_candidates.extend(found)
             if delay:
                 time.sleep(delay)
-            if filter_and_rank(key, all_candidates):
+            if len(filter_and_rank(key, all_candidates)) >= 4:
                 break
 
-    ranked = filter_and_rank(key, all_candidates)
+    ranked = filter_and_rank(key, all_candidates, audit)
     if ranked:
         status = "CANDIDATES_FOUND"
     elif not commons_available and not openverse_available:
@@ -704,7 +755,7 @@ def search_product(key, name, delay, commons_blocked):
         status = "PARTIAL_SOURCE_FAILURE"
     else:
         status = "NO_RESULTS_RELEVANT"
-    return ranked, errors, status, commons_blocked
+    return ranked, errors, status, commons_blocked, audit
 
 def download_candidate(key, candidate):
     """Retry transient download failures and validate every downloaded image."""
@@ -902,17 +953,18 @@ def main():
             candidates = filter_and_rank(key, old_candidates)
             status = "CANDIDATES_FOUND" if candidates else "SEARCH_REQUIRED"
         else:
-            candidates, errors, status, commons_blocked = search_product(
+            candidates, errors, status, commons_blocked, search_audit = search_product(
                 key, name, args.delay, commons_blocked
             )
         if status == "SEARCH_REQUIRED":
-            candidates, errors, status, commons_blocked = search_product(
+            candidates, errors, status, commons_blocked, search_audit = search_product(
                 key, name, args.delay, commons_blocked
             )
 
         record = {"product_key": key, "product": name, "status": status,
                   "search_status": status, "engine_version": ENGINE_VERSION,
-                  "processed_at": time.time(), "candidates": candidates[:12], "errors": errors}
+                  "processed_at": time.time(), "search_audit": search_audit,
+                  "candidates": candidates[:12], "errors": errors}
         prior_download = old_record.get("download") or {}
         if prior_download.get("path"):
             record["previous_unverified_download"] = prior_download
@@ -960,6 +1012,12 @@ def main():
         save_json(REPORT, list(report_map.values()))
         save_json(MANIFEST, list(manifest_map.values()))
         print(f"  búsqueda={status}; candidatos relevantes={len(candidates)}; resultado={record['status']}", flush=True)
+        if search_audit:
+            print(f"  consultas={len(search_audit.get('queries', []))}; candidatos_brutos={search_audit.get('raw_candidates', 0)}; aceptados={search_audit.get('accepted_candidates', 0)}", flush=True)
+            if search_audit.get("rejection_reasons"):
+                print("  descartes=" + json.dumps(search_audit["rejection_reasons"], ensure_ascii=False), flush=True)
+            for sample in search_audit.get("rejected_samples", [])[:3]:
+                print("  descartado=" + json.dumps(sample, ensure_ascii=False), flush=True)
         if errors:
             for err in errors[:4]:
                 print("  fuente_error=" + json.dumps(err, ensure_ascii=False), flush=True)
