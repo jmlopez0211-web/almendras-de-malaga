@@ -94,7 +94,7 @@ function productPage(entry,category,categoryFile,related){
   const description=metaDescription(product,id);
   const content=buildProductContent(product,id,category,related);
   const desc=cleanText(product.desc||"Consulta la ficha de este producto en el catálogo.");
-  const relatedHtml='<section aria-labelledby="related-title"><h2 id="related-title">Productos relacionados para comparar</h2><p>'+escapeHtml(content.comparison)+'</p>'+(related.length?'<ul>'+related.map(item=>'<li><a href="'+item.file+'">'+escapeHtml(item.product.name)+'</a><span> — '+escapeHtml(cleanText(item.product.desc||"Consulta su ficha"))+'</span></li>').join("")+'</ul>':'<p>Consulta la categoría para explorar otras referencias.</p>')+'</section>';
+  const relatedHtml='<section aria-labelledby="related-title"><h2 id="related-title">Productos de la misma familia para comparar</h2><p>'+escapeHtml(content.comparison)+'</p>'+(related.length?'<ul>'+related.map(item=>'<li><a href="'+item.file+'">'+escapeHtml(item.product.name)+'</a><span> — '+escapeHtml(cleanText(item.product.desc||"Consulta su ficha"))+'</span></li>').join("")+'</ul>':'<p>Consulta la categoría para explorar otras referencias.</p>')+'</section>';
   const otherFamilies=[...families.keys()].filter(name=>name!==category).sort((a,b)=>a.localeCompare(b,"es"));
   const familyLinks=otherFamilies.map(name=>'<li><a href="../categorias/'+categoryFiles.get(name)+'">'+escapeHtml(name)+'</a></li>').join("");
   const schemaProduct=schemaForProduct(product,url,category);
