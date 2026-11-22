@@ -24,7 +24,7 @@ REPORT = ROOT / "docs/candidate_batch_report.json"
 MANIFEST = ROOT / "photo_candidates_next.json"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 OPENVERSE_API = "https://api.openverse.org/v1/images/"
-UA = "AlmendrasDeMalagaCatalogPhotoAudit/6.0"
+UA = "AlmendrasDeMalagaCatalogPhotoAudit/8.0"
 TIMEOUT = (8, 22)
 ALLOWED = {"image/jpeg", "image/png", "image/webp"}
 MIN_W, MIN_H, MAX_BYTES = 900, 700, 25 * 1024 * 1024
@@ -480,63 +480,93 @@ def search_product(key, name, delay, commons_blocked):
     return ranked, errors, status, commons_blocked
 
 def download_candidate(key, candidate):
+    """Retry transient download failures and validate every downloaded image."""
     OUT.mkdir(parents=True, exist_ok=True)
     urls = []
-    original = candidate.get("url")
-    thumbnail = candidate.get("thumbnail")
-    for u in (original, thumbnail):
-        # Openverse API thumbnail endpoints can return 424 Failed Dependency.
-        # Never use its /thumb/ API endpoint as a file source; use original URL.
+    for u in (candidate.get("url"), candidate.get("thumbnail")):
         if u and "api.openverse.org/v1/images/" in u and u.rstrip("/").endswith("/thumb"):
             continue
         if u and u not in urls:
             urls.append(u)
     errors = []
+    headers = {"User-Agent": UA, "Accept": "image/*,*/*;q=0.8", "Accept-Language": "es,en;q=0.8"}
+    if candidate.get("source_page"):
+        headers["Referer"] = candidate["source_page"]
     for url in urls:
         if urlparse(url).scheme not in ("http", "https"):
             errors.append({"url": url, "error": "invalid_url_scheme"})
             continue
+        data = None
+        content_type = ""
+        final_url = url
+        for attempt in range(3):
+            try:
+                with requests.get(url, headers=headers, stream=True, timeout=TIMEOUT, allow_redirects=True) as response:
+                    final_url = response.url
+                    if response.status_code == 429 or response.status_code >= 500:
+                        raw = response.headers.get("Retry-After", "")
+                        try:
+                            wait = min(float(raw), 20) if raw else (1.5 ** attempt)
+                        except ValueError:
+                            wait = 1.5 ** attempt
+                        errors.append({"url": url, "attempt": attempt + 1, "error": "HTTP " + str(response.status_code), "retry_after_seconds": wait})
+                        if attempt < 2:
+                            time.sleep(wait)
+                            continue
+                        break
+                    if response.status_code in (401, 403, 404, 410):
+                        errors.append({"url": url, "error": "HTTP " + str(response.status_code)})
+                        break
+                    response.raise_for_status()
+                    content_type = (response.headers.get("Content-Type") or "").split(";")[0].lower()
+                    parts, size = [], 0
+                    for chunk in response.iter_content(65536):
+                        if not chunk:
+                            continue
+                        size += len(chunk)
+                        if size > MAX_BYTES:
+                            raise ValueError("image_over_25MB")
+                        parts.append(chunk)
+                    data = b"".join(parts)
+                if not data:
+                    raise ValueError("empty_download")
+                if content_type and not content_type.startswith("image/"):
+                    raise ValueError("non_image_content_type:" + content_type)
+                break
+            except requests.RequestException as exc:
+                errors.append({"url": url, "attempt": attempt + 1, "error": "NETWORK:" + str(exc)[:250]})
+                if attempt < 2:
+                    time.sleep(1.5 ** attempt)
+                    continue
+                break
+            except Exception as exc:
+                errors.append({"url": url, "attempt": attempt + 1, "error": str(exc)[:300]})
+                break
+        if not data:
+            continue
         try:
-            with requests.get(url, headers={"User-Agent": UA}, stream=True, timeout=TIMEOUT) as response:
-                if response.status_code == 429:
-                    errors.append({"url": url, "error": "HTTP 429"})
-                    continue
-                if response.status_code in (403, 404, 410):
-                    errors.append({"url": url, "error": f"HTTP {response.status_code}"})
-                    continue
-                response.raise_for_status()
-                content_type = (response.headers.get("Content-Type") or "").split(";")[0].lower()
-                data_parts, size = [], 0
-                for chunk in response.iter_content(65536):
-                    if not chunk:
-                        continue
-                    size += len(chunk)
-                    if size > MAX_BYTES:
-                        raise ValueError("image_over_25MB")
-                    data_parts.append(chunk)
-                data = b"".join(data_parts)
             img = Image.open(BytesIO(data))
             img.verify()
             img = Image.open(BytesIO(data))
             if img.format not in ("JPEG", "PNG", "WEBP"):
-                raise ValueError(f"unsupported_image_format:{img.format}")
+                raise ValueError("unsupported_image_format:" + str(img.format))
             if img.width < MIN_W or img.height < MIN_H:
-                raise ValueError(f"low_resolution:{img.width}x{img.height}")
+                raise ValueError("low_resolution:" + str(img.width) + "x" + str(img.height))
             ext = {"JPEG": ".jpg", "PNG": ".png", "WEBP": ".webp"}[img.format]
             target = OUT / (re.sub(r"[^A-Za-z0-9_-]", "_", key) + "-candidate" + ext)
-            target.write_bytes(data)
+            temp = target.with_suffix(target.suffix + ".tmp")
+            temp.write_bytes(data)
+            temp.replace(target)
             warnings = []
             if any(x in key.lower() for x in ("sinsal", "sin_sal", "girasol", "oliva")):
                 warnings.append("La foto no permite verificar ausencia de sal ni tipo de aceite; requiere confirmación documental.")
-            return {
-                "status": "DOWNLOADED_UNVERIFIED", "path": target.relative_to(ROOT).as_posix(),
-                "sha256": hashlib.sha256(data).hexdigest(), "bytes": size,
-                "width": img.width, "height": img.height, "format": img.format,
-                "content_type": content_type, "used_url": url, "url_errors": errors,
-                "variant_warnings": warnings
-            }
+            return {"status": "DOWNLOADED_UNVERIFIED", "path": target.relative_to(ROOT).as_posix(),
+                    "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data),
+                    "width": img.width, "height": img.height, "format": img.format,
+                    "content_type": content_type, "used_url": url, "final_url": final_url,
+                    "url_errors": errors, "variant_warnings": warnings}
         except Exception as exc:
-            errors.append({"url": url, "error": str(exc)[:300]})
+            errors.append({"url": url, "error": "IMAGE_VALIDATION:" + str(exc)[:300]})
             continue
     return {"status": "DOWNLOAD_FAILED", "url_errors": errors}
 
@@ -581,7 +611,9 @@ def main():
     if args.resume:
         retry = {"SOURCE_ERROR", "INCOMPLETE_SEARCH", "DOWNLOAD_FAILED",
                  "CANDIDATES_FOUND_DOWNLOAD_FAILED", "RATE_LIMITED", "NO_CANDIDATES",
-                 "NO_RESULTS_RELEVANT", "CANDIDATES_FOUND_DOWNLOAD_FAILED"}
+                 "PARTIAL_SOURCE_FAILURE"}
+        if args.retry_no_candidates:
+            retry.add("NO_RESULTS_RELEVANT")
         products = [(k, n) for k, n in products
                     if k not in processed or processed[k].get("status") in retry
                     or (args.recheck_downloaded and processed[k].get("status") == "DOWNLOADED_UNVERIFIED")]
