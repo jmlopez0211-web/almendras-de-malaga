@@ -63,6 +63,15 @@ class StorefrontReleaseTests(unittest.TestCase):
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn('id="cartNotes" rows="3" maxlength="1000"', html)
 
+    def test_cart_totals_and_order_message_are_explicitly_indicative(self):
+        html = (ROOT / "index.html").read_text(encoding="utf-8")
+        app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
+        self.assertIn("Total orientativo (productos + envío)", html)
+        self.assertIn("TOTAL ORIENTATIVO", app)
+        self.assertIn("no confirma pedido", app)
+        self.assertNotIn("Una vez recibido el pago, prepararemos y enviaremos el pedido", app)
+        self.assertNotIn("Una vez recibido el pago, se preparará y enviará el pedido", html)
+
     def test_catalog_dynamic_content_is_escaped(self):
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         self.assertIn("const escapeHTML=", app)
@@ -100,7 +109,7 @@ class StorefrontReleaseTests(unittest.TestCase):
             self.assertIn(f'value="{grams}"', html)
         for element_id in ("cartSubtotal", "cartWeight", "cartShipping", "cartTotal"):
             self.assertIn(f'id="{element_id}"', html)
-        for phrase in ("getCartWeightGrams", "calculateShipping", "PESO TOTAL", "ENVÍO", "TOTAL FINAL"):
+        for phrase in ("getCartWeightGrams", "calculateShipping", "PESO TOTAL", "ENVÍO", "TOTAL ORIENTATIVO"):
             self.assertIn(phrase, app)
         self.assertIn("wa.me/" + PRIMARY, app)
         self.assertNotRegex(app, r"DNI|CIF")
