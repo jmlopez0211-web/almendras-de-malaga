@@ -101,7 +101,7 @@ function productPage(entry,category,categoryFile,related){
   const desc=cleanText(product.desc||"Consulta la ficha de este producto en el catálogo.");
   const relatedHtml='<section aria-labelledby="related-title"><h2 id="related-title">Productos de la misma familia</h2>'+(related.length?'<ul>'+related.map(item=>'<li><a href="'+item.file+'">'+escapeHtml(item.product.name)+'</a></li>').join("")+'</ul>':'<p>Consulta el catálogo de la familia <a href="../categorias/'+categoryFile+'">'+escapeHtml(category)+'</a> para explorar otras referencias.</p>')+'</section>';
   const otherFamilies=[...families.keys()].filter(name=>name!==category).sort((a,b)=>a.localeCompare(b,"es"));
-  const familyLinks=otherFamilies.map(name=>'<li><a href="../categorias/'+slug(name)+'.html">'+escapeHtml(name)+'</a></li>').join("");
+  const familyLinks=otherFamilies.map(name=>'<li><a href="../categorias/'+categoryFiles.get(name)+'">'+escapeHtml(name)+'</a></li>').join("");
   const schemaProduct=schemaForProduct(product,url,category);
   const schemaBreadcrumb=breadcrumbSchema([{name:"Inicio",url:BASE},{name:"Catálogo",url:BASE+"index.html#catalogo"},{name:category,url:categoryUrl},{name:product.name,url}]);
   const whatsapp="https://wa.me/34666068765?text="+encodeURIComponent("Hola, quisiera consultar información, formatos y disponibilidad de "+product.name+".");
