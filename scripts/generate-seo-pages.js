@@ -115,7 +115,9 @@ function similarity(a,b){
   return common*10+sameCategory+(prepA&&prepB&&prepA[0]!==prepB[0]?2:0);
 }
 function selectRelated(entry,items){
-  return items.filter(item=>item.id!==entry.id).sort((a,b)=>similarity(entry,b)-similarity(entry,a)||a.product.name.localeCompare(b.product.name,"es")).slice(0,8);
+  const sameFamily=items.filter(item=>item.id!==entry.id&&
+    cleanText(item.product.tag||item.product.category||"Otros")===cleanText(entry.product.tag||entry.product.category||"Otros"));
+  return sameFamily.sort((a,b)=>similarity(entry,b)-similarity(entry,a)||a.product.name.localeCompare(b.product.name,"es")).slice(0,8);
 }
 const categoryFiles=new Map();
 const usedCategoryFiles=new Set();
