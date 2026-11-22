@@ -22,6 +22,11 @@ NEEDED = {
     "PRODUCT_IDENTITY_GROUPS",
     "PRODUCT_FORBIDDEN_TERMS",
     "NEGATIVE_PHRASES",
+    "NUT_PRODUCT_KEYS",
+    "NUT_PRODUCT_NEGATIVE_TERMS",
+    "NUT_PRODUCT_NEGATIVE_PHRASES",
+    "BLEND_COMPOSITION_KEYS",
+    "SOFT_VARIANT_KEYS",
     "candidate_score",
 }
 selected = []
@@ -45,7 +50,7 @@ class TestCatalogCandidatePrecision(unittest.TestCase):
 
     def test_recovery_queries_start_with_broad_almond_terms(self):
         from_main = namespace["build_queries"]("almendraFritaSinSal", "Almendra frita sin sal")
-        self.assertEqual(from_main[0], "almonds")
+        self.assertIn("almonds", from_main)
         self.assertIn("almond kernels", from_main)
         self.assertIn("fried almonds no salt", from_main)
 
@@ -63,7 +68,7 @@ class TestCatalogCandidatePrecision(unittest.TestCase):
             "macadamiaFritaSinSal",
             "Macadamia frita sin sal"
         )
-        self.assertEqual(queries[0], "macadamia nuts")
+        self.assertIn("macadamia nuts", queries)
         self.assertIn("macadamia kernels", queries)
 
     def test_rejects_savory_pine_nut_dish(self):

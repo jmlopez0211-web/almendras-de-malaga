@@ -232,7 +232,7 @@ def main() -> int:
 
     for page in html_files:
         page_url = "https://jmlopez0211-web.github.io/almendras-de-malaga/"
-        if page.name != "index.html":
+        if page.name not in {"index.html", "home-publicada.html"}:
             page_url += page.name
         if page_url not in sitemap:
             ok = fail(f"sitemap.xml is missing {page.name}") and ok

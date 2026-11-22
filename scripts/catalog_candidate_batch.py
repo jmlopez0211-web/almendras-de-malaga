@@ -35,11 +35,11 @@ PRODUCT_SEARCH = {
     "almendraFritaGirasol": ["fried almonds sunflower oil","almonds fried in sunflower oil","almendras fritas aceite girasol"],
     "almendraFritaSinSal": ["unsalted fried almonds","fried almonds no salt","almendras fritas sin sal"],
     "cacahueteFritoRepeladoSinSal": ["fried blanched peanuts unsalted","unsalted fried shelled peanuts","cacahuete frito repelado sin sal"],
-    "cacahueteTostadoRepeladoSinSal": ["dry roasted blanched peanuts unsalted","roasted shelled peanuts no salt","cacahuete tostado repelado sin sal"],
-    "anacardoFritoSinSal": ["fried cashews unsalted","plain fried cashew kernels","anacardos fritos sin sal"],
-    "macadamiaFritaSal": ["salted fried macadamia nuts","fried macadamia kernels","macadamia frita sal"],
-    "macadamiaFritaSinSal": ["unsalted fried macadamia nuts","fried macadamia kernels no salt","macadamia frita sin sal"],
-    "macadamiaTostadaSinSal": ["dry roasted macadamia nuts unsalted","roasted macadamia kernels","macadamia tostada sin sal"],
+    "cacahueteTostadoRepeladoSinSal": ["roasted peeled peanuts isolated", "dry roasted blanched peanuts unsalted", "roasted shelled peanuts no salt", "cacahuete tostado repelado sin sal"],
+    "anacardoFritoSinSal": ["fried cashew nuts close up", "fried cashews unsalted", "plain fried cashew kernels", "anacardos fritos sin sal"],
+    "macadamiaFritaSal": ["salted fried macadamia nuts", "fried macadamia kernels", "macadamia frita sal"],
+    "macadamiaFritaSinSal": ["unsalted fried macadamia nuts", "fried macadamia kernels no salt", "macadamia frita sin sal"],
+    "macadamiaTostadaSinSal": ["dry roasted macadamia nuts close up", "dry roasted macadamia nuts unsalted", "roasted macadamia kernels", "macadamia tostada sin sal"],
     "avellanaAmericanaCruda": ["raw American hazelnuts kernels","raw hazelnuts shelled","avellana americana cruda"],
     "nuezCaramelizada": ["caramelized walnuts","candied walnut halves","nuez caramelizada"],
     "revueloTostadoSinSal": ["unsalted roasted mixed nuts","dry roasted nut mix","revuelto tostado sin sal"],
@@ -220,6 +220,63 @@ NEGATIVE_PHRASES = [
     "bottle", "bouteille", "jar", "packaging", "package", "wrapper", "wrappers",
     "label", "brand logo", "retail box", "sealed bag", "trader joe", "russell stover", "milkaut", "les anis de flavigny", "north charleston"
 ]
+
+
+# Filtros contextuales específicos para los ocho frutos secos auditados.
+# No se aplican a los demás productos del catálogo.
+NUT_PRODUCT_KEYS = frozenset({
+    "almendraFritaGirasol",
+    "almendraFritaSinSal",
+    "cacahueteFritoRepeladoSinSal",
+    "cacahueteTostadoRepeladoSinSal",
+    "anacardoFritoSinSal",
+    "macadamiaFritaSal",
+    "macadamiaFritaSinSal",
+    "macadamiaTostadaSinSal",
+})
+
+NUT_PRODUCT_NEGATIVE_TERMS = (
+    "package",
+    "packaged",
+    "packaging",
+    "brand",
+    "brands",
+    "plantation",
+    "plantations",
+    "farm",
+    "farms",
+    "farming",
+    "historical",
+    "historic",
+    "history",
+    "chocolate",
+    "chocolates",
+    "plate",
+    "plated",
+    "bowl",
+    "bowls",
+    "pan",
+    "recipe",
+    "recipes",
+    "advertisement",
+    "advertisements",
+    "advert",
+    "advertising",
+    "sponsored",
+    "sponsorship",
+    "wrapper",
+    "wrappers",
+    "label",
+    "logo",
+    "watermark",
+    "retail",
+    "container",
+)
+
+NUT_PRODUCT_NEGATIVE_PHRASES = {
+    key: NUT_PRODUCT_NEGATIVE_TERMS
+    for key in NUT_PRODUCT_KEYS
+}
 
 # High-risk variants require their distinguishing words in title, tags or description.
 # If a source does not document those details, no candidate is preferred over a wrong photo.
@@ -529,6 +586,15 @@ def candidate_score(key, candidate):
     if negatives:
         return -100, ["irrelevant_or_commercial_context:" + ",".join(negatives)]
 
+    # Rechazar contextos visuales/comerciales en frutos secos.
+    product_negative_terms = NUT_PRODUCT_NEGATIVE_PHRASES.get(key, ())
+    product_negatives = [
+        term for term in product_negative_terms
+        if has_term(full_text, term)
+    ]
+    if product_negatives:
+        return -100, ["product_specific_exclusion:" + ",".join(product_negatives)]
+
     product_forbidden = [term for term in PRODUCT_FORBIDDEN_TERMS.get(key, [])
                          if has_term(full_text, term)]
     if product_forbidden:
@@ -617,13 +683,13 @@ def candidate_score(key, candidate):
 
 
 def build_queries(key, name):
-    # Phase order: broad visual identity first, then precise variant phrases,
-    # then the original catalog label. Some APIs interpret multiword queries
-    # as AND, so long exact strings alone often produce empty result sets.
+    # Product-specific queries first, followed by recovery queries
+    # and finally the original catalog label.
     terms = []
-    terms.extend(SEARCH_RECOVERY_TERMS.get(key, []))
     terms.extend(PRODUCT_SEARCH.get(key, []))
+    terms.extend(SEARCH_RECOVERY_TERMS.get(key, []))
     terms.append(name)
+
     seen, result = set(), []
     for term in terms:
         term = term.strip()
@@ -631,7 +697,9 @@ def build_queries(key, name):
         if normalized and normalized not in seen:
             result.append(term)
             seen.add(normalized)
+
     return result[:6]
+
 
 def normalize_legacy_candidate(candidate):
     """Adapt candidates saved by v4 (where `url` was often the thumbnail)."""
