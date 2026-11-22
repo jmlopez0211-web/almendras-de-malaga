@@ -156,10 +156,10 @@ for(const [category,items] of families){
 const sitemapPath=path.join(process.cwd(),"sitemap.xml");
 const oldSitemap=fs.existsSync(sitemapPath)?fs.readFileSync(sitemapPath,"utf8"):"";
 const oldUrlMetadata=new Map();
-for (const match of oldSitemap.matchAll(/<url\\b[^>]*>([\\s\\S]*?)<\\/url>/g)) {
-  const loc=match[1].match(/<loc>\\s*([^<]+)\\s*<\\/loc>/);
+for (const match of oldSitemap.matchAll(/<url\b[^>]*>([\s\S]*?)<\/url>/g)) {
+  const loc=match[1].match(/<loc>\s*([^<]+)\s*<\/loc>/);
   if (!loc) continue;
-  const lastmod=match[1].match(/<lastmod>\\s*([^<]+)\\s*<\\/lastmod>/);
+  const lastmod=match[1].match(/<lastmod>\s*([^<]+)\s*<\/lastmod>/);
   oldUrlMetadata.set(loc[1].trim(),lastmod?.[1].trim()||null);
 }
 const oldUrls=[...oldUrlMetadata.keys()];
@@ -176,10 +176,10 @@ function lastmodForUrl(url) {
   const currentHtml=fs.existsSync(currentPath)?fs.readFileSync(currentPath,"utf8"):null;
   return oldHtml!==undefined&&oldHtml===currentHtml ? oldLastmod : today;
 }
-const sitemapXml='<?xml version="1.0" encoding="UTF-8"?>\\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\\n'+allUrls.map(url=>{
+const sitemapXml='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+allUrls.map(url=>{
   const lastmod=lastmodForUrl(url);
   return "  <url><loc>"+url+"</loc>"+(lastmod?"<lastmod>"+lastmod+"</lastmod>":"")+"</url>";
-}).join("\\n")+"\\n</urlset>\\n";
+}).join("\n")+"\n</urlset>\n";
 fs.writeFileSync(sitemapPath,sitemapXml);
 console.log("Páginas de producto generadas: "+entries.length);
 console.log("Páginas de categoría generadas: "+families.size);
