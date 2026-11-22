@@ -198,11 +198,11 @@ NEGATIVE_PHRASES = [
     "tart", "cake", "dessert", "ice cream", "yogurt", "tofu", "recipe",
     "cooking class", "food blogger", "man frying", "woman frying",
     "person cooking", "chef preparing", "farmers market", "farmer's market",
-    "market stall", "market stand", "grocery store", "shop window", "storefront",
+    "market", "market stall", "market stand", "grocery store", "shop window", "storefront", "shop", "store", "retail", "panoramio", "arahova",
     "restaurant dish", "served with", "plated", "main course", "lunch", "dinner",
     "anchovy", "shishito", "donut", "doughnut", "candy apple", "caramel apple",
     "bottle", "bouteille", "jar", "packaging", "package", "wrapper", "wrappers",
-    "label", "brand logo", "retail box", "sealed bag"
+    "label", "brand logo", "retail box", "sealed bag", "trader joe", "russell stover", "milkaut", "les anis de flavigny", "north charleston"
 ]
 
 # High-risk variants require their distinguishing words in title, tags or description.
@@ -276,6 +276,23 @@ STRICT_MATCH_GROUPS = {
     "cocoDado": [["coconut", "coco"], ["dried", "dehydrated", "deshidratado"]],
     "pipaGarrapinada": [["sunflower", "pipa", "pipas"],
                         ["candied", "caramelized", "garrapiñada"]],
+    "pictolinEucaliptoSA": [["pictolin"], ["eucalyptus", "eucalipto"], ["sugar free", "sugar-free", "sugarfree", "sin azúcar"]],
+    "pictolinEucaliptoCA": [["pictolin"], ["eucalyptus", "eucalipto"], ["with sugar", "sugared", "con azúcar", "con azucar"]],
+    "pictolinFullmintSA": [["pictolin"], ["fullmint", "mint", "menta"], ["sugar free", "sugar-free", "sugarfree", "sin azúcar"]],
+    "pictolinFullmintCA": [["pictolin"], ["fullmint", "mint", "menta"], ["with sugar", "sugared", "con azúcar", "con azucar"]],
+    "pictolinMielLimonSA": [["pictolin"], ["honey lemon", "miel limón", "miel limon"], ["sugar free", "sugar-free", "sugarfree", "sin azúcar"]],
+    "pictolinMielLimonCA": [["pictolin"], ["honey lemon", "miel limón", "miel limon"], ["with sugar", "sugared", "con azúcar", "con azucar"]],
+    "pictolinAnisSA": [["pictolin"], ["anise", "anis", "anís"], ["sugar free", "sugar-free", "sugarfree", "sin azúcar"]],
+    "pictolinAnisCA": [["pictolin"], ["anise", "anis", "anís"], ["with sugar", "sugared", "con azúcar", "con azucar"]],
+    "pictolinFruta": [["pictolin"], ["fruit", "fruta"], ["sugar free", "sugar-free", "sugarfree", "sin azúcar"]],
+}
+
+STRICT_FORBIDDEN_TERMS = {
+    "cafeDryCA": ["sugar free", "sugar-free", "sugarfree", "sin azúcar", "sans sucre"],
+    "pictolinEucaliptoCA": ["sugar free", "sugar-free", "sugarfree", "sin azúcar"],
+    "pictolinFullmintCA": ["sugar free", "sugar-free", "sugarfree", "sin azúcar"],
+    "pictolinMielLimonCA": ["sugar free", "sugar-free", "sugarfree", "sin azúcar"],
+    "pictolinAnisCA": ["sugar free", "sugar-free", "sugarfree", "sin azúcar"],
 }
 
 class RateLimited(Exception):
@@ -380,6 +397,7 @@ def commons_search(query):
         title = page.get("title", "").replace("File:", "")
         found.append({
             "source": "Wikimedia Commons", "title": title,
+            "description": re.sub(r"<[^>]+>", " ", (meta.get("ImageDescription") or {}).get("value", "")),
             "url": ii.get("url"), "thumbnail": ii.get("thumburl"),
             "mime": mime, "width": ii.get("width"), "height": ii.get("height"),
             "license": (meta.get("LicenseShortName") or {}).get("value", ""),
@@ -400,6 +418,7 @@ def openverse_search(query):
     for item in data.get("results", []):
         found.append({
             "source": "Openverse", "title": item.get("title", ""),
+            "description": item.get("description") or "",
             "url": item.get("url"), "thumbnail": item.get("thumbnail"),
             "mime": item.get("mimetype") or item.get("mime_type"),
             "width": item.get("width"), "height": item.get("height"),
@@ -433,6 +452,9 @@ def candidate_score(key, candidate):
     missing_strict = [group for group in strict_groups if not any(term in text for term in group)]
     if missing_strict:
         return -100, ["missing_exact_variant_evidence"]
+    forbidden_variants = [term for term in STRICT_FORBIDDEN_TERMS.get(key, []) if term in text]
+    if forbidden_variants:
+        return -100, ["contradictory_product_variant:" + ",".join(forbidden_variants)]
 
     score = 8
     reasons = ["product_keyword_match"]
