@@ -949,7 +949,7 @@ def main():
         old_status = old_record.get("status")
         errors = []
         search_audit = {"engine_version": ENGINE_VERSION, "queries": [],
-                        "raw_candidates": len(old_candidates),
+                        "raw_candidates": 0,
                         "accepted_candidates": 0, "rejection_reasons": {},
                         "rejected_samples": [], "reused_cached_candidates": False}
         if old_candidates and old_status in ("CANDIDATES_FOUND_DOWNLOAD_FAILED", "DOWNLOAD_FAILED",
