@@ -194,6 +194,37 @@ class TestCatalogCandidatePrecision(unittest.TestCase):
         )
         self.assertLess(score, 0)
 
+    def test_rejects_salt_roasted_peanut_for_unsalted_product(self):
+        score, reasons = self.score(
+            "cacahueteTostadoRepeladoSinSal",
+            "Salt Roasted Peanut"
+        )
+        self.assertLess(score, 0)
+        self.assertTrue(any("wrong_product_or_preparation" in x for x in reasons))
+
+    def test_accepts_roasted_peanuts_when_salt_is_not_documented(self):
+        score, reasons = self.score(
+            "cacahueteTostadoRepeladoSinSal",
+            "Roasted peanuts"
+        )
+        self.assertGreaterEqual(score, 4)
+        self.assertIn("variant_metadata_unverified", reasons)
+
+    def test_rejects_trail_mix_for_three_variety_raisins(self):
+        score, _ = self.score(
+            "revueloTresPasas",
+            "Cranberry trail mix with peanuts, raisins, walnuts and almonds"
+        )
+        self.assertLess(score, 0)
+
+    def test_accepts_explicit_three_variety_raisins(self):
+        score, reasons = self.score(
+            "revueloTresPasas",
+            "Three varieties of raisins mix"
+        )
+        self.assertGreaterEqual(score, 4)
+        self.assertIn("variant_keyword_match", reasons)
+
     def test_accepts_only_explicit_taco_miel_candy_evidence(self):
         score, reasons = self.score("tacoMiel", "Honey candy confection")
         self.assertGreater(score, 0)
