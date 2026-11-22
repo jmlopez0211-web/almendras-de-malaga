@@ -299,10 +299,10 @@ PRODUCT_IDENTITY_GROUPS = {
     "revueloDulceMCarmen": [["mixed nuts", "nuts mix", "nut mix", "assorted nuts", "trail mix"],
                             ["sweet", "candied", "caramelized", "caramelised", "garrapiñada"]],
     "revueloDeliciasVirginia": [["mixed nuts", "nuts mix", "nut mix", "assorted nuts", "trail mix"]],
-    "revueloChocolates": [["mixed chocolate", "chocolate assortment", "assorted chocolates"],
+    "revueltoChocolates": [["mixed chocolate", "chocolate assortment", "assorted chocolates"],
                           ["nuts", "nut", "fruit", "fruits"]],
     "nuezCaramelizada": [["walnut", "walnuts", "nuez", "nueces"],
-                         ["caramelized", "caramelised", "candied", "garrapiñada"]],
+                         ["caramelized", "caramelised", "candied", "caramel", "garrapiñada"]],
     "melonDeshidratado": [["melon", "melón"], ["dried", "dehydrated", "deshidratado"]],
     "chocolateNuezLeche": [["walnut", "walnuts", "nuez", "nueces"],
                            ["chocolate"], ["milk chocolate", "chocolate con leche", "chocolate with milk"]],
@@ -333,7 +333,7 @@ PRODUCT_IDENTITY_GROUPS = {
 PRODUCT_FORBIDDEN_TERMS = {
     "cacahueteTostadoRepeladoSinSal": [
         "salted", "with salt", "salty", "con sal", "in shell", "with shell",
-        "con cáscara", "con cascara"
+        "con cáscara", "con cascara", "cáscara y sal", "cascara y sal"
     ],
     "melonDeshidratado": ["bitter melon", "momordica", "goya"],
     "nuezCaramelizada": ["pain au chocolat", "pain au choc", "pastry", "croissant", "bakery"],
