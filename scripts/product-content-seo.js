@@ -40,9 +40,9 @@ function familyContext(t) {
 }
 const introTemplates = [
   t => `La referencia ${t.name} se identifica en el catálogo por su denominación y por la descripción disponible: ${t.desc}. Esta ficha ayuda a localizarla y a distinguirla de otras presentaciones de la misma familia.`,
-  t => `Si buscas ${t.name.toLowerCase()}, aquí encontrarás la información que consta en el catálogo. La descripción comercial disponible es: ${t.desc}. Consulta las referencias relacionadas para comparar otras preparaciones o presentaciones.`,
-  t => `Esta página está dedicada a ${t.name.toLowerCase()}. El catálogo la describe así: ${t.desc}. La denominación permite distinguir esta referencia de las alternativas que aparecen enlazadas más abajo.`,
-  t => `Dentro del catálogo de Almendras de Málaga, ${t.name.toLowerCase()} cuenta con una ficha propia. La información publicada sobre el producto es: ${t.desc}. Para conocer detalles no recogidos aquí, es necesario consultarlos con el establecimiento.`
+  t => `Si buscas ${t.name}, aquí encontrarás la información que consta en el catálogo. La descripción comercial disponible es: ${t.desc}. Consulta las referencias relacionadas para comparar otras preparaciones o presentaciones.`,
+  t => `Esta página está dedicada a ${t.name}. El catálogo la describe así: ${t.desc}. La denominación permite distinguir esta referencia de las alternativas que aparecen enlazadas más abajo.`,
+  t => `Dentro del catálogo de Almendras de Málaga, ${t.name} cuenta con una ficha propia. La información publicada sobre el producto es: ${t.desc}. Para conocer detalles no recogidos aquí, es necesario consultarlos con el establecimiento.`
 ];
 const selectionTemplates = [
   t => `Para elegir esta referencia, fíjate primero en el nombre del producto: indica ${t.preparation} y ${t.shell}. ${t.salt}. Si estás comparando productos, revisa también la descripción específica y pregunta por los detalles que no aparezcan confirmados.`,
@@ -76,7 +76,7 @@ export function buildProductContent(product, id, category, related) {
   const use = useTemplates[(v + 1) % useTemplates.length](t);
   const comparison = compareTemplates[v % compareTemplates.length](t, related);
   const faq = faqFor(t, related, id);
-  return {intro,selection,use,comparison,faq,traits:t};
+  return {intro,selection,use,comparison,family:familyContext(t),faq,traits:t};
 }
 export function productTitle(product,id) {
   const name=clean(product.name);
