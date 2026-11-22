@@ -1,15 +1,19 @@
 import fs from "node:fs";
 import path from "node:path";
 import assert from "node:assert/strict";
+
 const baseUrl="https://jmlopez0211-web.github.io/almendras-de-malaga/";
 const sitemap=fs.readFileSync("sitemap.xml","utf8");
 const robots=fs.readFileSync("robots.txt","utf8");
 const urls=[...sitemap.matchAll(/<loc>\s*([^<]+)\s*<\/loc>/g)].map(m=>m[1].trim());
 assert.ok(urls.length>=6,"Sitemap debe contener páginas de producto y landings");
+assert.equal(new Set(urls).size,urls.length,"Sitemap contiene URLs duplicadas");
 assert.ok(robots.includes("Sitemap: "+baseUrl+"sitemap.xml"),"robots.txt debe declarar sitemap");
+
 const canonical=html=>html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i)?.[1]||null;
-const productTitles=new Set(),productDescriptions=new Set();
-let products=0,categories=0;
+const productTitles=new Set(),productDescriptions=new Set(),contentHashes=new Set();
+let products=0,categories=0,faqCount=0,relatedLinkCount=0;
+
 for(const url of urls){
  assert.ok(url.startsWith(baseUrl),"URL fuera del dominio: "+url);
  const rel=url.slice(baseUrl.length);
@@ -21,6 +25,7 @@ for(const url of urls){
  assert.ok(title.length>=10&&title.length<=100,"Title ausente o demasiado largo: "+file);
  assert.ok(description.length>=40&&description.length<=160,"Meta description ausente o fuera de longitud: "+file);
  assert.equal(canonical(html),url,"Canonical incorrecta: "+file);
+
  if(rel.startsWith("productos/")||rel.startsWith("categorias/")){
   assert.ok(html.includes('property="og:title"')&&html.includes('property="og:description"')&&html.includes('property="og:url"'),"Open Graph incompleto: "+file);
   assert.ok(html.includes('name="twitter:card"'),"Twitter Card ausente: "+file);
@@ -33,12 +38,26 @@ for(const url of urls){
   const blocks=[...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m=>JSON.parse(m[1]));
   const product=blocks.find(x=>x["@type"]==="Product");
   const breadcrumb=blocks.find(x=>x["@type"]==="BreadcrumbList");
+  const faq=blocks.find(x=>x["@type"]==="FAQPage");
   assert.ok(product,"Schema Product ausente: "+file);
   assert.equal(product.url,url,"Product URL incorrecta: "+file);
   assert.ok(product.name&&product.description&&product.category,"Product Schema incompleto: "+file);
-  assert.ok(!("offers" in product),"No debe publicar Offer/precio no verificado: "+file);
+  assert.ok(!("offers" in product)&&!("price" in product),"No debe publicar Offer/precio no verificado: "+file);
   assert.ok(breadcrumb&&breadcrumb.itemListElement.length>=3,"BreadcrumbList incompleto: "+file);
-  assert.ok(html.includes("Productos de la misma familia"),"Falta bloque de enlaces de familia: "+file);
+  assert.ok(faq&&faq.mainEntity.length>=3,"FAQPage Schema ausente o incompleto: "+file);
+  assert.ok(html.includes("Productos relacionados para comparar"),"Falta sección de enlaces relacionados: "+file);
+  const related=[...html.matchAll(/href=["']([^"']+)["'][^>]*>([^<]+)<\/a>/g)].filter(m=>m[1].endsWith(".html")).length;
+  relatedLinkCount+=related;
+  const text=html.replace(/<script[\s\S]*?<\/script>/g," ").replace(/<style[\s\S]*?<\/style>/g," ").replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim();
+  assert.ok(text.length>=900,"Contenido demasiado corto: "+file+" ("+text.length+" caracteres)");
+  assert.ok(html.includes("Diferencias dentro de su familia"),"Falta contenido específico de familia: "+file);
+  assert.ok(html.includes("Cómo identificar y elegir esta presentación"),"Falta guía de elección: "+file);
+  assert.ok(html.includes("Ideas de uso"),"Falta contenido de usos: "+file);
+  assert.ok(html.includes("Preguntas frecuentes sobre"),"FAQ visible ausente: "+file);
+  const contentFingerprint=html.match(/<section aria-labelledby="about-title">([\s\S]*?)<\/section>/)?.[1]||"";
+  assert.ok(contentFingerprint.length>0,"Intro SEO ausente: "+file);
+  assert.ok(!contentHashes.has(contentFingerprint),"Contenido introductorio duplicado: "+file);contentHashes.add(contentFingerprint);
+  faqCount+=faq.mainEntity.length;
   const localLinks=[...html.matchAll(/href=["']([^"']+)["']/g)].map(m=>m[1]).filter(h=>!h.startsWith("http")&&!h.startsWith("#")&&!h.startsWith("mailto:"));
   for(const href of localLinks){const target=path.resolve(path.dirname(file),href.split("#")[0]);if(href.split("#")[0])assert.ok(fs.existsSync(target),"Enlace interno roto en "+file+": "+href);}
  }
@@ -46,4 +65,4 @@ for(const url of urls){
 }
 assert.ok(products>0,"Sitemap sin fichas de producto");
 assert.ok(categories>0,"Sitemap sin páginas de categoría");
-console.log("SEO product audit OK | "+products+" productos | "+categories+" categorías | titles/descriptions de producto únicos | canonical | OG | Twitter | Product sin Offer | BreadcrumbList | enlaces internos");
+console.log("SEO CONTENT AUDIT OK | "+products+" productos | "+categories+" categorías | "+productTitles.size+" titles únicos | "+productDescriptions.size+" meta descriptions únicas | "+faqCount+" FAQ | contenido ampliado | Schema sin Offer | canonical | OG | Twitter | enlaces internos");

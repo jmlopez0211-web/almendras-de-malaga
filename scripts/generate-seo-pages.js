@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { buildProductContent, productTitle as seoProductTitle, productMetaDescription } from "./product-content-seo.js";
 
 const BASE = "https://jmlopez0211-web.github.io/almendras-de-malaga/";
 const CATALOG_PATH = path.join(process.cwd(), "data", "catalog.js");
@@ -65,16 +66,9 @@ for(const [id,product] of entries){
   families.get(category).push({id,product,file});
 }
 
-function metaDescription(product,category){
-  const desc=cleanText(product.desc||"");
-  const base=desc?product.name+". "+desc:product.name+" en el catálogo de Almendras de Málaga.";
-  return truncate(base+" Consulta formatos, disponibilidad y pedido en Málaga por WhatsApp.",158);
-}
-function productTitle(product){
-  const name=cleanText(product.name);
-  const title=name+" en Málaga | Almendras de Málaga";
-  return truncate(title,65);
-}
+function metaDescription(product,id){ return productMetaDescription(product,id); }
+function productTitle(product,id){ return seoProductTitle(product,id); }
+
 function schemaForProduct(product,url,category){
   return {
     "@context":"https://schema.org",
@@ -96,16 +90,34 @@ function productPage(entry,category,categoryFile,related){
   const {id,product,file}=entry;
   const url=BASE+"productos/"+file;
   const categoryUrl=BASE+"categorias/"+categoryFile;
-  const title=productTitle(product);
-  const description=metaDescription(product,category);
+  const title=productTitle(product,id);
+  const description=metaDescription(product,id);
+  const content=buildProductContent(product,id,category,related);
   const desc=cleanText(product.desc||"Consulta la ficha de este producto en el catálogo.");
-  const relatedHtml='<section aria-labelledby="related-title"><h2 id="related-title">Productos de la misma familia</h2>'+(related.length?'<ul>'+related.map(item=>'<li><a href="'+item.file+'">'+escapeHtml(item.product.name)+'</a></li>').join("")+'</ul>':'<p>Consulta el catálogo de la familia <a href="../categorias/'+categoryFile+'">'+escapeHtml(category)+'</a> para explorar otras referencias.</p>')+'</section>';
+  const relatedHtml='<section aria-labelledby="related-title"><h2 id="related-title">Productos relacionados para comparar · productos de la misma familia</h2><p>'+escapeHtml(content.comparison)+'</p>'+(related.length?'<ul>'+related.map(item=>'<li><a href="'+item.file+'">'+escapeHtml(item.product.name)+'</a><span> — '+escapeHtml(cleanText(item.product.desc||"Consulta su ficha"))+'</span></li>').join("")+'</ul>':'<p>Consulta la categoría para explorar otras referencias.</p>')+'</section>';
   const otherFamilies=[...families.keys()].filter(name=>name!==category).sort((a,b)=>a.localeCompare(b,"es"));
   const familyLinks=otherFamilies.map(name=>'<li><a href="../categorias/'+categoryFiles.get(name)+'">'+escapeHtml(name)+'</a></li>').join("");
   const schemaProduct=schemaForProduct(product,url,category);
   const schemaBreadcrumb=breadcrumbSchema([{name:"Inicio",url:BASE},{name:"Catálogo",url:BASE+"index.html#catalogo"},{name:category,url:categoryUrl},{name:product.name,url}]);
+  const schemaFaq={"@context":"https://schema.org","@type":"FAQPage","mainEntity":content.faq.map(item=>({"@type":"Question","name":item.q,"acceptedAnswer":{"@type":"Answer","text":item.a}}))};
   const whatsapp="https://wa.me/34666068765?text="+encodeURIComponent("Hola, quisiera consultar información, formatos y disponibilidad de "+product.name+".");
-  return '<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><meta name="description" content="'+escapeHtml(description)+'"><title>'+escapeHtml(title)+'</title><link rel="canonical" href="'+url+'"><meta property="og:type" content="product"><meta property="og:title" content="'+escapeHtml(title)+'"><meta property="og:description" content="'+escapeHtml(description)+'"><meta property="og:url" content="'+url+'"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="'+escapeHtml(title)+'"><meta name="twitter:description" content="'+escapeHtml(description)+'"><script type="application/ld+json">'+jsonLd(schemaProduct)+'</script><script type="application/ld+json">'+jsonLd(schemaBreadcrumb)+'</script><link rel="stylesheet" href="../styles.css"><style>body{margin:0;background:#f7f3e9;color:#243b2e;font-family:Arial,sans-serif}.seo-card{max-width:860px;margin:28px auto;padding:clamp(20px,5vw,46px);background:#fffdf7;border:1px solid #e5d7b8;border-radius:22px}.seo-card h1{font-family:Georgia,serif;font-size:clamp(2rem,6vw,3.4rem);line-height:1.08}.seo-card h2{font-family:Georgia,serif;margin-top:2rem}.seo-card p,.seo-card li{line-height:1.65}.seo-actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}.seo-actions a{padding:13px 19px;border-radius:999px;background:#193f2e;color:white;text-decoration:none;font-weight:700}.seo-actions a.alt{background:#eadbb9;color:#243b2e}.seo-note{color:#6b705f;font-size:.9rem}.seo-card nav{margin-bottom:24px}.seo-card nav a{color:#24583b}</style></head><body><main class="seo-card"><header>'+navLinks('../categorias/'+categoryFile)+'</header><article><p class="eyebrow">Catálogo · '+escapeHtml(category)+'</p><h1>'+escapeHtml(product.name)+'</h1><p class="product-description">'+escapeHtml(desc)+'</p><p>Esta ficha recoge la información disponible en el catálogo. Para confirmar características específicas, composición, alérgenos, formatos o condiciones de venta, consulta directamente con el establecimiento.</p><div class="seo-actions"><a href="'+whatsapp+'" target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a><a class="alt" href="../index.html#catalogo">Ver catálogo completo</a></div><section aria-labelledby="details-title"><h2 id="details-title">Información del producto</h2><p><strong>Familia:</strong> <a href="../categorias/'+categoryFile+'">'+escapeHtml(category)+'</a></p><p>'+escapeHtml(desc)+'</p><p>No se publican en esta ficha precios, existencias, ingredientes, certificaciones ni formatos que no estén confirmados específicamente para este producto.</p></section>'+relatedHtml+'<section aria-labelledby="purchase-title"><h2 id="purchase-title">Consulta y pedido</h2><p>Contacta con Almendras de Málaga para consultar disponibilidad, cantidad, formatos y precio vigente antes de realizar el pedido.</p><p>Atención en Calle Santa María, 29, junto a la Catedral de Málaga.</p><div class="seo-actions"><a href="'+whatsapp+'" target="_blank" rel="noopener noreferrer">Consultar este producto</a><a class="alt" href="https://maps.app.goo.gl/a9Xq3G31MJhvYgRA8" target="_blank" rel="noopener noreferrer">Cómo llegar</a></div></section><section aria-labelledby="browse-title"><h2 id="browse-title">Explorar otras familias</h2><ul>'+familyLinks+'</ul></section><p class="seo-note">Información del catálogo. La ficha no confirma existencias ni condiciones comerciales.</p></article><footer><p><a href="../index.html">Volver a Almendras de Málaga</a></p></footer></main></body></html>';
+  const faqHtml='<section class="seo-faq" aria-labelledby="faq-title"><h2 id="faq-title">Preguntas frecuentes sobre '+escapeHtml(product.name)+'</h2>'+content.faq.map((item,index)=>'<details'+(index===0?' open':'')+'><summary>'+escapeHtml(item.q)+'</summary><p>'+escapeHtml(item.a)+'</p></details>').join("")+'</section>';
+  const contentHtml='<section aria-labelledby="about-title"><h2 id="about-title">Conoce esta referencia</h2><p>'+escapeHtml(content.intro)+'</p></section><section aria-labelledby="family-title"><h2 id="family-title">Diferencias dentro de su familia</h2><p>'+escapeHtml(content.family)+'</p></section><section aria-labelledby="choose-title"><h2 id="choose-title">Cómo identificar y elegir esta presentación</h2><p>'+escapeHtml(content.selection)+'</p></section><section aria-labelledby="uses-title"><h2 id="uses-title">Ideas de uso</h2><p>'+escapeHtml(content.use)+'</p></section>';
+  return '<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><meta name="description" content="'+escapeHtml(description)+'"><title>'+escapeHtml(title)+'</title><link rel="canonical" href="'+url+'"><meta property="og:type" content="product"><meta property="og:title" content="'+escapeHtml(title)+'"><meta property="og:description" content="'+escapeHtml(description)+'"><meta property="og:url" content="'+url+'"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="'+escapeHtml(title)+'"><meta name="twitter:description" content="'+escapeHtml(description)+'"><script type="application/ld+json">'+jsonLd(schemaProduct)+'</script><script type="application/ld+json">'+jsonLd(schemaBreadcrumb)+'</script><script type="application/ld+json">'+jsonLd(schemaFaq)+'</script><link rel="stylesheet" href="../styles.css"><style>body{margin:0;background:#f7f3e9;color:#243b2e;font-family:Arial,sans-serif}.seo-card{max-width:900px;margin:28px auto;padding:clamp(20px,5vw,46px);background:#fffdf7;border:1px solid #e5d7b8;border-radius:22px}.seo-card h1{font-family:Georgia,serif;font-size:clamp(2rem,6vw,3.4rem);line-height:1.08}.seo-card h2{font-family:Georgia,serif;margin-top:2rem}.seo-card p,.seo-card li{line-height:1.7}.seo-actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}.seo-actions a{padding:13px 19px;border-radius:999px;background:#193f2e;color:white;text-decoration:none;font-weight:700}.seo-actions a.alt{background:#eadbb9;color:#243b2e}.seo-note{color:#6b705f;font-size:.9rem}.seo-card nav{margin-bottom:24px}.seo-card nav a{color:#24583b}.seo-faq details{border-top:1px solid #e5d7b8;padding:14px 0}.seo-faq summary{font-weight:700;cursor:pointer}.seo-card .product-description{font-size:1.15rem}.seo-card .eyebrow{letter-spacing:.08em;text-transform:uppercase;font-size:.8rem;color:#8a7549}</style></head><body><main class="seo-card"><header>'+navLinks('../categorias/'+categoryFile)+'</header><article><p class="eyebrow">Catálogo · '+escapeHtml(category)+'</p><h1>'+escapeHtml(product.name)+'</h1><p class="product-description">'+escapeHtml(desc)+'</p>'+contentHtml+'<div class="seo-actions"><a href="'+whatsapp+'" target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a><a class="alt" href="../index.html#catalogo">Ver catálogo completo</a></div><section aria-labelledby="details-title"><h2 id="details-title">Información confirmada en el catálogo</h2><p><strong>Familia:</strong> <a href="../categorias/'+categoryFile+'">'+escapeHtml(category)+'</a></p><p>'+escapeHtml(desc)+'</p><p>La ficha no añade precios, existencias, ingredientes, certificaciones, origen, valores nutricionales ni formatos que no estén confirmados específicamente para esta referencia.</p></section>'+relatedHtml+'<section aria-labelledby="purchase-title"><h2 id="purchase-title">Consulta y pedido</h2><p>Contacta con Almendras de Málaga para confirmar disponibilidad, cantidad, formatos y precio vigente antes de realizar el pedido.</p><p>Atención en Calle Santa María, 29, junto a la Catedral de Málaga.</p><div class="seo-actions"><a href="'+whatsapp+'" target="_blank" rel="noopener noreferrer">Consultar este producto</a><a class="alt" href="https://maps.app.goo.gl/a9Xq3G31MJhvYgRA8" target="_blank" rel="noopener noreferrer">Cómo llegar</a></div></section>'+faqHtml+'<section aria-labelledby="browse-title"><h2 id="browse-title">Explorar otras familias</h2><ul>'+familyLinks+'</ul></section><p class="seo-note">Información basada en la descripción disponible del catálogo. La ficha no confirma existencias ni condiciones comerciales.</p></article><footer><p><a href="../index.html">Volver a Almendras de Málaga</a></p></footer></main></body></html>';
+}
+function similarity(a,b){
+  const nameA=cleanText(a.product.name).toLowerCase().split(/[^a-záéíóúñ]+/).filter(x=>x.length>3);
+  const nameB=cleanText(b.product.name).toLowerCase().split(/[^a-záéíóúñ]+/).filter(x=>x.length>3);
+  const common=nameA.filter(x=>nameB.includes(x)).length;
+  const prepA=/cruda|tostada|frita|garrapiñada|pelada|cáscara|piel|sin sal|con sal/.exec(nameA.join(" "));
+  const prepB=/cruda|tostada|frita|garrapiñada|pelada|cáscara|piel|sin sal|con sal/.exec(nameB.join(" "));
+  const sameCategory=a.product.tag&&b.product.tag&&a.product.tag===b.product.tag?6:0;
+  return common*10+sameCategory+(prepA&&prepB&&prepA[0]!==prepB[0]?2:0);
+}
+function selectRelated(entry,items){
+  const sameFamily=items.filter(item=>item.id!==entry.id&&
+    cleanText(item.product.tag||item.product.category||"Otros")===cleanText(entry.product.tag||entry.product.category||"Otros"));
+  return sameFamily.sort((a,b)=>similarity(entry,b)-similarity(entry,a)||a.product.name.localeCompare(b.product.name,"es")).slice(0,8);
 }
 const categoryFiles=new Map();
 const usedCategoryFiles=new Set();
@@ -125,7 +137,7 @@ for(const [category,items] of families){
   fs.writeFileSync(path.join(categoryDir,categoryFile),html);
   generatedUrls.push(categoryUrl);
   for(const entry of items){
-    const siblings=items.filter(item=>item.id!==entry.id).slice(0,8);
+    const siblings=selectRelated(entry,entries.map(([id,product])=>({id,product,file:productFiles.get(id)})));
     const productUrl=BASE+"productos/"+entry.file;
     fs.writeFileSync(path.join(productDir,entry.file),productPage(entry,category,categoryFile,siblings));
     generatedUrls.push(productUrl);
