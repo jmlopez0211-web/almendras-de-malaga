@@ -45,6 +45,16 @@ const truncate = (value,max) => {
 const today = new Date().toISOString().slice(0,10);
 const productDir = path.join(process.cwd(),"productos");
 const categoryDir = path.join(process.cwd(),"categorias");
+// Keep the previous generated HTML so sitemap lastmod changes only when page content changes.
+const previousGeneratedPages = new Map();
+for (const [directory, prefix] of [[productDir,"productos"],[categoryDir,"categorias"]]) {
+  if (!fs.existsSync(directory)) continue;
+  for (const name of fs.readdirSync(directory)) {
+    if (!name.endsWith(".html")) continue;
+    const file = path.join(directory,name);
+    if (fs.statSync(file).isFile()) previousGeneratedPages.set(prefix+"/"+name,fs.readFileSync(file,"utf8"));
+  }
+}
 fs.rmSync(productDir,{recursive:true,force:true});
 fs.rmSync(categoryDir,{recursive:true,force:true});
 fs.mkdirSync(productDir,{recursive:true});
@@ -145,10 +155,31 @@ for(const [category,items] of families){
 }
 const sitemapPath=path.join(process.cwd(),"sitemap.xml");
 const oldSitemap=fs.existsSync(sitemapPath)?fs.readFileSync(sitemapPath,"utf8"):"";
-const oldUrls=oldSitemap.split("<loc>").slice(1).map(part=>part.split("</loc>")[0].trim()).filter(Boolean);
+const oldUrlMetadata=new Map();
+for (const match of oldSitemap.matchAll(/<url\b[^>]*>([\s\S]*?)<\/url>/g)) {
+  const loc=match[1].match(/<loc>\s*([^<]+)\s*<\/loc>/);
+  if (!loc) continue;
+  const lastmod=match[1].match(/<lastmod>\s*([^<]+)\s*<\/lastmod>/);
+  oldUrlMetadata.set(loc[1].trim(),lastmod?.[1].trim()||null);
+}
+const oldUrls=[...oldUrlMetadata.keys()];
 const retainedUrls=oldUrls.filter(url=>url.startsWith(BASE)&&!url.startsWith(BASE+"productos/")&&!url.startsWith(BASE+"categorias/"));
 const allUrls=[...new Set([...retainedUrls,...generatedUrls])];
-const sitemapXml='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+allUrls.map(url=>"  <url><loc>"+url+"</loc><lastmod>"+today+"</lastmod></url>").join("\n")+"\n</urlset>\n";
+function lastmodForUrl(url) {
+  const oldLastmod=oldUrlMetadata.get(url);
+  const isGenerated=url.startsWith(BASE+"productos/")||url.startsWith(BASE+"categorias/");
+  if (!isGenerated) return oldLastmod||null;
+  if (!oldLastmod) return today;
+  const relativePath=url.slice(BASE.length);
+  const oldHtml=previousGeneratedPages.get(relativePath);
+  const currentPath=path.join(process.cwd(),...relativePath.split("/"));
+  const currentHtml=fs.existsSync(currentPath)?fs.readFileSync(currentPath,"utf8"):null;
+  return oldHtml!==undefined&&oldHtml===currentHtml ? oldLastmod : today;
+}
+const sitemapXml='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+allUrls.map(url=>{
+  const lastmod=lastmodForUrl(url);
+  return "  <url><loc>"+url+"</loc>"+(lastmod?"<lastmod>"+lastmod+"</lastmod>":"")+"</url>";
+}).join("\n")+"\n</urlset>\n";
 fs.writeFileSync(sitemapPath,sitemapXml);
 console.log("Páginas de producto generadas: "+entries.length);
 console.log("Páginas de categoría generadas: "+families.size);
