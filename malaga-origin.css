@@ -1,7 +1,9 @@
 /* Almendras de Málaga — visual identity section. Uses original artwork, not the official Sabor a Málaga mark. */
 .malaga-origin{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(20px,4vw,42px);align-items:center;margin:clamp(22px,4vw,42px) 0;padding:clamp(18px,3vw,34px);overflow:hidden;border:1px solid #dfcfb4;border-radius:24px;background:linear-gradient(125deg,#f8f2e8 0%,#eee3d1 100%);color:#283a2c}
-.malaga-origin-art{min-width:0}
-.malaga-origin-art svg{display:block;width:100%;height:auto;max-height:360px;border-radius:18px;box-shadow:0 12px 30px #4c39251a}
+.malaga-origin-art{min-width:0;overflow:hidden;border-radius:18px;background:#e7dece;box-shadow:0 12px 30px #4c39251a}
+.malaga-origin-art img{display:block;width:100%;aspect-ratio:520/360;object-fit:cover;object-position:center;filter:sepia(.16) contrast(1.02)}
+.malaga-origin-credit{margin:0;padding:9px 12px;background:#e9dfcf;color:#6b604e;font-size:10px;line-height:1.5}
+.malaga-origin-credit a{color:#6b604e;text-decoration:underline}
 .malaga-origin-copy{max-width:620px}
 .malaga-origin-eyebrow{display:flex;align-items:center;gap:8px;margin:0 0 10px;color:#82643b;font-size:11px;font-weight:800;letter-spacing:.15em}
 .malaga-origin-mark{display:grid;place-items:center;width:25px;height:25px;border:1px solid #c8a66c;border-radius:50%;background:#fff9ee;color:#9b753f;font-size:13px}
@@ -14,5 +16,5 @@
 .malaga-origin-cta:hover{background:#315b40;transform:translateY(-1px)}
 .malaga-origin-small{margin:12px 0 0!important;color:#7b715e!important;font-size:12px!important}
 .malaga-origin a:focus-visible{outline:3px solid #b77a35;outline-offset:4px}
-@media(max-width:760px){.malaga-origin{grid-template-columns:1fr;gap:18px;padding:18px}.malaga-origin-art svg{max-height:260px}.malaga-origin-copy h2{font-size:29px}.malaga-origin-copy .malaga-origin-lead{font-size:16px}}
+@media(max-width:760px){.malaga-origin{grid-template-columns:1fr;gap:18px;padding:18px}.malaga-origin-art img{aspect-ratio:520/300;object-position:center}.malaga-origin-copy h2{font-size:29px}.malaga-origin-copy .malaga-origin-lead{font-size:16px}}
 @media(prefers-reduced-motion:reduce){.malaga-origin-cta{transition:none}}
