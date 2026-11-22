@@ -230,21 +230,49 @@ def save_json(path, obj):
     tmp.replace(path)
 
 def request_json(url, params, source):
-    try:
-        r = requests.get(url, params=params, headers={"User-Agent": UA}, timeout=TIMEOUT)
-    except requests.RequestException as e:
-        return None, {"source": source, "status": "NETWORK_ERROR", "error": str(e)[:500]}
-    if r.status_code == 429:
-        raise RateLimited(source)
-    if r.status_code in (401, 403):
-        return None, {"source": source, "status": "SOURCE_BLOCKED", "http": r.status_code}
-    if not r.ok:
-        return None, {"source": source, "status": "HTTP_ERROR", "http": r.status_code,
-                      "body": r.text[:180]}
-    try:
-        return r.json(), None
-    except ValueError:
-        return None, {"source": source, "status": "BAD_JSON"}
+    # Retry transient DNS/TLS/socket errors, 5xx and 429 with bounded backoff.
+    headers = {"User-Agent": UA, "Accept": "application/json",
+               "Accept-Language": "es,en;q=0.8"}
+    last_error = None
+    for attempt in range(4):
+        try:
+            r = requests.get(url, params=params, headers=headers, timeout=TIMEOUT)
+        except requests.RequestException as e:
+            last_error = {"source": source, "status": "NETWORK_ERROR",
+                          "attempt": attempt + 1, "error": str(e)[:500]}
+            if attempt < 3:
+                time.sleep(min(2 ** attempt, 8))
+                continue
+            return None, last_error
+        if r.status_code == 429:
+            retry_after = r.headers.get("Retry-After")
+            wait = min(float(retry_after) if retry_after and retry_after.isdigit()
+                       else 2 ** attempt, 30)
+            last_error = {"source": source, "status": "RATE_LIMITED",
+                          "http": 429, "attempt": attempt + 1,
+                          "retry_after_seconds": wait}
+            if attempt < 3:
+                time.sleep(wait)
+                continue
+            return None, last_error
+        if r.status_code >= 500 and attempt < 3:
+            last_error = {"source": source, "status": "HTTP_ERROR",
+                          "http": r.status_code, "attempt": attempt + 1,
+                          "body": r.text[:180]}
+            time.sleep(min(2 ** attempt, 8))
+            continue
+        if r.status_code in (401, 403):
+            return None, {"source": source, "status": "SOURCE_BLOCKED",
+                          "http": r.status_code, "body": r.text[:180]}
+        if not r.ok:
+            return None, {"source": source, "status": "HTTP_ERROR",
+                          "http": r.status_code, "body": r.text[:180]}
+        try:
+            return r.json(), None
+        except ValueError:
+            return None, {"source": source, "status": "BAD_JSON",
+                          "http": r.status_code, "body": r.text[:180]}
+    return None, last_error
 
 def commons_search(query):
     data, err = request_json(COMMONS_API, {
@@ -411,6 +439,7 @@ def search_product(key, name, delay, commons_blocked):
                 if err.get("status") in ("NETWORK_ERROR", "SOURCE_BLOCKED"):
                     break
             else:
+                # Successful API response is source availability even if no files matched.
                 commons_available = True
                 all_candidates.extend(found)
             if delay:
@@ -442,12 +471,12 @@ def search_product(key, name, delay, commons_blocked):
     ranked = filter_and_rank(key, all_candidates)
     if ranked:
         status = "CANDIDATES_FOUND"
-    elif errors and not (commons_available and openverse_available):
+    elif not commons_available and not openverse_available:
         status = "SOURCE_ERROR"
-    elif commons_available and openverse_available:
-        status = "NO_RESULTS_RELEVANT"
+    elif errors:
+        status = "PARTIAL_SOURCE_FAILURE"
     else:
-        status = "INCOMPLETE_SEARCH"
+        status = "NO_RESULTS_RELEVANT"
     return ranked, errors, status, commons_blocked
 
 def download_candidate(key, candidate):
@@ -524,12 +553,18 @@ def main():
     ap.add_argument("--diagnose", action="store_true")
     args = ap.parse_args()
     if args.diagnose:
+        print("Diagnóstico de conectividad del motor de imágenes", flush=True)
+        print(f"Python: {sys.version.split()[0]} | Requests: {requests.__version__} | Pillow: {Image.__version__}", flush=True)
         for source, url, params in [
             ("Wikimedia Commons", COMMONS_API, {"action":"query","format":"json","meta":"siteinfo"}),
-            ("Openverse", OPENVERSE_API, {"q":"dried mango","page_size":1})
+            ("Openverse", OPENVERSE_API, {"q":"dried mango","page_size":1,"mature":"false","license":"cc0,by,by-sa"})
         ]:
-            _, error = request_json(url, params, source)
-            print(f"{source}: {error if error else 'HTTP 200'}")
+            data, error = request_json(url, params, source)
+            if error:
+                print(f"{source}: FAIL | {json.dumps(error, ensure_ascii=False)}", flush=True)
+            else:
+                count = len(data.get("results", [])) if source == "Openverse" else "API response"
+                print(f"{source}: OK | {count}", flush=True)
         return 0
 
     products = missing_products()
@@ -623,6 +658,9 @@ def main():
         save_json(REPORT, list(report_map.values()))
         save_json(MANIFEST, list(manifest_map.values()))
         print(f"  búsqueda={status}; candidatos relevantes={len(candidates)}; resultado={record['status']}", flush=True)
+        if errors:
+            for err in errors[:4]:
+                print("  fuente_error=" + json.dumps(err, ensure_ascii=False), flush=True)
         if index < len(batch):
             time.sleep(max(0, args.delay))
 
