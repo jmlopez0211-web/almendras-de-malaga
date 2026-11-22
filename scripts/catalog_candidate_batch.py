@@ -24,8 +24,8 @@ REPORT = ROOT / "docs/candidate_batch_report.json"
 MANIFEST = ROOT / "photo_candidates_next.json"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 OPENVERSE_API = "https://api.openverse.org/v1/images/"
-UA = "AlmendrasDeMalagaCatalogPhotoAudit/9.1"
-ENGINE_VERSION = "9.1"
+UA = "AlmendrasDeMalagaCatalogPhotoAudit/11.0"
+ENGINE_VERSION = "11.0"
 TIMEOUT = (8, 22)
 ALLOWED = {"image/jpeg", "image/png", "image/webp"}
 MIN_W, MIN_H, MAX_BYTES = 900, 700, 25 * 1024 * 1024
@@ -432,12 +432,14 @@ def openverse_search(query):
     return found, None
 
 def candidate_score(key, candidate):
+    """Score candidates with hard product/context checks and soft visual-unverifiable variants."""
     text = " ".join([
         str(candidate.get("title") or ""),
         str(candidate.get("description") or ""),
         " ".join(candidate.get("tags") or []),
         str(candidate.get("commons_title") or "")
     ]).lower()
+
     core = CORE_TERMS.get(key, [])
     if not any(term in text for term in core):
         return -100, ["missing_product_keyword"]
@@ -446,26 +448,54 @@ def candidate_score(key, candidate):
     if negatives:
         return -100, ["irrelevant_or_commercial_context:" + ",".join(negatives)]
 
+    # Nut preparation/salt/oil variants are not reliably verifiable from metadata.
+    # The image can be shortlisted when the food itself matches; the variant remains
+    # explicitly unverified and must never be inferred from the photograph.
+    SOFT_VARIANT_KEYS = {
+        "almendraFritaGirasol", "almendraFritaSinSal",
+        "cacahueteFritoRepeladoSinSal", "cacahueteTostadoRepeladoSinSal",
+        "anacardoFritoSinSal", "macadamiaFritaSal", "macadamiaFritaSinSal",
+        "macadamiaTostadaSinSal", "avellanaAmericanaCruda", "nuezCaramelizada",
+        "revueloTostadoSinSal", "revueloEspecial", "revueloTresPasas",
+        "revueloPacoJose", "revueloDulceMCarmen", "revueloDeliciasVirginia",
+        "melonDeshidratado", "aloeDeshidratada", "cocoDado",
+        "pipaGarrapinada", "calabazaPeladaCruda"
+    }
+
+    score = 6
+    reasons = ["product_keyword_match"]
     groups = MATCH_GROUPS.get(key, [])
-    if any(not any(term in text for term in group) for group in groups):
-        return -100, ["missing_variant_keyword_group"]
+    missing_groups = []
+    for group in groups:
+        if any(term in text for term in group):
+            score += 2
+            reasons.append("variant_keyword_match")
+        else:
+            missing_groups.append(group)
+            if key in SOFT_VARIANT_KEYS:
+                score -= 1
+            else:
+                return -100, ["missing_variant_keyword_group"]
 
     strict_groups = STRICT_MATCH_GROUPS.get(key, [])
-    missing_strict = [group for group in strict_groups if not any(term in text for term in group)]
-    if missing_strict:
-        return -100, ["missing_exact_variant_evidence"]
+    missing_strict = []
+    for group in strict_groups:
+        if any(term in text for term in group):
+            score += 2
+            reasons.append("strict_variant_evidence")
+        else:
+            missing_strict.append(group)
+            if key in SOFT_VARIANT_KEYS:
+                score -= 1
+            else:
+                return -100, ["missing_exact_variant_evidence"]
+
     forbidden_variants = [term for term in STRICT_FORBIDDEN_TERMS.get(key, []) if term in text]
     if forbidden_variants:
         return -100, ["contradictory_product_variant:" + ",".join(forbidden_variants)]
 
-    score = 8
-    reasons = ["product_keyword_match"]
-    if groups:
-        score += min(3, len(groups))
-        reasons.append("variant_keywords_match")
-    if strict_groups:
-        score += min(6, len(strict_groups))
-        reasons.append("strict_variant_evidence")
+    if missing_groups or missing_strict:
+        reasons.append("variant_metadata_unverified")
     if any(x in text for x in ("close up", "close-up", "isolated", "kernels", "nuts")):
         score += 1
         reasons.append("product_focus_term")
@@ -474,17 +504,17 @@ def candidate_score(key, candidate):
         reasons.append("dried_match")
     if any(token in key.lower() for token in ("frita", "frito")):
         if any(x in text for x in ("fried", "frying", "fritas", "fritos")):
-            score += 2
+            score += 1
             reasons.append("fried_match")
-        else:
-            score -= 2
+        elif key not in SOFT_VARIANT_KEYS:
+            score -= 1
             reasons.append("preparation_not_confirmed")
     if "tostado" in key.lower():
         if any(x in text for x in ("roasted", "tostado", "tostada")):
-            score += 2
+            score += 1
             reasons.append("roasted_match")
-        else:
-            score -= 2
+        elif key not in SOFT_VARIANT_KEYS:
+            score -= 1
             reasons.append("preparation_not_confirmed")
     return score, reasons
 
