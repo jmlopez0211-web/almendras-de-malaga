@@ -1,4 +1,4 @@
-// Tarifas compartidas: js/commercial-config.js es la fuente única de configuración.
+// Tarifas compartidas: Importes provisionales; modifica únicamente los valores price en data/commercial.json.
 const DEFAULT_SHIPPING_TIERS = [
  {maxGrams:100,label:"Hasta 100 g",price:2.50},
  {maxGrams:250,label:"101–250 g",price:3.50},
