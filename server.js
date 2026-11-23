@@ -113,9 +113,18 @@ async function aiReply(history,message,channel="web"){
   const r=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"Authorization":"Bearer "+OPENAI_API_KEY,"Content-Type":"application/json"},signal:AbortSignal.timeout(20000),body:JSON.stringify({model:OPENAI_MODEL,instructions:SYSTEM+"\n\nPuedes usar herramientas para buscar productos, calcular formatos y calcular envío. Para pedidos, busca primero el producto exacto, calcula cada formato y el peso total, y consulta el envío. "+(channel==="whatsapp"?"En WhatsApp no existe un carrito web: no afirmes haber añadido productos a un carrito ni que el pedido está registrado; ofrece un resumen para que el cliente confirme con el comercio.":"Puedes solicitar acciones de carrito para la web, pero nunca confirmes una compra. No afirmes que el carrito está actualizado hasta que el cliente reciba la confirmación de la web.")+" No inventes IDs: utiliza IDs devueltos por search_products. Si hay ambigüedad, pregunta.",input,tools:availableTools,max_output_tokens:700})});
   const data=await r.json();if(!r.ok)throw new Error(data.error?.message||"Error en OpenAI API");
   const calls=(data.output||[]).filter(o=>o.type==="function_call");
-  if(!calls.length){const text=(data.output||[]).flatMap(o=>o.content||[]).filter(c=>c.type==="output_text").map(c=>c.text).join("\\n").trim();if(!text)throw new Error("Respuesta vacía de la IA");return {reply:text,actions};}
+  if(!calls.length){const text=(data.output||[]).flatMap(o=>o.content||[]).filter(c=>c.type==="output_text").map(c=>c.text).join("\\n").trim();if(!text)throw new Error("Respuesta vacía de la IA");return {reply:text.replace(/\\\\n/g,"\n"),actions};}
   input=[...input,...data.output];
-  for(const call of calls){let args;try{args=JSON.parse(call.arguments||"{}")}catch{args={}}const result=runStoreTool(call.name,args);if(call.name==="add_to_cart"&&result.action)actions.push(result.action);input.push({type:"function_call_output",call_id:call.call_id,output:JSON.stringify(result)});}
+  for(const call of calls){
+   let args;try{args=JSON.parse(call.arguments||"{}")}catch{args={}}
+   let result=runStoreTool(call.name,args);
+   if(call.name==="add_to_cart"&&result.action){
+    const already=actions.filter(action=>action.productId===result.action.productId&&action.grams===result.action.grams).reduce((sum,action)=>sum+action.quantity,0);
+    if(already+result.action.quantity>50)result={error:"El máximo acumulado es de 50 unidades por producto y formato",action:null};
+    else actions.push(result.action);
+   }
+   input.push({type:"function_call_output",call_id:call.call_id,output:JSON.stringify(result)});
+  }
  }
  throw new Error("La IA ha excedido el límite de herramientas");
 }
@@ -130,7 +139,7 @@ async function handleChat(req,res){
  if(!body||typeof body!=="object"||Array.isArray(body))return send(res,400,{error:"El cuerpo debe ser un objeto JSON"});
  const message=typeof body.message==="string"?body.message.trim():"";
  const sessionId=typeof body.session_id==="string"?body.session_id.trim():"";
- if(!message||message.length>2000||! /^[\w-]{16,100}$/.test(sessionId))return send(res,400,{error:"message (máximo 2.000 caracteres) y session_id válido son obligatorios"});
+ if(!message||message.length>2000||! /^[\w-]{16,100}$/.test(sessionId)||Object.keys(body).some(key=>!["message","session_id"].includes(key)))return send(res,400,{error:"Cuerpo inválido: message, session_id y ningún otro campo son admitidos"});
  let history=sessions.get("web:"+sessionId)||[];
  try{
   const result=await aiReply(history,message);const answer=result.reply;
@@ -170,7 +179,8 @@ async function processWhatsApp(payload){
    await sendWhatsApp(from,answer);
   }catch(error){
    console.error("WhatsApp reply error:",error.message);
-   await sendWhatsApp(from,"Ahora mismo no puedo consultar el asistente. Puedes ver el catálogo en https://jmlopez0211-web.github.io/almendras-de-malaga/ o escribirnos de nuevo más tarde.");
+   try{await sendWhatsApp(from,"Ahora mismo no puedo consultar el asistente. Puedes ver el catálogo en https://jmlopez0211-web.github.io/almendras-de-malaga/ o escribirnos de nuevo más tarde.");}
+   catch(deliveryError){processedWebhookIds.delete(msg.id);throw deliveryError}
   }
  }
 }
