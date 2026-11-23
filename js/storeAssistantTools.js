@@ -55,6 +55,21 @@ function addToCart(id,grams,quantity=1){
  saveCart(cart);
  return cart;
 }
+function addManyToCart(actions){
+ if(!Array.isArray(actions)||actions.length<1||actions.length>20)throw new Error("Lista de acciones de carrito inválida");
+ const cart=readCart().map(item=>({...item}));
+ for(const action of actions){
+  if(!action||typeof action!=="object"||action.type!=="add_to_cart")throw new Error("Acción de carrito no reconocida");
+  const id=String(action.productId||""),grams=Number(action.grams),quantity=Number(action.quantity);
+  const priced=packPrice(id,grams,quantity);
+  const found=cart.find(item=>item.id===id&&item.grams===grams);
+  if(found){
+   if(found.quantity+quantity>50)throw new Error("Máximo 50 unidades acumuladas por producto y formato");
+   found.quantity+=quantity;
+  }else cart.push({id,name:priced.name,price:priced.pricePerKg,grams,quantity});
+ }
+ return saveCart(cart);
+}
 function setCartItem(id,grams,quantity){
  const normalizedQuantity=Number(quantity),normalizedGrams=Number(grams);
  const cart=readCart(),found=cart.find(item=>item.id===id&&item.grams===normalizedGrams);
@@ -195,5 +210,5 @@ function interpretLocal(text){
  }
  return {handled:false};
 }
-window.storeAssistantTools={searchProducts,getProduct,packPrice,calculateShipping,readCart,addToCart,setCartItem,removeCartItem,clearCart,cartSummary,orderMessage,whatsappUrl,interpretLocal,splitWeight,formats:FORMATS};
+window.storeAssistantTools={searchProducts,getProduct,packPrice,calculateShipping,readCart,addToCart,addManyToCart,setCartItem,removeCartItem,clearCart,cartSummary,orderMessage,whatsappUrl,interpretLocal,splitWeight,formats:FORMATS};
 })();
