@@ -2,6 +2,7 @@ import test, { before, after } from "node:test";
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import net from "node:net";
+import { createHmac } from "node:crypto";
 
 let child;
 let baseUrl;
@@ -30,7 +31,7 @@ before(async () => {
       WHATSAPP_ACCESS_TOKEN: "",
       WHATSAPP_PHONE_NUMBER_ID: "",
       WHATSAPP_VERIFY_TOKEN: "test-verify-token",
-      WHATSAPP_APP_SECRET: "",
+      WHATSAPP_APP_SECRET: "test-app-secret",
       WHATSAPP_API_VERSION: ""
     },
     stdio: ["ignore", "pipe", "pipe"]
@@ -142,6 +143,21 @@ test("chat endpoint rejects oversized bodies without terminating the server", as
   assert.equal(health.status, 200);
 });
 
+test("rate limiting uses the trusted rightmost forwarded address and returns 429", async () => {
+  let last;
+  for (let i = 0; i < 31; i++) {
+    last = await fetch(baseUrl + "/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Forwarded-For": "spoof-" + i + ", 198.51.100.77"
+      },
+      body: "{invalid"
+    });
+  }
+  assert.equal(last.status, 429);
+});
+
 test("valid chat requests fail closed when the AI provider is not configured", async () => {
   const response = await fetch(baseUrl + "/api/chat", {
     method: "POST",
@@ -167,4 +183,28 @@ test("WhatsApp webhook rejects unsigned and malformed events", async () => {
     body: JSON.stringify({ entry: [] })
   });
   assert.equal(unsigned.status, 401);
+});
+
+
+test("WhatsApp webhook accepts a correctly signed, structurally valid event", async () => {
+  const raw = JSON.stringify({ entry: [] });
+  const signature = "sha256=" + createHmac("sha256", "test-app-secret").update(raw).digest("hex");
+  const response = await fetch(baseUrl + "/webhook/whatsapp", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Hub-Signature-256": signature },
+    body: raw
+  });
+  assert.equal(response.status, 200);
+  assert.deepEqual(await response.json(), { received: true });
+});
+
+test("WhatsApp webhook rejects signed malformed JSON", async () => {
+  const raw = "{invalid";
+  const signature = "sha256=" + createHmac("sha256", "test-app-secret").update(raw).digest("hex");
+  const response = await fetch(baseUrl + "/webhook/whatsapp", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Hub-Signature-256": signature },
+    body: raw
+  });
+  assert.equal(response.status, 400);
 });
