@@ -101,6 +101,17 @@ class StorefrontReleaseTests(unittest.TestCase):
         self.assertIn('almendras:commercial-config-updated', config)
         self.assertIn('almendras:shipping-updated', (ROOT / "js" / "app.js").read_text(encoding="utf-8"))
 
+
+    def test_chat_and_whatsapp_handoffs_have_mobile_safety_limits(self):
+        html = (ROOT / "index.html").read_text(encoding="utf-8")
+        app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
+        css = (ROOT / "styles.css").read_text(encoding="utf-8")
+        self.assertIn('id="chatInput" type="text" maxlength="2000"', html)
+        self.assertIn("AbortSignal.timeout(25000)", app)
+        self.assertIn("message.length>3500", app)
+        self.assertIn("width:min(360px,calc(100vw - 28px))", css)
+        self.assertIn("height:min(500px,calc(100dvh - 190px))", css)
+
     def test_cart_supports_large_pack_formats_and_shipping_summary(self):
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         html = (ROOT / "index.html").read_text(encoding="utf-8")
