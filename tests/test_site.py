@@ -102,6 +102,12 @@ class StorefrontReleaseTests(unittest.TestCase):
         self.assertIn('almendras:shipping-updated', (ROOT / "js" / "app.js").read_text(encoding="utf-8"))
 
 
+    def test_backend_requires_explicit_intent_before_cart_mutation(self):
+        server = (ROOT / "server.js").read_text(encoding="utf-8")
+        self.assertIn("explicitCartIntent", server)
+        self.assertIn("Para modificar el carrito, el cliente debe solicitarlo expresamente", server)
+        self.assertIn('AI_TOOLS.filter(tool=>tool.name!=="add_to_cart")', server)
+
     def test_chat_and_whatsapp_handoffs_have_mobile_safety_limits(self):
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
