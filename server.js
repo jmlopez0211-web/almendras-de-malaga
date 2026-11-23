@@ -22,6 +22,10 @@ const COMMERCIAL=JSON.parse(fs.readFileSync(path.join(process.cwd(),"data","comm
 const sessions=new Map();
 const rateLimits=new Map();
 const processedWebhookIds=new Set();
+function saveSession(key,history){
+ sessions.set(key,history);
+ if(sessions.size>MAX_SESSIONS)sessions.delete(sessions.keys().next().value);
+}
 const MAX_HISTORY=12;
 const MAX_SESSIONS=5000;
 const RATE_LIMIT=30;
@@ -146,8 +150,7 @@ async function handleChat(req,res){
  try{
   const result=await aiReply(history,message);const answer=result.reply;
   history=[...history,{role:"user",content:message},{role:"assistant",content:answer}].slice(-MAX_HISTORY);
-  sessions.set("web:"+sessionId,history);
-  if(sessions.size>MAX_SESSIONS)sessions.delete(sessions.keys().next().value);
+  saveSession("web:"+sessionId,history);
   return send(res,200,{reply:answer,mode:"ai",actions:result.actions||[]});
  }catch(error){
   console.error("Chat error:",error.message);
@@ -177,7 +180,7 @@ async function processWhatsApp(payload){
   const history=sessions.get(key)||[];
   try{
    const answer=await aiReply(history,message,"whatsapp");
-   sessions.set(key,[...history,{role:"user",content:message},{role:"assistant",content:answer}].slice(-MAX_HISTORY));
+   saveSession(key,[...history,{role:"user",content:message},{role:"assistant",content:answer}].slice(-MAX_HISTORY));
    await sendWhatsApp(from,answer);
   }catch(error){
    console.error("WhatsApp reply error:",error.message);
@@ -213,4 +216,8 @@ const server=http.createServer((req,res)=>{
   else if(!res.writableEnded)res.end();
  });
 });
+server.requestTimeout=15000;
+server.headersTimeout=10000;
+server.keepAliveTimeout=5000;
+server.maxRequestsPerSocket=100;
 server.listen(PORT,"0.0.0.0",()=>console.log("Almendras Assistant listening on "+PORT));
