@@ -331,7 +331,7 @@ function buildCartOrderMessage(){
   +'El envío mostrado es provisional. Esta solicitud no confirma pedido, disponibilidad, precio final ni pago; el negocio lo confirmará por WhatsApp.';
 }
 
-document.getElementById('sendCartWhatsApp666').onclick=()=>{const message=buildCartOrderMessage();if(message)window.location.href='https://wa.me/34666068765?text='+encodeURIComponent(message)};
+document.getElementById('sendCartWhatsApp666').onclick=()=>{const message=buildCartOrderMessage();if(!message)return;if(message.length>3500){alert('El resumen del pedido es demasiado largo para abrirlo de forma fiable en WhatsApp. Reduce el número de líneas o contacta directamente con la tienda.');return}window.location.href='https://wa.me/34666068765?text='+encodeURIComponent(message)};
 
 async function copyTextSafely(value){try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(value);return true}}catch(e){}const area=document.createElement('textarea');area.value=value;area.setAttribute('readonly','');area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();let copied=false;try{copied=document.execCommand('copy')}catch(e){}area.remove();return copied}
 document.getElementById('share').onclick=async()=>{const data={title:'Almendras de Málaga',text:'Catálogo profesional de frutos secos en Málaga',url:location.href};if(navigator.share){try{await navigator.share(data)}catch(e){if(e&&e.name!=='AbortError')console.warn('No se pudo compartir el catálogo',e)}}else if(await copyTextSafely(location.href)){alert('Enlace copiado')}else{alert('No se pudo copiar el enlace. Puedes copiar la dirección desde el navegador.')}};
@@ -345,7 +345,7 @@ document.getElementById('copyURL').onclick=async()=>{const value=document.getEle
 
 // Asistente local: responde usando las fichas de products, sin inventar stock.
 const chatPanel=document.getElementById('productChat'),chatFab=document.getElementById('chatFab'),chatMessages=document.getElementById('chatMessages');
-function chatSay(text,who){const node=document.createElement('div');node.className='chat-msg '+who;node.textContent=String(text).replace(/\\\\n/g,'\n');node.style.whiteSpace='pre-line';chatMessages.appendChild(node);chatMessages.scrollTop=chatMessages.scrollHeight}
+function chatSay(text,who){const node=document.createElement('div');node.className='chat-msg '+who;node.textContent=String(text).replace(/\\n/g,'\n');node.style.whiteSpace='pre-line';chatMessages.appendChild(node);chatMessages.scrollTop=chatMessages.scrollHeight}
 function answerProductQuestion(raw){
  const q=normalizeCatalogText(raw);
  const all=Object.entries(products);
@@ -399,7 +399,7 @@ async function sendAssistantMessage(q){
  if(!base){chatSay(answerProductQuestion(q),'bot');return}
  const typing=document.createElement('div');typing.className='chat-msg bot chat-typing';typing.textContent='Pensando…';chatMessages.appendChild(typing);chatMessages.scrollTop=chatMessages.scrollHeight;
  try{
-  const response=await fetch(base+'/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:chatSessionId,message:q})});
+  const response=await fetch(base+'/api/chat',{method:'POST',signal:AbortSignal.timeout(25000),headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:chatSessionId,message:q})});
   const data=await response.json();
   typing.remove();
   if(!response.ok||!data.reply)throw new Error(data.error||'No se pudo responder');
