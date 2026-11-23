@@ -127,11 +127,7 @@ test("chat endpoint validates body shape, message length and session identifiers
       headers: { "Content-Type": "application/json" },
       body
     });
-    if (body.includes('"extra"')) {
-      assert.equal(response.status, 503);
-    } else {
-      assert.equal(response.status, 400);
-    }
+    assert.equal(response.status, 400);
   }
 });
 
