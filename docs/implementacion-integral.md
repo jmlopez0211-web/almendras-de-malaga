@@ -191,7 +191,7 @@ El estado técnico de la publicación no equivale a una certificación legal ni 
 
 ## Auditoría funcional del backend y seguridad
 
-El backend limita el cuerpo de `/api/chat` a 16 KB y el mensaje a 2.000 caracteres; requiere JSON, un identificador de sesión de formato válido y rechaza campos adicionales. Las solicitudes web se limitan a 30 por dirección de cliente y ventana de una hora. La tabla de límites tiene un máximo de 10.000 claves; tanto los límites como las sesiones se mantienen en memoria del proceso y no constituyen almacenamiento distribuido. En un despliegue con varias instancias sería necesario trasladar estos controles a un almacén compartido.
+El backend limita el cuerpo de `/api/chat` a 16 KB y el mensaje a 2.000 caracteres; requiere JSON, un identificador de sesión de formato válido y rechaza campos adicionales. Las solicitudes web se limitan a 30 por dirección de cliente y ventana de una hora. La tabla de límites tiene un máximo de 10.000 claves; tanto los límites como las sesiones se mantienen en memoria del proceso y no constituyen almacenamiento distribuido. El mapa de sesiones está limitado a 5.000 conversaciones y el servidor aplica límites de tiempo a cabeceras, cuerpo de solicitud y conexiones persistentes. En un despliegue con varias instancias sería necesario trasladar estos controles a un almacén compartido.
 
 Las herramientas de IA vuelven a validar en servidor referencias del catálogo, formatos, precios y cantidades; el esquema declarado al modelo no se considera una frontera de seguridad. Los cálculos de envío rechazan pesos negativos, fraccionarios y superiores a 500 kg. Las llamadas a OpenAI y WhatsApp tienen tiempos máximos de espera.
 
