@@ -393,8 +393,10 @@ async function sendAssistantMessage(q){
  const storeTools=window.storeAssistantTools;
  const base=String(window.ALMENDRAS_ASSISTANT_API||'').replace(/\/+$/,'');
  if(storeTools){
-  const local=storeTools.interpretLocal(q);
-  if(local.handled){chatSay(local.reply,'bot');return}
+  try{
+   const local=storeTools.interpretLocal(q);
+   if(local.handled){chatSay(local.reply,'bot');return}
+  }catch(localError){chatSay('No he podido procesar esa operación del carrito: '+localError.message,'bot');return}
  }
  if(!base){chatSay(answerProductQuestion(q),'bot');return}
  const typing=document.createElement('div');typing.className='chat-msg bot chat-typing';typing.textContent='Pensando…';chatMessages.appendChild(typing);chatMessages.scrollTop=chatMessages.scrollHeight;
@@ -406,7 +408,8 @@ async function sendAssistantMessage(q){
   chatSay(data.reply,'bot');
   if(Array.isArray(data.actions)&&data.actions.length&&storeTools){
    try{
-    for(const action of data.actions){if(action.type==='add_to_cart')storeTools.addToCart(action.productId,action.grams,action.quantity)}
+    const cartActions=data.actions.filter(action=>action&&action.type==='add_to_cart');
+    if(cartActions.length)storeTools.addManyToCart(cartActions);
     const summary=storeTools.cartSummary();
     chatSay('\\n🛒 Carrito actualizado\\n'+summary.items.map(item=>'• '+item.name+' — '+item.quantity+' × '+item.grams+' g = '+item.subtotal.toFixed(2)+' €').join('\\n')+'\\n\\n⚖️ Peso total: '+summary.weightGrams+' g\\n🧾 Subtotal: '+summary.subtotal.toFixed(2)+' €\\n🚚 Envío ('+summary.shipping.label+'): '+summary.shipping.price.toFixed(2)+' €\\n💰 Total: '+summary.total.toFixed(2)+' €\\n\\nTarifas provisionales y pedido pendiente de confirmación.','bot');
    }catch(actionError){chatSay('No he podido actualizar el carrito: '+actionError.message,'bot')}
