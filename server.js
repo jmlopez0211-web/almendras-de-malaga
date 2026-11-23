@@ -112,6 +112,7 @@ async function aiReply(history,message,channel="web"){
  const context=productContext(message);
  let input=[...history.slice(-MAX_HISTORY),{role:"user",content:"Consulta del cliente: "+message+"\n\nCatálogo y reglas comerciales (JSON): "+context}];
  const availableTools=channel==="whatsapp"?AI_TOOLS.filter(tool=>tool.name!=="add_to_cart"):AI_TOOLS;
+ const explicitCartIntent=channel==="web"&&/\b(quiero|anade|agrega|mete|pon|ponme|comprar|compra|pedido|dame|agregame|meteme|sumame)\b/.test(normalise(message));
  let actions=[];
  const deadline=Date.now()+22000;
  for(let turn=0;turn<5;turn++){
@@ -124,6 +125,7 @@ async function aiReply(history,message,channel="web"){
   for(const call of calls){
    let args;try{args=JSON.parse(call.arguments||"{}")}catch{args={}}
    let result=runStoreTool(call.name,args);
+   if(call.name==="add_to_cart"&&!explicitCartIntent)result={error:"Para modificar el carrito, el cliente debe solicitarlo expresamente",action:null};
    if(call.name==="add_to_cart"&&result.action){
     const already=actions.filter(action=>action.productId===result.action.productId&&action.grams===result.action.grams).reduce((sum,action)=>sum+action.quantity,0);
     if(already+result.action.quantity>50)result={error:"El máximo acumulado es de 50 unidades por producto y formato",action:null};
