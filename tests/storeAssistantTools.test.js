@@ -80,3 +80,21 @@ test("shipping configuration is read from the shared commercial object",()=>{
  assert.equal(tools.calculateShipping(100).price,1);
  assert.equal(tools.calculateShipping(20001).price,8);
 });
+
+
+test("bulk assistant cart actions are atomic and enforce accumulated line limits",()=>{
+ tools.clearCart();
+ assert.throws(()=>tools.addManyToCart([
+  {type:"add_to_cart",productId:"almond",grams:250,quantity:30},
+  {type:"add_to_cart",productId:"almond",grams:250,quantity:21}
+ ]),/Máximo 50/);
+ assert.equal(tools.readCart().length,0);
+ assert.throws(()=>tools.addManyToCart([
+  {type:"add_to_cart",productId:"almond",grams:250,quantity:1},
+  {type:"add_to_cart",productId:"missing",grams:250,quantity:1}
+ ]),/Producto no encontrado/);
+ assert.equal(tools.readCart().length,0);
+ tools.addToCart("almond",250,20);
+ tools.addManyToCart([{type:"add_to_cart",productId:"almond",grams:250,quantity:30}]);
+ assert.equal(tools.readCart()[0].quantity,50);
+});
