@@ -187,3 +187,14 @@ No se deben inventar ni publicar datos en los siguientes apartados:
 - prueba manual de todo el flujo en navegadores reales de móvil y escritorio.
 
 El estado técnico de la publicación no equivale a una certificación legal ni a la confirmación de precios, stock o condiciones comerciales.
+
+
+## Auditoría funcional del backend y seguridad
+
+El backend limita el cuerpo de `/api/chat` a 16 KB y el mensaje a 2.000 caracteres; requiere JSON, un identificador de sesión de formato válido y rechaza campos adicionales. Las solicitudes web se limitan a 30 por dirección de cliente y ventana de una hora. La tabla de límites tiene un máximo de 10.000 claves; tanto los límites como las sesiones se mantienen en memoria del proceso y no constituyen almacenamiento distribuido. En un despliegue con varias instancias sería necesario trasladar estos controles a un almacén compartido.
+
+Las herramientas de IA vuelven a validar en servidor referencias del catálogo, formatos, precios y cantidades; el esquema declarado al modelo no se considera una frontera de seguridad. Los cálculos de envío rechazan pesos negativos, fraccionarios y superiores a 500 kg. Las llamadas a OpenAI y WhatsApp tienen tiempos máximos de espera.
+
+El webhook de WhatsApp valida la firma HMAC SHA-256, limita el tamaño del cuerpo, valida la estructura del evento, comprueba el formato del número remitente y conserva una ventana acotada de identificadores para deduplicación. La deduplicación es en memoria; un reinicio del servicio pierde esa ventana. En WhatsApp se deshabilitan las acciones que pretenden modificar el carrito web, ya que el chat externo no comparte ese carrito.
+
+La validación automatizada incluye pruebas HTTP de CORS, tipos de contenido, JSON inválido, límites de tamaño, formato de sesión, limitación de frecuencia, verificación del webhook y comportamiento de reserva cuando no hay clave de IA. Las pruebas no sustituyen una transacción real de Meta WhatsApp ni una conversación real con OpenAI; esas integraciones requieren credenciales y pruebas controladas en producción.
