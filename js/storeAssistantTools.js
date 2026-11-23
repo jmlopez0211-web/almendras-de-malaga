@@ -16,7 +16,8 @@ function searchProducts(query,limit=12){
 function getProduct(id){const p=catalog()[id];return p?{id,...p}:null}
 function packPrice(productId,grams,quantity=1){
  const p=getProduct(productId);grams=Number(grams);quantity=Number(quantity);
- if(!p||!Number.isFinite(Number(p.price))||Number(p.price)<=0||!FORMATS.includes(grams)||!Number.isInteger(quantity)||quantity<1||quantity>50)throw new Error("Producto, precio, formato o cantidad inválidos");
+ if(!p)throw new Error("Producto no encontrado");
+ if(!Number.isFinite(Number(p.price))||Number(p.price)<=0||!FORMATS.includes(grams)||!Number.isInteger(quantity)||quantity<1||quantity>50)throw new Error("Precio, formato o cantidad inválidos");
  return {id:productId,name:p.name,pricePerKg:Number(p.price),grams,quantity,unitPrice:Number((Number(p.price)*grams/1000).toFixed(2)),subtotal:Number((Number(p.price)*grams/1000*quantity).toFixed(2)),weightGrams:grams*quantity};
 }
 function shippingTiers(){
