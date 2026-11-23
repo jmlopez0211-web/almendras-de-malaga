@@ -16,6 +16,9 @@ class ShippingTests(unittest.TestCase):
         source = APP.read_text(encoding="utf-8")
         self.assertIn("Importes provisionales", source)
         self.assertIn("modifica únicamente los valores price", source)
+        config = (APP.parent / "commercial-config.js").read_text(encoding="utf-8")
+        self.assertIn("DEFAULT_TIERS", config)
+        self.assertIn("data/commercial.json", config)
         self.assertEqual(len(re.findall(r"price\s*:\s*\d+\.\d+", source[:source.index("const products")])), 8)
 
     def test_zero_weight_has_no_shipping_charge(self):
