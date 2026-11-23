@@ -20,18 +20,54 @@ function packPrice(productId,grams,quantity=1){
  return {id:productId,name:p.name,pricePerKg:Number(p.price),grams,quantity,unitPrice:Number((Number(p.price)*grams/1000).toFixed(2)),subtotal:Number((Number(p.price)*grams/1000*quantity).toFixed(2)),weightGrams:grams*quantity};
 }
 function shippingTiers(){
- const fallback=[{maxGrams:100,label:"Hasta 100 g",price:2.5},{maxGrams:250,label:"101–250 g",price:3.5},{maxGrams:500,label:"251–500 g",price:4.5},{maxGrams:1000,label:"501 g–1 kg",price:5.5},{maxGrams:5000,label:"1,001–5 kg",price:7.5},{maxGrams:10000,label:"5,001–10 kg",price:9.5},{maxGrams:20000,label:"10,001–20 kg",price:12.5},{maxGrams:Infinity,label:"Más de 20 kg",price:15}];
- try{const c=window.COMMERCIAL_CONFIG;if(Array.isArray(c?.shipping?.tiers)&&c.shipping.tiers.length===8)return c.shipping.tiers.map(t=>({...t,maxGrams:t.maxGrams==null?Infinity:Number(t.maxGrams),price:Number(t.price)}))}catch{}
- return fallback;
+ const configured=window.COMMERCIAL_CONFIG?.shipping?.tiers;
+ if(Array.isArray(configured)&&configured.length===8){
+  const tiers=configured.map((tier,index)=>({maxGrams:index===7?Infinity:Number(tier.maxGrams),label:String(tier.label||"").trim(),price:Number(tier.price)}));
+  const valid=tiers.every((tier,index)=>tier.label&&Number.isFinite(tier.price)&&tier.price>=0&&(index===7||Number.isFinite(tier.maxGrams)&&tier.maxGrams>0&&(index===0||tier.maxGrams>tiers[index-1].maxGrams)));
+  if(valid)return tiers;
+ }
+ return [{maxGrams:100,label:"Hasta 100 g",price:2.5},{maxGrams:250,label:"101–250 g",price:3.5},{maxGrams:500,label:"251–500 g",price:4.5},{maxGrams:1000,label:"501 g–1 kg",price:5.5},{maxGrams:5000,label:"1,001–5 kg",price:7.5},{maxGrams:10000,label:"5,001–10 kg",price:9.5},{maxGrams:20000,label:"10,001–20 kg",price:12.5},{maxGrams:Infinity,label:"Más de 20 kg",price:15}];
 }
-function calculateShipping(weightGrams){const g=Math.max(0,Number(weightGrams)||0);if(!g)return {maxGrams:0,label:"Sin productos",price:0};return shippingTiers().find(t=>g<=t.maxGrams)||shippingTiers().at(-1)}
-function readCart(){try{return JSON.parse(localStorage.getItem("almendrasCart")||"[]").filter(x=>getProduct(x.id)&&FORMATS.includes(Number(x.grams))&&Number.isInteger(Number(x.quantity))&&Number(x.quantity)>0).map(x=>({id:x.id,name:getProduct(x.id).name,price:Number(getProduct(x.id).price),grams:Number(x.grams),quantity:Number(x.quantity)}))}catch{return []}}
+function calculateShipping(weightGrams){
+ const numeric=Number(weightGrams);
+ if(!Number.isFinite(numeric)||numeric<0)throw new Error("El peso del envío debe ser un número finito no negativo");
+ if(numeric===0)return {maxGrams:0,label:"Sin productos",price:0};
+ const tiers=shippingTiers();
+ return tiers.find(tier=>numeric<=tier.maxGrams)||tiers[tiers.length-1];
+}
+function readCart(){
+ try{
+  const saved=JSON.parse(localStorage.getItem("almendrasCart")||"[]");
+  if(!Array.isArray(saved))return [];
+  return saved.filter(item=>item&&typeof item==="object"&&getProduct(item.id)&&FORMATS.includes(Number(item.grams))&&Number.isInteger(Number(item.quantity))&&Number(item.quantity)>=1&&Number(item.quantity)<=50)
+   .map(item=>{const product=getProduct(item.id);return {id:item.id,name:product.name,price:Number(product.price),grams:Number(item.grams),quantity:Number(item.quantity)};});
+ }catch{return []}
+}
 function saveCart(items){localStorage.setItem("almendrasCart",JSON.stringify(items));window.dispatchEvent(new CustomEvent("almendras:cart-updated",{detail:items}));return items}
-function addToCart(id,grams,quantity=1){const item=packPrice(id,grams,quantity),cart=readCart(),found=cart.find(x=>x.id===id&&x.grams===Number(grams));if(found){if(found.quantity+quantity>50)throw new Error("Máximo 50 unidades por producto y formato");found.quantity+=quantity}else cart.push({id,name:item.name,price:item.pricePerKg,grams:Number(grams),quantity:Number(quantity)});saveCart(cart);return cart}
-function setCartItem(id,grams,quantity){const cart=readCart(),found=cart.find(x=>x.id===id&&x.grams===Number(grams));if(!found)throw new Error("Artículo no encontrado");if(!Number.isInteger(Number(quantity))||quantity<0||quantity>50)throw new Error("Cantidad inválida");if(quantity===0)return saveCart(cart.filter(x=>x!==found));found.quantity=Number(quantity);return saveCart(cart)}
+function addToCart(id,grams,quantity=1){
+ const normalizedQuantity=Number(quantity),normalizedGrams=Number(grams);
+ const item=packPrice(id,normalizedGrams,normalizedQuantity),cart=readCart();
+ const found=cart.find(entry=>entry.id===id&&entry.grams===normalizedGrams);
+ if(found){
+  if(found.quantity+normalizedQuantity>50)throw new Error("Máximo 50 unidades por producto y formato");
+  found.quantity+=normalizedQuantity;
+ }else cart.push({id,name:item.name,price:item.pricePerKg,grams:normalizedGrams,quantity:normalizedQuantity});
+ saveCart(cart);
+ return cart;
+}
+function setCartItem(id,grams,quantity){
+ const normalizedQuantity=Number(quantity),normalizedGrams=Number(grams);
+ const cart=readCart(),found=cart.find(item=>item.id===id&&item.grams===normalizedGrams);
+ if(!found)throw new Error("Artículo no encontrado");
+ if(!Number.isInteger(normalizedQuantity)||normalizedQuantity<0||normalizedQuantity>50)throw new Error("Cantidad inválida: utiliza un entero entre 0 y 50");
+ if(normalizedQuantity===0)return saveCart(cart.filter(item=>item!==found));
+ found.quantity=normalizedQuantity;
+ return saveCart(cart);
+}
 function removeCartItem(id,grams){return saveCart(readCart().filter(x=>!(x.id===id&&x.grams===Number(grams))))}
 function clearCart(){pendingFormats=[];return saveCart([])}
 function cartSummary(items=readCart()){
+ if(!Array.isArray(items))throw new Error("El carrito debe ser una lista de artículos");
  const lines=items.map(x=>packPrice(x.id,x.grams,x.quantity));
  const weight=lines.reduce((n,x)=>n+x.weightGrams,0),subtotal=Number(lines.reduce((n,x)=>n+x.subtotal,0).toFixed(2)),shipping=calculateShipping(weight),total=Number((subtotal+shipping.price).toFixed(2));
  return {items:lines,weightGrams:weight,subtotal,shipping,total};
