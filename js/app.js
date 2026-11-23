@@ -1,5 +1,5 @@
-// Tarifas de envío editables: modifica únicamente los valores price. Importes provisionales; confirmar con el transportista.
-const SHIPPING_TIERS = [
+// Tarifas compartidas: js/commercial-config.js es la fuente única de configuración.
+const DEFAULT_SHIPPING_TIERS = [
  {maxGrams:100,label:"Hasta 100 g",price:2.50},
  {maxGrams:250,label:"101–250 g",price:3.50},
  {maxGrams:500,label:"251–500 g",price:4.50},
@@ -9,8 +9,22 @@ const SHIPPING_TIERS = [
  {maxGrams:20000,label:"10,001–20 kg",price:12.50},
  {maxGrams:Infinity,label:"Más de 20 kg",price:15.00}
 ];
-// Fuente común: data/commercial.json. Si no se puede cargar, se mantienen estos valores provisionales.
-fetch("data/commercial.json").then(r=>r.ok?r.json():Promise.reject()).then(config=>{const tiers=config?.shipping?.tiers;if(Array.isArray(tiers)&&tiers.length===SHIPPING_TIERS.length){tiers.forEach((t,i)=>{SHIPPING_TIERS[i].maxGrams=t.maxGrams??Infinity;SHIPPING_TIERS[i].label=t.label;SHIPPING_TIERS[i].price=Number(t.price)});window.dispatchEvent(new Event("almendras:shipping-updated"));}}).catch(()=>{});
+let SHIPPING_TIERS = DEFAULT_SHIPPING_TIERS.map(tier=>({...tier}));
+function applyCommercialConfig(config){
+ const tiers=config?.shipping?.tiers;
+ if(!Array.isArray(tiers)||tiers.length!==DEFAULT_SHIPPING_TIERS.length)return false;
+ const normalized=tiers.map((tier,index)=>({
+  maxGrams:index===tiers.length-1?Infinity:Number(tier.maxGrams),
+  label:String(tier.label||"").trim(),
+  price:Number(tier.price)
+ }));
+ if(normalized.some((tier,index)=>!tier.label||!Number.isFinite(tier.price)||tier.price<0||(index<normalized.length-1&&(!Number.isFinite(tier.maxGrams)||tier.maxGrams<=0))||(index>0&&index<normalized.length-1&&tier.maxGrams<=normalized[index-1].maxGrams)))return false;
+ SHIPPING_TIERS=normalized;
+ window.dispatchEvent(new Event("almendras:shipping-updated"));
+ return true;
+}
+if(window.COMMERCIAL_CONFIG)applyCommercialConfig(window.COMMERCIAL_CONFIG);
+window.addEventListener("almendras:commercial-config-updated",()=>applyCommercialConfig(window.COMMERCIAL_CONFIG));
 function calculateShipping(totalGrams){
  const grams=Math.max(0,Number(totalGrams)||0);
  if(grams===0)return {maxGrams:0,label:"Sin productos",price:0};
