@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Install Python test dependencies
+        run: python3 -m pip install -r requirements-dev.txt
       - name: Generate SEO product and category pages
         run: npm run seo:build
       - name: Check JavaScript syntax

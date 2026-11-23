@@ -3,22 +3,24 @@
 **Repositorio:** `jmlopez0211-web/almendras-de-malaga`  
 **Rama:** `main`  
 **Publicación:** GitHub Pages  
-**Versión revisada:** 20 de noviembre de 2026
+**Versión revisada:** 23 de noviembre de 2026
 
 ## 1. Arquitectura y límites de la aplicación
 
-La aplicación es una tienda-catálogo estática. El navegador descarga HTML, CSS, JavaScript y los datos de catálogo; no existe un servidor propio.
+La tienda publicada en GitHub Pages es un frontend estático. Descarga HTML, CSS, JavaScript, catálogo y configuración comercial. El asistente inteligente puede comunicarse con un servicio Node.js externo desplegado en Render; ese servicio es independiente del hosting estático. La disponibilidad del backend debe comprobarse mediante su endpoint de salud y no se deduce de que exista una URL configurada.
 
 - `index.html`: estructura semántica, navegación, catálogo, fichas, carrito, contacto, asistente, QR y metadatos.
 - `styles.css`: identidad visual, disposición adaptable, componentes y estados de foco.
 - `data/catalog.js`: catálogo JavaScript, expuesto mediante `window.PRODUCTS`.
+- `js/commercial-config.js`: carga, valida y publica una única configuración comercial compartida; expone `window.COMMERCIAL_CONFIG` y `window.COMMERCIAL_CONFIG_READY`.
+- `js/storeAssistantTools.js`: herramientas deterministas para catálogo, formatos, envío, carrito, resumen, WhatsApp e interpretación local del lenguaje natural.
 - `js/app.js`: clasificación, búsqueda, filtros, imágenes, fichas, precios, carrito, WhatsApp, compartir, QR, asistente e idioma.
 - Páginas HTML de especialidad: contenido SEO para las cinco consultas principales del negocio.
 - `scripts/validate_site.py`: comprobaciones estáticas de publicación.
 - `tests/test_site.py`: pruebas de regresión con la biblioteca estándar de Python.
 - `.github/workflows/site-validation.yml`: ejecución automática de validación en GitHub Actions.
 
-No hay base de datos, backend, usuarios, panel privado, inventario en tiempo real, pago electrónico, gestión de entregas ni almacenamiento de pedidos en servidor. El carrito se conserva en el almacenamiento local del navegador. El cliente revisa el resumen y decide enviarlo por WhatsApp. El comercio confirma disponibilidad, precio final y entrega o recogida.
+La tienda no dispone de base de datos de pedidos, cuentas de cliente, panel privado, inventario en tiempo real ni pago electrónico. El carrito se conserva en localStorage. El servicio externo del asistente usa memoria de proceso para sesiones y límites temporales; no equivale a una base de datos persistente. La integración de WhatsApp Business, si se configura, depende de credenciales externas y debe probarse en el entorno desplegado. El carrito se conserva en el almacenamiento local del navegador. El cliente revisa el resumen y decide enviarlo por WhatsApp. El comercio confirma disponibilidad, precio final y entrega o recogida.
 
 ## 2. Catálogo
 
@@ -69,7 +71,7 @@ Las rutas locales deben permanecer dentro de `assets/products/`; se rechazan seg
 
 `precio por kilogramo × gramos del formato ÷ 1.000`
 
-Los formatos disponibles son 100 g, 250 g, 500 g y 1 kg. El importe es proporcional y no añade recargos. No constituye una tarifa comercial confirmada. El comercio confirma el precio final antes de aceptar el pedido.
+Los formatos disponibles son 100 g, 250 g, 500 g, 1 kg, 5 kg, 10 kg y 20 kg. El importe es proporcional y no añade recargos. No constituye una tarifa comercial confirmada. El comercio confirma el precio final antes de aceptar el pedido.
 
 La información de alérgenos es deliberadamente prudente: puede señalar alérgenos identificables por la denominación de la ficha, pero no sustituye la etiqueta ni la ficha técnica del lote. No se garantiza ausencia de trazas.
 
@@ -80,7 +82,7 @@ El carrito se almacena bajo la clave local `almendrasCart`. Cada elemento conser
 Al restaurar el carrito:
 - se descartan entradas nulas o malformadas;
 - el identificador debe corresponder a una propiedad propia del catálogo;
-- el formato debe estar entre 100, 250, 500 y 1.000 gramos;
+- el formato debe estar entre 100, 250, 500, 1.000, 5.000, 10.000 y 20.000 gramos;
 - la cantidad debe ser un entero entre 1 y 50;
 - el precio y el nombre se vuelven a leer del catálogo, no del valor guardado.
 
@@ -117,11 +119,13 @@ La portada contiene un enlace para saltar al catálogo, estados de foco visibles
 
 El botón se denomina «Descargar QR del catálogo». No existe un área privada ni autenticación de propietario.
 
-## 8. Asistente local
+## 8. Asistente local y backend inteligente
 
-`answerProductQuestion(raw)` consulta exclusivamente las 151 fichas cargadas. Puede encontrar referencias, ofrecer precios orientativos y calcular importes de formatos. Las consultas de stock responden expresamente que el inventario no está conectado y remiten al contacto principal.
+`answerProductQuestion(raw)` consulta las fichas cargadas en el navegador. `storeAssistantTools.interpretLocal(text)` interpreta operaciones deterministas de búsqueda, formatos, adición, modificación, eliminación, resumen y limpieza del carrito. El módulo valida productos, formatos y cantidades antes de guardar cambios.
 
-El asistente no consulta sistemas externos, no reserva, no confirma existencias y no crea pedidos. `chatSay(text, who)` inserta mensajes mediante `textContent`, evitando interpretar las consultas como HTML.
+`assistant-config.js` define la URL del servicio externo. `sendAssistantMessage(q)` intenta resolver primero las operaciones locales y, cuando no corresponde, solicita respuesta a `/api/chat`. El navegador transmite un identificador de sesión y el mensaje; procesa la respuesta y aplica únicamente acciones de carrito con tipo reconocido. Si el servicio no responde, se muestra una alternativa basada en el catálogo local.
+
+El servicio `server.js` utiliza variables de entorno para la clave de OpenAI y las credenciales opcionales de WhatsApp Business. Incluye herramientas de búsqueda de catálogo, cálculo de formatos, cálculo de envío y propuesta de añadir al carrito. La memoria de conversación está en memoria de proceso y puede perderse al reiniciar o escalar instancias. El stock sigue sin estar conectado; ninguna respuesta puede confirmar disponibilidad ni una compra.
 
 ## 9. Idiomas
 
@@ -140,7 +144,13 @@ La traducción de interfaz sigue siendo **parcial**. Los nombres, descripciones 
 
 No se publica horario de apertura mientras no exista confirmación verificable. La portada solicita consultar el horario vigente y disponibilidad directamente.
 
-## 11. Validación automatizada
+## 11. Configuración comercial compartida
+
+`data/commercial.json` es la fuente de datos de tarifas de envío. `js/commercial-config.js` carga el JSON antes de los módulos de tienda, valida ocho tramos, etiquetas, precios no negativos y límites crecientes, y publica la configuración mediante `window.COMMERCIAL_CONFIG`. Si el archivo no se puede cargar o no supera la validación, la tienda conserva las tarifas de respaldo marcadas como provisionales. Al completarse la carga, emite `almendras:commercial-config-updated`; tanto el carrito como el asistente leen la misma configuración. `app.js` emite `almendras:shipping-updated` para recalcular el resumen visible.
+
+Las tarifas siguen siendo provisionales hasta confirmación expresa del transportista. No se deben convertir en una promesa de coste de envío.
+
+## 12. Validación automatizada
 
 `scripts/validate_site.py` comprueba:
 1. presencia de los archivos principales;
@@ -164,7 +174,7 @@ No se publica horario de apertura mientras no exista confirmación verificable. 
 
 El workflow se ejecuta con cada push y pull request a `main`, y también puede iniciarse manualmente.
 
-## 12. Requisitos pendientes para lanzamiento comercial completo
+## 13. Requisitos pendientes para lanzamiento comercial completo
 
 No se deben inventar ni publicar datos en los siguientes apartados:
 - identidad legal del vendedor, NIF/CIF y domicilio legal;

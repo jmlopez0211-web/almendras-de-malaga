@@ -38,3 +38,45 @@ test("natural-language removal by bag weight removes matching cart line",()=>{to
 
 test("colloquial Spanish add verbs and 25kg package splitting",()=>{for(const phrase of ["Añade 25 kg de almendra cruda","Agrega 25 kg de almendra cruda","Mete 25 kg de almendra cruda","Ponme 25 kg de almendra cruda"]){tools.clearCart();const result=tools.interpretLocal(phrase);assert.equal(result.handled,true,phrase);assert.equal(tools.cartSummary().weightGrams,25000,phrase);assert.deepEqual(Array.from(tools.cartSummary().items,x=>x.grams),[20000,5000],phrase);}});
 test("colloquial removal verbs remove the requested format",()=>{for(const phrase of ["Quita la bolsa de 500 gramos","Borra la bolsa de 500 gramos","Elimina la bolsa de 500 gramos","Saca la bolsa de 500 gramos"]){tools.clearCart();tools.addToCart("almond",500,1);const result=tools.interpretLocal(phrase);assert.equal(result.handled,true,phrase);assert.equal(tools.readCart().length,0,phrase);}});
+
+
+test("cart reader rejects corrupt quantities above the per-line limit",()=>{
+ tools.clearCart();
+ storage.set("almendrasCart",JSON.stringify([{id:"almond",grams:100,quantity:51},{id:"pistachio",grams:250,quantity:2}]));
+ const cart=tools.readCart();
+ assert.equal(cart.length,1);
+ assert.equal(cart[0].id,"pistachio");
+ assert.equal(tools.cartSummary(cart).weightGrams,500);
+});
+
+test("addToCart normalizes numeric strings and enforces accumulated quantity",()=>{
+ tools.clearCart();
+ tools.addToCart("almond","250","2");
+ assert.equal(tools.readCart()[0].quantity,2);
+ assert.throws(()=>tools.addToCart("almond",250,49),/Máximo 50/);
+ assert.equal(tools.readCart()[0].quantity,2);
+});
+
+test("setCartItem accepts zero to remove and rejects quantities above 50",()=>{
+ tools.clearCart();
+ tools.addToCart("almond",100,3);
+ assert.throws(()=>tools.setCartItem("almond",100,51),/Cantidad inválida/);
+ tools.setCartItem("almond",100,0);
+ assert.equal(tools.readCart().length,0);
+});
+
+test("shipping configuration is read from the shared commercial object",()=>{
+ tools.clearCart();
+ window.COMMERCIAL_CONFIG={shipping:{tiers:[
+  {maxGrams:100,label:"Hasta 100 g",price:1},
+  {maxGrams:250,label:"101–250 g",price:2},
+  {maxGrams:500,label:"251–500 g",price:3},
+  {maxGrams:1000,label:"501 g–1 kg",price:4},
+  {maxGrams:5000,label:"1,001–5 kg",price:5},
+  {maxGrams:10000,label:"5,001–10 kg",price:6},
+  {maxGrams:20000,label:"10,001–20 kg",price:7},
+  {maxGrams:null,label:"Más de 20 kg",price:8}
+ ]}};
+ assert.equal(tools.calculateShipping(100).price,1);
+ assert.equal(tools.calculateShipping(20001).price,8);
+});

@@ -89,17 +89,17 @@ class StorefrontReleaseTests(unittest.TestCase):
         self.assertIn('aria-hidden="true"', html)
 
     def test_shipping_tiers_are_editable_and_cover_all_weight_breakpoints(self):
-        app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
-        match = re.search(r"const SHIPPING_TIERS = \[(.*?)\];", app, re.S)
-        self.assertIsNotNone(match, "Shipping tier configuration missing")
-        tiers = re.findall(r"maxGrams:(\d+|Infinity),label:\"([^\"]+)\",price:([0-9.]+)", match.group(1))
+        config = (ROOT / "js" / "commercial-config.js").read_text(encoding="utf-8")
+        data = json.loads((ROOT / "data" / "commercial.json").read_text(encoding="utf-8"))
+        self.assertIn("DEFAULT_TIERS", config)
+        self.assertIn("validateCommercialConfig", config)
+        tiers = data["shipping"]["tiers"]
         self.assertEqual(len(tiers), 8)
-        limits = [int(x[0]) if x[0] != "Infinity" else float("inf") for x in tiers]
-        self.assertEqual(limits, [100, 250, 500, 1000, 5000, 10000, 20000, float("inf")])
-        self.assertEqual([float(x[2]) for x in tiers], [2.5, 3.5, 4.5, 5.5, 7.5, 9.5, 12.5, 15.0])
-        def tier_for(weight):
-            return next(i for i,limit in enumerate(limits) if weight <= limit)
-        self.assertEqual([tier_for(w) for w in [100,101,250,251,500,501,1000,1001,5000,5001,10000,10001,20000,20001]], [0,1,1,2,2,3,3,4,4,5,5,6,6,7])
+        limits = [tier["maxGrams"] for tier in tiers]
+        self.assertEqual(limits, [100, 250, 500, 1000, 5000, 10000, 20000, None])
+        self.assertEqual([tier["price"] for tier in tiers], [2.5, 3.5, 4.5, 5.5, 7.5, 9.5, 12.5, 15])
+        self.assertIn('almendras:commercial-config-updated', config)
+        self.assertIn('almendras:shipping-updated', (ROOT / "js" / "app.js").read_text(encoding="utf-8"))
 
     def test_cart_supports_large_pack_formats_and_shipping_summary(self):
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
