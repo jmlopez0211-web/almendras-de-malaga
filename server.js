@@ -112,7 +112,7 @@ async function aiReply(history,message,channel="web"){
  const context=productContext(message);
  let input=[...history.slice(-MAX_HISTORY),{role:"user",content:"Consulta del cliente: "+message+"\n\nCatálogo y reglas comerciales (JSON): "+context}];
  const availableTools=channel==="whatsapp"?AI_TOOLS.filter(tool=>tool.name!=="add_to_cart"):AI_TOOLS;
- const explicitCartIntent=channel==="web"&&/\b(quiero|anade|agrega|mete|pon|ponme|comprar|compra|pedido|dame|agregame|meteme|sumame)\b/.test(normalise(message));
+ const explicitCartIntent=channel==="web"&&/\b(anade|anadir|anadas|anademe|agrega|agregar|agregame|mete|meteme|pon|ponme|ponga|comprar|compra|pedido|dame|lleva|echame|sumame)\b/.test(normalise(message));
  let actions=[];
  const deadline=Date.now()+22000;
  for(let turn=0;turn<5;turn++){
