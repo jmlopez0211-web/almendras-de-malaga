@@ -1,7 +1,7 @@
 window.PRODUCTS ={
   "almendraCrudaPiel": {
     "name": "Almendra cruda con piel",
-    "desc": "Almendra sin tostar, presentada con su piel.",
+    "desc": "Almendra cruda con piel, para quienes disfrutan de su sabor natural y de una textura auténtica. Ideal para tener siempre a mano o incorporar a tus recetas.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 13.2,
@@ -13,7 +13,7 @@ window.PRODUCTS ={
   },
   "almendraCrudaPelada": {
     "name": "Almendra cruda pelada",
-    "desc": "Almendra cruda sin piel.",
+    "desc": "Almendra cruda y pelada, lista para tus recetas, repostería y momentos de cocina. Todo el sabor de la almendra en una presentación práctica.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 15.4,
@@ -25,7 +25,7 @@ window.PRODUCTS ={
   },
   "almendraFritaOliva": {
     "name": "Almendra frita con aceite de oliva",
-    "desc": "Almendra frita; el catálogo indica aceite de oliva.",
+    "desc": "Almendras fritas con aceite de oliva: un aperitivo sabroso y crujiente, perfecto para compartir en una reunión, acompañar una mesa o darte un pequeño capricho.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 24,
@@ -89,7 +89,7 @@ window.PRODUCTS ={
   },
   "almendraGarrapinada": {
     "name": "Almendra garrapiñada",
-    "desc": "Almendra recubierta de caramelo.",
+    "desc": "Almendras garrapiñadas, envueltas en una capa dulce y crujiente de caramelo. Un clásico irresistible para disfrutar, compartir o llevarte un recuerdo dulce de Málaga.",
     "tag": "Garrapiñados y dulces",
     "category": "dulces",
     "price": 20,
@@ -98,7 +98,7 @@ window.PRODUCTS ={
   },
   "almendraMarcona": {
     "name": "Almendra Marcona",
-    "desc": "Almendra de la variedad Marcona.",
+    "desc": "Almendra de variedad Marcona, apreciada por su perfil delicado y su versatilidad. Consulta su formato y disponibilidad para disfrutarla como más te guste.",
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 20.8,
