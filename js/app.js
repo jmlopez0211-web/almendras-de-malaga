@@ -214,7 +214,7 @@ function closeModal(id,restoreFocus=true){
   modalReturnFocus=null;
  }
 }
-function updatePackPrice(){if(!selected)return;const grams=Number(document.getElementById('weightSelect').value);document.getElementById('packPrice').textContent=euro(selected.price*grams/1000);document.getElementById('modalNote').textContent='Precio de referencia: '+euro(selected.price)+' por kg. El importe del formato se calcula proporcionalmente y sin recargos; Don Miguel y Fabián confirmarán disponibilidad y precio final antes de aceptar el pedido.'}
+function updatePackPrice(){if(!selected)return;const grams=Number(document.getElementById('weightSelect').value);const quantity=Math.max(1,Math.min(50,Number(document.getElementById('qtyKg').value)||1));document.getElementById('packPrice').textContent=euro(selected.price*grams/1000);document.getElementById('modalNote').textContent='Precio orientativo calculado desde '+euro(selected.price)+' por kg. El negocio confirmará disponibilidad, formato y precio final.';const link=document.getElementById('productWhatsApp');if(link){const message='Hola, quiero consultar este producto de Almendras de Málaga: '+selected.name+'. Formato: '+grams+' g. Cantidad: '+quantity+' unidad(es). ¿Podéis confirmarme disponibilidad y precio final?';link.href='https://wa.me/34666068765?text='+encodeURIComponent(message)}}
 function showProduct(id){
  if(!hasProductId(id))return;
  selectedId=id;
@@ -255,7 +255,7 @@ function showProduct(id){
  updatePackPrice();
  openModal('productModal');
 }
-document.getElementById('weightSelect').addEventListener('change',updatePackPrice);
+document.getElementById('weightSelect').addEventListener('change',updatePackPrice);document.getElementById('qtyKg').addEventListener('input',updatePackPrice);
 document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>closeModal(b.dataset.close)));
 document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModal(m)}));
 document.addEventListener('keydown',e=>{
