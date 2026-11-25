@@ -31,8 +31,11 @@ test("generador SEO diferencia fichas, conserva el sitemap y mantiene lastmod so
   const output=runGenerator();
   const productFiles=fs.readdirSync(path.join(temp,"productos"));
   const categoryFiles=fs.readdirSync(path.join(temp,"categorias"));
-  assert.equal(productFiles.length,3);
+  assert.equal(productFiles.length,4); // Three product pages plus the legacy-name redirect.
   assert.equal(categoryFiles.length,2);
+  const legacyRedirect=fs.readFileSync(path.join(temp,"productos","revuelopacojose-revuelto-paco-jose.html"),"utf8");
+  assert.match(legacyRedirect,/noindex,follow/);
+  assert.match(legacyRedirect,/revuelto-de-frutos-secos\.html/);
   assert.match(output,/Páginas de producto generadas: 3/);
   assert.match(output,/Páginas de categoría generadas: 2/);
 
