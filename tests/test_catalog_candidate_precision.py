@@ -28,6 +28,11 @@ NEEDED = {
     "BLEND_COMPOSITION_KEYS",
     "SOFT_VARIANT_KEYS",
     "candidate_score",
+    "candidate_identity_is_confirmed",
+    "candidate_variant_evidence_status",
+    "candidate_identity_is_confirmed",
+    "candidate_passes_gates",
+    "approval_passes_gates",
 }
 selected = []
 for node in TREE.body:
@@ -47,6 +52,26 @@ candidate_score = namespace["candidate_score"]
 class TestCatalogCandidatePrecision(unittest.TestCase):
     def score(self, key, title, description=""):
         return candidate_score(key, {"title": title, "description": description, "tags": []})
+
+    def test_exact_almond_oil_variant_is_required_before_download(self):
+        gate = namespace["candidate_identity_is_confirmed"]
+        self.assertTrue(gate("almendraFritaGirasol", {
+            "title": "Fried almonds in sunflower oil",
+            "tags": ["almonds", "fried", "sunflower oil"],
+        }))
+        unspecified = {"title": "Almonds close-up", "tags": ["almonds"]}
+        self.assertTrue(gate("almendraFritaGirasol", unspecified))
+        self.assertEqual(namespace["candidate_variant_evidence_status"]("almendraFritaGirasol", unspecified), "VARIANT_UNSPECIFIED")
+
+    def test_exact_salted_macadamia_variant_is_required_before_download(self):
+        gate = namespace["candidate_identity_is_confirmed"]
+        self.assertTrue(gate("macadamiaFritaSal", {
+            "title": "Salted fried macadamia nuts",
+            "tags": ["macadamia", "fried", "salted"],
+        }))
+        conflicting = {"title": "Unsalted macadamia kernels", "tags": ["macadamia", "unsalted"]}
+        self.assertTrue(gate("macadamiaFritaSal", conflicting))
+        self.assertEqual(namespace["candidate_variant_evidence_status"]("macadamiaFritaSal", conflicting), "CONTRADICTORY_VARIANT")
 
     def test_recovery_queries_start_with_broad_almond_terms(self):
         from_main = namespace["build_queries"]("almendraFritaSinSal", "Almendra frita sin sal")
@@ -70,6 +95,28 @@ class TestCatalogCandidatePrecision(unittest.TestCase):
         )
         self.assertIn("macadamia nuts", queries)
         self.assertIn("macadamia kernels", queries)
+
+    def test_recovery_dictionary_has_no_duplicate_product_keys(self):
+        assignment = next(
+            node for node in TREE.body
+            if isinstance(node, ast.Assign)
+            and any(isinstance(target, ast.Name)
+                    and target.id == "SEARCH_RECOVERY_TERMS"
+                    for target in node.targets)
+        )
+        keys = [key.value for key in assignment.value.keys
+                if isinstance(key, ast.Constant) and isinstance(key.value, str)]
+        self.assertEqual(len(keys), len(set(keys)))
+
+    def test_salted_macadamia_recovery_terms_are_merged(self):
+        queries = namespace["build_queries"](
+            "macadamiaFritaSal",
+            "Macadamia frita con sal"
+        )
+        self.assertIn("macadamia kernels", queries)
+        self.assertIn("salted fried macadamia nuts", queries)
+        self.assertIn("fried salted macadamia kernels", queries)
+        self.assertIn("macadamia nuts with salt", queries)
 
     def test_rejects_savory_pine_nut_dish(self):
         score, reasons = self.score(
@@ -152,6 +199,20 @@ class TestCatalogCandidatePrecision(unittest.TestCase):
         )
         self.assertGreaterEqual(score, 4)
         self.assertIn("variant_metadata_unverified", reasons)
+
+    def test_identity_and_variant_evidence_are_separate(self):
+        candidate = {"title": "Macadamia nuts", "tags": []}
+        self.assertTrue(namespace["candidate_identity_is_confirmed"]("macadamiaFritaSinSal", candidate))
+        self.assertEqual(namespace["candidate_variant_evidence_status"]("macadamiaFritaSinSal", candidate), "VARIANT_UNSPECIFIED")
+
+    def test_explicit_salted_variant_conflicts_with_unsalted_target(self):
+        candidate = {"title": "Salted macadamia nuts", "tags": []}
+        self.assertTrue(namespace["candidate_identity_is_confirmed"]("macadamiaFritaSinSal", candidate))
+        self.assertEqual(namespace["candidate_variant_evidence_status"]("macadamiaFritaSinSal", candidate), "CONTRADICTORY_VARIANT")
+
+    def test_exact_variant_metadata_is_marked_exact(self):
+        candidate = {"title": "Unsalted fried macadamia nuts", "tags": []}
+        self.assertEqual(namespace["candidate_variant_evidence_status"]("macadamiaFritaSinSal", candidate), "EXACT_VARIANT_EVIDENCE")
 
     def test_rejects_space_food_as_special_mixed_nuts(self):
         score, _ = self.score("revueloEspecial", "Comida espacial.jpg")
@@ -268,6 +329,54 @@ class TestCatalogCandidatePrecision(unittest.TestCase):
         )
         self.assertGreater(score, 0)
 
+
+    def test_rejects_spiced_rosemary_cashews_for_unsalted_fried_cashews(self):
+        score, reasons = self.score(
+            "anacardoFritoSinSal",
+            "Roasted and spiced cashews with olive-rosemary flavour"
+        )
+        self.assertLess(score, 0)
+        self.assertTrue(any("wrong_product_or_preparation" in x for x in reasons))
+
+
+    def test_pilot_identity_gate_separates_product_from_variant(self):
+        gate = namespace["candidate_identity_is_confirmed"]
+        variant = namespace["candidate_variant_evidence_status"]
+        truffles = {"title": "Raw Vegan Coconut Almond Truffles (7669980264).jpg"}
+        self.assertTrue(gate("almendraCrudaPiel", truffles))
+        self.assertEqual(variant("almendraCrudaPiel", truffles), "CONTRADICTORY_VARIANT")
+        self.assertLess(self.score("almendraCrudaPiel", "Raw Vegan Coconut Almond Truffles (7669980264).jpg")[0], 0)
+        almond_milk = {"title": "Raw almond milk.jpg"}
+        self.assertTrue(gate("almendraCrudaPiel", almond_milk))
+        self.assertEqual(variant("almendraCrudaPiel", almond_milk), "CONTRADICTORY_VARIANT")
+        self.assertTrue(gate("almendraCrudaPiel", {
+            "title": "Raw almonds with skin"
+        }))
+        fried_almonds = {"title": "Almendras fritas.jpg"}
+        self.assertTrue(gate("almendraFritaOliva", fried_almonds))
+        self.assertEqual(variant("almendraFritaOliva", fried_almonds), "VARIANT_UNSPECIFIED")
+        self.assertTrue(gate("almendraFritaOliva", {"title": "Fried almonds in olive oil"}))
+        almond = {"title": "Almond with two kernels.jpg"}
+        self.assertTrue(gate("almendraFritaSinSal", almond))
+        self.assertEqual(variant("almendraFritaSinSal", almond), "VARIANT_UNSPECIFIED")
+        self.assertTrue(gate("almendraFritaSinSal", {"title": "Unsalted fried almonds"}))
+
+    def test_candidate_requires_identity_and_technical_validation(self):
+        gate = namespace["candidate_passes_gates"]
+        self.assertTrue(gate(True, True))
+        self.assertFalse(gate(False, True))
+        self.assertFalse(gate(True, False))
+        self.assertFalse(gate(False, False))
+
+    def test_final_approval_requires_complete_rights_and_visual_review(self):
+        gate = namespace["approval_passes_gates"]
+        complete = ("CC BY-SA 4.0", "https://creativecommons.org/licenses/by-sa/4.0",
+                    "Creator Name", "https://commons.wikimedia.org/wiki/File:Example.jpg")
+        self.assertTrue(gate(True, *complete, True))
+        self.assertFalse(gate(True, *complete, False))
+        self.assertFalse(gate(True, complete[0], "", complete[2], complete[3], True))
+        self.assertFalse(gate(False, *complete, True))
+
     def test_accepts_almonds_fried_in_sunflower_oil(self):
         score, _ = self.score(
             "almendraFritaGirasol",
@@ -278,3 +387,27 @@ class TestCatalogCandidatePrecision(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+    def test_rejects_branded_product_packaging(self):
+        score, reasons = self.score(
+            "almendraFritaGirasol",
+            "Almonds in branded retail pouch with product label"
+        )
+        self.assertLess(score, 0)
+        self.assertTrue(any("irrelevant_or_commercial_context" in reason for reason in reasons))
+
+    def test_rejects_packaged_nuts_in_spanish(self):
+        score, reasons = self.score(
+            "almendraFritaSinSal",
+            "Almendras fritas sin sal en bolsa con etiqueta y logotipo"
+        )
+        self.assertLess(score, 0)
+        self.assertTrue(any("irrelevant_or_commercial_context" in reason for reason in reasons))
+
+    def test_accepts_clean_unbranded_product_photo(self):
+        score, reasons = self.score(
+            "almendraFritaSinSal",
+            "Unsalted fried almonds isolated on clean white background"
+        )
+        self.assertGreaterEqual(score, 4)
+        self.assertIn("product_identity_in_title_or_tags", reasons)
