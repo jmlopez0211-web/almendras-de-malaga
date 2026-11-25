@@ -23,7 +23,10 @@
       ],
       "sha256": "8b37a3921d1d9a23b63ed21d20ea8ae9cbe7ac54a0bf7e206b3f0699082897fb",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Almendra (fruto base)",
+      "variant_evidence": "IDENTIDAD BASE; no demuestra aceite ni fritura. No asignar a variante comercial concreta."
     },
     {
       "file": "almendraFritaSinSal-candidate.jpg",
@@ -44,7 +47,9 @@
       ],
       "sha256": "8b37a3921d1d9a23b63ed21d20ea8ae9cbe7ac54a0bf7e206b3f0699082897fb",
       "duplicate_of": "almendraFritaGirasol-candidate.jpg",
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
     },
     {
       "file": "anacardoFritoSinSal-candidate-1.jpg",
@@ -65,7 +70,10 @@
       ],
       "sha256": "54d2aba243038d3e3aaf0c9d52b2ea5dfa7c27aea2620701faaa8303e9a37670",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Anacardo (fruto base)",
+      "variant_evidence": "IDENTIDAD BASE; no demuestra fritura ni ausencia de sal. Segundo archivo/origen, comparar calidad."
     },
     {
       "file": "anacardoFritoSinSal-candidate.jpg",
@@ -86,7 +94,10 @@
       ],
       "sha256": "a18965fe9baafeeb2b4e8ea37c126af2d5a195b44452045b4fb59ccabaf92471",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Anacardo (fruto base)",
+      "variant_evidence": "IDENTIDAD BASE; no demuestra fritura ni ausencia de sal."
     },
     {
       "file": "avellanaAmericanaCruda-candidate.jpg",
@@ -107,7 +118,9 @@
       ],
       "sha256": "f460ab942d35356eaf519dbb97792ec93f345ceae57ca6924cdf4e80fd26cc7d",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
     },
     {
       "file": "cacahueteFritoRepeladoSinSal-candidate.jpg",
@@ -128,7 +141,10 @@
       ],
       "sha256": "f6d643f612611bb4aa3cbf08798a02e940a9225b35d1d19ab5a93bf1acc2eca5",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Cacahuete repelado (fruto base)",
+      "variant_evidence": "Identidad de cacahuete; no demuestra fritura ni ausencia de sal."
     },
     {
       "file": "cacahueteTostadoRepeladoSinSal-candidate.jpg",
@@ -149,7 +165,10 @@
       ],
       "sha256": "e36e50d19d951801da22572c10a8b4486d0874fae99d3cff7910030705923223",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Cacahuete tostado (fruto base)",
+      "variant_evidence": "Título indica tostado; no acredita ausencia de sal."
     },
     {
       "file": "cafeDryCA-candidate.jpg",
@@ -170,7 +189,9 @@
       ],
       "sha256": "4727777b9eee519ef551efa7fcf969d05d025416ddd6a0194b5ee676fc494a45",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
     },
     {
       "file": "calabazaPeladaCruda-candidate.jpg",
@@ -191,7 +212,10 @@
       ],
       "sha256": "74dc0dd685d2f8b915923203bddca9a4f6d82e346cf7e1601d4f99d5e0e6bff6",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Pipa de calabaza",
+      "variant_evidence": "Identidad visual de semilla; confirmar que corresponde a pipa pelada cruda y no solo macro genérica."
     },
     {
       "file": "cocoDado-candidate.jpg",
@@ -212,7 +236,9 @@
       ],
       "sha256": "c99bbba90299856fb5106e15673e6ae8b3b0b06621fccec3beef9e22475f2af6",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
     },
     {
       "file": "dulceLeche-candidate.jpg",
@@ -233,7 +259,9 @@
       ],
       "sha256": "1c2687f2ecd3fd226f76a2871622fa47958257ffb79e02685efe52b96c02098b",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
     },
     {
       "file": "macadamiaFritaSal-candidate.jpg",
@@ -254,7 +282,10 @@
       ],
       "sha256": "ce38ffe8246b60b720f7f7bcd6396507b98d077e8de34530052013d54144678f",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Macadamia (fruto base)",
+      "variant_evidence": "Identidad de macadamia; no demuestra fritura ni sal."
     },
     {
       "file": "macadamiaFritaSinSal-candidate.jpg",
@@ -275,7 +306,10 @@
       ],
       "sha256": "d40e4ec32f6761c3e39d981d96e13700593d3e110dbe9b92064f304e6dc0c34e",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Macadamia (fruto base)",
+      "variant_evidence": "Identidad de macadamia; no demuestra fritura ni ausencia de sal."
     },
     {
       "file": "macadamiaTostadaSinSal-candidate.jpg",
@@ -296,7 +330,10 @@
       ],
       "sha256": "d40e4ec32f6761c3e39d981d96e13700593d3e110dbe9b92064f304e6dc0c34e",
       "duplicate_of": "macadamiaFritaSinSal-candidate.jpg",
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Macadamia (fruto base)",
+      "variant_evidence": "Imagen titulada Macadamia nuts; no demuestra tueste ni ausencia de sal. Duplicada binariamente con la anterior."
     },
     {
       "file": "nuezCaramelizada-candidate.jpg",
@@ -317,7 +354,10 @@
       ],
       "sha256": "bdb670340bb7757a30bec10f7fcc5a90a5ff181e14294b6c03e7d17ae2d60fcc",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Nuez caramelizada (posible)",
+      "variant_evidence": "Título menciona walnut caramel; revisar visualmente si son nueces caramelizadas y no salsa/postre."
     },
     {
       "file": "pipaGarrapinada-candidate.jpg",
@@ -338,7 +378,9 @@
       ],
       "sha256": "65989dabe0ee3765bc10e03d815456f335051d74517d7aff2d5cc65af45d8252",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
     },
     {
       "file": "revueloDeliciasVirginia-candidate.jpg",
@@ -359,7 +401,9 @@
       ],
       "sha256": "cb1f7f92bc68c78849d7d0fa0887f1892421b0a34f674c325eda638a1b977a89",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
     },
     {
       "file": "revueloDulceMCarmen-candidate.jpg",
@@ -380,7 +424,9 @@
       ],
       "sha256": "7fc813a6aca033b2f6a68866aff1a4d0cedc401c7c9ab694351aa5654ed0a12f",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
     },
     {
       "file": "revueloEspecial-candidate.jpg",
@@ -401,7 +447,9 @@
       ],
       "sha256": "dedcd4b3c5e8d85fe66a4289a14eb921318cad8ba94cc28bb35dc1f493d04f18",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
     },
     {
       "file": "revueloPacoJose-candidate.jpg",
@@ -422,7 +470,10 @@
       ],
       "sha256": "59d1172eb460855dbbd0091a0ac789de9caf90a61bca804f04829ec406a0ebc5",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Mezcla de frutos secos (genérica)",
+      "variant_evidence": "Identidad genérica de mezcla; no acredita composición de ninguna receta comercial propia."
     },
     {
       "file": "revueloTresPasas-candidate.jpg",
@@ -443,7 +494,9 @@
       ],
       "sha256": "275775d1ca948f12688d38893249d017d28680996806f0717517b226569c9174",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
     },
     {
       "file": "tacoMiel-candidate.jpg",
@@ -464,7 +517,9 @@
       ],
       "sha256": "0cb2812748352b22113ba6accc81b94a24b82c86619aea28718838f88bbdfe82",
       "duplicate_of": null,
-      "publication_status": "NO APROBADA — revisar identidad, variante y derechos"
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
     }
   ],
   "policy": "Revisión visual únicamente; confirmar identidad, variante, derechos, resolución y duplicados antes de publicar.",
@@ -487,9 +542,531 @@
     }
   ],
   "notes": [
-    "22 imágenes con metadatos de candidato vinculados al manifiesto activo.",
-    "4 archivos heredados quedan fuera de la hoja principal por carecer de trazabilidad de producto/fuente/licencia.",
-    "2 coincidencias SHA-256 exactas detectadas dentro de las 22 imágenes vinculadas.",
-    "Todas las imágenes siguen NO APROBADAS."
+    "22 archivos vinculados al lote; 11 se conservan como candidatos de identidad para revisión humana y 11 se apartan por identidad equivocada o no demostrable.",
+    "La identidad de fruto no acredita proceso, aceite, sal, receta ni composición.",
+    "2 duplicados binarios exactos detectados; no se cuentan como imágenes independientes.",
+    "Ninguna fotografía está aprobada para publicación: verificar licencia exacta, atribución, resolución y revisión visual.",
+    "Las fotografías de webs de fabricantes no se reutilizan sin permiso escrito."
+  ],
+  "items_kept_for_review": [
+    {
+      "file": "almendraFritaGirasol-candidate.jpg",
+      "product_key": "almendraFritaGirasol",
+      "product": "Almendra frita con aceite de girasol",
+      "candidate_title": "Almond with two kernels.jpg",
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3AAlmond_with_two_kernels.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/76/Almond_with_two_kernels.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Iifar\" title=\"User:Iifar\">Ivar Leidus</a>",
+      "width": 6000,
+      "height": 4000,
+      "download_dimensions": [
+        6000,
+        4000
+      ],
+      "sha256": "8b37a3921d1d9a23b63ed21d20ea8ae9cbe7ac54a0bf7e206b3f0699082897fb",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Almendra (fruto base)",
+      "variant_evidence": "IDENTIDAD BASE; no demuestra aceite ni fritura. No asignar a variante comercial concreta."
+    },
+    {
+      "file": "anacardoFritoSinSal-candidate-1.jpg",
+      "product_key": "anacardoFritoSinSal",
+      "product": "Anacardo frito sin sal",
+      "candidate_title": "CASHEW NUTS.jpg",
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3ACASHEW_NUTS.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/CASHEW_NUTS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "artist": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:Ranjithkumar_Murugesan&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:Ranjithkumar Murugesan (page does not exist)\">Ranjithkumar Murugesan</a>",
+      "width": 6144,
+      "height": 8160,
+      "download_dimensions": [
+        1280,
+        964
+      ],
+      "sha256": "54d2aba243038d3e3aaf0c9d52b2ea5dfa7c27aea2620701faaa8303e9a37670",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Anacardo (fruto base)",
+      "variant_evidence": "IDENTIDAD BASE; no demuestra fritura ni ausencia de sal. Segundo archivo/origen, comparar calidad."
+    },
+    {
+      "file": "anacardoFritoSinSal-candidate.jpg",
+      "product_key": "anacardoFritoSinSal",
+      "product": "Anacardo frito sin sal",
+      "candidate_title": "CASHEW NUTS.jpg",
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3ACASHEW_NUTS.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/CASHEW_NUTS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "artist": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:Ranjithkumar_Murugesan&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:Ranjithkumar Murugesan (page does not exist)\">Ranjithkumar Murugesan</a>",
+      "width": 6144,
+      "height": 8160,
+      "download_dimensions": [
+        6144,
+        8160
+      ],
+      "sha256": "a18965fe9baafeeb2b4e8ea37c126af2d5a195b44452045b4fb59ccabaf92471",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Anacardo (fruto base)",
+      "variant_evidence": "IDENTIDAD BASE; no demuestra fritura ni ausencia de sal."
+    },
+    {
+      "file": "cacahueteFritoRepeladoSinSal-candidate.jpg",
+      "product_key": "cacahueteFritoRepeladoSinSal",
+      "product": "Cacahuete frito repelado sin sal",
+      "candidate_title": "Peanut Kernels.jpg",
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3APeanut_Kernels.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/79/Peanut_Kernels.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Thamizhpparithi_Maari\" title=\"User:Thamizhpparithi Maari\">Thamizhpparithi Maari</a>",
+      "width": 2048,
+      "height": 1536,
+      "download_dimensions": [
+        1280,
+        1268
+      ],
+      "sha256": "f6d643f612611bb4aa3cbf08798a02e940a9225b35d1d19ab5a93bf1acc2eca5",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Cacahuete repelado (fruto base)",
+      "variant_evidence": "Identidad de cacahuete; no demuestra fritura ni ausencia de sal."
+    },
+    {
+      "file": "cacahueteTostadoRepeladoSinSal-candidate.jpg",
+      "product_key": "cacahueteTostadoRepeladoSinSal",
+      "product": "Cacahuete tostado repelado sin sal",
+      "candidate_title": "Dry Roasted Virginia Peanuts.jpg",
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3ADry_Roasted_Virginia_Peanuts.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Dry_Roasted_Virginia_Peanuts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Gogerr\" title=\"User:Gogerr\">Gogerr</a>",
+      "width": 3024,
+      "height": 4032,
+      "download_dimensions": [
+        4032,
+        3024
+      ],
+      "sha256": "e36e50d19d951801da22572c10a8b4486d0874fae99d3cff7910030705923223",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Cacahuete tostado (fruto base)",
+      "variant_evidence": "Título indica tostado; no acredita ausencia de sal."
+    },
+    {
+      "file": "calabazaPeladaCruda-candidate.jpg",
+      "product_key": "calabazaPeladaCruda",
+      "product": "Pipa de calabaza pelada cruda",
+      "candidate_title": "Pumpkin Seeds macro 1.jpg",
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3APumpkin_Seeds_macro_1.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Pumpkin_Seeds_macro_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC BY 3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Dschwen\" title=\"User:Dschwen\">Daniel Schwen</a>",
+      "width": 5616,
+      "height": 3744,
+      "download_dimensions": [
+        5616,
+        3744
+      ],
+      "sha256": "74dc0dd685d2f8b915923203bddca9a4f6d82e346cf7e1601d4f99d5e0e6bff6",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Pipa de calabaza",
+      "variant_evidence": "Identidad visual de semilla; confirmar que corresponde a pipa pelada cruda y no solo macro genérica."
+    },
+    {
+      "file": "macadamiaFritaSal-candidate.jpg",
+      "product_key": "macadamiaFritaSal",
+      "product": "Macadamia frita con sal",
+      "candidate_title": "Macadamia nut kernels.jpg",
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3AMacadamia_nut_kernels.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Macadamia_nut_kernels.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Fumikas_Sagisavas\" title=\"User:Fumikas Sagisavas\">Fumikas Sagisavas</a>",
+      "width": 3000,
+      "height": 3000,
+      "download_dimensions": [
+        3000,
+        3000
+      ],
+      "sha256": "ce38ffe8246b60b720f7f7bcd6396507b98d077e8de34530052013d54144678f",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Macadamia (fruto base)",
+      "variant_evidence": "Identidad de macadamia; no demuestra fritura ni sal."
+    },
+    {
+      "file": "macadamiaFritaSinSal-candidate.jpg",
+      "product_key": "macadamiaFritaSinSal",
+      "product": "Macadamia frita sin sal",
+      "candidate_title": "Cut macadamia nuts.jpg",
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3ACut_macadamia_nuts.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Cut_macadamia_nuts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Fumikas_Sagisavas\" title=\"User:Fumikas Sagisavas\">Fumikas Sagisavas</a>",
+      "width": 3000,
+      "height": 3000,
+      "download_dimensions": [
+        3000,
+        3000
+      ],
+      "sha256": "d40e4ec32f6761c3e39d981d96e13700593d3e110dbe9b92064f304e6dc0c34e",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Macadamia (fruto base)",
+      "variant_evidence": "Identidad de macadamia; no demuestra fritura ni ausencia de sal."
+    },
+    {
+      "file": "macadamiaTostadaSinSal-candidate.jpg",
+      "product_key": "macadamiaTostadaSinSal",
+      "product": "Macadamia tostada sin sal",
+      "candidate_title": "Mauna Loa Macadamia Nuts",
+      "source": "Openverse",
+      "source_page": "https://www.flickr.com/photos/14771153@N04/52365686687",
+      "url": "https://live.staticflickr.com/65535/52365686687_ce676480a7_b.jpg",
+      "license": "by",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "artist": "slgckgc",
+      "width": 1024,
+      "height": 576,
+      "download_dimensions": [
+        3000,
+        3000
+      ],
+      "sha256": "d40e4ec32f6761c3e39d981d96e13700593d3e110dbe9b92064f304e6dc0c34e",
+      "duplicate_of": "macadamiaFritaSinSal-candidate.jpg",
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Macadamia (fruto base)",
+      "variant_evidence": "Imagen titulada Macadamia nuts; no demuestra tueste ni ausencia de sal. Duplicada binariamente con la anterior."
+    },
+    {
+      "file": "nuezCaramelizada-candidate.jpg",
+      "product_key": "nuezCaramelizada",
+      "product": "Nuez caramelizada",
+      "candidate_title": "walnut caramel -- view from the top",
+      "source": "Openverse",
+      "source_page": "https://www.flickr.com/photos/90863480@N00/16791288119",
+      "url": "https://live.staticflickr.com/7617/16791288119_dd400f7b48_b.jpg",
+      "license": "by-sa",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "artist": "theilr",
+      "width": 1024,
+      "height": 683,
+      "download_dimensions": [
+        1024,
+        683
+      ],
+      "sha256": "bdb670340bb7757a30bec10f7fcc5a90a5ff181e14294b6c03e7d17ae2d60fcc",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Nuez caramelizada (posible)",
+      "variant_evidence": "Título menciona walnut caramel; revisar visualmente si son nueces caramelizadas y no salsa/postre."
+    },
+    {
+      "file": "revueloPacoJose-candidate.jpg",
+      "product_key": "revueloPacoJose",
+      "product": "Revuelto Paco José",
+      "candidate_title": "Liat Portal for Foodie Disorder - Mixed nuts assortment.jpg",
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3ALiat_Portal_for_Foodie_Disorder_-_Mixed_nuts_assortment.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/9/97/Liat_Portal_for_Foodie_Disorder_-_Mixed_nuts_assortment.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "artist": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:HaJunkiyada&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:HaJunkiyada (page does not exist)\">HaJunkiyada</a>",
+      "width": 3024,
+      "height": 4032,
+      "download_dimensions": [
+        1280,
+        1707
+      ],
+      "sha256": "59d1172eb460855dbbd0091a0ac789de9caf90a61bca804f04829ec406a0ebc5",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "KEEP_FOR_HUMAN_REVIEW",
+      "review_label": "Mezcla de frutos secos (genérica)",
+      "variant_evidence": "Identidad genérica de mezcla; no acredita composición de ninguna receta comercial propia."
+    }
+  ],
+  "items_rejected": [
+    {
+      "file": "almendraFritaSinSal-candidate.jpg",
+      "product_key": "almendraFritaSinSal",
+      "product": "Almendra frita sin sal",
+      "candidate_title": "Almond with two kernels.jpg",
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3AAlmond_with_two_kernels.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/76/Almond_with_two_kernels.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Iifar\" title=\"User:Iifar\">Ivar Leidus</a>",
+      "width": 6000,
+      "height": 4000,
+      "download_dimensions": [
+        6000,
+        4000
+      ],
+      "sha256": "8b37a3921d1d9a23b63ed21d20ea8ae9cbe7ac54a0bf7e206b3f0699082897fb",
+      "duplicate_of": "almendraFritaGirasol-candidate.jpg",
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
+    },
+    {
+      "file": "avellanaAmericanaCruda-candidate.jpg",
+      "product_key": "avellanaAmericanaCruda",
+      "product": "Avellana americana cruda",
+      "candidate_title": "Almond and hazelnuts with nutcracker",
+      "source": "Openverse",
+      "source_page": "https://www.flickr.com/photos/141397992@N02/27323249111",
+      "url": "https://live.staticflickr.com/7315/27323249111_e0e003e2ed_b.jpg",
+      "license": "by",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "artist": "Vegan Photo",
+      "width": 1024,
+      "height": 683,
+      "download_dimensions": [
+        1024,
+        683
+      ],
+      "sha256": "f460ab942d35356eaf519dbb97792ec93f345ceae57ca6924cdf4e80fd26cc7d",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
+    },
+    {
+      "file": "cafeDryCA-candidate.jpg",
+      "product_key": "cafeDryCA",
+      "product": "Café Dry con azúcar",
+      "candidate_title": "Found Objects 1 - Beach",
+      "source": "Openverse",
+      "source_page": "https://www.flickr.com/photos/76283671@N00/493120582",
+      "url": "https://live.staticflickr.com/193/493120582_17dc8d7d72_b.jpg",
+      "license": "by",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "artist": "Laineys Repertoire",
+      "width": 1024,
+      "height": 768,
+      "download_dimensions": [
+        1024,
+        768
+      ],
+      "sha256": "4727777b9eee519ef551efa7fcf969d05d025416ddd6a0194b5ee676fc494a45",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
+    },
+    {
+      "file": "cocoDado-candidate.jpg",
+      "product_key": "cocoDado",
+      "product": "Coco dado deshidratado",
+      "candidate_title": "My coconut-mango cookie dipped in Stogo's red velvet",
+      "source": "Openverse",
+      "source_page": "https://www.flickr.com/photos/11316976@N00/4125594961",
+      "url": "https://live.staticflickr.com/2599/4125594961_a5be36c93a_b.jpg",
+      "license": "by",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "artist": "watashiwani",
+      "width": 1024,
+      "height": 577,
+      "download_dimensions": [
+        1024,
+        615
+      ],
+      "sha256": "c99bbba90299856fb5106e15673e6ae8b3b0b06621fccec3beef9e22475f2af6",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
+    },
+    {
+      "file": "dulceLeche-candidate.jpg",
+      "product_key": "dulceLeche",
+      "product": "Dulce de leche",
+      "candidate_title": "Precious cargo! @delacreamery x @tutuli.coyotas Coyotas N Cream: Sweet cream base, chunks of guava and cajeta coyotas, swirls of sticky caramel + cocada coyota with a vegan take on dulce de leche",
+      "source": "Openverse",
+      "source_page": "https://www.flickr.com/photos/66722164@N00/53608986050",
+      "url": "https://live.staticflickr.com/65535/53608986050_e115b63a2f_b.jpg",
+      "license": "by",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "artist": "veritatem",
+      "width": 1024,
+      "height": 1024,
+      "download_dimensions": [
+        1024,
+        1024
+      ],
+      "sha256": "1c2687f2ecd3fd226f76a2871622fa47958257ffb79e02685efe52b96c02098b",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
+    },
+    {
+      "file": "pipaGarrapinada-candidate.jpg",
+      "product_key": "pipaGarrapinada",
+      "product": "Pipa garrapiñada",
+      "candidate_title": "Life on a Bus Stop and GARRAPIÑADA - CASTAÑAS - ALMENDRAS - PIPAS - NUECES | 170724-0032734-jikatu",
+      "source": "Openverse",
+      "source_page": "https://www.flickr.com/photos/7221539@N06/36107851786",
+      "url": "https://live.staticflickr.com/4296/36107851786_f06ef6b53a_b.jpg",
+      "license": "by-sa",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "artist": "jikatu",
+      "width": 1024,
+      "height": 678,
+      "download_dimensions": [
+        1024,
+        678
+      ],
+      "sha256": "65989dabe0ee3765bc10e03d815456f335051d74517d7aff2d5cc65af45d8252",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
+    },
+    {
+      "file": "revueloDeliciasVirginia-candidate.jpg",
+      "product_key": "revueloDeliciasVirginia",
+      "product": "Revuelto Delicias Virginia",
+      "candidate_title": "2020-08-24 22 59 12 A Fruit and Nut flavor Nature Valley Trail Mix Chewy Granola Bar with almonds, raisins, peanuts and cranberries in the Dulles section of Sterling, Loudoun County, Virginia.jpg",
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3A2020-08-24_22_59_12_A_Fruit_and_Nut_flavor_Nature_Valley_Trail_Mix_Chewy_Granola_Bar_with_almonds%2C_raisins%2C_peanuts_and_cranberries_in_the_Dulles_section_of_Sterling%2C_Loudoun_County%2C_Virginia.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/8/81/2020-08-24_22_59_12_A_Fruit_and_Nut_flavor_Nature_Valley_Trail_Mix_Chewy_Granola_Bar_with_almonds%2C_raisins%2C_peanuts_and_cranberries_in_the_Dulles_section_of_Sterling%2C_Loudoun_County%2C_Virginia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Famartin\" title=\"User:Famartin\">Famartin</a>",
+      "width": 4032,
+      "height": 3024,
+      "download_dimensions": [
+        4032,
+        3024
+      ],
+      "sha256": "cb1f7f92bc68c78849d7d0fa0887f1892421b0a34f674c325eda638a1b977a89",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
+    },
+    {
+      "file": "revueloDulceMCarmen-candidate.jpg",
+      "product_key": "revueloDulceMCarmen",
+      "product": "Revuelto dulce Mª Carmen",
+      "candidate_title": "Guiso de porotos con chorizo y vegetales en olla.jpg",
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3AGuiso_de_porotos_con_chorizo_y_vegetales_en_olla.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/31/Guiso_de_porotos_con_chorizo_y_vegetales_en_olla.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Tubby3\" title=\"User:Tubby3\">Horacio Cambeiro</a>",
+      "width": 3654,
+      "height": 3000,
+      "download_dimensions": [
+        3654,
+        3000
+      ],
+      "sha256": "7fc813a6aca033b2f6a68866aff1a4d0cedc401c7c9ab694351aa5654ed0a12f",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
+    },
+    {
+      "file": "revueloEspecial-candidate.jpg",
+      "product_key": "revueloEspecial",
+      "product": "Revuelto especial",
+      "candidate_title": "Comida espacial.jpg",
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3AComida_espacial.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Comida_espacial.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "artist": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:Andrea_y_Melissa&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:Andrea y Melissa (page does not exist)\">Andrea y Melissa</a>",
+      "width": 985,
+      "height": 843,
+      "download_dimensions": [
+        985,
+        843
+      ],
+      "sha256": "dedcd4b3c5e8d85fe66a4289a14eb921318cad8ba94cc28bb35dc1f493d04f18",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
+    },
+    {
+      "file": "revueloTresPasas-candidate.jpg",
+      "product_key": "revueloTresPasas",
+      "product": "Revuelto de tres pasas",
+      "candidate_title": "2021-01-06 12 15 43 Cranberry trail mix with cranberries, peanuts, raisins, walnuts, almonds, sunflower seeds, pepitas in the Franklin Farm section of Oak Hill, Fairfax County, Virginia.jpg",
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3A2021-01-06_12_15_43_Cranberry_trail_mix_with_cranberries%2C_peanuts%2C_raisins%2C_walnuts%2C_almonds%2C_sunflower_seeds%2C_pepitas_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/2021-01-06_12_15_43_Cranberry_trail_mix_with_cranberries%2C_peanuts%2C_raisins%2C_walnuts%2C_almonds%2C_sunflower_seeds%2C_pepitas_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Famartin\" title=\"User:Famartin\">Famartin</a>",
+      "width": 4032,
+      "height": 3024,
+      "download_dimensions": [
+        4032,
+        3024
+      ],
+      "sha256": "275775d1ca948f12688d38893249d017d28680996806f0717517b226569c9174",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
+    },
+    {
+      "file": "tacoMiel-candidate.jpg",
+      "product_key": "tacoMiel",
+      "product": "Taco de miel",
+      "candidate_title": "DSC_4365-Edit.jpg",
+      "source": "Openverse",
+      "source_page": "https://www.flickr.com/photos/40181214@N06/51678311155",
+      "url": "https://live.staticflickr.com/65535/51678311155_723660c0e2_b.jpg",
+      "license": "by",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "artist": "Carlos Eduardo Joos",
+      "width": 1024,
+      "height": 682,
+      "download_dimensions": [
+        1024,
+        682
+      ],
+      "sha256": "0cb2812748352b22113ba6accc81b94a24b82c86619aea28718838f88bbdfe82",
+      "duplicate_of": null,
+      "publication_status": "NO APROBADA — revisar identidad, variante y derechos",
+      "review_disposition": "REJECT_WRONG_OR_UNSUPPORTED_IDENTITY",
+      "variant_evidence": "No se utiliza: el título/procedencia apunta a otro alimento, producto compuesto distinto o contexto ajeno."
+    }
   ]
 }

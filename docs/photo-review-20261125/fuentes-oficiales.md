@@ -20,3 +20,19 @@
 4. **Hernández y Guillén Hnos.:** pedir archivos originales y permiso comercial para las referencias que coincidan con el catálogo propio.
 
 No se enviaron solicitudes ni se concedieron permisos durante esta revisión.
+
+## Revisión de derechos de reutilización (25-11-2026)
+
+- **COPAVAL:** el aviso legal declara que los derechos de textos e imágenes pertenecen a COPAVAL o a sus cedentes y prohíbe expresamente la reproducción, distribución, comunicación pública o uso sin consentimiento explícito. Se puede solicitar permiso, pero no se puede reutilizar ahora ninguna foto del catálogo/web.
+- **ITAC Professional / Importaco:** su aviso legal establece que las imágenes y demás contenidos pertenecen a Importaco o a titulares autorizados y que no se conceden derechos de explotación; exige autorización previa, explícita y escrita.
+- **J.H.RIVER, Hernández y Guillén Hnos.:** se localizaron páginas de catálogo y contacto oficiales; no se localizó en esta revisión una licencia pública de fotografías. Se mantienen como solicitudes pendientes, no como permisos.
+
+## Evidencia de producto (no es permiso de imagen)
+
+- COPAVAL lista anacardo frito sin sal, almendra frita sin sal, almendra Marcona cruda con piel y macadamia en su catálogo PDF.
+- J.H.RIVER lista anacardo frito W320 con y sin sal, macadamia STY 1 y macadamia garrapiñada.
+- ITAC Professional lista macadamia, anacardo y anacardo tostado sin sal añadida.
+- Hernández lista anacardos tostados sin sal, anacardo frito, macadamia tostada y almendras fritas Marcona.
+- Guillén Hnos. lista anacardos, nuez de macadamia, almendra frita y anacardo frito.
+
+Las fichas de proveedor verifican la existencia comercial de esas referencias; no demuestran que sean los productos/SKU exactos vendidos por Almendras de Málaga ni autorizan la reutilización de las fotografías.
