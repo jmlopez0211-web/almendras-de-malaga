@@ -932,7 +932,11 @@ window.PRODUCTS ={
     "tag": "Garrapiñados y dulces",
     "category": "dulces",
     "price": 14,
-    "image": ""
+    "image": "assets/products/pipa-girasol-garrapinada-propia.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "calabazaPeladaCruda": {
     "name": "Pipa de calabaza pelada cruda",

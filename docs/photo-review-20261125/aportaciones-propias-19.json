@@ -1,7 +1,7 @@
 {
   "titulo": "Nuevas fotografías aportadas por el propietario",
   "total": 19,
-  "nota": "Las 19 fotografías son material propio según confirmación del propietario. Solo se asignaron cuatro con identificación visual suficientemente clara; las restantes siguen pendientes de asignación.",
+  "nota": "Las 19 fotografías son material propio según confirmación del propietario. Cinco están asignadas tras identificación confirmada; las restantes siguen pendientes.",
   "fotografias": [
     {
       "numero": 1,
@@ -26,8 +26,10 @@
         1535,
         1536
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+      "identificacion": "Pipa de girasol garrapiñada",
+      "estado": "ASIGNADA; identificación confirmada por el propietario e integrada en catálogo",
+      "producto_id": "pipaGarrapinada",
+      "producto": "Pipa garrapiñada"
     },
     {
       "numero": 3,
@@ -240,6 +242,6 @@
       "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
     }
   ],
-  "asignadas": 4,
-  "pendientes": 15
+  "asignadas": 5,
+  "pendientes": 14
 }
