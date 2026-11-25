@@ -1,0 +1,245 @@
+{
+  "titulo": "Nuevas fotografías aportadas por el propietario",
+  "total": 19,
+  "nota": "Las 19 fotografías son material propio según confirmación del propietario. Solo se asignaron cuatro con identificación visual suficientemente clara; las restantes siguen pendientes de asignación.",
+  "fotografias": [
+    {
+      "numero": 1,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-01.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-01.webp",
+      "nombre_subido": "311664.jpg",
+      "dimensiones_originales": [
+        1536,
+        1137
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "ASIGNADA; fotografía propia integrada en catálogo",
+      "producto_id": "cocoDado",
+      "producto": "Coco dado deshidratado"
+    },
+    {
+      "numero": 2,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-02.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-02.webp",
+      "nombre_subido": "311667.jpg",
+      "dimensiones_originales": [
+        1535,
+        1536
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+    },
+    {
+      "numero": 3,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-03.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-03.webp",
+      "nombre_subido": "311673.jpg",
+      "dimensiones_originales": [
+        1536,
+        1374
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "ASIGNADA; fotografía propia integrada en catálogo",
+      "producto_id": "avellanaAmericanaCruda",
+      "producto": "Avellana americana cruda"
+    },
+    {
+      "numero": 4,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-04.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-04.webp",
+      "nombre_subido": "311670.jpg",
+      "dimensiones_originales": [
+        1536,
+        1394
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+    },
+    {
+      "numero": 5,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-05.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-05.webp",
+      "nombre_subido": "311657.jpg",
+      "dimensiones_originales": [
+        1536,
+        1016
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+    },
+    {
+      "numero": 6,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-06.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-06.webp",
+      "nombre_subido": "311654.jpg",
+      "dimensiones_originales": [
+        1535,
+        1536
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+    },
+    {
+      "numero": 7,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-07.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-07.webp",
+      "nombre_subido": "311642.jpg",
+      "dimensiones_originales": [
+        1535,
+        1536
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "ASIGNADA; fotografía propia integrada en catálogo",
+      "producto_id": "nuezCaramelizada",
+      "producto": "Nuez caramelizada"
+    },
+    {
+      "numero": 8,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-08.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-08.webp",
+      "nombre_subido": "311651.jpg",
+      "dimensiones_originales": [
+        1536,
+        1153
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+    },
+    {
+      "numero": 9,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-09.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-09.webp",
+      "nombre_subido": "311639.jpg",
+      "dimensiones_originales": [
+        1535,
+        1536
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+    },
+    {
+      "numero": 10,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-10.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-10.webp",
+      "nombre_subido": "311633.jpg",
+      "dimensiones_originales": [
+        1536,
+        1221
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+    },
+    {
+      "numero": 11,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-11.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-11.webp",
+      "nombre_subido": "311616.jpg",
+      "dimensiones_originales": [
+        1536,
+        770
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "ASIGNADA; fotografía propia integrada en catálogo",
+      "producto_id": "cacahueteCrudoRepelado",
+      "producto": "Cacahuete crudo repelado"
+    },
+    {
+      "numero": 12,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-12.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-12.webp",
+      "nombre_subido": "311619.jpg",
+      "dimensiones_originales": [
+        1094,
+        1536
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+    },
+    {
+      "numero": 13,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-13.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-13.webp",
+      "nombre_subido": "311622.jpg",
+      "dimensiones_originales": [
+        1536,
+        1415
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+    },
+    {
+      "numero": 14,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-14.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-14.webp",
+      "nombre_subido": "311630.jpg",
+      "dimensiones_originales": [
+        1188,
+        1536
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+    },
+    {
+      "numero": 15,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-15.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-15.webp",
+      "nombre_subido": "311627.jpg",
+      "dimensiones_originales": [
+        1424,
+        1536
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+    },
+    {
+      "numero": 16,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-16.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-16.webp",
+      "nombre_subido": "311613.jpg",
+      "dimensiones_originales": [
+        1535,
+        1536
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+    },
+    {
+      "numero": 17,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-17.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-17.webp",
+      "nombre_subido": "311607.jpg",
+      "dimensiones_originales": [
+        1535,
+        1536
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+    },
+    {
+      "numero": 18,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-18.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-18.webp",
+      "nombre_subido": "311604.jpg",
+      "dimensiones_originales": [
+        1536,
+        1153
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+    },
+    {
+      "numero": 19,
+      "archivo_original": "nuevas_aportaciones/originales/aportacion-19.jpg",
+      "archivo_webp": "nuevas_aportaciones/optimizadas_webp/aportacion-19.webp",
+      "nombre_subido": "311610.jpg",
+      "dimensiones_originales": [
+        1535,
+        1536
+      ],
+      "identificacion": "Pendiente de confirmar con el propietario",
+      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+    }
+  ],
+  "asignadas": 4,
+  "pendientes": 15
+}

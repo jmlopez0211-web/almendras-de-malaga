@@ -165,11 +165,11 @@ window.PRODUCTS ={
     "tag": "Cacahuetes",
     "category": "cacahuetes",
     "price": 6.8,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Peanuts_(shelled_raw_marketed).jpg?width=1200",
-    "imageLicense": "CC0 1.0",
-    "imageCredit": "David E Mead · raw shelled peanuts at market",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:Peanuts_(shelled_raw_marketed).jpg",
-    "imageVerified": false
+    "image": "assets/products/cacahuete-crudo-repelado-propio.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "cacahueteCascaraSal": {
     "name": "Cacahuete con cáscara con sal",
@@ -425,7 +425,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 24,
-    "image": ""
+    "image": "assets/products/avellana-americana-cruda-propia.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "avellanaAmericanaTostada": {
     "name": "Avellana americana tostada",
@@ -504,7 +508,11 @@ window.PRODUCTS ={
     "tag": "Garrapiñados y dulces",
     "category": "dulces",
     "price": 32,
-    "image": ""
+    "image": "assets/products/nuez-caramelizada-propia.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "pistachoPeladoCrudo": {
     "name": "Pistacho pelado / mondado crudo",
@@ -756,7 +764,11 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 19.8,
-    "image": ""
+    "image": "assets/products/coco-dado-deshidratado-propio.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "pomeloDeshidratado": {
     "name": "Pomelo deshidratado",
