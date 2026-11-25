@@ -23,3 +23,6 @@ No se modificó `data/catalog.js`, precios ni textos comerciales.
 - 2 duplicados binarios exactos detectados por SHA-256.
 - 4 archivos heredados quedaron fuera de la hoja principal por no estar vinculados a un manifiesto que acredite producto, fuente y licencia; se enumeran como huérfanos en el manifiesto.
 - Cero imágenes aprobadas automáticamente.
+
+## Selección depurada y proveedores
+La hoja visual se redujo a 11 candidatos que pueden servir como identidad base y 11 archivos se apartaron por título/identidad errónea o no demostrable. La selección no afirma proceso, sal, aceite ni composición cuando la fuente no lo acredita. Se añadieron fuentes oficiales y una solicitud formal de derechos en `photo-review-20261125/`. Resultado de permisos: cero autorizaciones recibidas. COPAVAL e ITAC/Importaco tienen avisos legales que exigen consentimiento explícito / permiso escrito; el resto queda pendiente de respuesta escrita.
