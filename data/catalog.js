@@ -461,11 +461,10 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 26.8,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Walnut_Shell_Two_halves.jpg?width=1200",
+    "image": "img/frutos-secos/nuez-chilena-mariposa.webp",
     "imageVerified": true,
-    "imageCredit": "Isodomesticity · walnut halves",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:Walnut_Shell_Two_halves.jpg",
-    "imageLicense": "CC BY-SA 4.0"
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del propietario (aportada para el catálogo)"
   },
   "nuezCalifornia": {
     "name": "Nuez de California 85 %",
