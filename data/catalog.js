@@ -313,11 +313,10 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 20.8,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Raw_cashew.jpg?width=1200",
+    "image": "img/frutos-secos/anacardo-crudo-propio.webp",
     "imageVerified": true,
-    "imageCredit": "Fumikas Sagisavas · Raw cashew",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:Raw_cashew.jpg",
-    "imageLicense": "CC0 1.0"
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario de Almendras de Málaga"
   },
   "anacardoFritoSal": {
     "name": "Anacardo frito con sal",
@@ -357,11 +356,10 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 26,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Roasted_peeled_cashews.jpg?width=1200",
+    "image": "img/frutos-secos/anacardo-tostado-sin-sal-propio.webp",
     "imageVerified": true,
-    "imageCredit": "Fumikas Sagisavas · roasted peeled cashews",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:Roasted_peeled_cashews.jpg",
-    "imageLicense": "CC0 1.0"
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario de Almendras de Málaga"
   },
   "macadamiaCruda": {
     "name": "Macadamia cruda",
@@ -369,11 +367,10 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 39.8,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Macadamia_nuts.jpg?width=1200",
+    "image": "img/frutos-secos/macadamia-cruda-con-cascara-propia.webp",
     "imageVerified": true,
-    "imageCredit": "စာကလေး SarKaLay · Macadamia nuts",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:Macadamia_nuts.jpg",
-    "imageLicense": "CC0 1.0"
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario de Almendras de Málaga"
   },
   "macadamiaFritaSal": {
     "name": "Macadamia frita con sal",
@@ -397,11 +394,10 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 44,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/2021-10-09_22_37_58_Mauna_Loa_dry_roasted_macadamia_nuts_with_Hawaiian_sea_salt_at_the_Royal_Kona_Resort_in_Kailua-Kona,_Hawaii_County,_Hawaii.jpg?width=1200",
+    "image": "img/frutos-secos/macadamia-tostada-sal-propia.webp",
     "imageVerified": true,
-    "imageCredit": "Famartin · Mauna Loa dry roasted macadamia nuts with Hawaiian sea salt",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:2021-10-09_22_37_58_Mauna_Loa_dry_roasted_macadamia_nuts_with_Hawaiian_sea_salt_at_the_Royal_Kona_Resort_in_Kailua-Kona,_Hawaii_County,_Hawaii.jpg",
-    "imageLicense": "CC BY-SA 4.0"
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario de Almendras de Málaga"
   },
   "macadamiaTostadaSinSal": {
     "name": "Macadamia tostada sin sal",
