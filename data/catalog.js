@@ -313,7 +313,7 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 20.8,
-    "image": "img/frutos-secos/anacardo-crudo-propio.webp",
+    "image": "assets/products/anacardo-crudo-propio.webp",
     "imageVerified": true,
     "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
     "imageSource": "Fotografía propia aportada por el propietario de Almendras de Málaga"
@@ -356,7 +356,7 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 26,
-    "image": "img/frutos-secos/anacardo-tostado-sin-sal-propio.webp",
+    "image": "assets/products/anacardo-tostado-sin-sal-propio.webp",
     "imageVerified": true,
     "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
     "imageSource": "Fotografía propia aportada por el propietario de Almendras de Málaga"
@@ -367,7 +367,7 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 39.8,
-    "image": "img/frutos-secos/macadamia-cruda-con-cascara-propia.webp",
+    "image": "assets/products/macadamia-cruda-con-cascara-propia.webp",
     "imageVerified": true,
     "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
     "imageSource": "Fotografía propia aportada por el propietario de Almendras de Málaga"
@@ -394,7 +394,7 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 44,
-    "image": "img/frutos-secos/macadamia-tostada-sal-propia.webp",
+    "image": "assets/products/macadamia-tostada-sal-propia.webp",
     "imageVerified": true,
     "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
     "imageSource": "Fotografía propia aportada por el propietario de Almendras de Málaga"
