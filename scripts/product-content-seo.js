@@ -82,7 +82,7 @@ export function productTitle(product,id) {
   const name=clean(product.name);
   const suffixes=[" | Almendras de Málaga"," en Málaga | Almendras de Málaga"," · Málaga | Almendras de Málaga"];
   const v=variant(id,suffixes.length);
-  return truncate(name+suffixes[v],65);
+  return truncate(name+suffixes[v],60);
 }
 export function productMetaDescription(product,id) {
   const t=traits(product),v=variant(id,4);
