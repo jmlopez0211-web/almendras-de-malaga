@@ -620,8 +620,8 @@ window.PRODUCTS ={
     "image": ""
   },
   "revueloPacoJose": {
-    "name": "Revuelto Paco José",
-    "desc": "Mezcla de la variedad Revuelto Paco José. La composición exacta debe confirmarse en el puesto.",
+    "name": "Revuelto de frutos secos",
+    "desc": "Mezcla variada de frutos secos. Consulta la composición y disponibilidad en el puesto.",
     "tag": "Revueltos",
     "category": "revueltos",
     "price": 34,

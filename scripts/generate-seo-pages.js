@@ -67,7 +67,8 @@ const usedProductFiles=new Set();
 for(const [id,product] of entries){
   if(!product || !cleanText(product.name)) throw new Error("Producto sin nombre: "+id);
   const category=cleanText(product.tag||product.category||"Otros");
-  let file=slug(id)+"-"+slug(product.name)+".html";
+  // Keep a stable, customer-facing URL when an internal legacy key contains an obsolete label.
+  let file=id==="revueloPacoJose" ? "revuelto-de-frutos-secos.html" : slug(id)+"-"+slug(product.name)+".html";
   if(usedProductFiles.has(file))file=slug(id)+".html";
   if(usedProductFiles.has(file))throw new Error("Colisión de URL: "+id);
   usedProductFiles.add(file);
@@ -154,6 +155,16 @@ for(const [category,items] of families){
     generatedUrls.push(productUrl);
   }
 }
+// Preserve the former public URL as a permanent client-side redirect after the product rename.
+const legacyProductRedirects = new Map([
+  ["revuelopacojose-revuelto-paco-jose.html", "revuelto-de-frutos-secos.html"]
+]);
+for (const [legacyFile, targetFile] of legacyProductRedirects) {
+  const targetUrl = BASE + "productos/" + targetFile;
+  const redirectHtml = '<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow"><link rel="canonical" href="' + targetUrl + '"><meta http-equiv="refresh" content="0;url=' + targetUrl + '"><title>Producto actualizado</title></head><body><p>Esta ficha ha cambiado de nombre. <a href="' + targetUrl + '">Ver Revuelto de frutos secos</a>.</p></body></html>';
+  fs.writeFileSync(path.join(productDir, legacyFile), redirectHtml);
+}
+
 const sitemapPath=path.join(process.cwd(),"sitemap.xml");
 const oldSitemap=fs.existsSync(sitemapPath)?fs.readFileSync(sitemapPath,"utf8"):"";
 const oldUrlMetadata=new Map();
