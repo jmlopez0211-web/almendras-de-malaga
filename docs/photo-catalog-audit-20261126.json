@@ -12,7 +12,8 @@
     "scope": "All current catalogue entries and their actual photo-related fields",
     "distinction": "Catalogue flags are reported separately from independent visual verification; a file path or imageVerified=true does not by itself prove source, credit, licence, or visual match.",
     "local_file_checks": "Only the four named local files have individual GitHub blob SHA evidence in this run; other local paths are marked not_checked.",
-    "external_urls": "Not fetched or licence-validated in this report."
+    "external_urls": "Not fetched or licence-validated in this report.",
+    "binary_download": "Three image files were downloaded over HTTPS from the repository raw-content endpoint on the authorized device. Byte counts and SHA-256 hashes were recorded. The bytes match the repository file content; however, the JPEG decoder rejected each file. The generic file signature and MIME label do not establish a valid decodable JPEG."
   },
   "summary": {
     "catalog_products": 151,
@@ -27,7 +28,9 @@
     "missing_image_license": 59,
     "visual_review_independently_confirmed": 1,
     "visual_review_pending": 3,
-    "local_files_confirmed_for_four_in_scope": 4
+    "local_files_confirmed_for_four_in_scope": 4,
+    "binary_download_verified": 3,
+    "jpeg_decode_failed": 3
   },
   "products": [
     {
@@ -261,16 +264,25 @@
       "checks": {
         "image_reference_present": true,
         "local_file_status": "confirmed_present_in_github_with_blob_sha",
-        "visual_review_status": "pending_decoder_or_binary_download",
+        "visual_review_status": "not_reviewable_jpeg_decode_failed",
         "source_recorded": false,
         "credit_recorded": false,
-        "license_recorded": false
+        "license_recorded": false,
+        "binary_download_verified": true,
+        "jpeg_decode_valid": false
       },
       "binary_evidence": {
         "blob_sha": "dd61339a328196884324e2a3eb36a37075106905",
         "binary_fetch": "base64_content_returned",
         "jpeg_signature": true,
-        "visual_status": "pending_decoder_or_binary_download"
+        "visual_status": "not_reviewable_jpeg_decode_failed",
+        "sha256": "877f34ffbd760c483f1ea2ab66d537418d98efef6777b1c7099644abe4b8e558",
+        "bytes": 7002,
+        "download_url": "https://raw.githubusercontent.com/jmlopez0211-web/almendras-de-malaga/main/assets/products/baston-almendra.jpg",
+        "download_verified": true,
+        "mime_reported": "image/jpeg",
+        "file_signature": "FFD8FF",
+        "decoder_test": "Pillow Image.open + verify failed: UnidentifiedImageError"
       }
     },
     {
@@ -288,16 +300,25 @@
       "checks": {
         "image_reference_present": true,
         "local_file_status": "confirmed_present_in_github_with_blob_sha",
-        "visual_review_status": "pending_decoder_or_binary_download",
+        "visual_review_status": "not_reviewable_jpeg_decode_failed",
         "source_recorded": false,
         "credit_recorded": false,
-        "license_recorded": false
+        "license_recorded": false,
+        "binary_download_verified": true,
+        "jpeg_decode_valid": false
       },
       "binary_evidence": {
         "blob_sha": "f5b92ca9b5d00a218ec4c43c05ed95db007c3e33",
         "binary_fetch": "base64_content_returned",
         "jpeg_signature": true,
-        "visual_status": "pending_decoder_or_binary_download"
+        "visual_status": "not_reviewable_jpeg_decode_failed",
+        "sha256": "af96007237885e298498187c8c7fc39430e9a5ebd5f6c00082703a7207d9c68d",
+        "bytes": 8160,
+        "download_url": "https://raw.githubusercontent.com/jmlopez0211-web/almendras-de-malaga/main/assets/products/harina-almendra.jpg",
+        "download_verified": true,
+        "mime_reported": "image/jpeg",
+        "file_signature": "FFD8FF",
+        "decoder_test": "Pillow Image.open + verify failed: UnidentifiedImageError"
       }
     },
     {
@@ -315,16 +336,25 @@
       "checks": {
         "image_reference_present": true,
         "local_file_status": "confirmed_present_in_github_with_blob_sha",
-        "visual_review_status": "pending_decoder_or_binary_download",
+        "visual_review_status": "not_reviewable_jpeg_decode_failed",
         "source_recorded": false,
         "credit_recorded": false,
-        "license_recorded": false
+        "license_recorded": false,
+        "binary_download_verified": true,
+        "jpeg_decode_valid": false
       },
       "binary_evidence": {
         "blob_sha": "b9947bd757d2f3a6490923e88bb24e784d79c689",
         "binary_fetch": "base64_content_returned",
         "jpeg_signature": true,
-        "visual_status": "pending_decoder_or_binary_download"
+        "visual_status": "not_reviewable_jpeg_decode_failed",
+        "sha256": "883231e004e1f04e92052d463be269cc32fdc975e12710824b1af37a6e1219fc",
+        "bytes": 5842,
+        "download_url": "https://raw.githubusercontent.com/jmlopez0211-web/almendras-de-malaga/main/assets/products/filete-almendra.jpg",
+        "download_verified": true,
+        "mime_reported": "image/jpeg",
+        "file_signature": "FFD8FF",
+        "decoder_test": "Pillow Image.open + verify failed: UnidentifiedImageError"
       }
     },
     {
