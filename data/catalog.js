@@ -977,7 +977,11 @@ window.PRODUCTS ={
     "tag": "Pipas y semillas",
     "category": "semillas",
     "price": 11.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pumpkin_seed.jpg?width=1200",
+    "imageVerified": false,
+    "imageCredit": "Dmitry Makeev · Pumpkin seed",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Pumpkin_seed.jpg",
+    "imageLicense": "CC BY-SA 4.0"
   },
   "calabazaPeladaTostada": {
     "name": "Pipa de calabaza pelada tostada",
@@ -1277,7 +1281,11 @@ window.PRODUCTS ={
     "tag": "Chocolates",
     "category": "chocolates",
     "price": 29.8,
-    "image": ""
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chocolate_y_almendras.jpg?width=1200",
+    "imageVerified": false,
+    "imageCredit": "La.blasco · Chocolate y almendras",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Chocolate_y_almendras.jpg",
+    "imageLicense": "CC BY 2.0"
   },
   "almendraChocolateBlanco": {
     "name": "Almendra cubierta de chocolate blanco",
