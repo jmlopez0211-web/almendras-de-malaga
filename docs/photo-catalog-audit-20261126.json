@@ -13,7 +13,8 @@
     "distinction": "Catalogue flags are reported separately from independent visual verification; a file path or imageVerified=true does not by itself prove source, credit, licence, or visual match.",
     "local_file_checks": "Only the four named local files have individual GitHub blob SHA evidence in this run; other local paths are marked not_checked.",
     "external_urls": "Not fetched or licence-validated in this report.",
-    "binary_download": "Three image files were downloaded over HTTPS from the repository raw-content endpoint on the authorized device. Byte counts and SHA-256 hashes were recorded. The bytes match the repository file content; however, the JPEG decoder rejected each file. The generic file signature and MIME label do not establish a valid decodable JPEG."
+    "binary_download": "Three image files were downloaded over HTTPS from the repository raw-content endpoint on the authorized device. Byte counts and SHA-256 hashes were recorded. The bytes match the repository file content; however, the JPEG decoder rejected each file. The generic file signature and MIME label do not establish a valid decodable JPEG.",
+    "original_copy_search": "Inspected the connected Android device's local project clone, photo-work and photo-release copies, and the downloaded repository audit copy. All three image files matched the repository hashes exactly and failed Pillow JPEG decoding. Git history shows they were first added together in commit b94d94a8b5cf3dec9a307a7a0d85c0593a2ec62e; no alternate earlier file revision exists for those paths."
   },
   "summary": {
     "catalog_products": 151,
@@ -30,7 +31,9 @@
     "visual_review_pending": 3,
     "local_files_confirmed_for_four_in_scope": 4,
     "binary_download_verified": 3,
-    "jpeg_decode_failed": 3
+    "jpeg_decode_failed": 3,
+    "original_copies_recovered": 0,
+    "reupload_required": 3
   },
   "products": [
     {
@@ -269,7 +272,9 @@
         "credit_recorded": false,
         "license_recorded": false,
         "binary_download_verified": true,
-        "jpeg_decode_valid": false
+        "jpeg_decode_valid": false,
+        "original_copy_recovered": false,
+        "reupload_required": true
       },
       "binary_evidence": {
         "blob_sha": "dd61339a328196884324e2a3eb36a37075106905",
@@ -282,7 +287,25 @@
         "download_verified": true,
         "mime_reported": "image/jpeg",
         "file_signature": "FFD8FF",
-        "decoder_test": "Pillow Image.open + verify failed: UnidentifiedImageError"
+        "decoder_test": "Pillow Image.open + verify failed: UnidentifiedImageError",
+        "repository_history_commit": "b94d94a8b5cf3dec9a307a7a0d85c0593a2ec62e",
+        "repository_history_title": "Add original almond product photos for catalog",
+        "repository_history_added_files": [
+          "assets/products/baston-almendra.jpg",
+          "assets/products/harina-almendra.jpg",
+          "assets/products/filete-almendra.jpg"
+        ],
+        "original_copy_search": {
+          "searched_locations": [
+            "~/almendras-de-malaga",
+            "~/almendras-photo-work",
+            "~/almendras-photo-release",
+            "/storage/emulated/0/Download/almendras-de-malaga-auditoria/almendras-de-malaga"
+          ],
+          "result": "No distinct valid originals found; all located copies have identical byte counts and SHA-256 hashes to the repository files.",
+          "identical_copies": true
+        },
+        "recovery_conclusion": "No decodable original copy was found in repository history or the inspected local project/download copies. Re-upload of the original source photographs is required unless a separate source location is supplied."
       }
     },
     {
@@ -305,7 +328,9 @@
         "credit_recorded": false,
         "license_recorded": false,
         "binary_download_verified": true,
-        "jpeg_decode_valid": false
+        "jpeg_decode_valid": false,
+        "original_copy_recovered": false,
+        "reupload_required": true
       },
       "binary_evidence": {
         "blob_sha": "f5b92ca9b5d00a218ec4c43c05ed95db007c3e33",
@@ -318,7 +343,25 @@
         "download_verified": true,
         "mime_reported": "image/jpeg",
         "file_signature": "FFD8FF",
-        "decoder_test": "Pillow Image.open + verify failed: UnidentifiedImageError"
+        "decoder_test": "Pillow Image.open + verify failed: UnidentifiedImageError",
+        "repository_history_commit": "b94d94a8b5cf3dec9a307a7a0d85c0593a2ec62e",
+        "repository_history_title": "Add original almond product photos for catalog",
+        "repository_history_added_files": [
+          "assets/products/baston-almendra.jpg",
+          "assets/products/harina-almendra.jpg",
+          "assets/products/filete-almendra.jpg"
+        ],
+        "original_copy_search": {
+          "searched_locations": [
+            "~/almendras-de-malaga",
+            "~/almendras-photo-work",
+            "~/almendras-photo-release",
+            "/storage/emulated/0/Download/almendras-de-malaga-auditoria/almendras-de-malaga"
+          ],
+          "result": "No distinct valid originals found; all located copies have identical byte counts and SHA-256 hashes to the repository files.",
+          "identical_copies": true
+        },
+        "recovery_conclusion": "No decodable original copy was found in repository history or the inspected local project/download copies. Re-upload of the original source photographs is required unless a separate source location is supplied."
       }
     },
     {
@@ -341,7 +384,9 @@
         "credit_recorded": false,
         "license_recorded": false,
         "binary_download_verified": true,
-        "jpeg_decode_valid": false
+        "jpeg_decode_valid": false,
+        "original_copy_recovered": false,
+        "reupload_required": true
       },
       "binary_evidence": {
         "blob_sha": "b9947bd757d2f3a6490923e88bb24e784d79c689",
@@ -354,7 +399,25 @@
         "download_verified": true,
         "mime_reported": "image/jpeg",
         "file_signature": "FFD8FF",
-        "decoder_test": "Pillow Image.open + verify failed: UnidentifiedImageError"
+        "decoder_test": "Pillow Image.open + verify failed: UnidentifiedImageError",
+        "repository_history_commit": "b94d94a8b5cf3dec9a307a7a0d85c0593a2ec62e",
+        "repository_history_title": "Add original almond product photos for catalog",
+        "repository_history_added_files": [
+          "assets/products/baston-almendra.jpg",
+          "assets/products/harina-almendra.jpg",
+          "assets/products/filete-almendra.jpg"
+        ],
+        "original_copy_search": {
+          "searched_locations": [
+            "~/almendras-de-malaga",
+            "~/almendras-photo-work",
+            "~/almendras-photo-release",
+            "/storage/emulated/0/Download/almendras-de-malaga-auditoria/almendras-de-malaga"
+          ],
+          "result": "No distinct valid originals found; all located copies have identical byte counts and SHA-256 hashes to the repository files.",
+          "identical_copies": true
+        },
+        "recovery_conclusion": "No decodable original copy was found in repository history or the inspected local project/download copies. Re-upload of the original source photographs is required unless a separate source location is supplied."
       }
     },
     {
