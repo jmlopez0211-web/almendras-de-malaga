@@ -1,7 +1,7 @@
 {
   "titulo": "Nuevas fotografías aportadas por el propietario",
   "total": 19,
-  "nota": "17 fotografías asignadas según confirmaciones expresas del propietario. Las fotos 8 y 19 siguen pendientes de correspondencia inequívoca. Se mantienen nombres, descripciones y precios del catálogo.",
+  "nota": "18 fotografías asignadas según confirmaciones expresas del propietario. FOTO-19 pendiente de aclarar variante exacta. Se mantienen nombres, descripciones y precios.",
   "fotografias": [
     {
       "numero": 1,
@@ -107,8 +107,9 @@
         1536,
         1153
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "Identificación pendiente de correspondencia inequívoca con una ficha y variante del catálogo"
+      "identificacion": "Revuelto de tres pasas",
+      "estado": "Identificación confirmada por el propietario; fotografía integrada en la ficha del catálogo",
+      "producto_id": "revueloTresPasas"
     },
     {
       "numero": 9,
@@ -254,6 +255,6 @@
       "estado": "Identificación pendiente de correspondencia inequívoca con una ficha y variante del catálogo"
     }
   ],
-  "asignadas": 17,
-  "pendientes": 2
+  "asignadas": 18,
+  "pendientes": 1
 }

@@ -636,8 +636,12 @@ window.PRODUCTS ={
     "tag": "Revueltos",
     "category": "revueltos",
     "price": 19,
-    "image": ""
-  },
+    "image": "assets/products/revuelto-tres-pasas-propio.webp",
+
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso autorizado por el propietario"},
   "revueloPacoJose": {
     "name": "Revuelto de frutos secos",
     "desc": "Mezcla variada de frutos secos. Consulta la composición y disponibilidad en el puesto.",
