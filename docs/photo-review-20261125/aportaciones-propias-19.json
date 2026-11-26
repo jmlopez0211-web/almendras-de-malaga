@@ -1,7 +1,7 @@
 {
   "titulo": "Nuevas fotografías aportadas por el propietario",
   "total": 19,
-  "nota": "Las 19 fotografías son material propio según confirmación del propietario. Cinco están asignadas tras identificación confirmada; las restantes siguen pendientes.",
+  "nota": "Asignaciones basadas en confirmaciones del propietario. No se han inferido variantes cuando faltan datos sobre sal, fritura o composición. Las fichas mantienen nombre, descripción y precio originales.",
   "fotografias": [
     {
       "numero": 1,
@@ -12,8 +12,8 @@
         1536,
         1137
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "ASIGNADA; fotografía propia integrada en catálogo",
+      "identificacion": "cocoDado",
+      "estado": "Identificación confirmada por el propietario; fotografía integrada en la ficha del catálogo",
       "producto_id": "cocoDado",
       "producto": "Coco dado deshidratado"
     },
@@ -26,8 +26,8 @@
         1535,
         1536
       ],
-      "identificacion": "Pipa de girasol garrapiñada",
-      "estado": "ASIGNADA; identificación confirmada por el propietario e integrada en catálogo",
+      "identificacion": "pipaGarrapinada",
+      "estado": "Identificación confirmada por el propietario; fotografía integrada en la ficha del catálogo",
       "producto_id": "pipaGarrapinada",
       "producto": "Pipa garrapiñada"
     },
@@ -40,8 +40,8 @@
         1536,
         1374
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "ASIGNADA; fotografía propia integrada en catálogo",
+      "identificacion": "avellanaAmericanaCruda",
+      "estado": "Identificación confirmada por el propietario; fotografía integrada en la ficha del catálogo",
       "producto_id": "avellanaAmericanaCruda",
       "producto": "Avellana americana cruda"
     },
@@ -54,8 +54,9 @@
         1536,
         1394
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+      "identificacion": "garbanzoTostado",
+      "estado": "Identificación confirmada por el propietario; fotografía integrada en la ficha del catálogo",
+      "producto_id": "garbanzoTostado"
     },
     {
       "numero": 5,
@@ -66,8 +67,9 @@
         1536,
         1016
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+      "identificacion": "revueloDulceMCarmen",
+      "estado": "Identificación confirmada por el propietario; fotografía integrada en la ficha del catálogo",
+      "producto_id": "revueloDulceMCarmen"
     },
     {
       "numero": 6,
@@ -78,8 +80,9 @@
         1535,
         1536
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+      "identificacion": "revueloNatural",
+      "estado": "Identificación confirmada por el propietario; fotografía integrada en la ficha del catálogo",
+      "producto_id": "revueloNatural"
     },
     {
       "numero": 7,
@@ -90,8 +93,8 @@
         1535,
         1536
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "ASIGNADA; fotografía propia integrada en catálogo",
+      "identificacion": "nuezCaramelizada",
+      "estado": "Identificación confirmada por el propietario; fotografía integrada en la ficha del catálogo",
       "producto_id": "nuezCaramelizada",
       "producto": "Nuez caramelizada"
     },
@@ -105,7 +108,7 @@
         1153
       ],
       "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+      "estado": "Identificación pendiente de correspondencia inequívoca con una ficha y variante del catálogo"
     },
     {
       "numero": 9,
@@ -116,8 +119,9 @@
         1535,
         1536
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+      "identificacion": "avellanaAmericanaTostada",
+      "estado": "Identificación confirmada por el propietario; fotografía integrada en la ficha del catálogo",
+      "producto_id": "avellanaAmericanaTostada"
     },
     {
       "numero": 10,
@@ -128,8 +132,9 @@
         1536,
         1221
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+      "identificacion": "cacahueteTostadoRepeladoSinSal",
+      "estado": "Identificación confirmada por el propietario; fotografía integrada en la ficha del catálogo",
+      "producto_id": "cacahueteTostadoRepeladoSinSal"
     },
     {
       "numero": 11,
@@ -140,8 +145,8 @@
         1536,
         770
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "ASIGNADA; fotografía propia integrada en catálogo",
+      "identificacion": "cacahueteCrudoRepelado",
+      "estado": "Identificación confirmada por el propietario; fotografía integrada en la ficha del catálogo",
       "producto_id": "cacahueteCrudoRepelado",
       "producto": "Cacahuete crudo repelado"
     },
@@ -155,7 +160,7 @@
         1536
       ],
       "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+      "estado": "Identificación pendiente de correspondencia inequívoca con una ficha y variante del catálogo"
     },
     {
       "numero": 13,
@@ -166,8 +171,9 @@
         1536,
         1415
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+      "identificacion": "almendraFritaOliva",
+      "estado": "Identificación confirmada por el propietario; fotografía integrada en la ficha del catálogo",
+      "producto_id": "almendraFritaOliva"
     },
     {
       "numero": 14,
@@ -178,8 +184,9 @@
         1188,
         1536
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+      "identificacion": "almendraFritaSinSal",
+      "estado": "Identificación confirmada por el propietario; fotografía integrada en la ficha del catálogo",
+      "producto_id": "almendraFritaSinSal"
     },
     {
       "numero": 15,
@@ -190,8 +197,9 @@
         1424,
         1536
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+      "identificacion": "almendraMarcona",
+      "estado": "Identificación confirmada por el propietario; fotografía integrada en la ficha del catálogo",
+      "producto_id": "almendraMarcona"
     },
     {
       "numero": 16,
@@ -203,7 +211,7 @@
         1536
       ],
       "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+      "estado": "Identificación pendiente de correspondencia inequívoca con una ficha y variante del catálogo"
     },
     {
       "numero": 17,
@@ -214,8 +222,9 @@
         1535,
         1536
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+      "identificacion": "macadamiaFritaSal",
+      "estado": "Identificación confirmada por el propietario; fotografía integrada en la ficha del catálogo",
+      "producto_id": "macadamiaFritaSal"
     },
     {
       "numero": 18,
@@ -227,7 +236,7 @@
         1153
       ],
       "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+      "estado": "Identificación pendiente de correspondencia inequívoca con una ficha y variante del catálogo"
     },
     {
       "numero": 19,
@@ -239,9 +248,9 @@
         1536
       ],
       "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "PENDIENTE; conservada para revisión, no asignada por falta de certeza de variante"
+      "estado": "Identificación pendiente de correspondencia inequívoca con una ficha y variante del catálogo"
     }
   ],
-  "asignadas": 5,
-  "pendientes": 14
+  "asignadas": 14,
+  "pendientes": 5
 }

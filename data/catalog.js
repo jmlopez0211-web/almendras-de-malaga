@@ -29,11 +29,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 24,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Almendras_fritas,_aperitivos_(Espa%C3%B1a).jpg?width=1200",
+    "image": "assets/products/almendra-frita-oliva-propia.webp",
     "imageVerified": true,
-    "imageCredit": "Juan Emilio Prades Bel · Almendras fritas, aperitivos (España)",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:Almendras_fritas,_aperitivos_(España).jpg",
-    "imageLicense": "CC BY-SA 4.0"
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "almendraFritaGirasol": {
     "name": "Almendra frita con aceite de girasol",
@@ -49,7 +49,12 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 19.8,
-    "image": ""
+    "image": "assets/products/almendra-frita-sin-sal-propia.webp",
+
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "almendraTostadaPiel": {
     "name": "Almendra tostada con piel",
@@ -102,11 +107,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 20.8,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Marcona_Almonds_Close_Up_%286332260836%29.jpg?width=1200",
+    "image": "assets/products/almendra-marcona-propia.webp",
     "imageVerified": true,
-    "imageCredit": "Jonathan Pincas · Marcona almonds close-up",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:Marcona_Almonds_Close_Up_(6332260836).jpg",
-    "imageLicense": "CC BY 2.0"
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "bastonAlmendra": {
     "name": "Bastón de almendra",
@@ -281,7 +286,12 @@ window.PRODUCTS ={
     "tag": "Cacahuetes",
     "category": "cacahuetes",
     "price": 9,
-    "image": ""
+    "image": "assets/products/cacahuete-tostado-repelado-sin-sal-propio.webp",
+
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "cacahueteGarrapinada": {
     "name": "Cacahuete garrapiñado",
@@ -378,7 +388,12 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 42,
-    "image": ""
+    "image": "assets/products/macadamia-frita-sal-propia.webp",
+
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "macadamiaFritaSinSal": {
     "name": "Macadamia frita sin sal",
@@ -437,11 +452,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 28.8,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Roasted_hazelnuts.jpg?width=1200",
+    "image": "assets/products/avellana-tostada-repelada-propia.webp",
     "imageVerified": true,
-    "imageCredit": "Fumikas Sagisavas · Roasted hazelnuts",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:Roasted_hazelnuts.jpg",
-    "imageLicense": "CC0 1.0"
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "nuezCascara": {
     "name": "Nuez con cáscara",
@@ -580,11 +595,11 @@ window.PRODUCTS ={
     "tag": "Revueltos",
     "category": "revueltos",
     "price": 22,
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/97/MixedNuts.JPG?utm_campaign=index&utm_content=original&utm_source=commons.wikimedia.org",
+    "image": "assets/products/revuelto-natural-propio.webp",
     "imageVerified": true,
-    "imageCredit": "Vicki Nunn · MixedNuts",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:MixedNuts.JPG",
-    "imageLicense": "Dominio público (liberación del autor)"
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "revueloGominolas": {
     "name": "Revuelto de gominolas",
@@ -648,7 +663,12 @@ window.PRODUCTS ={
     "tag": "Revueltos",
     "category": "revueltos",
     "price": 39.8,
-    "image": ""
+    "image": "assets/products/revuelto-dulce-propio.webp",
+
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "revueloDeliciasVirginia": {
     "name": "Revuelto Delicias Virginia",
@@ -1012,11 +1032,11 @@ window.PRODUCTS ={
     "tag": "Aperitivos",
     "category": "aperitivos",
     "price": 8.8,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Roasted_chickpeas.jpg?width=1200",
+    "image": "assets/products/garbanzo-tostado-propio.webp",
     "imageVerified": true,
-    "imageCredit": "Fumikas Sagisavas · roasted chickpeas",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:Roasted_chickpeas.jpg",
-    "imageLicense": "CC0 1.0"
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "kikoPequeno": {
     "name": "Kikos pequeños supercrujientes",
