@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-26",
+  "batch": "photo_candidates.json",
+  "rule": "No se modifica ninguna ficha salvo coincidencia visual exacta y licencia documentada.",
+  "results": [
+    {
+      "product_key": "almendraMarconaFrita",
+      "status": "REJECTED_VISUAL_VARIANT",
+      "reason": "Almendra clara sin evidencia visual de fritura; variante no acreditada.",
+      "source": "https://commons.wikimedia.org/wiki/File:Almendra_marcona.jpg",
+      "license": "CC BY 3.0"
+    },
+    {
+      "product_key": "almendraTostadaRepelada",
+      "status": "REJECTED_VISUAL_VARIANT",
+      "reason": "Almendra muy clara/blanqueada; no acredita tostado.",
+      "source": "https://commons.wikimedia.org/wiki/File:Almendras_tostadas_sin_piel.jpg",
+      "license": "CC BY 3.0"
+    },
+    {
+      "product_key": "platanoDeshidratado",
+      "status": "APPROVED_FOR_CATALOG",
+      "reason": "Imagen limpia de rodajas de plátano deshidratado; identidad visual exacta; licencia CC0 documentada.",
+      "source": "https://commons.wikimedia.org/wiki/File:Dried_banana_chips.jpg",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "artist": "Fumikas Sagisavas",
+      "sha256_original": "d37e9ada1f2e0d7b07c7bfc4e610b159022fd50a6cdb01b473637f8ac81ae06d",
+      "asset": "assets/products/platano-deshidratado-commons-cc0.jpg",
+      "sha256_asset": "d37e9ada1f2e0d7b07c7bfc4e610b159022fd50a6cdb01b473637f8ac81ae06d"
+    },
+    {
+      "product_key": "mangoDeshidratado",
+      "status": "REJECTED_TECHNICAL",
+      "reason": "Resolución insuficiente: 864×1152 px; mínimo exigido 900×700 px."
+    },
+    {
+      "product_key": "anacardoFrito",
+      "status": "REJECTED_VISUAL_VARIANT",
+      "reason": "Anacardos naturales en cuenco; no acredita fritura y no cumple foto limpia.",
+      "source": "https://commons.wikimedia.org/wiki/File:Cashew_nuts.JPG",
+      "license": "CC BY-SA 3.0"
+    }
+  ],
+  "summary": {
+    "approved": 1,
+    "rejected_visual": 3,
+    "rejected_technical": 1
+  }
+}

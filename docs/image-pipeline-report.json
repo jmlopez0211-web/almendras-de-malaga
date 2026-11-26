@@ -2,33 +2,87 @@
   "download_results": [
     {
       "product_key": "almendraMarconaFrita",
-      "status": "FAILED",
+      "status": "DOWNLOADED_UNVERIFIED",
       "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Almendra_marcona.jpg/1280px-Almendra_marcona.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "path": null,
-      "sha256": null,
-      "errors": [
-        "'assets/images/candidates/almendraMarconaFrita-candidate.jpg' is not in the subpath of '.'"
-      ]
+      "path": "assets/products/candidates/almendraMarconaFrita.jpg",
+      "sha256": "9b2be9af5db128bb9d9f32b9c36165fecba25744f4f9d78a1f836e62726d8b30",
+      "errors": [],
+      "bytes": 182046,
+      "mime": "image/jpeg",
+      "format": "JPEG",
+      "width": 1280,
+      "height": 853,
+      "aspect_ratio": 1.5006,
+      "metadata": {
+        "source_url": "https://commons.wikimedia.org/wiki/File:Almendra_marcona.jpg",
+        "commons_title": "File:Almendra marcona.jpg",
+        "requested_title": "Almendra marcona.jpg",
+        "mime": "image/jpeg",
+        "width": 3888,
+        "height": 2592,
+        "thumbnail_width": 1200,
+        "license": "CC BY 3.0",
+        "license_url": "https://creativecommons.org/licenses/by/3.0",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Tamorlan\" title=\"User:Tamorlan\">Tamorlan</a>",
+        "credit": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "thumbnail_used": true
+      }
     },
     {
       "product_key": "almendraTostadaRepelada",
-      "status": "FAILED",
+      "status": "DOWNLOADED_UNVERIFIED",
       "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Almendras_tostadas_sin_piel.jpg/1280px-Almendras_tostadas_sin_piel.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "path": null,
-      "sha256": null,
-      "errors": [
-        "'assets/images/candidates/almendraTostadaRepelada-candidate.jpg' is not in the subpath of '.'"
-      ]
+      "path": "assets/products/candidates/almendraTostadaRepelada.jpg",
+      "sha256": "4c40475cd8c842be64e8cded5738e230a012f48ec5512814f75d999677672c4d",
+      "errors": [],
+      "bytes": 218672,
+      "mime": "image/jpeg",
+      "format": "JPEG",
+      "width": 1280,
+      "height": 960,
+      "aspect_ratio": 1.3333,
+      "metadata": {
+        "source_url": "https://commons.wikimedia.org/wiki/File:Almendras_tostadas_sin_piel.jpg",
+        "commons_title": "File:Almendras tostadas sin piel.jpg",
+        "requested_title": "Almendras tostadas sin piel.jpg",
+        "mime": "image/jpeg",
+        "width": 2592,
+        "height": 1944,
+        "thumbnail_width": 1200,
+        "license": "CC BY 3.0",
+        "license_url": "https://creativecommons.org/licenses/by/3.0",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Cebes\" title=\"User:Cebes\">Cebes</a>",
+        "credit": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "thumbnail_used": true
+      }
     },
     {
       "product_key": "platanoDeshidratado",
-      "status": "FAILED",
+      "status": "DOWNLOADED_UNVERIFIED",
       "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Dried_banana_chips.jpg/1280px-Dried_banana_chips.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "path": null,
-      "sha256": null,
-      "errors": [
-        "'assets/images/candidates/platanoDeshidratado-candidate.jpg' is not in the subpath of '.'"
-      ]
+      "path": "assets/products/candidates/platanoDeshidratado.jpg",
+      "sha256": "d37e9ada1f2e0d7b07c7bfc4e610b159022fd50a6cdb01b473637f8ac81ae06d",
+      "errors": [],
+      "bytes": 528133,
+      "mime": "image/jpeg",
+      "format": "JPEG",
+      "width": 1280,
+      "height": 1280,
+      "aspect_ratio": 1.0,
+      "metadata": {
+        "source_url": "https://commons.wikimedia.org/wiki/File:Dried_banana_chips.jpg",
+        "commons_title": "File:Dried banana chips.jpg",
+        "requested_title": "Dried banana chips.jpg",
+        "mime": "image/jpeg",
+        "width": 3000,
+        "height": 3000,
+        "thumbnail_width": 1200,
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Fumikas_Sagisavas\" title=\"User:Fumikas Sagisavas\">Fumikas Sagisavas</a>",
+        "credit": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "thumbnail_used": true
+      }
     },
     {
       "product_key": "mangoDeshidratado",
@@ -37,24 +91,42 @@
       "path": null,
       "sha256": null,
       "errors": [
-        "429 Client Error: Too many requests. Please contact the Wikimedia SRE team at noc@wikimedia.org and refer to this message. (daab851) for url: https://upload.wikimedia.org/wikipedia/commons/d/d5/Heap_of_Sun-dried_mango_slices.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+        "Image too small: 864x1152"
       ]
     },
     {
       "product_key": "anacardoFrito",
-      "status": "FAILED",
+      "status": "DOWNLOADED_UNVERIFIED",
       "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Cashew_nuts.JPG/1280px-Cashew_nuts.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "path": null,
-      "sha256": null,
-      "errors": [
-        "'assets/images/candidates/anacardoFrito-candidate.jpg' is not in the subpath of '.'"
-      ]
+      "path": "assets/products/candidates/anacardoFrito.jpg",
+      "sha256": "6c7514388120e9a26d1ec6f12666fde089e57b4a1f49098b9517abe648f9b4e2",
+      "errors": [],
+      "bytes": 263824,
+      "mime": "image/jpeg",
+      "format": "JPEG",
+      "width": 1280,
+      "height": 960,
+      "aspect_ratio": 1.3333,
+      "metadata": {
+        "source_url": "https://commons.wikimedia.org/wiki/File:Cashew_nuts.JPG",
+        "commons_title": "File:Cashew nuts.JPG",
+        "requested_title": "Cashew nuts.JPG",
+        "mime": "image/jpeg",
+        "width": 2848,
+        "height": 2136,
+        "thumbnail_width": 1200,
+        "license": "CC BY-SA 3.0",
+        "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Midori\" title=\"User:Midori\">Midori</a>",
+        "credit": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "thumbnail_used": true
+      }
     }
   ],
   "inspection": {
     "files": [
       {
-        "path": "assets/images/candidates/almendraMarconaFrita-candidate.jpg",
+        "path": "/data/data/com.termux/files/home/almendras-photo-release/assets/products/candidates/almendraMarconaFrita.jpg",
         "status": "INSPECTED_UNVERIFIED",
         "sha256": "9b2be9af5db128bb9d9f32b9c36165fecba25744f4f9d78a1f836e62726d8b30",
         "width": 1280,
@@ -65,18 +137,7 @@
         "meets_minimum": true
       },
       {
-        "path": "assets/images/candidates/almendraMarconaFrita.jpg",
-        "status": "INSPECTED_UNVERIFIED",
-        "sha256": "9b2be9af5db128bb9d9f32b9c36165fecba25744f4f9d78a1f836e62726d8b30",
-        "width": 1280,
-        "height": 853,
-        "format": "JPEG",
-        "mode": "RGB",
-        "aspect_ratio": 1.5006,
-        "meets_minimum": true
-      },
-      {
-        "path": "assets/images/candidates/almendraTostadaRepelada-candidate.jpg",
+        "path": "/data/data/com.termux/files/home/almendras-photo-release/assets/products/candidates/almendraTostadaRepelada.jpg",
         "status": "INSPECTED_UNVERIFIED",
         "sha256": "4c40475cd8c842be64e8cded5738e230a012f48ec5512814f75d999677672c4d",
         "width": 1280,
@@ -87,18 +148,7 @@
         "meets_minimum": true
       },
       {
-        "path": "assets/images/candidates/almendraTostadaRepelada.jpg",
-        "status": "INSPECTED_UNVERIFIED",
-        "sha256": "4c40475cd8c842be64e8cded5738e230a012f48ec5512814f75d999677672c4d",
-        "width": 1280,
-        "height": 960,
-        "format": "JPEG",
-        "mode": "RGB",
-        "aspect_ratio": 1.3333,
-        "meets_minimum": true
-      },
-      {
-        "path": "assets/images/candidates/anacardoFrito-candidate.jpg",
+        "path": "/data/data/com.termux/files/home/almendras-photo-release/assets/products/candidates/anacardoFrito.jpg",
         "status": "INSPECTED_UNVERIFIED",
         "sha256": "6c7514388120e9a26d1ec6f12666fde089e57b4a1f49098b9517abe648f9b4e2",
         "width": 1280,
@@ -109,29 +159,7 @@
         "meets_minimum": true
       },
       {
-        "path": "assets/images/candidates/anacardoFrito.jpg",
-        "status": "INSPECTED_UNVERIFIED",
-        "sha256": "6c7514388120e9a26d1ec6f12666fde089e57b4a1f49098b9517abe648f9b4e2",
-        "width": 1280,
-        "height": 960,
-        "format": "JPEG",
-        "mode": "RGB",
-        "aspect_ratio": 1.3333,
-        "meets_minimum": true
-      },
-      {
-        "path": "assets/images/candidates/platanoDeshidratado-candidate.jpg",
-        "status": "INSPECTED_UNVERIFIED",
-        "sha256": "d37e9ada1f2e0d7b07c7bfc4e610b159022fd50a6cdb01b473637f8ac81ae06d",
-        "width": 1280,
-        "height": 1280,
-        "format": "JPEG",
-        "mode": "RGB",
-        "aspect_ratio": 1.0,
-        "meets_minimum": true
-      },
-      {
-        "path": "assets/images/candidates/platanoDeshidratado.jpg",
+        "path": "/data/data/com.termux/files/home/almendras-photo-release/assets/products/candidates/platanoDeshidratado.jpg",
         "status": "INSPECTED_UNVERIFIED",
         "sha256": "d37e9ada1f2e0d7b07c7bfc4e610b159022fd50a6cdb01b473637f8ac81ae06d",
         "width": 1280,
@@ -142,41 +170,12 @@
         "meets_minimum": true
       }
     ],
-    "duplicates": [
-      {
-        "sha256": "9b2be9af5db128bb9d9f32b9c36165fecba25744f4f9d78a1f836e62726d8b30",
-        "files": [
-          "assets/images/candidates/almendraMarconaFrita-candidate.jpg",
-          "assets/images/candidates/almendraMarconaFrita.jpg"
-        ]
-      },
-      {
-        "sha256": "4c40475cd8c842be64e8cded5738e230a012f48ec5512814f75d999677672c4d",
-        "files": [
-          "assets/images/candidates/almendraTostadaRepelada-candidate.jpg",
-          "assets/images/candidates/almendraTostadaRepelada.jpg"
-        ]
-      },
-      {
-        "sha256": "6c7514388120e9a26d1ec6f12666fde089e57b4a1f49098b9517abe648f9b4e2",
-        "files": [
-          "assets/images/candidates/anacardoFrito-candidate.jpg",
-          "assets/images/candidates/anacardoFrito.jpg"
-        ]
-      },
-      {
-        "sha256": "d37e9ada1f2e0d7b07c7bfc4e610b159022fd50a6cdb01b473637f8ac81ae06d",
-        "files": [
-          "assets/images/candidates/platanoDeshidratado-candidate.jpg",
-          "assets/images/candidates/platanoDeshidratado.jpg"
-        ]
-      }
-    ],
+    "duplicates": [],
     "summary": {
-      "files": 8,
+      "files": 4,
       "corrupt": 0,
       "low_resolution": 0,
-      "duplicate_groups": 4
+      "duplicate_groups": 0
     }
   },
   "note": "All downloads are candidates. This report does not approve or verify catalog products."

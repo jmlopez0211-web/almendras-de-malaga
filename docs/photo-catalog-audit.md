@@ -2,37 +2,25 @@
 
 **Limitación:** análisis de código/metadatos; no inspecciona visualmente archivos ni valida licencias.
 ## Resumen
-- **catalog_products_detected:** 151
-- **missing_image:** 61
-- **verified_true:** 77
-- **verified_false:** 13
-- **verification_unspecified:** 61
-- **missing_source:** 4
-- **missing_credit:** 4
-- **missing_license:** 4
+- **catalog_products_detected:** 146
+- **missing_image:** 49
+- **verified_true:** 87
+- **verified_false:** 10
+- **verification_unspecified:** 49
+- **missing_source:** 3
+- **missing_credit:** 3
+- **missing_license:** 5
 - **local_file_missing:** 0
 
 ## Productos sin imagen
 - almendraFritaGirasol — Almendra frita con aceite de girasol
-- almendraFritaSinSal — Almendra frita sin sal
-- cacahueteFritoRepeladoSinSal — Cacahuete frito repelado sin sal
-- cacahueteTostadoRepeladoSinSal — Cacahuete tostado repelado sin sal
 - anacardoFritoSinSal — Anacardo frito sin sal
-- macadamiaFritaSal — Macadamia frita con sal
 - macadamiaFritaSinSal — Macadamia frita sin sal
-- macadamiaTostadaSinSal — Macadamia tostada sin sal
-- avellanaAmericanaCruda — Avellana americana cruda
-- nuezCaramelizada — Nuez caramelizada
 - revueloTostadoSinSal — Revuelto tostado sin sal
 - revueloEspecial — Revuelto especial
-- revueloTresPasas — Revuelto de tres pasas
-- revueloPacoJose — Revuelto Paco José
-- revueloDulceMCarmen — Revuelto dulce Mª Carmen
 - revueloDeliciasVirginia — Revuelto Delicias Virginia
 - melonDeshidratado — Melón deshidratado
 - aloeDeshidratada — Aloe vera deshidratada
-- cocoDado — Coco dado deshidratado
-- pipaGarrapinada — Pipa garrapiñada
 - calabazaPeladaCruda — Pipa de calabaza pelada cruda
 - chocolateNuezLeche — Nuez cubierta de chocolate con leche
 - chocolatePistachoLeche — Pistacho cubierto de chocolate con leche
@@ -77,33 +65,18 @@
 
 ## Imágenes no verificadas
 - almendraFritaGirasol — Almendra frita con aceite de girasol (imageVerified=None)
-- almendraFritaSinSal — Almendra frita sin sal (imageVerified=None)
 - almendraTostadaRepeladaSal — Almendra tostada repelada con sal (imageVerified=False)
 - granilloAlmendra — Granillo de almendra (imageVerified=False)
-- cacahueteCrudoRepelado — Cacahuete crudo repelado (imageVerified=False)
 - cacahueteFritoPielSal — Cacahuete frito con piel con sal (imageVerified=False)
 - cacahueteFritoPielSinSal — Cacahuete frito con piel sin sal (imageVerified=False)
-- cacahueteFritoRepeladoSal — Cacahuete frito repelado con sal (imageVerified=False)
-- cacahueteFritoRepeladoSinSal — Cacahuete frito repelado sin sal (imageVerified=None)
-- cacahueteTostadoRepeladoSinSal — Cacahuete tostado repelado sin sal (imageVerified=None)
 - anacardoFritoSinSal — Anacardo frito sin sal (imageVerified=None)
-- macadamiaFritaSal — Macadamia frita con sal (imageVerified=None)
 - macadamiaFritaSinSal — Macadamia frita sin sal (imageVerified=None)
-- macadamiaTostadaSinSal — Macadamia tostada sin sal (imageVerified=None)
-- avellanaAmericanaCruda — Avellana americana cruda (imageVerified=None)
-- nuezCaramelizada — Nuez caramelizada (imageVerified=None)
 - revueloTostadoSinSal — Revuelto tostado sin sal (imageVerified=None)
 - revueloEspecial — Revuelto especial (imageVerified=None)
-- revueloTresPasas — Revuelto de tres pasas (imageVerified=None)
-- revueloPacoJose — Revuelto Paco José (imageVerified=None)
-- revueloDulceMCarmen — Revuelto dulce Mª Carmen (imageVerified=None)
 - revueloDeliciasVirginia — Revuelto Delicias Virginia (imageVerified=None)
 - melonDeshidratado — Melón deshidratado (imageVerified=None)
-- platanoDeshidratado — Plátano deshidratado (imageVerified=False)
 - aloeDeshidratada — Aloe vera deshidratada (imageVerified=None)
-- cocoDado — Coco dado deshidratado (imageVerified=None)
 - ciruelaSinHueso — Ciruela sin hueso (imageVerified=False)
-- pipaGarrapinada — Pipa garrapiñada (imageVerified=None)
 - calabazaPeladaCruda — Pipa de calabaza pelada cruda (imageVerified=None)
 - pasaCorintoSultana — Pasa Corinto y Sultana (imageVerified=False)
 - pasaMoscatel — Pasa de Málaga Moscatel (imageVerified=False)
@@ -154,7 +127,8 @@
 ## Referencias locales inexistentes
 
 ## Metadatos incompletos
-- almendraGarrapinada — fuente:True; crédito:True; licencia:True
 - bastonAlmendra — fuente:True; crédito:True; licencia:True
 - harinaAlmendra — fuente:True; crédito:True; licencia:True
 - fileteAlmendra — fuente:True; crédito:True; licencia:True
+- anacardoCrudo — fuente:False; crédito:False; licencia:True
+- nuezChilena — fuente:False; crédito:False; licencia:True

@@ -744,9 +744,9 @@ window.PRODUCTS ={
     "tag": "Fruta deshidratada",
     "category": "fruta",
     "price": 19.8,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_banana_chips.jpg?width=1200",
-    "imageVerified": false,
-    "imageCredit": "Fumikas Sagisavas · Dried banana chips",
+    "image": "assets/products/platano-deshidratado-commons-cc0.jpg",
+    "imageVerified": true,
+    "imageCredit": "Fumikas Sagisavas · Wikimedia Commons",
     "imageSource": "https://commons.wikimedia.org/wiki/File:Dried_banana_chips.jpg",
     "imageLicense": "CC0 1.0"
   },
