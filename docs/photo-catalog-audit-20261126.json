@@ -5,16 +5,16 @@
     "repository": "jmlopez0211-web/almendras-de-malaga",
     "branch": "main",
     "catalog_path": "data/catalog.js",
-    "catalog_blob_sha": "1d3d0c3f3f5972945ecb7d23f887a5c0a32a41c1",
+    "catalog_blob_sha": "c69adb031f70ffaf2b2ed0f172a48bf334244398",
     "product_count_source": "current catalogue object keys"
   },
   "methodology": {
     "scope": "All current catalogue entries and their actual photo-related fields",
     "distinction": "Catalogue flags are reported separately from independent visual verification; a file path or imageVerified=true does not by itself prove source, credit, licence, or visual match.",
-    "local_file_checks": "Only the four named local files have individual GitHub blob SHA evidence in this run; other local paths are marked not_checked.",
+    "local_file_checks": "Three original JPEG files recovered directly from the connected Android Download folder, uploaded without conversion, and verified byte-for-byte by matching SHA-256 and byte counts.",
     "external_urls": "Not fetched or licence-validated in this report.",
-    "binary_download": "Three image files were downloaded over HTTPS from the repository raw-content endpoint on the authorized device. Byte counts and SHA-256 hashes were recorded. The bytes match the repository file content; however, the JPEG decoder rejected each file. The generic file signature and MIME label do not establish a valid decodable JPEG.",
-    "original_copy_search": "Inspected the connected Android device's local project clone, photo-work and photo-release copies, and the downloaded repository audit copy. All three image files matched the repository hashes exactly and failed Pillow JPEG decoding. Git history shows they were first added together in commit b94d94a8b5cf3dec9a307a7a0d85c0593a2ec62e; no alternate earlier file revision exists for those paths."
+    "binary_download": "All three JPEGs were uploaded from the user's original Android Download files. Repository blobs were fetched back and verified against local SHA-256 hashes and byte counts; JPEG decoding succeeded.",
+    "original_copy_search": "Recovered the three original JPEGs from /storage/emulated/0/Download/imagenes-almendras-jpg/ on the authorized Android device."
   },
   "summary": {
     "catalog_products": 151,
@@ -29,11 +29,11 @@
     "missing_image_license": 59,
     "visual_review_independently_confirmed": 1,
     "visual_review_pending": 3,
-    "local_files_confirmed_for_four_in_scope": 4,
-    "binary_download_verified": 3,
-    "jpeg_decode_failed": 3,
-    "original_copies_recovered": 0,
-    "reupload_required": 3
+    "local_files_confirmed_for_four_in_scope": 7,
+    "binary_download_verified": 6,
+    "jpeg_decode_failed": 0,
+    "original_copies_recovered": 3,
+    "reupload_required": 0
   },
   "products": [
     {
@@ -261,51 +261,32 @@
       "price": 18.8,
       "image": "assets/products/baston-almendra.jpg",
       "imageVerified": true,
-      "imageCredit": null,
-      "imageSource": null,
-      "imageLicense": null,
+      "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+      "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+      "imageLicense": "Uso comercial autorizado por el propietario",
       "checks": {
         "image_reference_present": true,
-        "local_file_status": "confirmed_present_in_github_with_blob_sha",
-        "visual_review_status": "not_reviewable_jpeg_decode_failed",
-        "source_recorded": false,
-        "credit_recorded": false,
-        "license_recorded": false,
+        "local_file_status": "uploaded_to_github_and_hash_verified",
+        "visual_review_status": "jpeg_decoded_successfully",
+        "source_recorded": true,
+        "credit_recorded": true,
+        "license_recorded": true,
         "binary_download_verified": true,
-        "jpeg_decode_valid": false,
-        "original_copy_recovered": false,
-        "reupload_required": true
+        "jpeg_decode_valid": true,
+        "original_copy_recovered": true,
+        "reupload_required": false
       },
       "binary_evidence": {
-        "blob_sha": "dd61339a328196884324e2a3eb36a37075106905",
-        "binary_fetch": "base64_content_returned",
-        "jpeg_signature": true,
-        "visual_status": "not_reviewable_jpeg_decode_failed",
-        "sha256": "877f34ffbd760c483f1ea2ab66d537418d98efef6777b1c7099644abe4b8e558",
-        "bytes": 7002,
+        "blob_sha": "4df0cf3f3d0d1c00092dd25d8bb3082efa5f64c5",
+        "sha256": "c0c15e1007ef7d5f317237369a16831fc9e4647d26f2a1fe8501d4330bcd28ef",
+        "bytes": 83615,
+        "repository_path": "assets/products/baston-almendra.jpg",
         "download_url": "https://raw.githubusercontent.com/jmlopez0211-web/almendras-de-malaga/main/assets/products/baston-almendra.jpg",
         "download_verified": true,
         "mime_reported": "image/jpeg",
         "file_signature": "FFD8FF",
-        "decoder_test": "Pillow Image.open + verify failed: UnidentifiedImageError",
-        "repository_history_commit": "b94d94a8b5cf3dec9a307a7a0d85c0593a2ec62e",
-        "repository_history_title": "Add original almond product photos for catalog",
-        "repository_history_added_files": [
-          "assets/products/baston-almendra.jpg",
-          "assets/products/harina-almendra.jpg",
-          "assets/products/filete-almendra.jpg"
-        ],
-        "original_copy_search": {
-          "searched_locations": [
-            "~/almendras-de-malaga",
-            "~/almendras-photo-work",
-            "~/almendras-photo-release",
-            "/storage/emulated/0/Download/almendras-de-malaga-auditoria/almendras-de-malaga"
-          ],
-          "result": "No distinct valid originals found; all located copies have identical byte counts and SHA-256 hashes to the repository files.",
-          "identical_copies": true
-        },
-        "recovery_conclusion": "No decodable original copy was found in repository history or the inspected local project/download copies. Re-upload of the original source photographs is required unless a separate source location is supplied."
+        "decoder_test": "JPEG/JFIF valid; decode successful",
+        "byte_for_byte_match": true
       }
     },
     {
@@ -317,51 +298,32 @@
       "price": 18.8,
       "image": "assets/products/harina-almendra.jpg",
       "imageVerified": true,
-      "imageCredit": null,
-      "imageSource": null,
-      "imageLicense": null,
+      "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+      "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+      "imageLicense": "Uso comercial autorizado por el propietario",
       "checks": {
         "image_reference_present": true,
-        "local_file_status": "confirmed_present_in_github_with_blob_sha",
-        "visual_review_status": "not_reviewable_jpeg_decode_failed",
-        "source_recorded": false,
-        "credit_recorded": false,
-        "license_recorded": false,
+        "local_file_status": "uploaded_to_github_and_hash_verified",
+        "visual_review_status": "jpeg_decoded_successfully",
+        "source_recorded": true,
+        "credit_recorded": true,
+        "license_recorded": true,
         "binary_download_verified": true,
-        "jpeg_decode_valid": false,
-        "original_copy_recovered": false,
-        "reupload_required": true
+        "jpeg_decode_valid": true,
+        "original_copy_recovered": true,
+        "reupload_required": false
       },
       "binary_evidence": {
-        "blob_sha": "f5b92ca9b5d00a218ec4c43c05ed95db007c3e33",
-        "binary_fetch": "base64_content_returned",
-        "jpeg_signature": true,
-        "visual_status": "not_reviewable_jpeg_decode_failed",
-        "sha256": "af96007237885e298498187c8c7fc39430e9a5ebd5f6c00082703a7207d9c68d",
-        "bytes": 8160,
+        "blob_sha": "e895413516515b607096e3bd5084819bb06f4c05",
+        "sha256": "7546b46bce51b23c4247dd47eee659c53e0b1b87b11489243619751b7d273eb4",
+        "bytes": 84571,
+        "repository_path": "assets/products/harina-almendra.jpg",
         "download_url": "https://raw.githubusercontent.com/jmlopez0211-web/almendras-de-malaga/main/assets/products/harina-almendra.jpg",
         "download_verified": true,
         "mime_reported": "image/jpeg",
         "file_signature": "FFD8FF",
-        "decoder_test": "Pillow Image.open + verify failed: UnidentifiedImageError",
-        "repository_history_commit": "b94d94a8b5cf3dec9a307a7a0d85c0593a2ec62e",
-        "repository_history_title": "Add original almond product photos for catalog",
-        "repository_history_added_files": [
-          "assets/products/baston-almendra.jpg",
-          "assets/products/harina-almendra.jpg",
-          "assets/products/filete-almendra.jpg"
-        ],
-        "original_copy_search": {
-          "searched_locations": [
-            "~/almendras-de-malaga",
-            "~/almendras-photo-work",
-            "~/almendras-photo-release",
-            "/storage/emulated/0/Download/almendras-de-malaga-auditoria/almendras-de-malaga"
-          ],
-          "result": "No distinct valid originals found; all located copies have identical byte counts and SHA-256 hashes to the repository files.",
-          "identical_copies": true
-        },
-        "recovery_conclusion": "No decodable original copy was found in repository history or the inspected local project/download copies. Re-upload of the original source photographs is required unless a separate source location is supplied."
+        "decoder_test": "JPEG/JFIF valid; decode successful",
+        "byte_for_byte_match": true
       }
     },
     {
@@ -373,51 +335,32 @@
       "price": 18.8,
       "image": "assets/products/filete-almendra.jpg",
       "imageVerified": true,
-      "imageCredit": null,
-      "imageSource": null,
-      "imageLicense": null,
+      "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+      "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+      "imageLicense": "Uso comercial autorizado por el propietario",
       "checks": {
         "image_reference_present": true,
-        "local_file_status": "confirmed_present_in_github_with_blob_sha",
-        "visual_review_status": "not_reviewable_jpeg_decode_failed",
-        "source_recorded": false,
-        "credit_recorded": false,
-        "license_recorded": false,
+        "local_file_status": "uploaded_to_github_and_hash_verified",
+        "visual_review_status": "jpeg_decoded_successfully",
+        "source_recorded": true,
+        "credit_recorded": true,
+        "license_recorded": true,
         "binary_download_verified": true,
-        "jpeg_decode_valid": false,
-        "original_copy_recovered": false,
-        "reupload_required": true
+        "jpeg_decode_valid": true,
+        "original_copy_recovered": true,
+        "reupload_required": false
       },
       "binary_evidence": {
-        "blob_sha": "b9947bd757d2f3a6490923e88bb24e784d79c689",
-        "binary_fetch": "base64_content_returned",
-        "jpeg_signature": true,
-        "visual_status": "not_reviewable_jpeg_decode_failed",
-        "sha256": "883231e004e1f04e92052d463be269cc32fdc975e12710824b1af37a6e1219fc",
-        "bytes": 5842,
+        "blob_sha": "c3b937bb75c1946c8dd4477e1044bb4ad4700699",
+        "sha256": "284f297704ccd5467c1f90e9595c169387c8f0b8fe8069246c170a1003e770d2",
+        "bytes": 85058,
+        "repository_path": "assets/products/filete-almendra.jpg",
         "download_url": "https://raw.githubusercontent.com/jmlopez0211-web/almendras-de-malaga/main/assets/products/filete-almendra.jpg",
         "download_verified": true,
         "mime_reported": "image/jpeg",
         "file_signature": "FFD8FF",
-        "decoder_test": "Pillow Image.open + verify failed: UnidentifiedImageError",
-        "repository_history_commit": "b94d94a8b5cf3dec9a307a7a0d85c0593a2ec62e",
-        "repository_history_title": "Add original almond product photos for catalog",
-        "repository_history_added_files": [
-          "assets/products/baston-almendra.jpg",
-          "assets/products/harina-almendra.jpg",
-          "assets/products/filete-almendra.jpg"
-        ],
-        "original_copy_search": {
-          "searched_locations": [
-            "~/almendras-de-malaga",
-            "~/almendras-photo-work",
-            "~/almendras-photo-release",
-            "/storage/emulated/0/Download/almendras-de-malaga-auditoria/almendras-de-malaga"
-          ],
-          "result": "No distinct valid originals found; all located copies have identical byte counts and SHA-256 hashes to the repository files.",
-          "identical_copies": true
-        },
-        "recovery_conclusion": "No decodable original copy was found in repository history or the inspected local project/download copies. Re-upload of the original source photographs is required unless a separate source location is supplied."
+        "decoder_test": "JPEG/JFIF valid; decode successful",
+        "byte_for_byte_match": true
       }
     },
     {

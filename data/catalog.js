@@ -119,7 +119,10 @@ window.PRODUCTS ={
     "category": "variantes",
     "price": 18.8,
     "image": "assets/products/baston-almendra.jpg",
-    "imageVerified": true
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso comercial autorizado por el propietario"
   },
   "harinaAlmendra": {
     "name": "Harina de almendra",
@@ -128,7 +131,10 @@ window.PRODUCTS ={
     "category": "variantes",
     "price": 18.8,
     "image": "assets/products/harina-almendra.jpg",
-    "imageVerified": true
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso comercial autorizado por el propietario"
   },
   "fileteAlmendra": {
     "name": "Filete de almendra",
@@ -137,7 +143,10 @@ window.PRODUCTS ={
     "category": "variantes",
     "price": 18.8,
     "image": "assets/products/filete-almendra.jpg",
-    "imageVerified": true
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso comercial autorizado por el propietario"
   },
   "granilloAlmendra": {
     "name": "Granillo de almendra",
