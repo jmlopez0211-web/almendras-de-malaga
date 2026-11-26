@@ -1,7 +1,7 @@
 {
   "titulo": "Nuevas fotografías aportadas por el propietario",
   "total": 19,
-  "nota": "18 fotografías asignadas según confirmaciones expresas del propietario. FOTO-19 pendiente de aclarar variante exacta. Se mantienen nombres, descripciones y precios.",
+  "nota": "Las 19 fotografías propias han sido identificadas por el propietario y asignadas a fichas de producto. Se mantienen nombres, descripciones y precios del catálogo.",
   "fotografias": [
     {
       "numero": 1,
@@ -251,10 +251,11 @@
         1535,
         1536
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "Identificación pendiente de correspondencia inequívoca con una ficha y variante del catálogo"
+      "identificacion": "Cacahuete frito repelado con sal",
+      "estado": "Identificación y variante confirmadas por el propietario; fotografía integrada en el catálogo",
+      "producto_id": "cacahueteFritoRepeladoSal"
     }
   ],
-  "asignadas": 18,
-  "pendientes": 1
+  "asignadas": 19,
+  "pendientes": 0
 }

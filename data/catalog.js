@@ -229,12 +229,11 @@ window.PRODUCTS ={
     "tag": "Cacahuetes",
     "category": "cacahuetes",
     "price": 9,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried_Peanut.jpg?width=1200",
-    "imageCredit": "Derk29 · fried peanut",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:Fried_Peanut.jpg",
-    "imageLicense": "CC BY-SA 4.0",
-    "imageVerified": false
-  },
+    "image": "assets/products/cacahuete-frito-repelado-sal-propio.webp",
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso autorizado por el propietario",
+    "imageVerified": true},
   "cacahueteFritoRepeladoSinSal": {
     "name": "Cacahuete frito repelado sin sal",
     "desc": "Cacahuete frito sin piel y sin sal.",
