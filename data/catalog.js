@@ -86,12 +86,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 24.8,
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Almendras_tostadas_sin_piel.jpg?width=1200",
+    "image": "assets/products/almendra-tostada-repelada-sin-sal-propia.webp",
     "imageVerified": true,
-    "imageCredit": "Cebes · toasted peeled almonds",
-    "imageSource": "https://commons.wikimedia.org/wiki/File:Almendras_tostadas_sin_piel.jpg",
-    "imageLicense": "CC BY 3.0"
-  },
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso autorizado por el propietario"},
   "almendraGarrapinada": {
     "name": "Almendra garrapiñada",
     "desc": "Almendras garrapiñadas, envueltas en una capa dulce y crujiente de caramelo. Un clásico irresistible para disfrutar, compartir o llevarte un recuerdo dulce de Málaga.",
@@ -369,8 +368,9 @@ window.PRODUCTS ={
     "image": "assets/products/anacardo-tostado-sin-sal-propio.webp",
     "imageVerified": true,
     "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
-    "imageSource": "Fotografía propia aportada por el propietario de Almendras de Málaga"
-  },
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+
+    "imageLicense": "Uso autorizado por el propietario"},
   "macadamiaCruda": {
     "name": "Macadamia cruda",
     "desc": "Macadamia sin tostar, presentada entera.",
@@ -412,8 +412,9 @@ window.PRODUCTS ={
     "image": "assets/products/macadamia-tostada-sal-propia.webp",
     "imageVerified": true,
     "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
-    "imageSource": "Fotografía propia aportada por el propietario de Almendras de Málaga"
-  },
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+
+    "imageLicense": "Uso autorizado por el propietario"},
   "macadamiaTostadaSinSal": {
     "name": "Macadamia tostada sin sal",
     "desc": "Macadamias tostadas, sin sal añadida.",

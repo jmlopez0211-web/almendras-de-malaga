@@ -1,7 +1,7 @@
 {
   "titulo": "Nuevas fotografías aportadas por el propietario",
   "total": 19,
-  "nota": "Asignaciones basadas en confirmaciones del propietario. No se han inferido variantes cuando faltan datos sobre sal, fritura o composición. Las fichas mantienen nombre, descripción y precio originales.",
+  "nota": "17 fotografías asignadas según confirmaciones expresas del propietario. Las fotos 8 y 19 siguen pendientes de correspondencia inequívoca. Se mantienen nombres, descripciones y precios del catálogo.",
   "fotografias": [
     {
       "numero": 1,
@@ -159,8 +159,9 @@
         1094,
         1536
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "Identificación pendiente de correspondencia inequívoca con una ficha y variante del catálogo"
+      "identificacion": "almendraTostadaRepeladaSinSal",
+      "estado": "Identificación y variante confirmadas por el propietario; fotografía integrada en el catálogo",
+      "producto_id": "almendraTostadaRepeladaSinSal"
     },
     {
       "numero": 13,
@@ -210,8 +211,9 @@
         1535,
         1536
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "Identificación pendiente de correspondencia inequívoca con una ficha y variante del catálogo"
+      "identificacion": "macadamiaTostadaSal",
+      "estado": "Identificación y variante confirmadas por el propietario; fotografía integrada en el catálogo",
+      "producto_id": "macadamiaTostadaSal"
     },
     {
       "numero": 17,
@@ -235,8 +237,9 @@
         1536,
         1153
       ],
-      "identificacion": "Pendiente de confirmar con el propietario",
-      "estado": "Identificación pendiente de correspondencia inequívoca con una ficha y variante del catálogo"
+      "identificacion": "anacardoTostadoSinSal",
+      "estado": "Identificación y variante confirmadas por el propietario; fotografía integrada en el catálogo",
+      "producto_id": "anacardoTostadoSinSal"
     },
     {
       "numero": 19,
@@ -251,6 +254,6 @@
       "estado": "Identificación pendiente de correspondencia inequívoca con una ficha y variante del catálogo"
     }
   ],
-  "asignadas": 14,
-  "pendientes": 5
+  "asignadas": 17,
+  "pendientes": 2
 }
