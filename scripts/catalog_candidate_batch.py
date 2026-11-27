@@ -572,10 +572,12 @@ def candidate_passes_gates(identity_valid, technical_valid):
 
 
 def candidate_can_download(key, candidate):
-    """Pre-download gate: exact documented variant and complete commercial rights."""
+    """Pre-download gate: exact product/variant, blend evidence and commercial rights."""
+    _, reasons = candidate_score(key, candidate)
     return (
         candidate_identity_is_confirmed(key, candidate)
         and candidate_variant_evidence_status(key, candidate) == "EXACT_VARIANT_EVIDENCE"
+        and "blend_composition_unverified" not in reasons
         and candidate_rights_are_documented(candidate)
     )
 
@@ -937,7 +939,9 @@ def filter_and_rank(key, candidates, audit=None):
         candidate["rights_documented"] = rights_valid
         candidate["relevance_score"] = score
         candidate["relevance_reasons"] = reasons
-        if score >= 4 and variant_status == "EXACT_VARIANT_EVIDENCE" and rights_valid:
+        composition_valid = "blend_composition_unverified" not in reasons
+        candidate["blend_composition_verified"] = composition_valid
+        if score >= 4 and variant_status == "EXACT_VARIANT_EVIDENCE" and rights_valid and composition_valid:
             ranked.append(candidate)
             if audit is not None:
                 audit["accepted_candidates"] += 1
@@ -946,6 +950,8 @@ def filter_and_rank(key, candidates, audit=None):
                 reasons = list(reasons) + ["exact_variant_metadata_missing"]
             if score >= 4 and not rights_valid:
                 reasons = list(reasons) + ["commercial_license_or_creator_provenance_incomplete"]
+            if score >= 4 and not composition_valid:
+                reasons = list(reasons) + ["blend_composition_unverified"]
             for reason in reasons:
                 audit["rejection_reasons"][reason] = audit["rejection_reasons"].get(reason, 0) + 1
             if len(audit["rejected_samples"]) < 20:
@@ -1010,6 +1016,7 @@ def search_product(key, name, delay, commons_blocked):
                 if candidate_identity_is_confirmed(key, item)
                 and candidate_variant_evidence_status(key, item) == "EXACT_VARIANT_EVIDENCE"
                 and candidate_rights_are_documented(item)
+                and "blend_composition_unverified" not in candidate_score(key, item)[1]
             )
             if exact_count >= 4:
                 break
@@ -1018,6 +1025,9 @@ def search_product(key, name, delay, commons_blocked):
     exact_commons_count = sum(
         1 for item in filter_and_rank(key, all_candidates)
         if candidate_identity_is_confirmed(key, item)
+        and candidate_variant_evidence_status(key, item) == "EXACT_VARIANT_EVIDENCE"
+        and candidate_rights_are_documented(item)
+        and "blend_composition_unverified" not in candidate_score(key, item)[1]
     )
     if exact_commons_count < 4:
         for query in queries:
@@ -1044,6 +1054,7 @@ def search_product(key, name, delay, commons_blocked):
                 if candidate_identity_is_confirmed(key, item)
                 and candidate_variant_evidence_status(key, item) == "EXACT_VARIANT_EVIDENCE"
                 and candidate_rights_are_documented(item)
+                and "blend_composition_unverified" not in candidate_score(key, item)[1]
             )
             if exact_count >= 4:
                 break
@@ -1128,8 +1139,10 @@ def download_candidate(key, candidate):
             img = Image.open(BytesIO(data))
             img.verify()
             img = Image.open(BytesIO(data))
-            if img.format not in ("JPEG", "PNG", "WEBP"):
+            if img.format not in ("JPEG", "PNG", "WEBP", "MPO"):
                 raise ValueError("unsupported_image_format:" + str(img.format))
+            if img.format == "MPO":
+                img.seek(0)  # Use the primary frame of a multi-picture JPEG source.
             if img.width < MIN_W or img.height < MIN_H:
                 raise ValueError("low_resolution:" + str(img.width) + "x" + str(img.height))
             img = Image.open(BytesIO(data))
@@ -1143,20 +1156,38 @@ def download_candidate(key, candidate):
             img.thumbnail((WEBP_MAX_EDGE, WEBP_MAX_EDGE), Image.Resampling.LANCZOS)
             target = OUT / (re.sub(r"[^A-Za-z0-9_-]", "_", key) + "-candidate.webp")
             temp = target.with_suffix(".webp.tmp")
-            img.save(temp, format="WEBP", quality=WEBP_QUALITY, method=6)
-            temp.replace(target)
-            optimized = Image.open(target)
-            if optimized.format != "WEBP" or optimized.width < 600 or optimized.height < 400:
-                target.unlink(missing_ok=True)
-                raise ValueError("optimized_webp_quality_gate_failed")
+            source_temp = target.with_suffix(".source.png" if img.mode == "RGBA" else ".source.jpg")
+            verify_temp = target.with_suffix(".verify.png")
+            img.save(source_temp, format="PNG" if img.mode == "RGBA" else "JPEG", quality=95, optimize=True)
+            try:
+                subprocess.run(
+                    ["cwebp", "-quiet", "-q", str(WEBP_QUALITY), "-m", "6", str(source_temp), "-o", str(temp)],
+                    check=True, timeout=60, capture_output=True, text=True,
+                )
+                webp_bytes = temp.read_bytes()
+                if len(webp_bytes) < 16 or webp_bytes[:4] != b"RIFF" or webp_bytes[8:12] != b"WEBP":
+                    raise ValueError("optimized_webp_signature_invalid")
+                subprocess.run(["dwebp", "-quiet", str(temp), "-o", str(verify_temp)],
+                               check=True, timeout=60, capture_output=True, text=True)
+                with Image.open(verify_temp) as optimized:
+                    optimized.load()
+                    if optimized.width < 600 or optimized.height < 400:
+                        raise ValueError("optimized_webp_quality_gate_failed")
+                    optimized_width, optimized_height = optimized.size
+                temp.replace(target)
+            finally:
+                source_temp.unlink(missing_ok=True)
+                verify_temp.unlink(missing_ok=True)
+            if not target.exists():
+                raise ValueError("optimized_webp_output_missing")
             warnings = []
             if any(x in key.lower() for x in ("sinsal", "sin_sal", "girasol", "oliva")):
                 warnings.append("La foto no permite verificar ausencia de sal ni tipo de aceite; requiere confirmación documental.")
             return {"status": "DOWNLOADED_UNVERIFIED", "path": target.relative_to(ROOT).as_posix(),
                     "sha256": hashlib.sha256(target.read_bytes()).hexdigest(),
                     "source_sha256": hashlib.sha256(data).hexdigest(), "source_bytes": len(data),
-                    "bytes": target.stat().st_size, "width": optimized.width,
-                    "height": optimized.height, "format": "WEBP",
+                    "bytes": target.stat().st_size, "width": optimized_width,
+                    "height": optimized_height, "format": "WEBP",
                     "source_format": Image.open(BytesIO(data)).format,
                     "content_type": content_type, "used_url": url, "final_url": final_url,
                     "license": candidate.get("license"), "license_url": candidate.get("license_url"),
@@ -1487,18 +1518,20 @@ def main():
                 variant_statuses[candidate.get("url") or candidate.get("title") or str(len(variant_statuses))] = variant_status
                 identity_ok = candidate_identity_is_confirmed(key, candidate)
                 rights_ok = candidate_rights_are_documented(candidate)
-                if identity_ok and variant_status == "EXACT_VARIANT_EVIDENCE" and rights_ok:
+                composition_ok = "blend_composition_unverified" not in candidate_score(key, candidate)[1]
+                if identity_ok and variant_status == "EXACT_VARIANT_EVIDENCE" and rights_ok and composition_ok:
                     eligible_candidates.append(candidate)
                 else:
                     reason = (
                         "product_identity_not_confirmed" if not identity_ok else
                         "exact_variant_metadata_missing" if variant_status != "EXACT_VARIANT_EVIDENCE" else
-                        "commercial_license_or_creator_provenance_incomplete"
+                        "commercial_license_or_creator_provenance_incomplete" if not rights_ok else
+                        "blend_composition_unverified"
                     )
                     variant_rejections.append({
                         "source": candidate.get("source"), "title": candidate.get("title"),
                         "reason": reason, "variant_evidence_status": variant_status,
-                        "rights_documented": rights_ok,
+                        "rights_documented": rights_ok, "blend_composition_verified": composition_ok,
                     })
             # Only exact-variant candidates with documented commercial rights are downloaded.
             for candidate in eligible_candidates[:12]:

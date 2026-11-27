@@ -93,6 +93,16 @@ class TestCatalogCandidatePrecision(unittest.TestCase):
         self.assertFalse(gate("macadamiaFritaSinSal", missing_creator))
         noncommercial = dict(base, license="CC BY-NC 4.0")
         self.assertFalse(gate("macadamiaFritaSinSal", noncommercial))
+        mixed_blend = {
+            "title": "Mixed nuts assortment",
+            "tags": ["mixed nuts", "assortment"],
+            "description": "Walnuts, almonds, peanuts and macadamia",
+            "license": "CC BY-SA 4.0",
+            "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+            "artist": "Photographer Name",
+            "source_page": "https://commons.wikimedia.org/wiki/File:Example.jpg",
+        }
+        self.assertFalse(gate("revueloPacoJose", mixed_blend))
 
     def test_core_identity_dictionary_has_no_duplicate_keys(self):
         assignment = next(

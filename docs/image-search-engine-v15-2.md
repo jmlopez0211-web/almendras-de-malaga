@@ -5,7 +5,8 @@
 - Una candidata solo pasa al grupo descargable si el título o las etiquetas documentan la variante completa mediante `MATCH_GROUPS` y `STRICT_MATCH_GROUPS`.
 - Los resultados con variante no especificada o contradictoria se registran como descartes; no se descargan para asignación.
 - La descarga requiere licencia compatible con uso comercial, URL de licencia, autor/creador y página fuente. Se excluyen licencias no comerciales y sin obras derivadas.
-- Las imágenes descargadas se normalizan con orientación EXIF, se limitan a 1800 px y se convierten a WebP calidad 84. Se registran hash y tamaño de origen, dimensiones y tamaño optimizado, licencia, autor y fuente.
+- Las imágenes descargadas se normalizan con orientación EXIF, se limitan a 1800 px y se convierten a WebP calidad 84 mediante `cwebp`; se comprueba la firma RIFF/WebP y se decodifican con `dwebp` para validar dimensiones. Se registran hash y tamaño de origen, dimensiones y tamaño optimizado, licencia, autor y fuente. Pillow en Termux no tenía soporte WebP; se corrigió el flujo para usar las herramientas `libwebp` instaladas.
+- Las mezclas requieren además evidencia de composición; una fotografía genérica de frutos secos no acredita un revuelto concreto y se descarta.
 - El manifiesto conserva la procedencia y el estado `DOWNLOADED_UNVERIFIED`; la conversión no implica aprobación visual ni comercial.
 - Incrementada `ENGINE_VERSION` a 15.2 para invalidar marcas de reintento antiguas.
 
