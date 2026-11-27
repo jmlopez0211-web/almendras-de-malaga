@@ -12,7 +12,7 @@ La implementación, sus módulos, reglas de negocio, límites y procedimientos d
 - Fichas de producto y cálculo orientativo por formato (100 g, 250 g, 500 g y 1 kg).
 - Carrito local persistente en el navegador.
 - Solicitud de pedido por WhatsApp con productos, cantidades, importe orientativo y datos de contacto.
-- WhatsApp principal de pedidos: **+34 666 068 765**.
+- WhatsApp principal de pedidos: **+34 678 21 97 55**.
 - Contacto alternativo: **+34 744 60 28 55**.
 - Catálogo compartible y código QR.
 - Diseño adaptable a móvil y escritorio.
