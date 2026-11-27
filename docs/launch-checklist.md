@@ -6,7 +6,7 @@
 - [x] Búsqueda, familias y filtros.
 - [x] Ficha de producto y cálculo proporcional de formatos.
 - [x] Carrito local y resumen de solicitud por WhatsApp.
-- [x] WhatsApp principal de pedidos: +34 666 068 765.
+- [x] WhatsApp principal de pedidos: +34 678 21 97 55.
 - [x] Contacto secundario: +34 744 60 28 55.
 - [x] Pedido expresamente pendiente de confirmación.
 - [x] Las cinco páginas SEO envían las consultas a WhatsApp principal 666 y conservan el teléfono alternativo 744.
