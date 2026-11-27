@@ -94,7 +94,7 @@ Al añadir:
 
 `buildCartOrderMessage()` exige nombre y teléfono, valida entre 9 y 15 dígitos después de eliminar separadores y prepara un mensaje con cliente, teléfono, artículos, cantidades, gramos, subtotales, total orientativo y observaciones. El texto indica que el pedido queda pendiente de confirmación.
 
-El botón del carrito abre WhatsApp mediante `https://wa.me/34666068765` y codifica el resumen con `encodeURIComponent()`. El contacto principal es **+34 666 068 765**. El contacto alternativo es **+34 744 60 28 55**. Los botones secundarios de llamada y WhatsApp permanecen disponibles como alternativas, pero los botones principales de consulta y el carrito usan el 666.
+El botón del carrito abre WhatsApp mediante `https://wa.me/34678219755` y codifica el resumen con `encodeURIComponent()`. El contacto principal es **+34 678 21 97 55**. El contacto alternativo es **+34 744 60 28 55**. Los botones secundarios de llamada y WhatsApp permanecen disponibles como alternativas, pero los botones principales de consulta y el carrito usan el 666.
 
 La web no envía un pedido a un servidor ni lo confirma. El usuario revisa el mensaje y lo envía desde WhatsApp.
 
@@ -135,7 +135,7 @@ La traducción de interfaz sigue siendo **parcial**. Los nombres, descripciones 
 
 ## 10. Contacto, SEO y páginas informativas
 
-- El teléfono estructurado del negocio en JSON-LD es el principal: +34 666 068 765.
+- El teléfono estructurado del negocio en JSON-LD es el principal: +34 678 21 97 55.
 - La portada distingue el contacto principal y el secundario.
 - Las cinco páginas SEO secundarias usan el WhatsApp principal en sus llamadas a la acción y conservan ambos teléfonos.
 - La portada y las páginas informativas contienen enlaces canónicos, descripciones y navegación interna.

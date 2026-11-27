@@ -214,7 +214,7 @@ function closeModal(id,restoreFocus=true){
   modalReturnFocus=null;
  }
 }
-function updatePackPrice(){if(!selected)return;const grams=Number(document.getElementById('weightSelect').value);const quantity=Math.max(1,Math.min(50,Number(document.getElementById('qtyKg').value)||1));document.getElementById('packPrice').textContent=euro(selected.price*grams/1000);document.getElementById('modalNote').textContent='Precio orientativo calculado desde '+euro(selected.price)+' por kg. El negocio confirmará disponibilidad, formato y precio final.';const link=document.getElementById('productWhatsApp');if(link){const message='Hola, quiero consultar este producto de Almendras de Málaga: '+selected.name+'. Formato: '+grams+' g. Cantidad: '+quantity+' unidad(es). ¿Podéis confirmarme disponibilidad y precio final?';link.href='https://wa.me/34666068765?text='+encodeURIComponent(message)}}
+function updatePackPrice(){if(!selected)return;const grams=Number(document.getElementById('weightSelect').value);const quantity=Math.max(1,Math.min(50,Number(document.getElementById('qtyKg').value)||1));document.getElementById('packPrice').textContent=euro(selected.price*grams/1000);document.getElementById('modalNote').textContent='Precio orientativo calculado desde '+euro(selected.price)+' por kg. El negocio confirmará disponibilidad, formato y precio final.';const link=document.getElementById('productWhatsApp');if(link){const message='Hola, quiero consultar este producto de Almendras de Málaga: '+selected.name+'. Formato: '+grams+' g. Cantidad: '+quantity+' unidad(es). ¿Podéis confirmarme disponibilidad y precio final?';link.href='https://wa.me/34678219755?text='+encodeURIComponent(message)}}
 function showProduct(id){
  if(!hasProductId(id))return;
  selectedId=id;
@@ -331,7 +331,7 @@ function buildCartOrderMessage(){
   +'El envío mostrado es provisional. Esta solicitud no confirma pedido, disponibilidad, precio final ni pago; el negocio lo confirmará por WhatsApp.';
 }
 
-document.getElementById('sendCartWhatsApp666').onclick=()=>{const message=buildCartOrderMessage();if(!message)return;if(message.length>3500){alert('El resumen del pedido es demasiado largo para abrirlo de forma fiable en WhatsApp. Reduce el número de líneas o contacta directamente con la tienda.');return}window.location.href='https://wa.me/34666068765?text='+encodeURIComponent(message)};
+document.getElementById('sendCartWhatsApp666').onclick=()=>{const message=buildCartOrderMessage();if(!message)return;if(message.length>3500){alert('El resumen del pedido es demasiado largo para abrirlo de forma fiable en WhatsApp. Reduce el número de líneas o contacta directamente con la tienda.');return}window.location.href='https://wa.me/34678219755?text='+encodeURIComponent(message)};
 
 async function copyTextSafely(value){try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(value);return true}}catch(e){}const area=document.createElement('textarea');area.value=value;area.setAttribute('readonly','');area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();let copied=false;try{copied=document.execCommand('copy')}catch(e){}area.remove();return copied}
 document.getElementById('share').onclick=async()=>{const data={title:'Almendras de Málaga',text:'Catálogo profesional de frutos secos en Málaga',url:location.href};if(navigator.share){try{await navigator.share(data)}catch(e){if(e&&e.name!=='AbortError')console.warn('No se pudo compartir el catálogo',e)}}else if(await copyTextSafely(location.href)){alert('Enlace copiado')}else{alert('No se pudo copiar el enlace. Puedes copiar la dirección desde el navegador.')}};
@@ -359,8 +359,8 @@ function answerProductQuestion(raw){
  const euroPrice=value=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(value);
  const requestedGrams=(()=>{const gramsMatch=q.match(/\b(100|250|500|1000|5000|10000|20000)\s*(g|gr|gramos)?\b/);if(gramsMatch)return Number(gramsMatch[1]);const kilosMatch=q.match(/\b(1|5|10|20)\s*(kg|kilo|kilos)\b/);if(kilosMatch)return Number(kilosMatch[1])*1000;if(/medio kilo|500 g|500gr/.test(q))return 500;if(/un kilo|1 kilo|1 kg|1000 g/.test(q))return 1000;return null})();
  if(/disponib|stock|hay existencias|teneis|ten[eé]is|queda/.test(q)){
-  if(matches.length)return 'En el catálogo aparece: '+matches.slice(0,8).map(([id,p])=>p.name).join(', ')+'. El stock real no está conectado a la web; Don Miguel y Fabián confirman disponibilidad por WhatsApp: +34 666 068 765.';
-  return 'La web no consulta inventario en tiempo real. Dime el nombre del producto o pregunta directamente a Don Miguel y Fabián por WhatsApp: +34 666 068 765.';
+  if(matches.length)return 'En el catálogo aparece: '+matches.slice(0,8).map(([id,p])=>p.name).join(', ')+'. El stock real no está conectado a la web; Don Miguel y Fabián confirman disponibilidad por WhatsApp: +34 678 21 97 55.';
+  return 'La web no consulta inventario en tiempo real. Dime el nombre del producto o pregunta directamente a Don Miguel y Fabián por WhatsApp: +34 678 21 97 55.';
  }
  if(matches.length&&requestedGrams){
   return matches.slice(0,6).map(([id,p])=>p.name+': '+euroPrice(p.price*requestedGrams/1000)+' por '+requestedGrams+' g ('+euroPrice(p.price)+' / kg orientativo).').join('\\n')+'\\nEl precio final y la disponibilidad deben confirmarse.';
