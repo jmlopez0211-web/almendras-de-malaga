@@ -31,3 +31,6 @@ assets/images/tmp/
 *.pre_cart_fix_*
 *.bak_telefonos_*
 *.bak_queries_*
+
+# Runtime process lock for the photo search engine
+docs/candidate_batch.lock
