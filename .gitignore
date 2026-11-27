@@ -34,3 +34,5 @@ assets/images/tmp/
 
 # Runtime process lock for the photo search engine
 docs/candidate_batch.lock
+# Local download inventory contains device-specific paths and is generated on demand.
+docs/local_photo_inventory.json
