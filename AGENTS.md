@@ -37,7 +37,7 @@
 - En el orden de presentación del catálogo, priorizar las fichas con fotografía realmente verificada y única, manteniendo todas las fichas y el orden original entre productos con el mismo estado fotográfico.
 
 ## WhatsApp
-- El teléfono principal de pedidos es `34666068765` (666 068 765); construir enlaces como `https://wa.me/34666068765?text=` usando `encodeURIComponent()`. El teléfono secundario es `34744602855` (744 60 28 55) y debe conservarse como contacto alternativo.
+- El teléfono principal de pedidos es `34678219755` (678 21 97 55); construir enlaces como `https://wa.me/34678219755?text=` usando `encodeURIComponent()`. El teléfono secundario es `34744602855` (744 60 28 55) y debe conservarse como contacto alternativo.
 - No borrar ni modificar contactos alternativos que ya estén presentes sin autorización.
 - El mensaje debe incluir los artículos, cantidades, peso/formato, precios orientativos y datos del comprador que solicita el formulario.
 - No presentar el pedido como confirmado hasta que el comercio lo confirme.
