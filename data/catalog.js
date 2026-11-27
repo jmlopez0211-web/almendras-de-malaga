@@ -428,7 +428,11 @@ window.PRODUCTS ={
     "tag": "Frutos secos",
     "category": "frutos",
     "price": 44,
-    "image": ""
+    "image": "assets/products/macadamia-tostada-sin-sal-propia.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso comercial autorizado por el propietario"
   },
   "macadamiaGarrapinada": {
     "name": "Macadamia garrapiñada",
