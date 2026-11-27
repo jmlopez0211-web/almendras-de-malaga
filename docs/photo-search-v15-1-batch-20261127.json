@@ -1,0 +1,955 @@
+[
+  {
+    "product_key": "almendraFritaGirasol",
+    "product": "Almendra frita con aceite de girasol",
+    "status": "DOWNLOADED_UNVERIFIED",
+    "search_status": "CANDIDATES_FOUND",
+    "engine_version": "15.1",
+    "processed_at": 1795771488.8934875,
+    "search_audit": {
+      "engine_version": "15.1",
+      "queries": [
+        {
+          "source": "Wikimedia Commons",
+          "query": "fried almonds sunflower oil",
+          "raw_count": 0,
+          "error": null
+        },
+        {
+          "source": "Wikimedia Commons",
+          "query": "almonds fried in sunflower oil",
+          "raw_count": 0,
+          "error": null
+        },
+        {
+          "source": "Wikimedia Commons",
+          "query": "almendras fritas aceite girasol",
+          "raw_count": 0,
+          "error": null
+        },
+        {
+          "source": "Wikimedia Commons",
+          "query": "almonds",
+          "raw_count": 10,
+          "error": null
+        }
+      ],
+      "raw_candidates": 10,
+      "accepted_candidates": 6,
+      "rejection_reasons": {
+        "missing_product_identity_in_title_or_tags": 4
+      },
+      "rejected_samples": [
+        {
+          "source": "Wikimedia Commons",
+          "title": "Fleur d'amandier (Prunus amygdalus).jpg",
+          "reasons": [
+            "missing_product_identity_in_title_or_tags"
+          ]
+        },
+        {
+          "source": "Wikimedia Commons",
+          "title": "Prunus dulcis 2014.jpg",
+          "reasons": [
+            "missing_product_identity_in_title_or_tags"
+          ]
+        },
+        {
+          "source": "Wikimedia Commons",
+          "title": "Prunus dulcis LC0009.jpg",
+          "reasons": [
+            "missing_product_identity_in_title_or_tags"
+          ]
+        },
+        {
+          "source": "Wikimedia Commons",
+          "title": "Shkediya02 ST 04.jpg",
+          "reasons": [
+            "missing_product_identity_in_title_or_tags"
+          ]
+        }
+      ]
+    },
+    "candidates": [
+      {
+        "source": "Wikimedia Commons",
+        "title": "Almond with two kernels.jpg",
+        "description": "Almond with two kernels",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/76/Almond_with_two_kernels.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Almond_with_two_kernels.jpg/1280px-Almond_with_two_kernels.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "mime": "image/jpeg",
+        "width": 6000,
+        "height": 4000,
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Iifar\" title=\"User:Iifar\">Ivar Leidus</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3AAlmond_with_two_kernels.jpg",
+        "relevance_score": 8,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified",
+          "product_focus_term"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "Almond in an open shell.jpg",
+        "description": "Almond - a fruit broken open, showing the edible kernel.",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Almond_in_an_open_shell.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Almond_in_an_open_shell.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "mime": "image/jpeg",
+        "width": 1240,
+        "height": 1128,
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "artist": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:GeXeS&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:GeXeS (page does not exist)\">GeXeS</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3AAlmond_in_an_open_shell.jpg",
+        "relevance_score": 7,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "Almond shell.jpg",
+        "description": "Almond  ( Prunus dulcis ) shell (endocarp)",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/91/Almond_shell.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Almond_shell.jpg/1280px-Almond_shell.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "mime": "image/jpeg",
+        "width": 6000,
+        "height": 4000,
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Iifar\" title=\"User:Iifar\">Ivar Leidus</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3AAlmond_shell.jpg",
+        "relevance_score": 7,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "Almonds - in shell, shell cracked open, shelled, blanched.jpg",
+        "description": "Almond ( Prunus dulcis ) fruit with seeds – in shell, shell cracked open, shelled and blanched seed",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Almonds_-_in_shell%2C_shell_cracked_open%2C_shelled%2C_blanched.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Almonds_-_in_shell%2C_shell_cracked_open%2C_shelled%2C_blanched.jpg/1280px-Almonds_-_in_shell%2C_shell_cracked_open%2C_shelled%2C_blanched.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "mime": "image/jpeg",
+        "width": 6000,
+        "height": 4000,
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Iifar\" title=\"User:Iifar\">Ivar Leidus</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3AAlmonds_-_in_shell%2C_shell_cracked_open%2C_shelled%2C_blanched.jpg",
+        "relevance_score": 7,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "Almonds 1.jpg",
+        "description": "Unshelled  almonds   ( Prunus dulcis ) .",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Almonds_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Almonds_1.jpg/1280px-Almonds_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "mime": "image/jpeg",
+        "width": 2816,
+        "height": 2112,
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "artist": "<p><a href=\"//commons.wikimedia.org/wiki/User:Loadmaster\" title=\"User:Loadmaster\">Loadmaster</a> (David R. Tribble\n</p>\n<table style=\"margin:1.5em auto; width:80%; background-color:#CCCCCC; border:2px solid #AAAAAA; padding:1px;\" cellspacing=\"10\">\n\n<tbody><tr>\n<td align=\"center\"><span typeof=\"mw:File\"><a href=\"//commons.wikimedia.org/wiki/File:PylonsSunset-5982.jpg\" class=\"mw-file-description\"><img src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/PylonsSunset-5982.jpg/120px-PylonsSunset-5982.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"101\" height=\"67\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/PylonsSunset-5982.jpg/250px-PylonsSunset-5982.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"2816\" data-file-height=\"1872\"></a></span>\n</td>\n<td><i><a href=\"https://upload.wikimedia.org/wikipedia/commons/0/06/Almonds_1.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=api&amp;utm_content=original\" class=\"internal\" title=\"Almonds 1.jpg\"><b>This image</b></a> <b>was made by</b> </i><b><a href=\"//commons.wikimedia.org/wiki/User:Loadmaster\" title=\"User:Loadmaster\"><b>Loadmaster (David R. Tribble)</b></a></b><i>.</i>\n<p>Email the author: <span typeof=\"mw:File\"><a href=\"//commons.wikimedia.org/wiki/File:UserIconMail.svg\" class=\"mw-file-description\"><img src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/UserIconMail.svg/40px-UserIconMail.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"24\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/UserIconMail.svg/60px-UserIconMail.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"700\" data-file-height=\"700\"></a></span> <a href=\"//commons.wikimedia.org/wiki/Special:EmailUser/Loadmaster\" title=\"Special:EmailUser/Loadmaster\">David R. Tribble</a>\n</p><p>Also see my personal gallery at <a rel=\"nofollow\" class=\"external text\" href=\"https://get.google.com/albumarchive/116781016251009423557\">Google Photos</a>\n</p>\n</td></tr></tbody></table>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3AAlmonds_1.jpg",
+        "relevance_score": 7,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "Clara Peeters - Still Life with Cheeses, Almonds and Pretzels.jpg",
+        "description": "",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Clara_Peeters_-_Still_Life_with_Cheeses%2C_Almonds_and_Pretzels.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Clara_Peeters_-_Still_Life_with_Cheeses%2C_Almonds_and_Pretzels.jpg/1280px-Clara_Peeters_-_Still_Life_with_Cheeses%2C_Almonds_and_Pretzels.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "mime": "image/jpeg",
+        "width": 2500,
+        "height": 1757,
+        "license": "Public domain",
+        "license_url": "",
+        "artist": "<bdi><a href=\"https://en.wikipedia.org/wiki/en:Clara_Peeters\" class=\"extiw\" title=\"w:en:Clara Peeters\"><span title=\"Flemish painter (1594-1657)\">Clara Peeters</span></a></bdi>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3AClara_Peeters_-_Still_Life_with_Cheeses%2C_Almonds_and_Pretzels.jpg",
+        "relevance_score": 7,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified"
+        ]
+      }
+    ]
+  },
+  {
+    "product_key": "cacahueteFritoRepeladoSinSal",
+    "product": "Cacahuete frito repelado sin sal",
+    "status": "CANDIDATES_FOUND_DOWNLOAD_FAILED",
+    "search_status": "CANDIDATES_FOUND",
+    "engine_version": "15.1",
+    "processed_at": 1795771509.2068117,
+    "search_audit": {
+      "engine_version": "15.1",
+      "queries": [
+        {
+          "source": "Wikimedia Commons",
+          "query": "unsalted fried blanched peanut kernels isolated product photo",
+          "raw_count": 0,
+          "error": null
+        },
+        {
+          "source": "Wikimedia Commons",
+          "query": "plain unsalted fried shelled peanuts close up no packaging",
+          "raw_count": 0,
+          "error": null
+        },
+        {
+          "source": "Wikimedia Commons",
+          "query": "cacahuetes fritos repelados sin sal producto primer plano",
+          "raw_count": 0,
+          "error": null
+        },
+        {
+          "source": "Wikimedia Commons",
+          "query": "blanched peanuts",
+          "raw_count": 10,
+          "error": null
+        }
+      ],
+      "raw_candidates": 10,
+      "accepted_candidates": 10,
+      "rejection_reasons": {},
+      "rejected_samples": []
+    },
+    "candidates": [
+      {
+        "source": "Wikimedia Commons",
+        "title": "RECALLED – Cashew Butter, Tahini and Roasted Blanched Peanuts (8047617383).jpg",
+        "description": "September 24, 2012 – Product Recall – Sunland, Inc. Announces an Expansion of its Voluntarily Limited Recall of Almond Butter and Peanut Butter To Add Cashew Butter, Tahini and Roasted Blanched Peanut Products Due to Possible Health Risk. For additional information, please refer to the company issued press release available on FDA’s web site at  www.fda.gov/Safety/Recalls/ucm320818 ",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/ac/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047617383%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/a/ac/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047617383%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "mime": "image/jpeg",
+        "width": 650,
+        "height": 439,
+        "license": "Public domain",
+        "license_url": "",
+        "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/39736050@N02\">The U.S. Food and Drug Administration</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3ARECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047617383%29.jpg",
+        "relevance_score": 7,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "RECALLED – Cashew Butter, Tahini and Roasted Blanched Peanuts (8047618913).jpg",
+        "description": "September 24, 2012 – Product Recall – Sunland, Inc. Announces an Expansion of its Voluntarily Limited Recall of Almond Butter and Peanut Butter To Add Cashew Butter, Tahini and Roasted Blanched Peanut Products Due to Possible Health Risk. For additional information, please refer to the company issued press release available on FDA’s web site at  www.fda.gov/Safety/Recalls/ucm320818 ",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047618913%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/b/b4/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047618913%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "mime": "image/jpeg",
+        "width": 655,
+        "height": 385,
+        "license": "Public domain",
+        "license_url": "",
+        "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/39736050@N02\">The U.S. Food and Drug Administration</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3ARECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047618913%29.jpg",
+        "relevance_score": 7,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "RECALLED – Cashew Butter, Tahini and Roasted Blanched Peanuts (8047620299).jpg",
+        "description": "September 24, 2012 – Product Recall – Sunland, Inc. Announces an Expansion of its Voluntarily Limited Recall of Almond Butter and Peanut Butter To Add Cashew Butter, Tahini and Roasted Blanched Peanut Products Due to Possible Health Risk. For additional information, please refer to the company issued press release available on FDA’s web site at  www.fda.gov/Safety/Recalls/ucm320818 ",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047620299%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/e/e2/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047620299%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "mime": "image/jpeg",
+        "width": 650,
+        "height": 365,
+        "license": "Public domain",
+        "license_url": "",
+        "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/39736050@N02\">The U.S. Food and Drug Administration</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3ARECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047620299%29.jpg",
+        "relevance_score": 7,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "RECALLED – Cashew Butter, Tahini and Roasted Blanched Peanuts (8047620553).jpg",
+        "description": "September 24, 2012 – Product Recall – Sunland, Inc. Announces an Expansion of its Voluntarily Limited Recall of Almond Butter and Peanut Butter To Add Cashew Butter, Tahini and Roasted Blanched Peanut Products Due to Possible Health Risk. For additional information, please refer to the company issued press release available on FDA’s web site at  www.fda.gov/Safety/Recalls/ucm320818 ",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d9/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047620553%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/d/d9/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047620553%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "mime": "image/jpeg",
+        "width": 650,
+        "height": 395,
+        "license": "Public domain",
+        "license_url": "",
+        "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/39736050@N02\">The U.S. Food and Drug Administration</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3ARECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047620553%29.jpg",
+        "relevance_score": 7,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "RECALLED – Cashew Butter, Tahini and Roasted Blanched Peanuts (8047620594).jpg",
+        "description": "September 24, 2012 – Product Recall – Sunland, Inc. Announces an Expansion of its Voluntarily Limited Recall of Almond Butter and Peanut Butter To Add Cashew Butter, Tahini and Roasted Blanched Peanut Products Due to Possible Health Risk. For additional information, please refer to the company issued press release available on FDA’s web site at  www.fda.gov/Safety/Recalls/ucm320818 ",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/da/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047620594%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/d/da/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047620594%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "mime": "image/jpeg",
+        "width": 650,
+        "height": 382,
+        "license": "Public domain",
+        "license_url": "",
+        "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/39736050@N02\">The U.S. Food and Drug Administration</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3ARECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047620594%29.jpg",
+        "relevance_score": 7,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "RECALLED – Cashew Butter, Tahini and Roasted Blanched Peanuts (8047623249).jpg",
+        "description": "September 24, 2012 – Product Recall – Sunland, Inc. Announces an Expansion of its Voluntarily Limited Recall of Almond Butter and Peanut Butter To Add Cashew Butter, Tahini and Roasted Blanched Peanut Products Due to Possible Health Risk. For additional information, please refer to the company issued press release available on FDA’s web site at  www.fda.gov/Safety/Recalls/ucm320818 ",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047623249%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/e/e6/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047623249%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "mime": "image/jpeg",
+        "width": 650,
+        "height": 387,
+        "license": "Public domain",
+        "license_url": "",
+        "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/39736050@N02\">The U.S. Food and Drug Administration</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3ARECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047623249%29.jpg",
+        "relevance_score": 7,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "RECALLED – Cashew Butter, Tahini and Roasted Blanched Peanuts (8047624024).jpg",
+        "description": "September 24, 2012 – Product Recall – Sunland, Inc. Announces an Expansion of its Voluntarily Limited Recall of Almond Butter and Peanut Butter To Add Cashew Butter, Tahini and Roasted Blanched Peanut Products Due to Possible Health Risk. For additional information, please refer to the company issued press release available on FDA’s web site at  www.fda.gov/Safety/Recalls/ucm320818 ",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/4/45/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047624024%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/4/45/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047624024%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "mime": "image/jpeg",
+        "width": 650,
+        "height": 341,
+        "license": "Public domain",
+        "license_url": "",
+        "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/39736050@N02\">The U.S. Food and Drug Administration</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3ARECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047624024%29.jpg",
+        "relevance_score": 7,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "RECALLED – Cashew Butter, Tahini and Roasted Blanched Peanuts (8047624284).jpg",
+        "description": "September 24, 2012 – Product Recall – Sunland, Inc. Announces an Expansion of its Voluntarily Limited Recall of Almond Butter and Peanut Butter To Add Cashew Butter, Tahini and Roasted Blanched Peanut Products Due to Possible Health Risk. For additional information, please refer to the company issued press release available on FDA’s web site at  www.fda.gov/Safety/Recalls/ucm320818 ",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/84/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047624284%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/8/84/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047624284%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "mime": "image/jpeg",
+        "width": 650,
+        "height": 385,
+        "license": "Public domain",
+        "license_url": "",
+        "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/39736050@N02\">The U.S. Food and Drug Administration</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3ARECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047624284%29.jpg",
+        "relevance_score": 7,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "RECALLED – Cashew Butter, Tahini and Roasted Blanched Peanuts (8047625518).jpg",
+        "description": "September 24, 2012 – Product Recall – Sunland, Inc. Announces an Expansion of its Voluntarily Limited Recall of Almond Butter and Peanut Butter To Add Cashew Butter, Tahini and Roasted Blanched Peanut Products Due to Possible Health Risk. For additional information, please refer to the company issued press release available on FDA’s web site at  www.fda.gov/Safety/Recalls/ucm320818 ",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/95/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047625518%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/9/95/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047625518%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "mime": "image/jpeg",
+        "width": 650,
+        "height": 372,
+        "license": "Public domain",
+        "license_url": "",
+        "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/39736050@N02\">The U.S. Food and Drug Administration</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3ARECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047625518%29.jpg",
+        "relevance_score": 7,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "RECALLED – Cashew Butter, Tahini and Roasted Blanched Peanuts (8047625572).jpg",
+        "description": "September 24, 2012 – Product Recall – Sunland, Inc. Announces an Expansion of its Voluntarily Limited Recall of Almond Butter and Peanut Butter To Add Cashew Butter, Tahini and Roasted Blanched Peanut Products Due to Possible Health Risk. For additional information, please refer to the company issued press release available on FDA’s web site at  www.fda.gov/Safety/Recalls/ucm320818 ",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/bb/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047625572%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/b/bb/RECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047625572%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "mime": "image/jpeg",
+        "width": 650,
+        "height": 377,
+        "license": "Public domain",
+        "license_url": "",
+        "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/39736050@N02\">The U.S. Food and Drug Administration</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3ARECALLED_%E2%80%93_Cashew_Butter%2C_Tahini_and_Roasted_Blanched_Peanuts_%288047625572%29.jpg",
+        "relevance_score": 7,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified"
+        ]
+      }
+    ]
+  },
+  {
+    "product_key": "anacardoFritoSinSal",
+    "product": "Anacardo frito sin sal",
+    "status": "DOWNLOADED_UNVERIFIED",
+    "search_status": "CANDIDATES_FOUND",
+    "engine_version": "15.1",
+    "processed_at": 1795771544.735535,
+    "search_audit": {
+      "engine_version": "15.1",
+      "queries": [
+        {
+          "source": "Wikimedia Commons",
+          "query": "fried cashew nuts close up",
+          "raw_count": 1,
+          "error": null
+        },
+        {
+          "source": "Wikimedia Commons",
+          "query": "fried cashews unsalted",
+          "raw_count": 0,
+          "error": null
+        },
+        {
+          "source": "Wikimedia Commons",
+          "query": "plain fried cashew kernels",
+          "raw_count": 0,
+          "error": null
+        },
+        {
+          "source": "Wikimedia Commons",
+          "query": "anacardos fritos sin sal",
+          "raw_count": 0,
+          "error": null
+        },
+        {
+          "source": "Wikimedia Commons",
+          "query": "cashew nuts",
+          "raw_count": 10,
+          "error": null
+        }
+      ],
+      "raw_candidates": 11,
+      "accepted_candidates": 8,
+      "rejection_reasons": {
+        "irrelevant_or_commercial_context:restaurant,chicken": 1,
+        "missing_product_identity_in_title_or_tags": 2
+      },
+      "rejected_samples": [
+        {
+          "source": "Wikimedia Commons",
+          "title": "DSCF0812 Savory cashew chicken stir-fry with bell peppers and tender pieces of meat glazed in a glossy sauce.jpg",
+          "reasons": [
+            "irrelevant_or_commercial_context:restaurant,chicken"
+          ]
+        },
+        {
+          "source": "Wikimedia Commons",
+          "title": "Anacardium occidentale - Köhler–s Medizinal-Pflanzen-010.jpg",
+          "reasons": [
+            "missing_product_identity_in_title_or_tags"
+          ]
+        },
+        {
+          "source": "Wikimedia Commons",
+          "title": "Anacardium occidentale from Margarita island.jpg",
+          "reasons": [
+            "missing_product_identity_in_title_or_tags"
+          ]
+        }
+      ]
+    },
+    "candidates": [
+      {
+        "source": "Wikimedia Commons",
+        "title": "CASHEW NUTS.jpg",
+        "description": "CASHEW NUTS",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/CASHEW_NUTS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/CASHEW_NUTS.jpg/1280px-CASHEW_NUTS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "mime": "image/jpeg",
+        "width": 6144,
+        "height": 8160,
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artist": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:Ranjithkumar_Murugesan&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:Ranjithkumar Murugesan (page does not exist)\">Ranjithkumar Murugesan</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3ACASHEW_NUTS.jpg",
+        "relevance_score": 8,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified",
+          "product_focus_term"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "Cashew Nuts (48095227868).jpg",
+        "description": "Cashew nuts are grown and packed at Nanette Kasuy Products in Roxas, Palawan, Philippines.",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/31/Cashew_Nuts_%2848095227868%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/3/31/Cashew_Nuts_%2848095227868%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "mime": "image/jpeg",
+        "width": 1024,
+        "height": 768,
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/79721788@N00\">David Stanley</a> from Nanaimo, Canada",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3ACashew_Nuts_%2848095227868%29.jpg",
+        "relevance_score": 8,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified",
+          "product_focus_term"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "Cashew nuts in North nullivilai.jpg",
+        "description": "The cashew nuts are more healthy to our body. These cashew nuts are collectied in North nullivilai villukuri kanyakumari district. The nuts are more taste can enjoy the taste and nature.",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Cashew_nuts_in_North_nullivilai.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Cashew_nuts_in_North_nullivilai.jpg/1280px-Cashew_nuts_in_North_nullivilai.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "mime": "image/jpeg",
+        "width": 4080,
+        "height": 3072,
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artist": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:Bharmitha_Selvaraj&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:Bharmitha Selvaraj (page does not exist)\">Bharmitha Selvaraj</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3ACashew_nuts_in_North_nullivilai.jpg",
+        "relevance_score": 8,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified",
+          "product_focus_term"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "Cashew nuts in West Bengal of India.jpg",
+        "description": "Cashew nuts in West Bengal, India. These are rich in copper, zinc, magnesium and iron.",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Cashew_nuts_in_West_Bengal_of_India.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Cashew_nuts_in_West_Bengal_of_India.jpg/1280px-Cashew_nuts_in_West_Bengal_of_India.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "mime": "image/jpeg",
+        "width": 3060,
+        "height": 2288,
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Billjones94\" title=\"User:Billjones94\">Billjones94</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3ACashew_nuts_in_West_Bengal_of_India.jpg",
+        "relevance_score": 8,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified",
+          "product_focus_term"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "Cashew nuts with skin.jpg",
+        "description": "Cashew nuts with skin",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/df/Cashew_nuts_with_skin.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Cashew_nuts_with_skin.jpg/1280px-Cashew_nuts_with_skin.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "mime": "image/jpeg",
+        "width": 3000,
+        "height": 3000,
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Fumikas_Sagisavas\" title=\"User:Fumikas Sagisavas\">Fumikas Sagisavas</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3ACashew_nuts_with_skin.jpg",
+        "relevance_score": 8,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified",
+          "product_focus_term"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "Cashew nuts with skins.jpg",
+        "description": "Cashew nuts with skin",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/95/Cashew_nuts_with_skins.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Cashew_nuts_with_skins.jpg/1280px-Cashew_nuts_with_skins.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "mime": "image/jpeg",
+        "width": 3000,
+        "height": 3000,
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Fumikas_Sagisavas\" title=\"User:Fumikas Sagisavas\">Fumikas Sagisavas</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3ACashew_nuts_with_skins.jpg",
+        "relevance_score": 8,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified",
+          "product_focus_term"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "Unpeeled cashew nuts.jpg",
+        "description": "Unpeeled cashew nuts",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Unpeeled_cashew_nuts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Unpeeled_cashew_nuts.jpg/1280px-Unpeeled_cashew_nuts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "mime": "image/jpeg",
+        "width": 3000,
+        "height": 3000,
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Fumikas_Sagisavas\" title=\"User:Fumikas Sagisavas\">Fumikas Sagisavas</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3AUnpeeled_cashew_nuts.jpg",
+        "relevance_score": 8,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified",
+          "product_focus_term"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "Young cashew nuts.jpg",
+        "description": "Young cashew nuts",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/68/Young_cashew_nuts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Young_cashew_nuts.jpg/1280px-Young_cashew_nuts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "mime": "image/jpeg",
+        "width": 1716,
+        "height": 1593,
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Vinayaraj\" title=\"User:Vinayaraj\">Vinayaraj</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3AYoung_cashew_nuts.jpg",
+        "relevance_score": 8,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified",
+          "product_focus_term"
+        ]
+      }
+    ]
+  },
+  {
+    "product_key": "macadamiaFritaSinSal",
+    "product": "Macadamia frita sin sal",
+    "status": "DOWNLOADED_UNVERIFIED",
+    "search_status": "CANDIDATES_FOUND",
+    "engine_version": "15.1",
+    "processed_at": 1795771559.9646878,
+    "search_audit": {
+      "engine_version": "15.1",
+      "queries": [
+        {
+          "source": "Wikimedia Commons",
+          "query": "unsalted fried macadamia nuts",
+          "raw_count": 0,
+          "error": null
+        },
+        {
+          "source": "Wikimedia Commons",
+          "query": "fried macadamia kernels no salt",
+          "raw_count": 0,
+          "error": null
+        },
+        {
+          "source": "Wikimedia Commons",
+          "query": "macadamia frita sin sal",
+          "raw_count": 0,
+          "error": null
+        },
+        {
+          "source": "Wikimedia Commons",
+          "query": "macadamia nuts",
+          "raw_count": 10,
+          "error": null
+        }
+      ],
+      "raw_candidates": 10,
+      "accepted_candidates": 5,
+      "rejection_reasons": {
+        "product_specific_exclusion:chocolate": 1,
+        "irrelevant_or_commercial_context:brand": 1,
+        "product_specific_exclusion:bowl": 1,
+        "product_specific_exclusion:plantation": 1,
+        "irrelevant_or_commercial_context:market,packaged": 1
+      },
+      "rejected_samples": [
+        {
+          "source": "Wikimedia Commons",
+          "title": "Dry-roasted macadamia nuts covered with dark chocolate, made in Guam.jpg",
+          "reasons": [
+            "product_specific_exclusion:chocolate"
+          ]
+        },
+        {
+          "source": "Wikimedia Commons",
+          "title": "Macadamia cracking tool.jpg",
+          "reasons": [
+            "irrelevant_or_commercial_context:brand"
+          ]
+        },
+        {
+          "source": "Wikimedia Commons",
+          "title": "Macadamia nuts, with one cracked and exposing the nut.jpg",
+          "reasons": [
+            "product_specific_exclusion:bowl"
+          ]
+        },
+        {
+          "source": "Wikimedia Commons",
+          "title": "Macadamia nuts on tree.JPG",
+          "reasons": [
+            "product_specific_exclusion:plantation"
+          ]
+        },
+        {
+          "source": "Wikimedia Commons",
+          "title": "Raw Macadamia Nuts (19179106601).jpg",
+          "reasons": [
+            "irrelevant_or_commercial_context:market,packaged"
+          ]
+        }
+      ]
+    },
+    "candidates": [
+      {
+        "source": "Wikimedia Commons",
+        "title": "Cut macadamia nuts.jpg",
+        "description": "Cut macadamia nuts",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Cut_macadamia_nuts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Cut_macadamia_nuts.jpg/1280px-Cut_macadamia_nuts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "mime": "image/jpeg",
+        "width": 3000,
+        "height": 3000,
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Fumikas_Sagisavas\" title=\"User:Fumikas Sagisavas\">Fumikas Sagisavas</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3ACut_macadamia_nuts.jpg",
+        "relevance_score": 8,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified",
+          "product_focus_term"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "Macadamia (nuts).jpg",
+        "description": "Macadamia (nuts)",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/74/Macadamia_%28nuts%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/7/74/Macadamia_%28nuts%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920,
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Tish_Madesh\" title=\"User:Tish Madesh\">Tish Madesh</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3AMacadamia_%28nuts%29.jpg",
+        "relevance_score": 8,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified",
+          "product_focus_term"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "Macadamia nuts.jpg",
+        "description": "Macadamia nuts",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/00/Macadamia_nuts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Macadamia_nuts.jpg/1280px-Macadamia_nuts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "mime": "image/jpeg",
+        "width": 6000,
+        "height": 8000,
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artist": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:%E1%80%85%E1%80%AC%E1%80%80%E1%80%9C%E1%80%B1%E1%80%B8_SarKaLay&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:စာကလေး SarKaLay (page does not exist)\">စာကလေး SarKaLay</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3AMacadamia_nuts.jpg",
+        "relevance_score": 8,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified",
+          "product_focus_term"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "Macadamia nuts in Eastern Rwanda.jpg",
+        "description": "Macadamia nuts",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Macadamia_nuts_in_Eastern_Rwanda.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Macadamia_nuts_in_Eastern_Rwanda.jpg/1280px-Macadamia_nuts_in_Eastern_Rwanda.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "mime": "image/jpeg",
+        "width": 1872,
+        "height": 4160,
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Synkubito\" title=\"User:Synkubito\">Synkubito</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3AMacadamia_nuts_in_Eastern_Rwanda.jpg",
+        "relevance_score": 8,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified",
+          "product_focus_term"
+        ]
+      },
+      {
+        "source": "Wikimedia Commons",
+        "title": "Nuts of Macadamia 1152861.jpg",
+        "description": "Nuts of Macadamia",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Nuts_of_Macadamia_1152861.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Nuts_of_Macadamia_1152861.jpg/1280px-Nuts_of_Macadamia_1152861.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "mime": "image/jpeg",
+        "width": 3275,
+        "height": 2178,
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://pixabay.com/en/users/Wow_Pho-916237/\">Wow Phochiangrak</a>",
+        "source_page": "https://commons.wikimedia.org/wiki/File%3ANuts_of_Macadamia_1152861.jpg",
+        "relevance_score": 8,
+        "relevance_reasons": [
+          "product_identity_in_title_or_tags",
+          "variant_keyword_match",
+          "strict_variant_evidence",
+          "variant_metadata_unverified",
+          "product_focus_term"
+        ]
+      }
+    ]
+  },
+  {
+    "product_key": "revueloTostadoSinSal",
+    "product": "Revuelto tostado sin sal",
+    "status": "NO_RESULTS_RELEVANT",
+    "search_status": "NO_RESULTS_RELEVANT",
+    "engine_version": "15.1",
+    "processed_at": 1795771579.3547726,
+    "search_audit": {
+      "engine_version": "15.1",
+      "queries": [
+        {
+          "source": "Wikimedia Commons",
+          "query": "unsalted roasted mixed nuts",
+          "raw_count": 0,
+          "error": null
+        },
+        {
+          "source": "Wikimedia Commons",
+          "query": "dry roasted nut mix",
+          "raw_count": 0,
+          "error": null
+        },
+        {
+          "source": "Wikimedia Commons",
+          "query": "revuelto tostado sin sal",
+          "raw_count": 0,
+          "error": null
+        },
+        {
+          "source": "Openverse",
+          "query": "unsalted roasted mixed nuts",
+          "raw_count": 0,
+          "error": null
+        },
+        {
+          "source": "Openverse",
+          "query": "dry roasted nut mix",
+          "raw_count": 0,
+          "error": null
+        },
+        {
+          "source": "Openverse",
+          "query": "revuelto tostado sin sal",
+          "raw_count": 0,
+          "error": null
+        }
+      ],
+      "raw_candidates": 0,
+      "accepted_candidates": 0,
+      "rejection_reasons": {},
+      "rejected_samples": []
+    },
+    "candidates": []
+  }
+]
