@@ -9,7 +9,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PRIMARY = "34666068765"
+PRIMARY = "34678219755"
 SECONDARY = "34744602855"
 LANDING_PAGES = (
     "almendras-garrapinadas-malaga.html",
