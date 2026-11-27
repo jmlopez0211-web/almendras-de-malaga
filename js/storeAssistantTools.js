@@ -2,7 +2,7 @@
 (function(){
 "use strict";
 const FORMATS=[100,250,500,1000,5000,10000,20000];
-const PHONE="34666068765";
+const PHONE="34678219755";
 const norm=s=>String(s||"").toLocaleLowerCase("es").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim();
 function catalog(){return window.PRODUCTS||{}}
 function searchProducts(query,limit=12){
