@@ -1547,11 +1547,7 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 8,
-    "image": "assets/products/pictolin-eucalipto-con-azucar-propia.webp",
-    "imageVerified": true,
-    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
-    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
-    "imageLicense": "Uso comercial autorizado por el propietario"
+    "image": ""
   },
   "pictolinFullmintSA": {
     "name": "Pictolín Fullmint sin azúcar",
