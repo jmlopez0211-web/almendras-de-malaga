@@ -8,7 +8,7 @@ irrelevant search results; tries original image URL first, then thumbnail; saves
 state/report/manifest after each product. Never changes catalog or approves images.
 """
 from __future__ import annotations
-import argparse, hashlib, json, re, sys, time
+import argparse, fcntl, hashlib, json, os, re, sys, time
 from io import BytesIO
 from pathlib import Path
 from urllib.parse import quote, urlparse
@@ -22,10 +22,11 @@ OUT = ROOT / "assets/images/candidates"
 STATE = ROOT / "docs/candidate_batch_state.json"
 REPORT = ROOT / "docs/candidate_batch_report.json"
 MANIFEST = ROOT / "photo_candidates_next.json"
+RUN_LOCK = ROOT / "docs/candidate_batch.lock"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 OPENVERSE_API = "https://api.openverse.org/v1/images/"
-UA = "AlmendrasDeMalagaCatalogPhotoAudit/15.0 (https://jmlopez0211-web.github.io/almendras-de-malaga/)"
-ENGINE_VERSION = "15.0"
+UA = "AlmendrasDeMalagaCatalogPhotoAudit/15.1 (https://jmlopez0211-web.github.io/almendras-de-malaga/)"
+ENGINE_VERSION = "15.1"
 TIMEOUT = (8, 22)
 ALLOWED = {"image/jpeg", "image/png", "image/webp"}
 MIN_W, MIN_H, MAX_BYTES = 900, 600, 25 * 1024 * 1024
@@ -1122,7 +1123,7 @@ def select_resume_products(products, processed, retry_no_candidates=False,
     retry_statuses = {
         "SOURCE_ERROR", "INCOMPLETE_SEARCH", "DOWNLOAD_FAILED",
         "CANDIDATES_FOUND_DOWNLOAD_FAILED", "VARIANT_MISMATCH_REJECTED", "RATE_LIMITED",
-        "NO_CANDIDATES", "PARTIAL_SOURCE_FAILURE"
+        "NO_CANDIDATES", "PARTIAL_SOURCE_FAILURE", "INTERRUPTED"
     }
     selected = []
     for key, name in products:
@@ -1142,6 +1143,40 @@ def select_resume_products(products, processed, retry_no_candidates=False,
     return selected
 
 
+def recover_interrupted_product(state, processed):
+    """Turn a stale in-progress checkpoint into a non-looping resume record."""
+    interrupted = state.pop("in_progress", None)
+    if not isinstance(interrupted, dict) or not interrupted.get("product_key"):
+        return None
+    key = interrupted["product_key"]
+    processed[key] = {
+        "status": "INTERRUPTED",
+        "timestamp": time.time(),
+        "last_resume_engine_version": ENGINE_VERSION,
+        "interrupted_product": interrupted.get("product"),
+    }
+    return key
+
+
+def acquire_run_lock():
+    """Prevent overlapping v15 runs; the OS releases the lock after a crash."""
+    RUN_LOCK.parent.mkdir(parents=True, exist_ok=True)
+    handle = RUN_LOCK.open("a+", encoding="utf-8")
+    try:
+        fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        handle.seek(0)
+        owner = handle.read(300).strip() or "owner metadata unavailable"
+        handle.close()
+        raise RuntimeError("Ya hay una ejecución v15 activa; se cancela la duplicada. " + owner)
+    handle.seek(0)
+    handle.truncate()
+    json.dump({"pid": os.getpid(), "engine_version": ENGINE_VERSION,
+               "started_at": time.time()}, handle)
+    handle.flush()
+    return handle
+
+
 def main():
     ap = argparse.ArgumentParser(description="Search and download unapproved product-image candidates")
     ap.add_argument("--limit", type=int, default=5)
@@ -1158,6 +1193,11 @@ def main():
                     help="Ignorar candidatos en caché y ejecutar búsquedas nuevas en Commons y Openverse")
     ap.add_argument("--diagnose", action="store_true")
     args = ap.parse_args()
+    try:
+        run_lock = acquire_run_lock()
+    except RuntimeError as exc:
+        print("EJECUCIÓN DUPLICADA BLOQUEADA: " + str(exc), file=sys.stderr, flush=True)
+        return 2
     if args.diagnose:
         print("Diagnóstico de conectividad del motor de imágenes", flush=True)
         print(f"Python: {sys.version.split()[0]} | Requests: {requests.__version__} | Pillow: {Image.__version__}", flush=True)
@@ -1176,7 +1216,13 @@ def main():
     products = missing_products()
     state = load_json(STATE, {"processed": {}, "commons_blocked_until": 0})
     processed = state.setdefault("processed", {})
-    state["schema_version"] = 6
+    state["schema_version"] = 7
+    # Persist a product checkpoint before network work. If Termux or Python is
+    # interrupted and an external launcher restarts the job, that same product
+    # is not selected forever by --resume.
+    interrupted_key = recover_interrupted_product(state, processed)
+    if interrupted_key:
+        save_json(STATE, state)
     blocked_until = float(state.get("commons_blocked_until", 0) or 0)
     commons_blocked = blocked_until > time.time()
 
@@ -1194,6 +1240,9 @@ def main():
         )
     else:
         products = products[max(0, args.start):]
+        if not args.force_retry:
+            products = [x for x in products
+                        if processed.get(x[0], {}).get("status") != "INTERRUPTED"]
     batch = products[:max(1, args.limit)]
 
     manifest = load_json(MANIFEST, [])
@@ -1209,6 +1258,11 @@ def main():
     batch_records = []
     for index, (key, name) in enumerate(batch, 1):
         print(f"[{index}/{len(batch)}] {name} ({key})", flush=True)
+        state["in_progress"] = {
+            "product_key": key, "product": name,
+            "engine_version": ENGINE_VERSION, "started_at": time.time()
+        }
+        save_json(STATE, state)
         # Reuse previously found candidates when retrying a failed download.
         old_record = report_map.get(key, {})
         old_candidates = old_record.get("candidates", [])
@@ -1303,6 +1357,7 @@ def main():
             state["commons_blocked_until"] = time.time() + 900
         elif not commons_blocked:
             state["commons_blocked_until"] = 0
+        state.pop("in_progress", None)
         state["last_run"] = time.time()
         state["last_product"] = key
         report_map[key] = record
