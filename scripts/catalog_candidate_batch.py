@@ -8,7 +8,7 @@ irrelevant search results; tries original image URL first, then thumbnail; saves
 state/report/manifest after each product. Never changes catalog or approves images.
 """
 from __future__ import annotations
-import argparse, fcntl, hashlib, json, os, re, sys, time
+import argparse, fcntl, hashlib, json, os, re, subprocess, sys, time
 from io import BytesIO
 from pathlib import Path
 from urllib.parse import quote, urlparse
@@ -1177,6 +1177,126 @@ def acquire_run_lock():
     return handle
 
 
+def index_local_photo_candidates(local_root):
+    """Inventory local download images as review-only candidates; never assign or approve."""
+    root = Path(local_root).expanduser().resolve()
+    if not root.is_dir():
+        raise FileNotFoundError(f"No existe el directorio local: {root}")
+    image_exts = {".jpg", ".jpeg", ".png", ".webp", ".avif"}
+    allowed_roots = (
+        "almendras-fotos-propias-revision", "almendras-fotos-frutos-secos",
+        "almendras-candidatas", "almendras-de-malaga-auditoria",
+        "imagenes-almendras", "almendras-github-verify",
+    )
+    files = []
+    for path in root.rglob("*"):
+        if not path.is_file() or path.suffix.lower() not in image_exts:
+            continue
+        rel = path.relative_to(root)
+        rel_lower = str(rel).lower()
+        if not any(part.lower().startswith(allowed_roots) for part in rel.parts):
+            continue
+        if any(part in {".git", "node_modules", "__pycache__"} for part in rel.parts):
+            continue
+        files.append(path)
+
+    manifest_records = {}
+    for manifest_path in root.rglob("manifest.json"):
+        if not any(part.lower().startswith(allowed_roots) for part in manifest_path.relative_to(root).parts):
+            continue
+        try:
+            data = json.loads(manifest_path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        if not isinstance(data, dict):
+            continue
+        base = manifest_path.parent
+        def resolve_manifest_file(rel):
+            candidate = base / rel
+            if not candidate.exists() and base.name == "nuevas_aportaciones":
+                candidate = base.parent / rel
+            return str(candidate.resolve())
+        for item in data.get("items", []):
+            rel = item.get("prepared_file") or item.get("source_file")
+            if rel:
+                manifest_records[resolve_manifest_file(rel)] = {
+                    "suggested_product": item.get("suggested_product"),
+                    "review_note": item.get("review"),
+                    "manifest_status": item.get("status"),
+                    "rights_source": data.get("source"),
+                    "license_statement": data.get("license"),
+                }
+        for item in data.get("fotografias", []):
+            for field in ("archivo_webp", "archivo_original"):
+                rel = item.get(field)
+                if rel:
+                    manifest_records[resolve_manifest_file(rel)] = {
+                        "suggested_product": None,
+                        "review_note": item.get("identificacion"),
+                        "manifest_status": item.get("estado"),
+                        "rights_source": "Fotografías aportadas por el propietario; verificar autorización antes de publicar",
+                        "license_statement": None,
+                        "contribution_number": item.get("numero"),
+                    }
+
+    records, hashes = [], {}
+    for path in sorted(files):
+        try:
+            raw = path.read_bytes()
+            digest = hashlib.sha256(raw).hexdigest()
+            file_info = subprocess.run(["file", "-b", str(path)], capture_output=True, text=True, timeout=10)
+            info = file_info.stdout.strip()
+            dims = re.search(r"(\d+)\s*x\s*(\d+)", info)
+            if not dims:
+                raise ValueError("No se pudieron leer las dimensiones de la imagen")
+            width, height = int(dims.group(1)), int(dims.group(2))
+            fmt = "WEBP" if "Web/P" in info or "WebP" in info else (path.suffix.lstrip(".").upper())
+            # Inventory stage reads file metadata only; decoding/visual review is a later gate.
+            meta = manifest_records.get(str(path.resolve()), {})
+            record = {
+                "file_name": path.name,
+                "local_path": str(path),
+                "relative_path": str(path.relative_to(root)),
+                "sha256": digest,
+                "bytes": len(raw),
+                "width": width,
+                "height": height,
+                "format": fmt,
+                "source": "LOCAL_DOWNLOADS",
+                "suggested_product": meta.get("suggested_product"),
+                "review_note": meta.get("review_note"),
+                "manifest_status": meta.get("manifest_status", "SIN_MANIFIESTO"),
+                "rights_source": meta.get("rights_source", "NO_DOCUMENTADO"),
+                "license_statement": meta.get("license_statement"),
+                "contribution_number": meta.get("contribution_number"),
+                "approval_status": "PENDING_VISUAL_VARIANT_AND_RIGHTS_REVIEW",
+            }
+            if digest in hashes:
+                record["duplicate_of"] = hashes[digest]
+            else:
+                hashes[digest] = str(path)
+            records.append(record)
+        except Exception as exc:
+            records.append({"file_name": path.name, "local_path": str(path),
+                            "source": "LOCAL_DOWNLOADS", "approval_status": "FILE_READ_ERROR",
+                            "error": str(exc)[:300]})
+
+    output = ROOT / "docs/local_photo_inventory.json"
+    save_json(output, {
+        "engine_version": ENGINE_VERSION,
+        "created_at": time.time(),
+        "source_root": str(root),
+        "total_files": len(records),
+        "unique_sha256": len(hashes),
+        "policy": "Inventario local de candidatas; no asigna productos, no valida licencias y no publica imágenes.",
+        "records": records,
+    })
+    print(f"Inventario local creado: {output}", flush=True)
+    print(f"Archivos: {len(records)} | hashes únicos: {len(hashes)} | duplicados: {sum(bool(x.get('duplicate_of')) for x in records)}", flush=True)
+    print("Estado: todas las imágenes permanecen pendientes de revisión visual, variante y derechos.", flush=True)
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description="Search and download unapproved product-image candidates")
     ap.add_argument("--limit", type=int, default=5)
@@ -1192,12 +1312,22 @@ def main():
     ap.add_argument("--fresh-search", action="store_true",
                     help="Ignorar candidatos en caché y ejecutar búsquedas nuevas en Commons y Openverse")
     ap.add_argument("--diagnose", action="store_true")
+    ap.add_argument("--index-local-photos", action="store_true",
+                    help="Inventariar imágenes de Descargas como candidatas locales sin asignarlas ni aprobarlas")
+    ap.add_argument("--local-root", default="/storage/emulated/0/Download",
+                    help="Carpeta de Descargas que contiene las colecciones de Almendras de Málaga")
     args = ap.parse_args()
     try:
         run_lock = acquire_run_lock()
     except RuntimeError as exc:
         print("EJECUCIÓN DUPLICADA BLOQUEADA: " + str(exc), file=sys.stderr, flush=True)
         return 2
+    if args.index_local_photos:
+        try:
+            return index_local_photo_candidates(args.local_root)
+        except Exception as exc:
+            print(f"Error inventariando imágenes locales: {exc}", file=sys.stderr, flush=True)
+            return 1
     if args.diagnose:
         print("Diagnóstico de conectividad del motor de imágenes", flush=True)
         print(f"Python: {sys.version.split()[0]} | Requests: {requests.__version__} | Pillow: {Image.__version__}", flush=True)

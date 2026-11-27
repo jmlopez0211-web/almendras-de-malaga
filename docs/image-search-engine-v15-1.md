@@ -17,3 +17,15 @@ La v15 guardaba el progreso al terminar cada producto, pero no persistía cuál 
 - Prueba de reanudación: los productos interrumpidos se omiten por defecto y solo vuelven a cola con `--force-retry`.
 
 El motor sigue siendo un buscador de candidatas: no modifica `data/catalog.js`, no aprueba fotografías y no publica imágenes automáticamente.
+
+## Fuente local de Descargas
+
+La v15.1 incorpora un modo de inventario local, independiente de las búsquedas remotas:
+
+```bash
+python3 scripts/catalog_candidate_batch.py --index-local-photos
+```
+
+La opción `--local-root RUTA` permite indicar otra carpeta de Descargas. El inventario recoge las colecciones locales de Almendras de Málaga, calcula SHA-256, registra dimensiones, formato, duplicados y metadatos de los manifiestos disponibles. El resultado se guarda en `docs/local_photo_inventory.json` (archivo local ignorado por Git, porque contiene rutas absolutas del dispositivo).
+
+Este modo no copia ni publica archivos, no asigna fotografías a fichas y no considera que una sugerencia del manifiesto demuestre la variante. Todas las entradas quedan pendientes de revisión visual, variante comercial y derechos. Las fotografías aportadas por el propietario conservan la referencia de autorización indicada en sus manifiestos; los archivos sin documentación mantienen `NO_DOCUMENTADO`.
