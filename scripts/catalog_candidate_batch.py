@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Almendras de Málaga — image candidate batch pipeline v12.
+Almendras de Málaga — image candidate batch pipeline v15.0.
 
 Reads data/catalog.js; searches Wikimedia Commons and Openverse; filters obvious
 irrelevant search results; tries original image URL first, then thumbnail; saves
 state/report/manifest after each product. Never changes catalog or approves images.
 """
 from __future__ import annotations
-import argparse, hashlib, json, re, sys, time
+import argparse, fcntl, hashlib, json, os, re, sys, time
 from io import BytesIO
 from pathlib import Path
 from urllib.parse import quote, urlparse
@@ -22,19 +22,25 @@ OUT = ROOT / "assets/images/candidates"
 STATE = ROOT / "docs/candidate_batch_state.json"
 REPORT = ROOT / "docs/candidate_batch_report.json"
 MANIFEST = ROOT / "photo_candidates_next.json"
+RUN_LOCK = ROOT / "docs/candidate_batch.lock"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 OPENVERSE_API = "https://api.openverse.org/v1/images/"
-UA = "AlmendrasDeMalagaCatalogPhotoAudit/14.0"
-ENGINE_VERSION = "14.0"
+UA = "AlmendrasDeMalagaCatalogPhotoAudit/15.1 (https://jmlopez0211-web.github.io/almendras-de-malaga/)"
+ENGINE_VERSION = "15.1"
 TIMEOUT = (8, 22)
 ALLOWED = {"image/jpeg", "image/png", "image/webp"}
-MIN_W, MIN_H, MAX_BYTES = 900, 700, 25 * 1024 * 1024
+MIN_W, MIN_H, MAX_BYTES = 900, 600, 25 * 1024 * 1024
 
 PRODUCT_SEARCH = {
+    "almendraCrudaPiel": ["raw almonds with skin", "whole raw almonds unpeeled", "almendras crudas con piel"],
+    "almendraCrudaPelada": ["blanched raw almonds", "raw peeled almond kernels", "almendras crudas peladas"],
+    "almendraFritaOliva": ["fried almonds olive oil", "almonds fried in olive oil", "almendras fritas aceite de oliva"],
+    "almendraTostadaPiel": ["roasted almonds with skin", "whole roasted almonds unpeeled", "almendras tostadas con piel"],
+    "almendraTostadaRepeladaSinSal": ["unsalted roasted blanched almonds", "dry roasted peeled almonds no salt", "almendras tostadas repeladas sin sal"],
     "mangoDeshidratado": ["dried mango slices", "dried mango pieces", "dehydrated mango fruit"],
     "almendraFritaGirasol": ["fried almonds sunflower oil","almonds fried in sunflower oil","almendras fritas aceite girasol"],
     "almendraFritaSinSal": ["unsalted fried almonds","fried almonds no salt","almendras fritas sin sal"],
-    "cacahueteFritoRepeladoSinSal": ["fried blanched peanuts unsalted","unsalted fried shelled peanuts","cacahuete frito repelado sin sal"],
+    "cacahueteFritoRepeladoSinSal": ["unsalted fried blanched peanut kernels isolated product photo", "plain unsalted fried shelled peanuts close up no packaging", "cacahuetes fritos repelados sin sal producto primer plano"],
     "cacahueteTostadoRepeladoSinSal": ["roasted peeled peanuts isolated", "dry roasted blanched peanuts unsalted", "roasted shelled peanuts no salt", "cacahuete tostado repelado sin sal"],
     "anacardoFritoSinSal": ["fried cashew nuts close up", "fried cashews unsalted", "plain fried cashew kernels", "anacardos fritos sin sal"],
     "macadamiaFritaSal": ["salted fried macadamia nuts", "fried macadamia kernels", "macadamia frita sal"],
@@ -45,7 +51,7 @@ PRODUCT_SEARCH = {
     "revueloTostadoSinSal": ["unsalted roasted mixed nuts","dry roasted nut mix","revuelto tostado sin sal"],
     "revueloEspecial": ["mixed nuts and dried fruit assortment","special mixed nuts snack","revuelto frutos secos especial"],
     "revueloTresPasas": ["three varieties of raisins","three types of raisins mix","mixed raisin varieties","mezcla de pasas de tres variedades"],
-    "revueloPacoJose": ["Paco Jose mixed nuts","Paco José frutos secos mix","mixed nuts assortment"],
+    "revueloPacoJose": ["mixed nuts assortment","mixed nuts blend","revuelto de frutos secos","mezcla variada de frutos secos"],
     "revueloDulceMCarmen": ["sweet mix assortment","sweet confectionery mix","mezcla dulce frutos secos"],
     "revueloDeliciasVirginia": ["Virginia nut mix","mixed nuts Virginia","Delicias Virginia frutos secos"],
     "melonDeshidratado": ["dried melon slices","dehydrated melon pieces","melon deshidratado"],
@@ -58,8 +64,8 @@ PRODUCT_SEARCH = {
     "chocolateAvellanaNegro": ["dark chocolate covered hazelnuts","hazelnuts coated dark chocolate","avellana chocolate negro"],
     "avellanaTrufadaCanela": ["cinnamon truffle hazelnuts","cinnamon coated hazelnuts","avellana trufada canela"],
     "arandanoChocolateNegro": ["dark chocolate covered cranberries","cranberries coated dark chocolate","arándano chocolate negro"],
-    "almendraChocolateLeche": ["milk chocolate covered almonds","almonds coated milk chocolate","almendra chocolate leche"],
-    "almendraChocolateBlanco": ["white chocolate covered almonds","almonds coated white chocolate","almendra chocolate blanco"],
+    "almendraChocolateLeche": ["whole almonds individually coated in milk chocolate confectionery close up", "milk chocolate covered almond pieces isolated product photo", "almendras enteras bañadas chocolate con leche"],
+    "almendraChocolateBlanco": ["whole almonds individually coated in white chocolate confectionery close up", "white chocolate covered almond pieces isolated product photo", "almendras enteras bañadas chocolate blanco"],
     "mixChocolatesAlmendra": ["mixed chocolate covered almonds","almond chocolate assortment","mix chocolates almendra"],
     "chocobolaBlanca": ["white chocolate balls confectionery","white chocolate candy balls","chocobola blanca"],
     "chocobolaLeche": ["milk chocolate balls confectionery","milk chocolate candy balls","chocobola leche"],
@@ -77,7 +83,7 @@ PRODUCT_SEARCH = {
     "toffinoChocolate": ["chocolate toffee candy","toffee chocolate sweets","toffino chocolate"],
     "toffeeNata": ["cream toffee candy","nata toffee sweets","toffee nata"],
     "picotasFresa": ["strawberry candy picotas","strawberry chewy sweets","picotas fresa"],
-    "rellenoMiel": ["honey filled candy","honey confectionery","relleno miel"],
+    "rellenoMiel": ["honey filled hard candy cut open honey center confectionery", "individually wrapped honey filled sweets candy close up", "caramelo duro relleno de miel abeja"],
     "gajosSantos": ["gajos santos candy","orange lemon candy segments","gajos santos"],
     "rellenoFruta": ["fruit filled candy","fruit jelly filled sweets","relleno fruta"],
     "tacoMiel": ["honey candy block","honey sweets","taco miel"],
@@ -96,6 +102,11 @@ PRODUCT_SEARCH = {
 }
 
 SEARCH_RECOVERY_TERMS = {
+    "almendraCrudaPiel": ["raw almonds", "almond kernels", "almendras"],
+    "almendraCrudaPelada": ["blanched almonds", "peeled almonds", "almendras"],
+    "almendraFritaOliva": ["fried almonds", "almond kernels", "almendras fritas"],
+    "almendraTostadaPiel": ["roasted almonds", "almond kernels", "almendras tostadas"],
+    "almendraTostadaRepeladaSinSal": ["roasted blanched almonds", "peeled almonds", "almendras tostadas"],
     # Broad ingredient-first queries run only after the exact catalog phrases.
     # They widen retrieval; candidate_score still enforces product identity
     # and rejects contradictory evidence before a file can be downloaded.
@@ -104,12 +115,50 @@ SEARCH_RECOVERY_TERMS = {
     "cacahueteFritoRepeladoSinSal": ["blanched peanuts", "shelled peanuts", "peanut kernels", "cacahuetes pelados"],
     "cacahueteTostadoRepeladoSinSal": ["roasted peanuts", "shelled peanuts", "peanut kernels", "cacahuetes pelados"],
     "anacardoFritoSinSal": ["cashew nuts", "cashew kernels", "cashews", "anacardos"],
-    "macadamiaFritaSal": ["macadamia nuts", "macadamia kernels", "macadamia"],
+    "macadamiaFritaSal": [
+        "macadamia kernels", "fried salted macadamia kernels",
+        "macadamia nuts with salt",
+    ],
     "macadamiaFritaSinSal": ["macadamia nuts", "macadamia kernels", "macadamia"],
     "macadamiaTostadaSinSal": ["roasted macadamia nuts", "macadamia nuts", "macadamia kernels"],
+
+    # PILOTO CONTROLADO: recuperación específica de productos difíciles.
+    # Estas consultas amplían la búsqueda; no aprueban imágenes.
+    "aloeDeshidratada": [
+        "candied dried aloe vera cubes",
+        "crystallized aloe vera pieces",
+        "dried aloe vera confectionery",
+        "candied aloe vera snack",
+    ],
+
+    "pipaGarrapinada": [
+        "candied sunflower seeds",
+        "sugar coated sunflower seeds",
+        "caramelized sunflower kernels",
+        "garrapinadas sunflower seeds",
+    ],
+
+    "chocolatePistachoLeche": [
+        "milk chocolate coated pistachios",
+        "chocolate covered pistachio kernels",
+        "pistachios coated in milk chocolate",
+        "milk chocolate pistachio confectionery",
+    ],
+
+    "revueloTresPasas": [
+        "mixed raisins varieties",
+        "assorted raisins mix",
+        "golden and dark raisins",
+        "mixed dried grapes",
+    ],
 }
 
 CORE_TERMS = {
+    "almendraCrudaPiel": ["almond", "almonds", "almendra", "almendras"],
+    "almendraCrudaPelada": ["almond", "almonds", "almendra", "almendras"],
+    "almendraFritaOliva": ["almond", "almonds", "almendra", "almendras"],
+    "almendraTostadaPiel": ["almond", "almonds", "almendra", "almendras"],
+    "almendraTostadaRepeladaSinSal": ["almond", "almonds", "almendra", "almendras"],
     "mangoDeshidratado": ["mango", "mangos"],
     "almendraFritaGirasol": ["almond","almonds","almendra","almendras"],
     "almendraFritaSinSal": ["almond","almonds","almendra","almendras"],
@@ -175,6 +224,11 @@ CORE_TERMS = {
 }
 
 MATCH_GROUPS = {
+    "almendraCrudaPiel": [["raw", "cruda", "crudas"], ["with skin", "skin-on", "unpeeled", "con piel"]],
+    "almendraCrudaPelada": [["raw", "cruda", "crudas"], ["blanched", "peeled", "skinless", "pelada", "peladas"]],
+    "almendraFritaOliva": [["fried", "frit", "frita", "fritas"], ["olive oil", "aceite de oliva"]],
+    "almendraTostadaPiel": [["roasted", "tostada", "tostado"], ["with skin", "skin-on", "unpeeled", "con piel"]],
+    "almendraTostadaRepeladaSinSal": [["roasted", "tostada", "tostado"], ["blanched", "peeled", "skinless", "repelada", "repeladas"], ["unsalted", "no salt", "without salt", "sin sal"]],
     "almendraFritaGirasol": [["almond","almonds","almendra","almendras"],["fried","frit","frita","fritas"]],
     "almendraFritaSinSal": [["almond","almonds","almendra","almendras"],["fried","frit","frita","fritas"]],
     "cacahueteFritoRepeladoSinSal": [["peanut","peanuts","cacahuete","cacahuetes"],["fried","frit","frita","fritas"]],
@@ -217,8 +271,15 @@ NEGATIVE_PHRASES = [
     "market", "market stall", "market stand", "grocery store", "shop window", "storefront", "shop", "store", "retail", "panoramio", "arahova",
     "restaurant dish", "served with", "plated", "main course", "lunch", "dinner",
     "anchovy", "shishito", "donut", "doughnut", "candy apple", "caramel apple",
-    "bottle", "bouteille", "jar", "packaging", "package", "wrapper", "wrappers",
-    "label", "brand logo", "retail box", "sealed bag", "trader joe", "russell stover", "milkaut", "les anis de flavigny", "north charleston"
+    "bottle", "bouteille", "jar", "jars", "packaging", "package", "packages", "packaged",
+    "wrapper", "wrappers", "pouch", "pouches", "sachet", "sachets", "bag", "bags",
+    "packet", "packets", "carton", "cartons", "tin", "tins", "container", "containers",
+    "label", "labels", "brand", "branded", "logo", "brand logo", "watermark",
+    "retail box", "sealed bag", "product box", "product packaging", "plastic bag",
+    "bolsa", "bolsas", "paquete", "paquetes", "envase", "envases", "envasado",
+    "envasada", "embalaje", "embalado", "etiqueta", "etiquetas", "marca comercial",
+    "logotipo", "marca de agua", "caja de producto", "bote", "tarro", "frasco",
+    "trader joe", "russell stover", "milkaut", "les anis de flavigny", "north charleston"
 ]
 
 
@@ -281,6 +342,11 @@ NUT_PRODUCT_NEGATIVE_PHRASES = {
 # High-risk variants require their distinguishing words in title, tags or description.
 # If a source does not document those details, no candidate is preferred over a wrong photo.
 STRICT_MATCH_GROUPS = {
+    "almendraCrudaPiel": [["raw", "cruda", "crudas"], ["with skin", "skin-on", "unpeeled", "con piel"]],
+    "almendraCrudaPelada": [["raw", "cruda", "crudas"], ["blanched", "peeled", "skinless", "pelada", "peladas"]],
+    "almendraFritaOliva": [["fried", "frit", "frita", "fritas"], ["olive oil", "aceite de oliva"]],
+    "almendraTostadaPiel": [["roasted", "tostada", "tostado"], ["with skin", "skin-on", "unpeeled", "con piel"]],
+    "almendraTostadaRepeladaSinSal": [["roasted", "tostada", "tostado"], ["blanched", "peeled", "skinless", "repelada", "repeladas"], ["unsalted", "no salt", "without salt", "sin sal"]],
     "ligeroPinones": [["pine nut", "pine nuts", "piñon", "piñones"],
                       ["candy", "confection", "praline", "praliné", "nougat", "sweet"]],
     "tacoMiel": [["honey", "miel"],
@@ -362,6 +428,11 @@ STRICT_MATCH_GROUPS = {
 }
 
 PRODUCT_IDENTITY_GROUPS = {
+    "almendraCrudaPiel": [["almond", "almonds", "almendra", "almendras"]],
+    "almendraCrudaPelada": [["almond", "almonds", "almendra", "almendras"]],
+    "almendraFritaOliva": [["almond", "almonds", "almendra", "almendras"]],
+    "almendraTostadaPiel": [["almond", "almonds", "almendra", "almendras"]],
+    "almendraTostadaRepeladaSinSal": [["almond", "almonds", "almendra", "almendras"]],
     # Product families that were false-positive in the v11 Termux audit.
     "revueloTostadoSinSal": [["mixed nuts", "nuts mix", "nut mix", "assorted nuts", "trail mix"]],
     "revueloEspecial": [["mixed nuts", "nuts mix", "nut mix", "assorted nuts", "trail mix"]],
@@ -401,6 +472,11 @@ PRODUCT_IDENTITY_GROUPS = {
                           ["covered", "coated", "chocolate covered", "chocolate-coated"]],
 }
 PRODUCT_FORBIDDEN_TERMS = {
+    "almendraCrudaPiel": ["peeled", "blanched", "skinless", "pelada", "peladas", "fried", "frita", "fritas", "roasted", "tostada", "tostado", "truffle", "truffles", "trufa", "trufas", "almond milk"],
+    "almendraCrudaPelada": ["with skin", "skin-on", "unpeeled", "con piel", "fried", "frita", "fritas", "roasted", "tostada", "tostado"],
+    "almendraFritaOliva": ["sunflower oil", "aceite de girasol", "peanut oil", "aceite de cacahuete", "unsalted", "sin sal", "roasted", "tostada", "tostado", "raw", "cruda"],
+    "almendraTostadaPiel": ["peeled", "blanched", "skinless", "repelada", "pelada", "fried", "frita", "fritas", "raw", "cruda"],
+    "almendraTostadaRepeladaSinSal": ["with skin", "skin-on", "unpeeled", "con piel", "salted", "with salt", "con sal", "fried", "frita", "fritas", "raw", "cruda"],
     "almendraFritaGirasol": ["olive oil", "aceite de oliva", "peanut oil", "aceite de cacahuete"],
     "almendraFritaSinSal": ["salt", "salted", "with salt", "salty", "con sal", "salado", "salada"],
     "cacahueteFritoRepeladoSinSal": ["salt", "salted", "with salt", "salty", "con sal", "salado", "salada", "in shell", "with shell", "con cáscara", "con cascara"],
@@ -408,7 +484,7 @@ PRODUCT_FORBIDDEN_TERMS = {
         "salt", "salted", "salt-roasted", "salt roasted", "with salt", "salty", "con sal", "salado", "salada", "in shell", "with shell",
         "con cáscara", "con cascara", "cáscara y sal", "cascara y sal"
     ],
-    "anacardoFritoSinSal": ["salt", "salted", "with salt", "salty", "con sal", "salado", "salada"],
+    "anacardoFritoSinSal": ["salt", "salted", "with salt", "salty", "con sal", "salado", "salada", "spiced", "seasoned", "seasoning", "rosemary", "herb", "herbs", "herbed", "flavoured", "flavored", "flavour", "flavor"],
     "macadamiaFritaSal": ["unsalted", "no salt", "without salt", "sin sal"],
     "macadamiaFritaSinSal": ["salt", "salted", "with salt", "salty", "con sal", "salado", "salada"],
     "macadamiaTostadaSinSal": ["salt", "salted", "with salt", "salty", "con sal", "salado", "salada"],
@@ -429,6 +505,65 @@ STRICT_FORBIDDEN_TERMS = {
     "pictolinMielLimonCA": ["sugar free", "sugar-free", "sugarfree", "sin azúcar"],
     "pictolinAnisCA": ["sugar free", "sugar-free", "sugarfree", "sin azúcar"],
 }
+
+def candidate_identity_is_confirmed(key, candidate):
+    """Confirm the product family without claiming undocumented preparation details.
+
+    Product identity (e.g. cashew/macadamia) is separate from attributes such as
+    fried/roasted, salted/unsalted or oil type. Explicit contradictions are still
+    rejected; missing variant evidence is retained for human review only.
+    """
+    title = str(candidate.get("title") or "")
+    tags = " ".join(str(x) for x in (candidate.get("tags") or []))
+    identity_text = " ".join((title, tags)).lower()
+
+    def has_term(term):
+        pattern = r"(?<!\w)" + re.escape(str(term).lower()).replace(r"\ ", r"\s+") + r"(?!\w)"
+        return re.search(pattern, identity_text, flags=re.IGNORECASE) is not None
+
+    core = CORE_TERMS.get(key, [])
+    if not any(has_term(term) for term in core):
+        return False
+    for group in PRODUCT_IDENTITY_GROUPS.get(key, []):
+        if not any(has_term(term) for term in group):
+            return False
+    return True
+
+
+def candidate_variant_evidence_status(key, candidate):
+    """Return exact, unspecified or contradictory variant evidence from title/tags."""
+    title = str(candidate.get("title") or "")
+    tags = " ".join(str(x) for x in (candidate.get("tags") or []))
+    identity_text = " ".join((title, tags)).lower()
+
+    def has_term(term):
+        pattern = r"(?<!\w)" + re.escape(str(term).lower()).replace(r"\ ", r"\s+") + r"(?!\w)"
+        return re.search(pattern, identity_text, flags=re.IGNORECASE) is not None
+
+    if any(has_term(term) for term in PRODUCT_FORBIDDEN_TERMS.get(key, [])):
+        return "CONTRADICTORY_VARIANT"
+    if any(has_term(term) for term in STRICT_FORBIDDEN_TERMS.get(key, [])):
+        return "CONTRADICTORY_VARIANT"
+    groups = MATCH_GROUPS.get(key, []) + STRICT_MATCH_GROUPS.get(key, [])
+    if all(any(has_term(term) for term in group) for group in groups):
+        return "EXACT_VARIANT_EVIDENCE"
+    return "VARIANT_UNSPECIFIED"
+
+
+def candidate_passes_gates(identity_valid, technical_valid):
+    """A pilot candidate is valid only when identity and technical checks both pass."""
+    return bool(identity_valid) and bool(technical_valid)
+
+
+def approval_passes_gates(candidate_valid, license_name, license_url, artist,
+                          source_page, visual_review):
+    """Final approval additionally requires complete rights provenance and human visual review."""
+    required = (license_name, license_url, artist, source_page)
+    documentation_complete = all(
+        isinstance(value, str) and bool(value.strip()) for value in required
+    )
+    return bool(candidate_valid) and documentation_complete and visual_review is True
+
 
 class RateLimited(Exception):
     def __init__(self, source):
@@ -461,13 +596,21 @@ def save_json(path, obj):
         f.flush()
     tmp.replace(path)
 
+_LAST_REQUEST_AT = {}
+_REQUEST_MIN_INTERVAL = {"Wikimedia Commons": 1.0, "Openverse": 0.5}
+
 def request_json(url, params, source):
-    # Retry transient DNS/TLS/socket errors, 5xx and 429 with bounded backoff.
+    # Sequential per-source pacing plus bounded retries for transient failures.
     headers = {"User-Agent": UA, "Accept": "application/json",
                "Accept-Language": "es,en;q=0.8"}
     last_error = None
     for attempt in range(4):
         try:
+            min_interval = _REQUEST_MIN_INTERVAL.get(source, 0.5)
+            elapsed = time.monotonic() - _LAST_REQUEST_AT.get(source, 0.0)
+            if elapsed < min_interval:
+                time.sleep(min_interval - elapsed)
+            _LAST_REQUEST_AT[source] = time.monotonic()
             r = requests.get(url, params=params, headers=headers, timeout=TIMEOUT)
         except requests.RequestException as e:
             last_error = {"source": source, "status": "NETWORK_ERROR",
@@ -478,8 +621,10 @@ def request_json(url, params, source):
             return None, last_error
         if r.status_code == 429:
             retry_after = r.headers.get("Retry-After")
-            wait = min(float(retry_after) if retry_after and retry_after.isdigit()
-                       else 2 ** attempt, 30)
+            try:
+                wait = min(float(retry_after), 60) if retry_after else min(2 ** attempt, 30)
+            except ValueError:
+                wait = min(2 ** attempt, 30)
             last_error = {"source": source, "status": "RATE_LIMITED",
                           "http": 429, "attempt": attempt + 1,
                           "retry_after_seconds": wait}
@@ -487,6 +632,33 @@ def request_json(url, params, source):
                 time.sleep(wait)
                 continue
             return None, last_error
+
+        # Wikimedia may signal rate limiting/maxlag inside an HTTP 200 JSON response.
+        if source == "Wikimedia Commons" and r.ok:
+            try:
+                api_error = (r.json() or {}).get("error") or {}
+            except ValueError:
+                api_error = {}
+            error_code = api_error.get("code")
+            if error_code in ("ratelimited", "maxlag"):
+                retry_after = r.headers.get("Retry-After")
+                try:
+                    wait = min(float(retry_after), 60) if retry_after else 5.0
+                except ValueError:
+                    wait = 5.0
+                if error_code == "maxlag":
+                    lag_match = re.search(r"([0-9]+(?:\.[0-9]+)?) seconds? lagged",
+                                          str(api_error.get("info") or ""), re.I)
+                    if lag_match:
+                        wait = max(wait, float(lag_match.group(1)) + 1)
+                last_error = {"source": source, "status": "RATE_LIMITED",
+                              "api_code": error_code, "attempt": attempt + 1,
+                              "retry_after_seconds": wait,
+                              "info": str(api_error.get("info") or "")[:180]}
+                if attempt < 3:
+                    time.sleep(wait)
+                    continue
+                return None, last_error
         if r.status_code >= 500 and attempt < 3:
             last_error = {"source": source, "status": "HTTP_ERROR",
                           "http": r.status_code, "attempt": attempt + 1,
@@ -509,16 +681,17 @@ def request_json(url, params, source):
 def commons_search(query):
     data, err = request_json(COMMONS_API, {
         "action": "query", "format": "json", "list": "search",
-        "srsearch": query, "srnamespace": 6, "srlimit": 30
+        "srsearch": query, "srnamespace": 6, "srlimit": 12, "maxlag": 5
     }, "Wikimedia Commons")
     if err:
         return [], err
-    titles = [x.get("title") for x in data.get("query", {}).get("search", []) if x.get("title")]
+    titles = [x.get("title") for x in data.get("query", {}).get("search", []) if x.get("title") and len(x.get("title", "")) <= 180][:10]
     if not titles:
         return [], None
     data, err = request_json(COMMONS_API, {
-        "action": "query", "format": "json", "titles": "|".join(titles),
-        "prop": "imageinfo", "iiprop": "url|size|mime|extmetadata", "iiurlwidth": 1280
+        "action": "query", "format": "json", "titles": "|".join(titles[:10]),
+        "prop": "imageinfo", "iiprop": "url|size|mime|extmetadata", "iiurlwidth": 1280,
+        "maxlag": 5
     }, "Wikimedia Commons")
     if err:
         return [], err
@@ -544,8 +717,10 @@ def commons_search(query):
 
 def openverse_search(query):
     data, err = request_json(OPENVERSE_API, {
-        "q": query, "page_size": 30, "mature": "false",
-        "license": "cc0,by,by-sa"
+        "q": query, "page_size": 20, "mature": "false",
+        "license": "cc0,by,by-sa", "license_type": "commercial",
+        "category": "photograph",
+        "extension": "jpg,jpeg,png,webp", "filter_dead": "true"
     }, "Openverse")
     if err:
         return [], err
@@ -613,6 +788,8 @@ def candidate_score(key, candidate):
 
     SOFT_VARIANT_KEYS = {
         "almendraFritaGirasol", "almendraFritaSinSal",
+        "almendraCrudaPiel", "almendraCrudaPelada", "almendraFritaOliva",
+        "almendraTostadaPiel", "almendraTostadaRepeladaSinSal",
         "cacahueteFritoRepeladoSinSal", "cacahueteTostadoRepeladoSinSal",
         "anacardoFritoSinSal", "macadamiaFritaSal", "macadamiaFritaSinSal",
         "macadamiaTostadaSinSal", "avellanaAmericanaCruda", "nuezCaramelizada",
@@ -693,7 +870,7 @@ def build_queries(key, name):
     seen, result = set(), []
     for term in terms:
         term = term.strip()
-        normalized = re.sub(r"\\s+", " ", term.lower())
+        normalized = re.sub(r"\s+", " ", term.lower())
         if normalized and normalized not in seen:
             result.append(term)
             seen.add(normalized)
@@ -744,7 +921,15 @@ def filter_and_rank(key, candidates, audit=None):
                     "title": candidate.get("title"),
                     "reasons": reasons
                 })
-    ranked.sort(key=lambda x: x.get("relevance_score", -100), reverse=True)
+    # Exact variant evidence outranks broad ingredient matches.  This affects
+    # discovery order only; the download gate below still requires a strict match.
+    ranked.sort(
+        key=lambda x: (
+            candidate_identity_is_confirmed(key, x),
+            x.get("relevance_score", -100),
+        ),
+        reverse=True,
+    )
     return ranked
 
 def search_product(key, name, delay, commons_blocked):
@@ -787,11 +972,19 @@ def search_product(key, name, delay, commons_blocked):
             if delay:
                 time.sleep(delay)
             # Do not stop at a single marginal hit; gather a few independent choices.
-            if len(filter_and_rank(key, all_candidates)) >= 4:
+            exact_count = sum(
+                1 for item in filter_and_rank(key, all_candidates)
+                if candidate_identity_is_confirmed(key, item)
+            )
+            if exact_count >= 4:
                 break
 
-    # Always give Openverse a chance unless Commons already yielded enough candidates.
-    if len(filter_and_rank(key, all_candidates)) < 4:
+    # Search the second source unless Commons already yielded four exact variants.
+    exact_commons_count = sum(
+        1 for item in filter_and_rank(key, all_candidates)
+        if candidate_identity_is_confirmed(key, item)
+    )
+    if exact_commons_count < 4:
         for query in queries:
             try:
                 found, err = openverse_search(query)
@@ -811,7 +1004,11 @@ def search_product(key, name, delay, commons_blocked):
                 all_candidates.extend(found)
             if delay:
                 time.sleep(delay)
-            if len(filter_and_rank(key, all_candidates)) >= 4:
+            exact_count = sum(
+                1 for item in filter_and_rank(key, all_candidates)
+                if candidate_identity_is_confirmed(key, item)
+            )
+            if exact_count >= 4:
                 break
 
     ranked = filter_and_rank(key, all_candidates, audit)
@@ -925,8 +1122,8 @@ def select_resume_products(products, processed, retry_no_candidates=False,
     """
     retry_statuses = {
         "SOURCE_ERROR", "INCOMPLETE_SEARCH", "DOWNLOAD_FAILED",
-        "CANDIDATES_FOUND_DOWNLOAD_FAILED", "RATE_LIMITED",
-        "NO_CANDIDATES", "PARTIAL_SOURCE_FAILURE"
+        "CANDIDATES_FOUND_DOWNLOAD_FAILED", "VARIANT_MISMATCH_REJECTED", "RATE_LIMITED",
+        "NO_CANDIDATES", "PARTIAL_SOURCE_FAILURE", "INTERRUPTED"
     }
     selected = []
     for key, name in products:
@@ -946,6 +1143,40 @@ def select_resume_products(products, processed, retry_no_candidates=False,
     return selected
 
 
+def recover_interrupted_product(state, processed):
+    """Turn a stale in-progress checkpoint into a non-looping resume record."""
+    interrupted = state.pop("in_progress", None)
+    if not isinstance(interrupted, dict) or not interrupted.get("product_key"):
+        return None
+    key = interrupted["product_key"]
+    processed[key] = {
+        "status": "INTERRUPTED",
+        "timestamp": time.time(),
+        "last_resume_engine_version": ENGINE_VERSION,
+        "interrupted_product": interrupted.get("product"),
+    }
+    return key
+
+
+def acquire_run_lock():
+    """Prevent overlapping v15 runs; the OS releases the lock after a crash."""
+    RUN_LOCK.parent.mkdir(parents=True, exist_ok=True)
+    handle = RUN_LOCK.open("a+", encoding="utf-8")
+    try:
+        fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        handle.seek(0)
+        owner = handle.read(300).strip() or "owner metadata unavailable"
+        handle.close()
+        raise RuntimeError("Ya hay una ejecución v15 activa; se cancela la duplicada. " + owner)
+    handle.seek(0)
+    handle.truncate()
+    json.dump({"pid": os.getpid(), "engine_version": ENGINE_VERSION,
+               "started_at": time.time()}, handle)
+    handle.flush()
+    return handle
+
+
 def main():
     ap = argparse.ArgumentParser(description="Search and download unapproved product-image candidates")
     ap.add_argument("--limit", type=int, default=5)
@@ -958,8 +1189,15 @@ def main():
                     help="Volver a buscar y revisar productos ya descargados por versiones anteriores")
     ap.add_argument("--force-retry", action="store_true",
                     help="Ignorar la marca de reintento de esta versión y volver a intentar estados fallidos")
+    ap.add_argument("--fresh-search", action="store_true",
+                    help="Ignorar candidatos en caché y ejecutar búsquedas nuevas en Commons y Openverse")
     ap.add_argument("--diagnose", action="store_true")
     args = ap.parse_args()
+    try:
+        run_lock = acquire_run_lock()
+    except RuntimeError as exc:
+        print("EJECUCIÓN DUPLICADA BLOQUEADA: " + str(exc), file=sys.stderr, flush=True)
+        return 2
     if args.diagnose:
         print("Diagnóstico de conectividad del motor de imágenes", flush=True)
         print(f"Python: {sys.version.split()[0]} | Requests: {requests.__version__} | Pillow: {Image.__version__}", flush=True)
@@ -978,7 +1216,13 @@ def main():
     products = missing_products()
     state = load_json(STATE, {"processed": {}, "commons_blocked_until": 0})
     processed = state.setdefault("processed", {})
-    state["schema_version"] = 6
+    state["schema_version"] = 7
+    # Persist a product checkpoint before network work. If Termux or Python is
+    # interrupted and an external launcher restarts the job, that same product
+    # is not selected forever by --resume.
+    interrupted_key = recover_interrupted_product(state, processed)
+    if interrupted_key:
+        save_json(STATE, state)
     blocked_until = float(state.get("commons_blocked_until", 0) or 0)
     commons_blocked = blocked_until > time.time()
 
@@ -996,6 +1240,9 @@ def main():
         )
     else:
         products = products[max(0, args.start):]
+        if not args.force_retry:
+            products = [x for x in products
+                        if processed.get(x[0], {}).get("status") != "INTERRUPTED"]
     batch = products[:max(1, args.limit)]
 
     manifest = load_json(MANIFEST, [])
@@ -1011,6 +1258,11 @@ def main():
     batch_records = []
     for index, (key, name) in enumerate(batch, 1):
         print(f"[{index}/{len(batch)}] {name} ({key})", flush=True)
+        state["in_progress"] = {
+            "product_key": key, "product": name,
+            "engine_version": ENGINE_VERSION, "started_at": time.time()
+        }
+        save_json(STATE, state)
         # Reuse previously found candidates when retrying a failed download.
         old_record = report_map.get(key, {})
         old_candidates = old_record.get("candidates", [])
@@ -1020,7 +1272,7 @@ def main():
                         "raw_candidates": 0,
                         "accepted_candidates": 0, "rejection_reasons": {},
                         "rejected_samples": [], "reused_cached_candidates": False}
-        if old_candidates and old_status in ("CANDIDATES_FOUND_DOWNLOAD_FAILED", "DOWNLOAD_FAILED",
+        if (not args.fresh_search) and old_candidates and old_status in ("CANDIDATES_FOUND_DOWNLOAD_FAILED", "DOWNLOAD_FAILED",
                                               "CANDIDATES_FOUND", "SOURCE_ERROR"):
             search_audit["reused_cached_candidates"] = True
             candidates = filter_and_rank(key, old_candidates, search_audit)
@@ -1043,24 +1295,52 @@ def main():
             record["previous_unverified_download"] = prior_download
         if status == "CANDIDATES_FOUND":
             download_result, selected = None, None
-            for candidate in candidates[:8]:
+            variant_rejections = []
+            eligible_candidates = []
+            variant_statuses = {}
+            for candidate in candidates:
+                variant_status = candidate_variant_evidence_status(key, candidate)
+                variant_statuses[candidate.get("url") or candidate.get("title") or str(len(variant_statuses))] = variant_status
+                if candidate_identity_is_confirmed(key, candidate) and variant_status != "CONTRADICTORY_VARIANT":
+                    eligible_candidates.append(candidate)
+                else:
+                    variant_rejections.append({
+                        "source": candidate.get("source"),
+                        "title": candidate.get("title"),
+                        "reason": "product_identity_not_confirmed" if not candidate_identity_is_confirmed(key, candidate) else "explicit_variant_conflict",
+                    })
+            # Download identity-confirmed, non-contradictory candidates. A missing
+            # variant detail is marked for visual/documentary review, never approval.
+            for candidate in eligible_candidates[:12]:
                 download_result = download_candidate(key, candidate)
                 if download_result.get("status") == "DOWNLOADED_UNVERIFIED":
                     selected = candidate
                     break
-            record["download"] = download_result
+            record["variant_rejections"] = variant_rejections
+            record["download"] = download_result or {
+                "status": "VARIANT_MISMATCH_REJECTED",
+                "url_errors": [],
+            }
             record["download_errors"] = (download_result or {}).get("url_errors", [])
             if selected:
                 record["status"] = "DOWNLOADED_UNVERIFIED"
                 record["selected_candidate"] = selected
+                record["variant_evidence_status"] = candidate_variant_evidence_status(key, selected)
+                record["review_required"] = record["variant_evidence_status"] != "EXACT_VARIANT_EVIDENCE"
                 manifest_map[key] = {"product_key": key, "product": name,
                     "candidates": candidates[:12], "selected_candidate": selected,
+                    "variant_evidence_status": record["variant_evidence_status"],
+                    "review_required": record["review_required"],
                     "download": download_result, "status": record["status"]}
             else:
-                record["status"] = "CANDIDATES_FOUND_DOWNLOAD_FAILED"
+                record["status"] = (
+                    "CANDIDATES_FOUND_DOWNLOAD_FAILED"
+                    if eligible_candidates else "VARIANT_MISMATCH_REJECTED"
+                )
                 manifest_map[key] = {"product_key": key, "product": name,
-                    "candidates": candidates[:12], "download": download_result,
-                    "status": record["status"]}
+                    "candidates": candidates[:12], "variant_rejections": variant_rejections,
+                    "variant_evidence_statuses": variant_statuses,
+                    "download": record["download"], "status": record["status"]}
 
         previous_progress = processed.get(key, {})
         processed[key] = {
@@ -1077,6 +1357,7 @@ def main():
             state["commons_blocked_until"] = time.time() + 900
         elif not commons_blocked:
             state["commons_blocked_until"] = 0
+        state.pop("in_progress", None)
         state["last_run"] = time.time()
         state["last_product"] = key
         report_map[key] = record

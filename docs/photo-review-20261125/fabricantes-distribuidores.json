@@ -1,0 +1,140 @@
+{
+  "date": "2026-11-25",
+  "purpose": "Fuentes oficiales para identificar referencias y solicitar fotos de producto. La presencia de una fotografía pública no concede derechos de reutilización.",
+  "sources": [
+    {
+      "name": "COPAVAL / La Albufera",
+      "type": "fabricante/distribuidor",
+      "url": "https://copaval.com/productos/",
+      "evidence": [
+        "Anacardo frito sin sal",
+        "Almendra frita sin sal",
+        "Cacahuete frito sin sal",
+        "almendra Marcona cruda con piel",
+        "cocktails y revueltos"
+      ],
+      "use_for": "Anacardos y almendras fritas; referencias para identificar posibles variantes y solicitar fotografías de producto.",
+      "permission": "NO CONCEDIDA; la página muestra fotografías, pero no licencia reutilización.",
+      "contact": "laalbufera@copaval.com · +34 961 240 429",
+      "source_note": "La página oficial lista explícitamente los productos citados.",
+      "photo_permission_status": "NOT_GRANTED — no se ha recibido autorización escrita",
+      "image_reuse": "PROHIBITED_UNTIL_WRITTEN_PERMISSION",
+      "rights_note": "Aviso legal: derechos reservados; exige consentimiento explícito para reproducir o usar contenidos."
+    },
+    {
+      "name": "J.H.RIVER, S.L.",
+      "type": "distribuidor profesional",
+      "url": "https://www.jhriver.es/productos",
+      "evidence": [
+        "Anacardo frito W320 sin sal y con sal",
+        "Nuez de macadamia STY 1",
+        "Nuez de macadamia garrapiñada",
+        "Almendra piel tostada sin sal y con sal",
+        "Fruta deshidratada: mango, melón, coco, banana, etc."
+      ],
+      "use_for": "Excelente correspondencia de catálogo para anacardo frito sin sal y macadamia; solicitar fotos exactas por SKU/variante.",
+      "permission": "NO CONCEDIDA; catálogo prueba referencias, no derechos de imagen.",
+      "contact": "jhriver@jhriver.es · +34 928 184 478",
+      "source_note": "El catálogo distingue explícitamente anacardo frito W320 sin/con sal y macadamia STY 1.",
+      "photo_permission_status": "NOT_GRANTED — no se ha recibido autorización escrita",
+      "image_reuse": "PROHIBITED_UNTIL_WRITTEN_PERMISSION",
+      "rights_note": "No se ha localizado licencia pública; solicitar permiso expreso."
+    },
+    {
+      "name": "ITAC Professional / Importaco",
+      "type": "fabricante/distribuidor profesional",
+      "url": "https://www.itac-professional.com/food-service/frutos-secos/",
+      "evidence": [
+        "Familia macadamia",
+        "Anacardo",
+        "Almendra procesada",
+        "Frutos secos sin sal añadida",
+        "Anacardo tostado sin sal",
+        "Cacahuete repelado tostado sin sal"
+      ],
+      "use_for": "Referencia oficial de familias y categorías sin sal; pedir material autorizado para productos sin sal.",
+      "permission": "NO CONCEDIDA; no reutilizar imágenes del sitio sin autorización.",
+      "contact_url": "https://www.itac-professional.com/contact/",
+      "source_note": "Página oficial de ITAC Professional (Importaco) lista macadamia, anacardo y categoría sin sal añadida.",
+      "photo_permission_status": "NOT_GRANTED — no se ha recibido autorización escrita",
+      "image_reuse": "PROHIBITED_UNTIL_WRITTEN_PERMISSION",
+      "rights_note": "Aviso legal Importaco: no concede derechos de explotación; requiere permiso previo, explícito y escrito."
+    },
+    {
+      "name": "Frutos Secos Hernández",
+      "type": "fabricante/distribuidor",
+      "url": "https://frutossecoshernandez.es/productos/",
+      "evidence": [
+        "Anacardo tostado",
+        "Anacardos tostados",
+        "Macadamia tostada",
+        "Almendras fritas selección",
+        "Revuelto tostado sin sal mediterráneo"
+      ],
+      "use_for": "Candidatos para anacardo tostado y macadamia tostada; pedir imágenes de sus SKU y confirmar equivalencia de proceso.",
+      "permission": "NO CONCEDIDA; fotos de producto no equivalen a permiso de reutilización.",
+      "source_note": "El catálogo oficial lista anacardo tostado y macadamia tostada con formatos.",
+      "photo_permission_status": "NOT_GRANTED — no se ha recibido autorización escrita",
+      "image_reuse": "PROHIBITED_UNTIL_WRITTEN_PERMISSION",
+      "rights_note": "No se ha localizado licencia pública; solicitar permiso expreso."
+    },
+    {
+      "name": "Guillén Hnos.",
+      "type": "fabricante",
+      "url": "https://guillenhnosfrutossecos.com/productos/",
+      "evidence": [
+        "Anacardos",
+        "Nuez de Macadamia",
+        "Almendra frita",
+        "Anacardo frito",
+        "Variedades crudas, tostadas y sin sal"
+      ],
+      "use_for": "Imágenes oficiales para identificación visual de frutos base y variantes fritas; solicitar autorización por escrito.",
+      "permission": "NO CONCEDIDA; las imágenes de la web no se copian a producción.",
+      "contact": "info@guillenhnosfrutossecos.com · 91 560 76 87",
+      "source_note": "El fabricante declara producir frutos secos fritos y tostados y muestra categorías con anacardo y macadamia.",
+      "photo_permission_status": "NOT_GRANTED — no se ha recibido autorización escrita",
+      "image_reuse": "PROHIBITED_UNTIL_WRITTEN_PERMISSION",
+      "rights_note": "No se ha localizado licencia pública; solicitar permiso expreso."
+    },
+    {
+      "name": "Aperitivos Flaper",
+      "type": "fabricante",
+      "url": "https://flaper.es/productos/frutos-secos",
+      "evidence": [
+        "Frutos secos",
+        "Fruta deshidratada",
+        "Productos recubiertos",
+        "Fabricación y distribución para retail y distribución"
+      ],
+      "use_for": "Fuente adicional para ampliar búsqueda por categorías y solicitar catálogo visual autorizado.",
+      "permission": "NO CONCEDIDA; no usar imágenes de su web sin licencia o permiso.",
+      "source_note": "La página oficial describe sus líneas de fabricación y distribución.",
+      "photo_permission_status": "NOT_GRANTED — no se ha recibido autorización escrita",
+      "image_reuse": "PROHIBITED_UNTIL_WRITTEN_PERMISSION"
+    },
+    {
+      "name": "Frutos Secos EYMA",
+      "type": "fabricante",
+      "url": "https://www.frutossecoseyma.es/productos/",
+      "evidence": [
+        "Almendras repeladas fritas y saladas",
+        "Anacardos fritos y salados",
+        "Gamas naturales y recubiertas"
+      ],
+      "use_for": "Referencia para anacardo y almendra fritos; no es prueba de variante sin sal.",
+      "permission": "NO CONCEDIDA; no usar imágenes sin autorización.",
+      "source_note": "La gama oficial publicada incluye referencias de almendras y anacardos fritos.",
+      "photo_permission_status": "NOT_GRANTED — no se ha recibido autorización escrita",
+      "image_reuse": "PROHIBITED_UNTIL_WRITTEN_PERMISSION",
+      "rights_note": "No se ha localizado licencia pública; solicitar permiso expreso."
+    }
+  ],
+  "legal_review": {
+    "date": "2026-11-25",
+    "copaval": "explicit consent required by legal notice",
+    "itac_importaco": "prior explicit written permission required",
+    "other_suppliers": "no public image licence found in this review; written permission pending",
+    "authorized_supplier_images_received": 0
+  }
+}

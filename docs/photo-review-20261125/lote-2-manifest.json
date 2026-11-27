@@ -1,0 +1,143 @@
+{
+  "engine": "15.0",
+  "batch": "8 frutos secos pendientes",
+  "approved": 0,
+  "items": [
+    {
+      "product_key": "almendraFritaGirasol",
+      "product": "Almendra frita con aceite de girasol",
+      "status": "DOWNLOADED_UNVERIFIED",
+      "variant_evidence_status": "VARIANT_UNSPECIFIED",
+      "file": "assets/images/candidates/almendraFritaGirasol-candidate.jpg",
+      "source": "Wikimedia Commons",
+      "title": "Almond with two kernels.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3AAlmond_with_two_kernels.jpg",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Iifar\" title=\"User:Iifar\">Ivar Leidus</a>",
+      "sha256": "8b37a3921d1d9a23b63ed21d20ea8ae9cbe7ac54a0bf7e206b3f0699082897fb",
+      "review": "NO APROBADA: comprobar visualmente; variante no acreditada",
+      "duplicate_with": [
+        "almendraFritaSinSal"
+      ]
+    },
+    {
+      "product_key": "almendraFritaSinSal",
+      "product": "Almendra frita sin sal",
+      "status": "DOWNLOADED_UNVERIFIED",
+      "variant_evidence_status": "VARIANT_UNSPECIFIED",
+      "file": "assets/images/candidates/almendraFritaSinSal-candidate.jpg",
+      "source": "Wikimedia Commons",
+      "title": "Almond with two kernels.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3AAlmond_with_two_kernels.jpg",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Iifar\" title=\"User:Iifar\">Ivar Leidus</a>",
+      "sha256": "8b37a3921d1d9a23b63ed21d20ea8ae9cbe7ac54a0bf7e206b3f0699082897fb",
+      "review": "NO APROBADA: comprobar visualmente; variante no acreditada",
+      "duplicate_with": [
+        "almendraFritaGirasol"
+      ]
+    },
+    {
+      "product_key": "cacahueteFritoRepeladoSinSal",
+      "product": "Cacahuete frito repelado sin sal",
+      "status": "CANDIDATES_FOUND_DOWNLOAD_FAILED",
+      "variant_evidence_status": null,
+      "file": null,
+      "source": null,
+      "title": null,
+      "source_page": null,
+      "license": null,
+      "license_url": null,
+      "artist": null,
+      "sha256": null,
+      "review": "SIN DESCARGA: candidato localizado pero descarga fallida",
+      "duplicate_with": []
+    },
+    {
+      "product_key": "cacahueteTostadoRepeladoSinSal",
+      "product": "Cacahuete tostado repelado sin sal",
+      "status": "DOWNLOADED_UNVERIFIED",
+      "variant_evidence_status": "VARIANT_UNSPECIFIED",
+      "file": "assets/images/candidates/cacahueteTostadoRepeladoSinSal-candidate.jpg",
+      "source": "Wikimedia Commons",
+      "title": "Dry Roasted Virginia Peanuts.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3ADry_Roasted_Virginia_Peanuts.jpg",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Gogerr\" title=\"User:Gogerr\">Gogerr</a>",
+      "sha256": "e36e50d19d951801da22572c10a8b4486d0874fae99d3cff7910030705923223",
+      "review": "NO APROBADA: comprobar visualmente; variante no acreditada",
+      "duplicate_with": []
+    },
+    {
+      "product_key": "anacardoFritoSinSal",
+      "product": "Anacardo frito sin sal",
+      "status": "DOWNLOADED_UNVERIFIED",
+      "variant_evidence_status": "VARIANT_UNSPECIFIED",
+      "file": "assets/images/candidates/anacardoFritoSinSal-candidate.jpg",
+      "source": "Wikimedia Commons",
+      "title": "CASHEW NUTS.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3ACASHEW_NUTS.jpg",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "artist": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:Ranjithkumar_Murugesan&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:Ranjithkumar Murugesan (page does not exist)\">Ranjithkumar Murugesan</a>",
+      "sha256": "a18965fe9baafeeb2b4e8ea37c126af2d5a195b44452045b4fb59ccabaf92471",
+      "review": "NO APROBADA: comprobar visualmente; variante no acreditada",
+      "duplicate_with": []
+    },
+    {
+      "product_key": "macadamiaFritaSal",
+      "product": "Macadamia frita con sal",
+      "status": "DOWNLOADED_UNVERIFIED",
+      "variant_evidence_status": "VARIANT_UNSPECIFIED",
+      "file": "assets/images/candidates/macadamiaFritaSal-candidate.jpg",
+      "source": "Wikimedia Commons",
+      "title": "Macadamia nut kernels.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3AMacadamia_nut_kernels.jpg",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Fumikas_Sagisavas\" title=\"User:Fumikas Sagisavas\">Fumikas Sagisavas</a>",
+      "sha256": "ce38ffe8246b60b720f7f7bcd6396507b98d077e8de34530052013d54144678f",
+      "review": "NO APROBADA: comprobar visualmente; variante no acreditada",
+      "duplicate_with": []
+    },
+    {
+      "product_key": "macadamiaFritaSinSal",
+      "product": "Macadamia frita sin sal",
+      "status": "DOWNLOADED_UNVERIFIED",
+      "variant_evidence_status": "VARIANT_UNSPECIFIED",
+      "file": "assets/images/candidates/macadamiaFritaSinSal-candidate.jpg",
+      "source": "Wikimedia Commons",
+      "title": "Cut macadamia nuts.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3ACut_macadamia_nuts.jpg",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Fumikas_Sagisavas\" title=\"User:Fumikas Sagisavas\">Fumikas Sagisavas</a>",
+      "sha256": "d40e4ec32f6761c3e39d981d96e13700593d3e110dbe9b92064f304e6dc0c34e",
+      "review": "NO APROBADA: comprobar visualmente; variante no acreditada",
+      "duplicate_with": [
+        "macadamiaTostadaSinSal"
+      ]
+    },
+    {
+      "product_key": "macadamiaTostadaSinSal",
+      "product": "Macadamia tostada sin sal",
+      "status": "DOWNLOADED_UNVERIFIED",
+      "variant_evidence_status": "VARIANT_UNSPECIFIED",
+      "file": "assets/images/candidates/macadamiaTostadaSinSal-candidate.jpg",
+      "source": "Wikimedia Commons",
+      "title": "Cut macadamia nuts.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File%3ACut_macadamia_nuts.jpg",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Fumikas_Sagisavas\" title=\"User:Fumikas Sagisavas\">Fumikas Sagisavas</a>",
+      "sha256": "d40e4ec32f6761c3e39d981d96e13700593d3e110dbe9b92064f304e6dc0c34e",
+      "review": "NO APROBADA: comprobar visualmente; variante no acreditada",
+      "duplicate_with": [
+        "macadamiaFritaSinSal"
+      ]
+    }
+  ]
+}

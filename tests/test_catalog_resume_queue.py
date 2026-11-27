@@ -1,11 +1,12 @@
 """Resume queue tests: a product is retried once per engine version by default."""
 import ast
 import unittest
+import time
 from pathlib import Path
 
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "catalog_candidate_batch.py"
 TREE = ast.parse(SCRIPT.read_text(encoding="utf-8"))
-NEEDED = {"ENGINE_VERSION", "select_resume_products"}
+NEEDED = {"ENGINE_VERSION", "select_resume_products", "recover_interrupted_product"}
 selected = []
 for node in TREE.body:
     if isinstance(node, ast.FunctionDef) and node.name in NEEDED:
@@ -15,10 +16,11 @@ for node in TREE.body:
         if names & NEEDED:
             selected.append(node)
 
-namespace = {}
+namespace = {"time": time}
 exec(compile(ast.Module(body=selected, type_ignores=[]), str(SCRIPT), "exec"), namespace)
 ENGINE_VERSION = namespace["ENGINE_VERSION"]
 select_resume_products = namespace["select_resume_products"]
+recover_interrupted_product = namespace["recover_interrupted_product"]
 
 
 class TestResumeQueue(unittest.TestCase):
@@ -74,6 +76,32 @@ class TestResumeQueue(unittest.TestCase):
         processed = {"a": {"status": "NO_RESULTS_RELEVANT"}}
         result = select_resume_products(self.PRODUCTS, processed)
         self.assertEqual(result, self.PRODUCTS[1:])
+
+
+    def test_interrupted_product_is_not_retried_in_a_restart_loop(self):
+        processed = {
+            "a": {
+                "status": "INTERRUPTED",
+                "last_resume_engine_version": ENGINE_VERSION,
+            }
+        }
+        normal = select_resume_products(self.PRODUCTS, processed)
+        self.assertEqual(normal, self.PRODUCTS[1:])
+        forced = select_resume_products(self.PRODUCTS, processed, force_retry=True)
+        self.assertEqual(forced, self.PRODUCTS)
+
+
+    def test_interrupted_checkpoint_is_recovered_once(self):
+        state = {"in_progress": {
+            "product_key": "a", "product": "Product A", "engine_version": ENGINE_VERSION
+        }}
+        processed = {}
+        key = recover_interrupted_product(state, processed)
+        self.assertEqual(key, "a")
+        self.assertNotIn("in_progress", state)
+        self.assertEqual(processed["a"]["status"], "INTERRUPTED")
+        self.assertEqual(processed["a"]["last_resume_engine_version"], ENGINE_VERSION)
+        self.assertIsNone(recover_interrupted_product(state, processed))
 
 
 if __name__ == "__main__":
