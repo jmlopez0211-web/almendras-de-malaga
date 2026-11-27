@@ -1395,7 +1395,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 19,
-    "image": ""
+    "image": "assets/products/dulceLeche.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "ligeroPinones": {
     "name": "Ligero piñones",
@@ -1403,7 +1407,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 19,
-    "image": ""
+    "image": "assets/products/ligeroPinones.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "pinonesCaserio": {
     "name": "Piñones caserío",
@@ -1411,7 +1419,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 19,
-    "image": ""
+    "image": "assets/products/pinonesCaserio.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "sugus": {
     "name": "Sugus",
@@ -1431,7 +1443,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 15,
-    "image": ""
+    "image": "assets/products/carachoco.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "toffinoChocolate": {
     "name": "Toffino de chocolate",
@@ -1439,7 +1455,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 12.8,
-    "image": ""
+    "image": "assets/products/toffinoChocolate.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "toffeeNata": {
     "name": "Toffee nata",
@@ -1447,7 +1467,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 12.4,
-    "image": ""
+    "image": "assets/products/toffeeNata.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "picotasFresa": {
     "name": "Picotas de fresa",
@@ -1455,7 +1479,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 12.4,
-    "image": ""
+    "image": "assets/products/picotasFresa.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "rellenoMiel": {
     "name": "Relleno miel de abeja",
@@ -1463,7 +1491,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 11,
-    "image": ""
+    "image": "assets/products/rellenoMiel.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "gummys": {
     "name": "Gummys",
@@ -1483,7 +1515,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 10.8,
-    "image": ""
+    "image": "assets/products/gajosSantos.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "rellenoFruta": {
     "name": "Relleno de fruta",
@@ -1491,7 +1527,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 10.4,
-    "image": ""
+    "image": "assets/products/rellenoFruta.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "tacoMiel": {
     "name": "Taco de miel",
@@ -1499,7 +1539,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 8.8,
-    "image": ""
+    "image": "assets/products/tacoMiel.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "cafeDrySA": {
     "name": "Café Dry sin azúcar",
@@ -1507,7 +1551,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 14.2,
-    "image": ""
+    "image": "assets/products/cafeDrySA.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "cafeDryCA": {
     "name": "Café Dry con azúcar",
@@ -1515,7 +1563,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 12,
-    "image": ""
+    "image": "assets/products/cafeDryCA.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "werthersSA": {
     "name": "Werther’s sin azúcar",
@@ -1523,7 +1575,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 17.8,
-    "image": ""
+    "image": "assets/products/werthersSA.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "werthersCA": {
     "name": "Werther’s con azúcar",
@@ -1543,7 +1599,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 13.8,
-    "image": ""
+    "image": "assets/products/pictolinEucaliptoSA.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "pictolinEucaliptoCA": {
     "name": "Pictolín eucalipto con azúcar",
@@ -1551,7 +1611,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 8,
-    "image": ""
+    "image": "assets/products/pictolinEucaliptoCA.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "pictolinFullmintSA": {
     "name": "Pictolín Fullmint sin azúcar",
@@ -1559,7 +1623,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 12.8,
-    "image": ""
+    "image": "assets/products/pictolinFullmintSA.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "pictolinFullmintCA": {
     "name": "Pictolín Fullmint con azúcar",
@@ -1567,7 +1635,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 8.8,
-    "image": ""
+    "image": "assets/products/pictolinFullmintCA.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "pictolinMielLimonSA": {
     "name": "Pictolín miel y limón sin azúcar",
@@ -1575,7 +1647,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 13.8,
-    "image": ""
+    "image": "assets/products/pictolinMielLimonSA.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia aportada por el propietario",
+    "imageLicense": "Uso autorizado por el propietario"
   },
   "pictolinMielLimonCA": {
     "name": "Pictolín miel y limón con azúcar",
