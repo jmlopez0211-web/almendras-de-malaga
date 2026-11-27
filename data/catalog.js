@@ -50,7 +50,6 @@ window.PRODUCTS ={
     "category": "frutos",
     "price": 19.8,
     "image": "assets/products/almendra-frita-sin-sal-propia.webp",
-
     "imageVerified": true,
     "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
     "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
@@ -90,7 +89,8 @@ window.PRODUCTS ={
     "imageVerified": true,
     "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
     "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
-    "imageLicense": "Uso autorizado por el propietario"},
+    "imageLicense": "Uso autorizado por el propietario"
+  },
   "almendraGarrapinada": {
     "name": "Almendra garrapiñada",
     "desc": "Almendras garrapiñadas, envueltas en una capa dulce y crujiente de caramelo. Un clásico irresistible para disfrutar, compartir o llevarte un recuerdo dulce de Málaga.",
@@ -242,7 +242,8 @@ window.PRODUCTS ={
     "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
     "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
     "imageLicense": "Uso autorizado por el propietario",
-    "imageVerified": true},
+    "imageVerified": true
+  },
   "cacahueteFritoRepeladoSinSal": {
     "name": "Cacahuete frito repelado sin sal",
     "desc": "Cacahuete frito sin piel y sin sal.",
@@ -294,7 +295,6 @@ window.PRODUCTS ={
     "category": "cacahuetes",
     "price": 9,
     "image": "assets/products/cacahuete-tostado-repelado-sin-sal-propio.webp",
-
     "imageVerified": true,
     "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
     "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
@@ -377,8 +377,8 @@ window.PRODUCTS ={
     "imageVerified": true,
     "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
     "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
-
-    "imageLicense": "Uso autorizado por el propietario"},
+    "imageLicense": "Uso autorizado por el propietario"
+  },
   "macadamiaCruda": {
     "name": "Macadamia cruda",
     "desc": "Macadamia sin tostar, presentada entera.",
@@ -397,7 +397,6 @@ window.PRODUCTS ={
     "category": "frutos",
     "price": 42,
     "image": "assets/products/macadamia-frita-sal-propia.webp",
-
     "imageVerified": true,
     "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
     "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
@@ -421,8 +420,8 @@ window.PRODUCTS ={
     "imageVerified": true,
     "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
     "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
-
-    "imageLicense": "Uso autorizado por el propietario"},
+    "imageLicense": "Uso autorizado por el propietario"
+  },
   "macadamiaTostadaSinSal": {
     "name": "Macadamia tostada sin sal",
     "desc": "Macadamias tostadas, sin sal añadida.",
@@ -645,11 +644,11 @@ window.PRODUCTS ={
     "category": "revueltos",
     "price": 19,
     "image": "assets/products/revuelto-tres-pasas-propio.webp",
-
     "imageVerified": true,
     "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
     "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
-    "imageLicense": "Uso autorizado por el propietario"},
+    "imageLicense": "Uso autorizado por el propietario"
+  },
   "revueloPacoJose": {
     "name": "Revuelto de frutos secos",
     "desc": "Mezcla variada de frutos secos. Consulta la composición y disponibilidad en el puesto.",
@@ -677,7 +676,6 @@ window.PRODUCTS ={
     "category": "revueltos",
     "price": 39.8,
     "image": "assets/products/revuelto-dulce-propio.webp",
-
     "imageVerified": true,
     "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
     "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
@@ -1549,7 +1547,11 @@ window.PRODUCTS ={
     "tag": "Caramelos y confitería",
     "category": "caramelos",
     "price": 8,
-    "image": ""
+    "image": "assets/products/pictolin-eucalipto-con-azucar-propia.webp",
+    "imageVerified": true,
+    "imageCredit": "Fotografía propia aportada por el propietario de Almendras de Málaga",
+    "imageSource": "Fotografía propia del catálogo Almendras de Málaga",
+    "imageLicense": "Uso comercial autorizado por el propietario"
   },
   "pictolinFullmintSA": {
     "name": "Pictolín Fullmint sin azúcar",
