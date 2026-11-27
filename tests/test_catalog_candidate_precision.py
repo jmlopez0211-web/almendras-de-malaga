@@ -30,6 +30,8 @@ NEEDED = {
     "candidate_score",
     "candidate_identity_is_confirmed",
     "candidate_variant_evidence_status",
+    "candidate_rights_are_documented",
+    "candidate_can_download",
     "candidate_identity_is_confirmed",
     "candidate_passes_gates",
     "approval_passes_gates",
@@ -72,6 +74,46 @@ class TestCatalogCandidatePrecision(unittest.TestCase):
         conflicting = {"title": "Unsalted macadamia kernels", "tags": ["macadamia", "unsalted"]}
         self.assertTrue(gate("macadamiaFritaSal", conflicting))
         self.assertEqual(namespace["candidate_variant_evidence_status"]("macadamiaFritaSal", conflicting), "CONTRADICTORY_VARIANT")
+
+
+    def test_pre_download_gate_requires_exact_variant_and_documented_commercial_rights(self):
+        gate = namespace["candidate_can_download"]
+        base = {
+            "title": "Unsalted fried macadamia nuts",
+            "tags": ["macadamia", "unsalted", "fried"],
+            "license": "CC BY-SA 4.0",
+            "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+            "artist": "Photographer Name",
+            "source_page": "https://commons.wikimedia.org/wiki/File:Example.jpg",
+        }
+        self.assertTrue(gate("macadamiaFritaSinSal", base))
+        missing_variant = dict(base, title="Macadamia nuts", tags=["macadamia"])
+        self.assertFalse(gate("macadamiaFritaSinSal", missing_variant))
+        missing_creator = dict(base, artist="")
+        self.assertFalse(gate("macadamiaFritaSinSal", missing_creator))
+        noncommercial = dict(base, license="CC BY-NC 4.0")
+        self.assertFalse(gate("macadamiaFritaSinSal", noncommercial))
+        mixed_blend = {
+            "title": "Mixed nuts assortment",
+            "tags": ["mixed nuts", "assortment"],
+            "description": "Walnuts, almonds, peanuts and macadamia",
+            "license": "CC BY-SA 4.0",
+            "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+            "artist": "Photographer Name",
+            "source_page": "https://commons.wikimedia.org/wiki/File:Example.jpg",
+        }
+        self.assertFalse(gate("revueloPacoJose", mixed_blend))
+
+    def test_core_identity_dictionary_has_no_duplicate_keys(self):
+        assignment = next(
+            node for node in TREE.body
+            if isinstance(node, ast.Assign)
+            and any(isinstance(target, ast.Name) and target.id == "CORE_TERMS"
+                    for target in node.targets)
+        )
+        keys = [key.value for key in assignment.value.keys
+                if isinstance(key, ast.Constant) and isinstance(key.value, str)]
+        self.assertEqual(len(keys), len(set(keys)))
 
     def test_recovery_queries_start_with_broad_almond_terms(self):
         from_main = namespace["build_queries"]("almendraFritaSinSal", "Almendra frita sin sal")
